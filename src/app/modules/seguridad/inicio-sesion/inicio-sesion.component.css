@@ -1,0 +1,80 @@
+
+#login-page {
+   width: 500px;
+}
+
+.card {
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     -moz-transform: translate(-50%, -50%);
+     -webkit-transform: translate(-50%, -50%);
+     -ms-transform: translate(-50%, -50%);
+     -o-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%); 
+}
+
+
+
+[data-tab-info] {
+   display: none;
+}
+ 
+.active[data-tab-info] {
+   display: block;
+   
+}
+ 
+.tab-content {
+   font-size: 50px;
+   font-family: sans-serif;
+   font-weight: bold;
+   color: rgb(82, 75, 75);
+   
+}
+ 
+.tabs {
+   font-size: 15px;
+   color: rgb(255, 255, 255);
+   display: flex;
+   margin: 5px;
+   text-align: center;
+}
+
+
+
+ 
+.tabs span {
+   background: #0fa8a1;
+   padding: 15px;
+   border: 1px solid rgb(255, 255, 255);
+   width: 500px;
+}
+ 
+.tabs span:hover {
+   background: #31c4ae;
+   cursor: pointer;
+   color: black;
+}
+
+p { font-size: small;
+}
+
+legend {
+   display: table; 
+   min-width: 0px;
+   max-width: 70%;
+   position: sticky;
+   margin: auto;
+   padding: 5px 20px;
+   color: #545454;
+   font-size: 20px;
+   text-align: center;
+}
+
+fieldset {
+     border: 20;
+     border-top: 1px solid #DDD;
+     width: 55%;
+     margin: 50px 23%;
+}
