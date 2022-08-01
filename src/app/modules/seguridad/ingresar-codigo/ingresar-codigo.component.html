@@ -1,0 +1,21 @@
+<fieldset>
+    <legend>Código de segurdad</legend>
+    <div class="row">
+
+    <form>
+      <div class="row">
+        <a>Revise su casilla de correo electrónico</a>  
+        <br>
+        <div class="input-field col s6">
+          <input id="codigo" formControlName="codigo" type="number" class="validate" required>
+          <label for="codigo">Ingrese el código</label>
+        </div>
+     
+          <div class="input-field col s">
+          <button (click)="confirmarCodigo" class="btn btn-large btn-cambiarPass waves-effect waves-light" type="button" name="action">Aceptar
+            <i class="material-icons right">done</i>
+          </button>
+        </div>
+   </div>
+   </form>
+    
