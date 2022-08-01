@@ -1,0 +1,15 @@
+.page-footer{
+    background-image: url(src\assets\imagenes\footer.png);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: relative;
+    background-position: 100%;
+    align-self: flex-end;
+
+}
+
+.text{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
