@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -12,10 +12,11 @@ import { Subscription } from 'rxjs';
   templateUrl: './inicio-sesion.component.html',
   styleUrls: ['./inicio-sesion.component.css']
 })
+export class InicioSesionComponent implements OnInit, OnDestroy {
 
-export class InicioSesionComponent implements OnInit {
   fomrLogin: FormGroup;
   subRef$!: Subscription;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,14 +29,16 @@ export class InicioSesionComponent implements OnInit {
       contraseña: ['', Validators.required],
       correoElectronico: ['', Validators.required]
 
-
-  ngOnInit(): void {
+    });
 
   }
 
-  })
+  ngOnInit() {
+    
+  }
 
-  Login(): void {
+
+  Login() {
     const usuarioLogin: Login = {
       rol: this.fomrLogin.value.rol,
       contraseña: this.fomrLogin.value.contraseña,
@@ -43,13 +46,14 @@ export class InicioSesionComponent implements OnInit {
     };
 
 
-    this.http.post<respuesta>('http://localhost:4200/api/identidad/login',
 
-    usuarioLogin, {observe: 'respuesta'})
-    .subscribe(res => {
-      console.log('token',res.body.respuesta);
-      console.log('token', Token);
-      sessionStorage.setItem('token', Token);
+    this.subRef$ = this.http.post<respuesta>('http://localhost:4200/api/identidad/login',
+
+    usuarioLogin, {observe: 'response'}).
+    subscribe(res => {
+      const token = res.body?.respuesta;
+      console.log('token', token);
+      sessionStorage.setItem('token', token);
       this.router.navigate(['/home']);
 
     }, err => {
@@ -58,10 +62,12 @@ export class InicioSesionComponent implements OnInit {
 
   }
 
+
   ngOnDestroy() {
     if (this.subRef$) {
       this.subRef$.unsubscribe();
     }
  
-      }
+  }
 
+}
