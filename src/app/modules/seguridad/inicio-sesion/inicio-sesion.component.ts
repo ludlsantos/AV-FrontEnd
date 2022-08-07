@@ -3,11 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/modelos/login';
-<<<<<<< Updated upstream
 import { respuesta } from 'src/app/modelos/respuesta';
-=======
-import { response } from 'src/app/modelos/respuesta';
->>>>>>> Stashed changes
 import { Token } from '@angular/compiler';
 import { Subscription } from 'rxjs';
 
@@ -31,40 +27,33 @@ export class InicioSesionComponent implements OnInit {
       rol: ['', Validators.required],
       contraseña: ['', Validators.required],
       correoElectronico: ['', Validators.required]
-  
 
-<<<<<<< Updated upstream
-  constructor() { }
-=======
->>>>>>> Stashed changes
-    })
-  }
 
   ngOnInit(): void {
 
   }
 
-  Login() {
+  })
+
+  Login(): void {
     const usuarioLogin: Login = {
       rol: this.fomrLogin.value.rol,
       contraseña: this.fomrLogin.value.contraseña,
       correoElectronico: this.fomrLogin.value.correoElectronico,
     };
 
-<<<<<<< Updated upstream
-    this.http.post<respuesta>('http://localhost:4000/api/identidad/login',
-=======
-    this.http.post<response>('http://localhost:4000/api/identidad/login',
->>>>>>> Stashed changes
-    usuarioLogin, {observe: 'response'})
+
+    this.http.post<respuesta>('http://localhost:4200/api/identidad/login',
+
+    usuarioLogin, {observe: 'respuesta'})
     .subscribe(res => {
-      console.log('token', res.body?.respuesta);
+      console.log('token',res.body.respuesta);
       console.log('token', Token);
       sessionStorage.setItem('token', Token);
       this.router.navigate(['/home']);
 
     }, err => {
-      console.log('Error en el login', err);
+      console.log('Error en el login', err)
     });
 
   }
@@ -73,8 +62,6 @@ export class InicioSesionComponent implements OnInit {
     if (this.subRef$) {
       this.subRef$.unsubscribe();
     }
-  }
+ 
+      }
 
-
-
-}

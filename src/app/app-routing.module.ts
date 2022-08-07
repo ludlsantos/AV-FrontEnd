@@ -6,16 +6,10 @@ import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-
 import { SeguridadModule } from './modules/seguridad/seguridad.module';
 
 const routes: Routes = [
-<<<<<<< Updated upstream
+
 {path: '',redirectTo: '/login', pathMatch: 'full'},
 {path: 'login', component: InicioSesionComponent},
 
-=======
-{path: '',redirectTo: '/login', pathMatch: 'full',},
-{path: 'login', component: InicioSesionComponent},
-
-
->>>>>>> Stashed changes
 {
 path: 'home',
 component: PredeterminadoComponent
@@ -40,4 +34,5 @@ component: PredeterminadoComponent
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
