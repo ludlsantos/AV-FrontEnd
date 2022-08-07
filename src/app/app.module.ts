@@ -9,6 +9,7 @@ import { MenuLateralComponent } from './FrontEnd/paginaPrincipal/menu-lateral/me
 import { PiePaginaComponent } from './FrontEnd/paginaPrincipal/pie-pagina/pie-pagina.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
 
 
 
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     MenuLateralComponent,
     PiePaginaComponent,
+    InicioSesionComponent,
     
   ],
   imports: [
@@ -26,12 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-<<<<<<< Updated upstream
 
-
-=======
->>>>>>> Stashed changes
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
