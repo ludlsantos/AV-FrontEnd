@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PredeterminadoComponent } from './FrontEnd/inicio/predeterminado/predeterminado.component';
 import { ClienteModule } from './modules/cliente/cliente.module';
+import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
 import { SeguridadModule } from './modules/seguridad/seguridad.module';
 
 const routes: Routes = [
-{
-  path: '',
-  pathMatch: 'full',
-  redirectTo: 'home'
-},
+{path: '',redirectTo: '/login', pathMatch: 'full'},
+{path: 'login', component: InicioSesionComponent},
+
 {
 path: 'home',
 component: PredeterminadoComponent

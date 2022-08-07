@@ -7,6 +7,8 @@ import { PredeterminadoComponent } from './FrontEnd/inicio/predeterminado/predet
 import { NavbarComponent } from './FrontEnd/paginaPrincipal/navbar/navbar.component';
 import { MenuLateralComponent } from './FrontEnd/paginaPrincipal/menu-lateral/menu-lateral.component';
 import { PiePaginaComponent } from './FrontEnd/paginaPrincipal/pie-pagina/pie-pagina.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -22,6 +24,10 @@ import { PiePaginaComponent } from './FrontEnd/paginaPrincipal/pie-pagina/pie-pa
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
