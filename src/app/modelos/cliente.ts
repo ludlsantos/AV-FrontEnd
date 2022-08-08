@@ -1,6 +1,6 @@
 export class Cliente {
 
-    clienteId!: number;
+    clienteId?: number;
     tipoDocumento!: string;
     nroDocumento!: number;
     nombre!: string;
