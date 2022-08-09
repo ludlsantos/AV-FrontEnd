@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PredeterminadoComponent } from './FrontEnd/inicio/predeterminado/predeterminado.component';
@@ -9,6 +10,7 @@ import { PiePaginaComponent } from './FrontEnd/paginaPrincipal/pie-pagina/pie-pa
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
+
 
 
 
@@ -27,7 +29,7 @@ import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+    HttpClientModule
   ],
 
   providers: [],
