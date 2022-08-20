@@ -1,16 +1,12 @@
 .nav-wrapper{
     background-image: url(src\assets\imagenes\navbar.jpg);
-  
+
 } 
 
-.sidenav-trigger{
-    color: #0fa8a1;
-    font-size: 29px;
-}
 
-.tab{
-    color: #0fa8a1;
-    
-    font-weight: bold;
+
+.navbar-inverse {
+    background-color:  rgb(37, 37, 37);
+    height: 100%;
 }
 
