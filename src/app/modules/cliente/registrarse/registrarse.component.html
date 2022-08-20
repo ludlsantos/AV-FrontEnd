@@ -16,7 +16,7 @@
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">portrait</i>
-        <input id="tipoDocumento" type="text" required>
+        <input id="tipoDocumento" formControlName="tipoDocumento" type="text" required>
         <label for="tipoDocumento">Tipo documento</label>
       </div>
       <div class="input-field col s6">
@@ -60,7 +60,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-      <form action="../../form-result.php" method="post" enctype="multipart/form-data" target="_blank">
+      <form action="" method="post" enctype="multipart/form-data" target="_blank">
         <label for="file">Foto de perfil</label><br>
           <input type="file" name="archivosubido" >
         <br><br>

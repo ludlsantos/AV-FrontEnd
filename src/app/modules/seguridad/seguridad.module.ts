@@ -12,7 +12,6 @@ import { IngresarCodigoComponent } from './ingresar-codigo/ingresar-codigo.compo
 
 @NgModule({
   declarations: [
-    InicioSesionComponent,
     CerrarSesionComponent,
     ReestablecerClaveComponent,
     CambiarClaveComponent,
