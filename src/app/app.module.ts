@@ -15,7 +15,6 @@ import { PiePaginaComponent } from './FrontEnd/paginaPrincipal/pie-pagina/pie-pa
 import { SeccionesHomeComponent } from './secciones-home/secciones-home.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
 
 
