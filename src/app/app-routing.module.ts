@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PredeterminadoComponent } from './FrontEnd/inicio/predeterminado/predeterminado.component';
 import { ClienteModule } from './modules/cliente/cliente.module';
+import { AdminModule } from './modules/admin/admin.module';
 import { SeguridadModule } from './modules/seguridad/seguridad.module';
+
 
 const routes: Routes = [
 {
@@ -23,6 +25,13 @@ component: PredeterminadoComponent
   path: 'cliente',
   loadChildren: () => import('./modules/cliente/cliente.module').then(m => ClienteModule)
 },
+
+{
+  path: 'admin',
+  loadChildren: () => import('./modules/admin/admin.module').then(m => AdminModule)
+},
+
+
 
 {
   path: '**',
