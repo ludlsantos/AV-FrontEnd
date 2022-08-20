@@ -32,20 +32,23 @@
  }
 
  legend {
+    display: table; 
+    min-width: 0px;
+    max-width: 70%;
     position: relative;
-
+    margin: auto;
     padding: 5px 20px;
     color: #545454;
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
 }
 
 fieldset {
-  border: 1px solid rgb(44, 44, 44);
-      width: 70%;
+      border: 20;
+      border-top: 1px solid #DDD;
+      width: 80%;
       position: center;
       display: block;
       margin: 10px 10%;
-     
 }
 
