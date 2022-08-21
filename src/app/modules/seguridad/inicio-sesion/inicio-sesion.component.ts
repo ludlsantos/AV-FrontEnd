@@ -31,11 +31,11 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
     
   ) { 
     this.formLogin = formBuilder.group( {
-      //rol: ['', Validators.required],
+      rol: ['', Validators.required],
       emailCliente: ['', Validators.required],
       passwordCliente: ['', Validators.required],
-      emailAdmin: ['', Validators.required],
-      passwordAdmin: ['', Validators.required]
+       emailAdmin: ['', Validators.required],
+      passwordAdmin: ['', Validators.required] 
 
     });
 
@@ -63,6 +63,7 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
 
 
     }
+    alert ('Funciona 1')
   
 
 
@@ -91,7 +92,7 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
       
     }, err => {
       alert('Error en el login' + err);
-    });
+    }); 
 
 
 

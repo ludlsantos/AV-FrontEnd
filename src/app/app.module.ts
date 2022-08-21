@@ -30,7 +30,6 @@ import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-
     PiePaginaComponent,
 
     SeccionesHomeComponent,
-=======
     InicioSesionComponent,
     
 
@@ -38,12 +37,9 @@ import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-
   imports: [
     BrowserModule,
     AppRoutingModule,
-<
     FormsModule,
-=======
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientModule
 
   ],
 
