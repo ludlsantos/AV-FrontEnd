@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PredeterminadoComponent } from './FrontEnd/inicio/predeterminado/predeterminado.component';
 import { ClienteModule } from './modules/cliente/cliente.module';
+import { EventoModule } from './modules/evento/evento.module';
 
 import { AdminModule } from './modules/admin/admin.module';
 
@@ -30,10 +31,14 @@ component: PredeterminadoComponent
 },
 
 {
-  path: 'admin',
-  loadChildren: () => import('./modules/admin/admin.module').then(m => AdminModule)
+
+  path: 'evento',
+  loadChildren: () => import('./modules/evento/evento.module').then(m => EventoModule)
 },
 
+path: 'admin',
+  loadChildren: () => import('./modules/admin/admin.module').then(m => AdminModule)
+},
 
 
 {

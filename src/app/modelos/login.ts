@@ -1,3 +1,6 @@
+
+import { Cliente } from "./cliente";
+
 export type Roles = 'Administrador' | 'Cliente';
 
 export class Login {
