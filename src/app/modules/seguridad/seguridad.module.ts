@@ -12,7 +12,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    InicioSesionComponent,
     CerrarSesionComponent,
     ReestablecerClaveComponent,
     CambiarClaveComponent,
