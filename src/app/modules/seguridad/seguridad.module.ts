@@ -8,7 +8,7 @@ import { ReestablecerClaveComponent } from './reestablecer-clave/reestablecer-cl
 import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
 import { ConfirmarMailComponent } from './confirmar-mail/confirmar-mail.component';
 import { IngresarCodigoComponent } from './ingresar-codigo/ingresar-codigo.component';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,9 @@ import { IngresarCodigoComponent } from './ingresar-codigo/ingresar-codigo.compo
   ],
   imports: [
     CommonModule,
-    SeguridadRoutingModule
+    SeguridadRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class SeguridadModule { }

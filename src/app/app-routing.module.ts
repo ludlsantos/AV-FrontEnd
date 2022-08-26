@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PredeterminadoComponent } from './FrontEnd/inicio/predeterminado/predeterminado.component';
 import { ClienteModule } from './modules/cliente/cliente.module';
+import { EventoModule } from './modules/evento/evento.module';
 import { SeguridadModule } from './modules/seguridad/seguridad.module';
 
 const routes: Routes = [
@@ -22,6 +23,11 @@ component: PredeterminadoComponent
 {
   path: 'cliente',
   loadChildren: () => import('./modules/cliente/cliente.module').then(m => ClienteModule)
+},
+
+{
+  path: 'evento',
+  loadChildren: () => import('./modules/evento/evento.module').then(m => EventoModule)
 },
 
 {
