@@ -9,6 +9,7 @@ import { AdminModule } from './modules/admin/admin.module';
 import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
 
 import { SeguridadModule } from './modules/seguridad/seguridad.module';
+import { EstaLogueadoGuard } from './estaLogueado.guard';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
 
 {
 path: 'home',
-component: PredeterminadoComponent
+component: PredeterminadoComponent,
+canActivate: [EstaLogueadoGuard]
 },
 {
   path: 'seguridad',
