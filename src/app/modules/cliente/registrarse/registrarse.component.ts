@@ -4,8 +4,7 @@ import { Cliente } from 'src/app/modelos/cliente';
 import { Login } from 'src/app/modelos/login';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { LoginService } from 'src/app/services/login.service';
-
-declare const mostrarMensaje: any;
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registrarse',
@@ -15,9 +14,10 @@ declare const mostrarMensaje: any;
 
 export class RegistrarseComponent implements OnInit {
 
+  correoElectronico!: string;
   fgValidator!: FormGroup;
 
-  constructor(private fb: FormBuilder, private clienteService: ClienteService, private loginService: LoginService) { }
+  constructor(private http: HttpClient ,private fb: FormBuilder, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -44,48 +44,41 @@ export class RegistrarseComponent implements OnInit {
     if (this.fgValidator.get('password')?.value == this.fgValidator.get('rePassword')?.value){
 
     if (this.fgValidator.invalid){
-      alert("Datos invalidos, porfavor verifique");
+      alert('Datos invalidos, porfavor verifique')
     }else{
-      const cliente: Cliente = {
-        tipoDocumento: this.fgValidator.get('tipoDocumento')?.value,
-        nroDocumento: this.fgValidator.get('nroDocumento')?.value,
-        nombre: this.fgValidator.get('nombre')?.value,
-        apellidos: this.fgValidator.get('apellido')?.value,
-        telefono: this.fgValidator.get('telefono')?.value,
-        profesionCargo: this.fgValidator.get('cargoProfesion')?.value,
-        nombreEmpresa: this.fgValidator.get('empresa')?.value,
-        fotoPerfil: this.fgValidator.get('archivosubido')?.value
-
-       }
-  
-
-      const login: Login = {
+      
+      const loginHijo: Login = {
         rol: "Cliente",
         contraseña: this.fgValidator.get('password')?.value,
-        correoElectronico: this.fgValidator.get('email')?.value
-
+        correoElectronico: this.fgValidator.get('email')?.value,
     }
-
-      this.clienteService.guardarCliente(cliente).subscribe(data => {
-        alert('Guardado exitosamente');
-        this.fgValidator.reset();
-      
-      
- 
-        alert('Aca');
-      this.loginService.guardarLogin(login).subscribe(data =>{
-        alert('Login creado exitosamente');
-        this.fgValidator.reset();
-      })
-      })
-    }
-  }else{
-    alert('Las contraseñas no coinciden');
+          
+          const cliente: Cliente = {
+            tipoDocumento: this.fgValidator.get('tipoDocumento')?.value,
+            nroDocumento: this.fgValidator.get('nroDocumento')?.value,
+            nombre: this.fgValidator.get('nombre')?.value,
+            apellidos: this.fgValidator.get('apellido')?.value,
+            telefono: this.fgValidator.get('telefono')?.value,
+            profesionCargo: this.fgValidator.get('cargoProfesion')?.value,
+            nombreEmpresa: this.fgValidator.get('empresa')?.value,
+            fotoPerfil: this.fgValidator.get('archivosubido')?.value,
+            login: loginHijo
+          }
+    
+            this.clienteService.guardarCliente(cliente).subscribe(data => {
+              alert('Registrado con éxito');
+              this.fgValidator.reset();  
+            })          
+  
   }
+     }else{
+        alert('Las contraseñas no coinciden');
   }
+}
 
   get fgv(){
     return this.fgValidator.controls;
   }
 
 }
+

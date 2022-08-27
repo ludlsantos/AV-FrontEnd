@@ -5,6 +5,8 @@ import { ClienteRoutingModule } from './cliente-routing.module';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+
+
 @NgModule({
   declarations: [
     RegistrarseComponent
@@ -13,7 +15,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     ClienteRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class ClienteModule { }

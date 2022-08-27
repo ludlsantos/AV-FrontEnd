@@ -1,20 +1,18 @@
 <fieldset>
-    <legend>Cambio de contraseña</legend>
+  <legend>Cambio de contraseña</legend>
+  <div class="row">
+  <form [formGroup]="validator" class="col s12" id="mail-form">
     <div class="row">
-
-    <form>
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">mail</i>
-          <input id="correo" formControlName="passAnterior" type="mail" class="validate" required>
-          <label for="name">Ingrese su correo electrónico</label>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">mail</i>
+          <input id="correo" formControlName="correo" type="mail" required>
+          <label for="correo">Ingrese su correo electrónico</label> 
         </div>
      
           <div class="input-field col s">
-          <button (click)="confirmarMail" class="btn btn-large btn-cambiarPass waves-effect waves-light" type="button" name="action">Aceptar
+          <button (click)="confirmarMail()" class="btn btn-large btn-cambiarPass waves-effect waves-light" type="button" name="action">Aceptar
             <i class="material-icons right">done</i>
           </button>
         </div>
    </div>
    </form>
-    

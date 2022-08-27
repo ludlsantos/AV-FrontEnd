@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript">
+        function PromptDemo() {
+    var pass = prompt("Para eliminar su cuenta, ingrese su contraseña", "");
+    
+    //Detectamos si el usuario ingreso un valor
+if (pass != null){
+    // codigo de comparar pass
+//Detectamos si el usuario NO ingreso un valor
+}else {
+    alert("No has ingresado tu contraseña");
+}
+}
+</script>
+    </head>
+    <body>
+        <form>
+        <input type="button" onclick="PromptDemo()" value="Click para ver un mensaje personalizado" />
+        </form>
+    </body>
+</html>

@@ -1,3 +1,5 @@
+import { Login } from "./login";
+
 export class Cliente {
 
     clienteId?: number;
@@ -9,8 +11,5 @@ export class Cliente {
     profesionCargo!: string;
     nombreEmpresa!: string;
     fotoPerfil!: File;
-
-
-
-
+    login!: Login;
 }
