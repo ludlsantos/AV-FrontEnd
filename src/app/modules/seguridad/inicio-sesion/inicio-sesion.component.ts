@@ -24,6 +24,7 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
 
   formLogin: FormGroup;
   subRef$!: Subscription;
+  correo!: any;
 
   
   constructor(
@@ -53,38 +54,49 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
   }
 
 
-  Login() {
+/*   Login() {
     const usuarioLogin: Login = {
     rol: 'Administrador' || 'Cliente',
     correoElectronico: this.formLogin.value.email,
     contraseña:this.formLogin.value.password,
     
     };
-
+ */
     
-     this.loginService.obtenerToken(usuarioLogin).subscribe(res => {
-      const token = res.respuesta|| '';
-      console.log('token', token);
-      sessionStorage.setItem('token', token);
-      this.router.navigate(['/home']);
-      this.cookieService.set('respuesta', res.respuesta, 1, '/');
+    validarLogin (){
+    this.correo = this.formLogin.value.email;
+
+    this.loginService.getLogin(this.correo).subscribe(data => {
+
+      if(data && data.contraseña == this.formLogin.value.password) {
+       
+        this.loginService.obtenerToken(data).subscribe(res => {
+          const token = res.respuesta|| '';
+          console.log('token', token);
+          sessionStorage.setItem('token', token);
+          this.router.navigate(['/home']);
+          this.cookieService.set('respuesta', res.respuesta, 1, '/');
+    
+          
+        }) 
+
+        
+      }
+      else  {
+        alert('Error en el login')
+        
+  
+        
+      } 
+      
 
       
-    }, err => {
-      alert('Error en el login' + err);
 
-      
+
     });
 
+    
   }
-  hasError(nombreControl: string, validacion: string) {
-    const control = this.formLogin.get(nombreControl);
-    return control?.hasError(validacion);
-  }
-  
-  
-
-
   ngOnDestroy() {
     if (this.subRef$) {
       this.subRef$.unsubscribe();
@@ -92,5 +104,21 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
  
   }
 
+    
 
-}
+
+
+    
+     
+
+  }
+
+ 
+  
+  
+
+
+
+
+
+

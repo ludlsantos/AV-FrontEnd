@@ -37,7 +37,7 @@ canActivate: [EstaLogueadoGuard]
   path: 'evento',
   loadChildren: () => import('./modules/evento/evento.module').then(m => EventoModule)
 },
-
+{
 path: 'admin',
   loadChildren: () => import('./modules/admin/admin.module').then(m => AdminModule)
 },
