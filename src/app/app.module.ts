@@ -16,6 +16,7 @@ import { SeccionesHomeComponent } from './secciones-home/secciones-home.componen
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -28,7 +29,6 @@ import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-
     NavbarComponent,
     MenuLateralComponent,
     PiePaginaComponent,
-
     SeccionesHomeComponent,
     InicioSesionComponent,
     
@@ -43,7 +43,7 @@ import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-
 
   ],
 
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
