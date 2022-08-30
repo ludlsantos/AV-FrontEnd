@@ -1,11 +1,11 @@
 
-import { Cliente } from "./cliente";
+/* import { Cliente } from "./cliente"; */
 
 export type Roles = 'Administrador' | 'Cliente';
 
 export class Login {
 
-    rol!: Roles;
+    rol!: string;
     contraseña!: string;
     correoElectronico!: string;
 }
