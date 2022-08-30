@@ -3,8 +3,9 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
-import jwt_decode from 'jwt-decode';
 import { Token } from '@angular/compiler';
+import jwt_decode from 'jwt-decode';
+
 
 
 @Injectable({
@@ -46,16 +47,16 @@ export class EstaLogueadoGuard implements CanActivate {
         const expireDate = tokenInfo.exp; 
         console.log(tokenInfo);
 
-      
+        return tokenInfo.correoElectronico;
       }
       else
-
-      
 
       this.redirect(cookie)
       return cookie;
 
     }
+    
+
 
   
   }

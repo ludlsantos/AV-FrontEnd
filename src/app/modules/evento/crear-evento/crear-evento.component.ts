@@ -49,6 +49,7 @@ export class CrearEventoComponent implements OnInit {
         Descripcion: this.fgValidator.get('descripcion')?.value,
         Tipo: this.fgValidator.get('tipo')?.value,
         Fecha: this.fgValidator.get('fecha')?.value,
+        Hora: this.fgValidator.get('hora')?.value.toString(),
         Duracion: this.fgValidator.get('duracion')?.value,
         callePuerta: this.fgValidator.get('callePuerta')?.value,
         barrio: this.fgValidator.get('barrio')?.value,

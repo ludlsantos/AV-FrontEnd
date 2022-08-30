@@ -2,17 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Login, Roles } from 'src/app/modelos/login';
-import { respuesta } from 'src/app/modelos/respuesta';
-import { Token } from '@angular/compiler';
 import { Subscription } from 'rxjs';
-import { IdentidadService } from 'src/app/services/identidad.service';
-import { Cliente } from 'src/app/modelos/cliente';
-import { ClienteService } from 'src/app/services/cliente.service';
 import { LoginService } from 'src/app/services/login.service';
 import { CookieService } from 'ngx-cookie-service';
-import { EstaLogueadoGuard } from 'src/app/estaLogueado.guard';
-import jwt_decode from 'jwt-decode';
 
 
 @Component({
@@ -77,7 +69,6 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
           this.router.navigate(['/home']);
           this.cookieService.set('respuesta', res.respuesta, 1, '/');
     
-          
         }) 
 
         

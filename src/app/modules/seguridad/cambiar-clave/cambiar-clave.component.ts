@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { EstaLogueadoGuard } from 'src/app/estaLogueado.guard';
 import { Login } from 'src/app/modelos/login';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -15,7 +17,7 @@ export class CambiarClaveComponent implements OnInit {
   correo:any;
   login?: Login;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private route: Router) { }
+  constructor(private fb: FormBuilder, private esta: EstaLogueadoGuard, loginService: LoginService, private route: Router, private cookieService: CookieService) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -29,7 +31,11 @@ export class CambiarClaveComponent implements OnInit {
   }
 
   cambiarPass(){
-    return true;
+      var valorToken = this.cookieService.get('respuesta'); 
+      const tokenInfo = this.esta.decofificarToken(valorToken);
+      alert(tokenInfo.correoElectronico);
+
   }
 
 }
+

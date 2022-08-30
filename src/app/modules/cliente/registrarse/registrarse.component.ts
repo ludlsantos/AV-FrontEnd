@@ -17,7 +17,7 @@ export class RegistrarseComponent implements OnInit {
   correoElectronico!: string;
   fgValidator!: FormGroup;
 
-  constructor(private http: HttpClient ,private fb: FormBuilder, private clienteService: ClienteService) { }
+  constructor(private http: HttpClient ,private fb: FormBuilder, private clienteService: ClienteService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -50,9 +50,13 @@ export class RegistrarseComponent implements OnInit {
       const loginHijo: Login = {
         rol: "Cliente",
         contraseña: this.fgValidator.get('password')?.value,
-        correoElectronico: this.fgValidator.get('email')?.value,
+        correoElectronico: this.fgValidator.get('email')?.value
     }
-          
+  
+    this.loginService.guardarLogin(loginHijo).subscribe(data => {
+      alert('Registrado con éxito');
+      this.fgValidator.reset();  
+    }) 
           const cliente: Cliente = {
             tipoDocumento: this.fgValidator.get('tipoDocumento')?.value,
             nroDocumento: this.fgValidator.get('nroDocumento')?.value,
@@ -64,11 +68,10 @@ export class RegistrarseComponent implements OnInit {
             fotoPerfil: this.fgValidator.get('archivosubido')?.value,
             login: loginHijo
           }
-    
             this.clienteService.guardarCliente(cliente).subscribe(data => {
               alert('Registrado con éxito');
               this.fgValidator.reset();  
-            })          
+            }) 
   
   }
      }else{

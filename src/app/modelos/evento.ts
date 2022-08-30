@@ -8,6 +8,7 @@ export class Evento {
     Descripcion!: string;
     Tipo!: string;
     Fecha!: Date;
+    Hora!: string;
     Duracion!: number;
     callePuerta!: string;
     barrio!: string;
