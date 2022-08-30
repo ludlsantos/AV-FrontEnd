@@ -9,7 +9,8 @@ import { AdminModule } from './modules/admin/admin.module';
 import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
 
 import { SeguridadModule } from './modules/seguridad/seguridad.module';
-import { EstaLogueadoGuard } from './estaLogueado.guard';
+import { EstaLogueadoGuard } from './Guards/estaLogueado.guard';
+import { EsAdminGuard } from './Guards/es-admin.guard';
 
 
 const routes: Routes = [

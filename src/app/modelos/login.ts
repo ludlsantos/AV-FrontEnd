@@ -1,5 +1,5 @@
 
-import { Cliente } from "./cliente";
+/* import { Cliente } from "./cliente"; */
 
 // export type Roles = 'Administrador' | 'Cliente';
 

@@ -5,6 +5,12 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 import { CookieService } from 'ngx-cookie-service';
+import { EstaLogueadoGuard } from 'src/app/Guards/estaLogueado.guard';
+import jwt_decode from 'jwt-decode';
+import { JwtAuthService } from 'src/app/services/jwt-auth.service';
+import { localStorageJwt } from 'src/app/static/local-storage';
+import jwtDecode from 'jwt-decode';
+import { IJwt } from 'src/app/modelos/jwt';
 
 
 @Component({
@@ -24,7 +30,8 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
     private http:HttpClient,
     private router: Router,
     private loginService: LoginService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private jwtAuthService: JwtAuthService
     
   ) { 
     this.formLogin = formBuilder.group( {
@@ -66,8 +73,11 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
           const token = res.respuesta|| '';
           console.log('token', token);
           sessionStorage.setItem('token', token);
+          this.jwtAuthService.login(token);
           this.router.navigate(['/home']);
-          this.cookieService.set('respuesta', res.respuesta, 1, '/');
+          this.cookieService.set('respuesta', res.respuesta, 1, '/')
+          
+          
     
         }) 
 

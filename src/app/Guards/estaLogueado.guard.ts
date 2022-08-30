@@ -2,10 +2,9 @@ import { Injectable, ResolvedReflectiveFactory } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
 import { Token } from '@angular/compiler';
 import jwt_decode from 'jwt-decode';
-
+import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 
 
 @Injectable({
@@ -13,14 +12,18 @@ import jwt_decode from 'jwt-decode';
 })
 export class EstaLogueadoGuard implements CanActivate {
 
-  constructor(private cookieService: CookieService, private router: Router) {
+  constructor(
+    private cookieService: CookieService, 
+    private router: Router, 
+    private jwtAuthService: JwtAuthService
+    ){
 
     
 
   }
 
   
-    decofificarToken(token: string): any {
+/*     decodificarToken(token: string): any {
       try {
         return jwt_decode(token);
       } catch(Error) {
@@ -33,17 +36,28 @@ export class EstaLogueadoGuard implements CanActivate {
       if(!flag) {
         this.router.navigate(['/','login'])
       }
-    }
+    } */
   
-
+  
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      var cookie= this.cookieService.check('respuesta');
+
+      console.log('CAN ACTIVE')
+      const estaLogeado = this.jwtAuthService.estaLogeado();
+      if (!estaLogeado) {
+        void this.router.navigateByUrl('/login');
+       
+      }
+      return estaLogeado
+
+
+
+   /*    var cookie= this.cookieService.check('respuesta');
       if (cookie)  {
         cookie = true
         var valorToken = this.cookieService.get('respuesta'); 
-        const tokenInfo = this.decofificarToken(valorToken);
+        const tokenInfo = this.decodificarToken(valorToken);
         const expireDate = tokenInfo.exp; 
         console.log(tokenInfo);
 
@@ -52,7 +66,7 @@ export class EstaLogueadoGuard implements CanActivate {
       else
 
       this.redirect(cookie)
-      return cookie;
+      return cookie; */
 
     }
     
