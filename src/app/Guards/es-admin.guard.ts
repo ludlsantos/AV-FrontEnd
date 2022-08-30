@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 import { CookieService } from 'ngx-cookie-service';
+import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 
 
 
@@ -11,7 +12,11 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class EsAdminGuard implements CanActivate {
 
-  constructor(private cookieService: CookieService, private router: Router) {
+  constructor(
+    private cookieService: CookieService, 
+    private router: Router,
+    private jwtAuthService: JwtAuthService
+    ) {
 
     
 
@@ -37,28 +42,26 @@ export class EsAdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      var cookie= this.cookieService.check('respuesta');
-      if (cookie)  {
-        cookie = true
-        var valorToken = this.cookieService.get('respuesta'); 
 
       
-        const tokenInfo = this.decofificarToken(valorToken);
-        const expireDate = tokenInfo.exp; 
-        console.log(tokenInfo);
 
-        // agregar lo de validar rol
-
-      
+      console.log('CAN ACTIVE')
+      const esAdmin = this.jwtAuthService.esAdmin();
+     /*  if (!esAdmin) {
+        void this.router.navigateByUrl('/login');
+       
       }
-      else
+      return esAdmin
 
-      
+    } */
 
-      this.redirect(cookie)
-      return cookie;
-
-    }
+    if (esAdmin == false) {
+			void this.router.navigateByUrl('/login');
+			
+			return false;
+		}
+		return true;
+	}
+}
 
   
-  }
