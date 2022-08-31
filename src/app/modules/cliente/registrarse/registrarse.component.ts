@@ -5,6 +5,7 @@ import { Login } from 'src/app/modelos/login';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { LoginService } from 'src/app/services/login.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrarse',
@@ -17,7 +18,7 @@ export class RegistrarseComponent implements OnInit {
   correoElectronico!: string;
   fgValidator!: FormGroup;
 
-  constructor(private http: HttpClient ,private fb: FormBuilder, private clienteService: ClienteService, private loginService: LoginService) { }
+  constructor(private http: HttpClient ,private fb: FormBuilder, private route: Router,private clienteService: ClienteService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -47,16 +48,12 @@ export class RegistrarseComponent implements OnInit {
       alert('Datos invalidos, porfavor verifique')
     }else{
       
-      const loginHijo: Login = {
+      var loginHijo: Login = {
         rol: "Cliente",
         contraseña: this.fgValidator.get('password')?.value,
         correoElectronico: this.fgValidator.get('email')?.value
     }
   
-    this.loginService.guardarLogin(loginHijo).subscribe(data => {
-      alert('Registrado con éxito');
-      this.fgValidator.reset();  
-    }) 
           const cliente: Cliente = {
             tipoDocumento: this.fgValidator.get('tipoDocumento')?.value,
             nroDocumento: this.fgValidator.get('nroDocumento')?.value,
@@ -70,8 +67,9 @@ export class RegistrarseComponent implements OnInit {
           }
             this.clienteService.guardarCliente(cliente).subscribe(data => {
               alert('Registrado con éxito');
+              this.route.navigate(['/login'])
               this.fgValidator.reset();  
-            }) 
+            });
   
   }
      }else{

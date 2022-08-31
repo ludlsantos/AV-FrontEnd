@@ -6,5 +6,6 @@ export const apiUrlClientes = apiBase +  'Clientes/';
 export const apiUrlAdministradores = apiBase + 'Administradores/';
 export const apiUrlLogin = apiBase + 'Logines/';
 export const apiUrlClientesPorCorreo = apiBase + 'ClientesPorCorreo/';
+export const apiUrlGetClienteCorreo = apiBase + 'GetClienteCorreo/';
 export const apiUrlEventos = apiBase + 'Eventos/';
 export const apiUrlIdenidad = apiBase + 'Identidades/login/';

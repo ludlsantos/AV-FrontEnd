@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
-import { EstaLogueadoGuard } from 'src/app/estaLogueado.guard';
 import { Login } from 'src/app/modelos/login';
+import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 import { LoginService } from 'src/app/services/login.service';
+import { localStorageJwt } from 'src/app/static/local-storage';
 
 @Component({
   selector: 'app-cambiar-clave',
@@ -15,9 +15,12 @@ export class CambiarClaveComponent implements OnInit {
 
   validator!: FormGroup;
   correo:any;
+  passAnterior: any;
+  passNueva: any;
+  correoParseado: any;
   login?: Login;
 
-  constructor(private fb: FormBuilder, private esta: EstaLogueadoGuard, loginService: LoginService, private route: Router, private cookieService: CookieService) { }
+  constructor(private fb: FormBuilder, private loginService: LoginService, private route: Router, private jwtAuthService: JwtAuthService) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -31,9 +34,26 @@ export class CambiarClaveComponent implements OnInit {
   }
 
   cambiarPass(){
-      var valorToken = this.cookieService.get('respuesta'); 
-      const tokenInfo = this.esta.decofificarToken(valorToken);
-      alert(tokenInfo.correoElectronico);
+    this.passAnterior= this.validator.get('passAnterior')?.value;
+    this.passNueva= this.validator.get('passNueva')?.value;
+    this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
+    const parse = JSON.parse(this.correo)
+    this.loginService.getLogin(parse).subscribe(data => { 
+      if(data.contraseña == this.passAnterior){
+        const loginNuevo: Login = {
+          rol: data.rol,
+          contraseña: this.passNueva,
+          correoElectronico: data.correoElectronico
+        }
+        this.loginService.cambiarClave(parse, loginNuevo).subscribe(data =>{
+          alert('La contraseña fué cambiada con éxito');
+          this.route.navigate(['/home'])
+            this.validator.reset();
+        });
+      }else
+      alert('La contraseña ingresada no coincide')
+    });
+
 
   }
 

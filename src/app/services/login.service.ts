@@ -33,6 +33,10 @@ cambiarClave(id: string, login: Login): Observable<Login>{
 getLogin(id: string): Observable<Login> {
   return this.http.get<Login>(constantes.miApiUrl + constantes.apiUrlLogin + id);
 }
+
+eliminarLogin(id: string): Observable<Login>{
+  return this.http.delete<Login>(constantes.miApiUrl + constantes.apiUrlLogin + id);
+}
 }
 
 

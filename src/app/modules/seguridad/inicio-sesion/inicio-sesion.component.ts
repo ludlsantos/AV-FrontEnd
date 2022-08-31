@@ -5,12 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 import { CookieService } from 'ngx-cookie-service';
-import { EstaLogueadoGuard } from 'src/app/Guards/estaLogueado.guard';
-import jwt_decode from 'jwt-decode';
 import { JwtAuthService } from 'src/app/services/jwt-auth.service';
-import { localStorageJwt } from 'src/app/static/local-storage';
-import jwtDecode from 'jwt-decode';
-import { IJwt } from 'src/app/modelos/jwt';
 
 
 @Component({
