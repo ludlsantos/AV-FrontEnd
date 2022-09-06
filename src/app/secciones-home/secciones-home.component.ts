@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Evento } from 'src/app/modelos/evento';
+import { EventoService } from 'src/app/services/evento.service';
+
 
 @Component({
   selector: 'app-secciones-home',
@@ -7,8 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeccionesHomeComponent implements OnInit {
 
-  constructor() { }
-
+  title= 'evento';
+  public eventos: Array<any>=[]
+    constructor(
+      private eventoService: EventoService
+    ) {
+  
+      this.eventoService.getEventos().subscribe((resp: any)=> {
+        console.log(resp)
+        this.eventos = resp
+        
+      })
+     }
+  
   ngOnInit(): void {
   }
 

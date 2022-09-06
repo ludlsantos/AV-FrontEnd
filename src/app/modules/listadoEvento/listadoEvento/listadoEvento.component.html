@@ -1,0 +1,53 @@
+<div>
+  <table class="table table-hover">
+    <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Duracion</th>
+            <th>Calle Puerta</th>
+            <th>Barrio</th>
+            <th>Ciudad</th>
+            <th>Nro Cupos</th>
+            <th>Cant Mesas</th>
+            <th>Cant Asientos</th>
+            <th>Precio</th>
+            <th>Idioma</th>
+            <th>Asignacion</th>
+            <th>Empresa</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let evento of eventos">
+              <td>{{evento.eventoId}}</td>
+              <td>{{evento.nombre}}</td>
+              <td>{{evento.descripcion}}</td>
+              <td>{{evento.tipo}}</td>
+              <td>{{evento.fecha}}</td>
+              <td>{{evento.duracion}}</td>
+              <td>{{evento.callePuerta}}</td>
+              <td>{{evento.barrio}}</td>
+              <td>{{evento.ciudad}}</td>
+              <td>{{evento.nroCupos}}</td>
+              <td>{{evento.cantidadMesas}}</td>
+              <td>{{evento.cantidadAsientosMesa}}</td>
+              <td>{{evento.precioAsiento}}</td>
+              <td>{{evento.idioma}}</td>
+              <td>{{evento.criterioAsignacion}}</td>
+              <td>{{evento.empresaCreadora}}</td>
+              <td>{{evento.imagen}}</td>
+             <!--<td> <a href="/evento/editar-evento" title="Editar">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </a></td>-->
+              <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/evento/editar-evento', evento.eventoId]" >Editar</button></td>
+              <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['']" >Eliminar</button></td>
+            </tr>
+      </tbody>
+  </table>
+  </div>
+         

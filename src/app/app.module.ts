@@ -24,6 +24,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +32,11 @@ import { CookieService } from 'ngx-cookie-service';
     NavbarComponent,
     MenuLateralComponent,
     PiePaginaComponent,
-
     EliminarCuentaComponent,
-
     SeccionesHomeComponent,
-
         InicioSesionComponent,
-
+       
+        
 
   ],
   imports: [
@@ -48,7 +47,6 @@ import { CookieService } from 'ngx-cookie-service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
 
   ],
 
