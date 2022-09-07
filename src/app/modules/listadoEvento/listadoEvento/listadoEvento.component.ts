@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
 
 
@@ -12,7 +13,7 @@ import { EventoService } from 'src/app/services/evento.service';
 export class ListadoEventoComponent implements OnInit {
 
   title= 'evento';
-public eventos: Array<any>=[]
+public eventos: Array<Evento>=[]
   constructor(
     private eventoService: EventoService
   ) {

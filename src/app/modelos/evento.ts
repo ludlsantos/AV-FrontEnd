@@ -3,21 +3,21 @@ import { Time } from "@angular/common";
 
 export class Evento {
 
-    EventoId?: number;
-    Nombre!: string;
-    Descripcion!: string;
-    Tipo!: string;
-    Fecha!: Date;
-    Duracion!: number;
+    eventoId?: number;
+    nombre!: string;
+    descripcion!: string;
+    tipo!: string;
+    fecha!: Date;
+    duracion!: number;
     callePuerta!: string;
     barrio!: string;
     ciudad!: string;
-    NroCupos!: number;
-    CantidadMesas!: number;
-    CantidadAsientosMesa!: number;
-    PrecioAsiento!: number;
-    Idioma!: string;
-    CriterioAsignacion!: string;
-    EmpresaCreadora!: string;
-    ImagenPortada!: File;
+    nroCupos!: number;
+    cantidadMesas!: number;
+    cantidadAsientosMesa!: number;
+    precioAsiento!: number;
+    idioma!: string;
+    criterioAsignacion!: string;
+    empresaCreadora!: string;
+    imagenPortada!: File;
 }
