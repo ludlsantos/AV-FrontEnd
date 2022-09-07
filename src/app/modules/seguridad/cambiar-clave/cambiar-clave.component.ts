@@ -38,20 +38,17 @@ export class CambiarClaveComponent implements OnInit {
     this.passNueva= this.validator.get('passNueva')?.value;
     this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
     const parse = JSON.parse(this.correo)
-    this.loginService.getLogin(parse).subscribe(data => { 
-      if(data.contraseña == this.passAnterior){
+    this.loginService.getLoginYPass(parse, this.passAnterior).subscribe(data => { 
         const loginNuevo: Login = {
           rol: data.rol,
           contraseña: this.passNueva,
           correoElectronico: data.correoElectronico
         }
-        this.loginService.cambiarClave(parse, loginNuevo).subscribe(data =>{
+        this.loginService.cambiarClave(data.correoElectronico, loginNuevo).subscribe(dataA =>{
           alert('La contraseña fué cambiada con éxito');
           this.route.navigate(['/home'])
             this.validator.reset();
         });
-      }else
-      alert('La contraseña ingresada no coincide')
     });
 
 

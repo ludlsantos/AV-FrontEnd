@@ -34,9 +34,6 @@ export class ReestablecerClaveComponent implements OnInit {
   }
     
 
-  
-  
-
   cambiarPass(){
     if(this.validator.get('pass')?.value == this.validator.get('rePass')?.value){
         this.LoginService.getLogin(this.correo).subscribe(data => {

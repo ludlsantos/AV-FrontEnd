@@ -17,8 +17,8 @@ guardarCliente(cliente: Cliente): Observable<Cliente>{
  return this.http.post<Cliente>(constantes.miApiUrl + constantes.apiUrlClientes, cliente);
 }
 
-getClienteCorreo(correoElectronico: string): Observable<Cliente>{
-  return this.http.get<Cliente>(constantes.miApiUrl + constantes.apiUrlGetClienteCorreo + correoElectronico);
+getClienteCorreo(correoElectronico: string, pass: string): Observable<Cliente>{
+  return this.http.get<Cliente>(constantes.miApiUrl + constantes.apiUrlGetClienteCorreo + correoElectronico + "/" + pass);
 }
 
 eliminarCliente(id: number): Observable<Cliente>{
