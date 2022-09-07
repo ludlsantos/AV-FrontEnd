@@ -22,4 +22,3 @@ export class Evento {
     EmpresaCreadora!: string;
     ImagenPortada!: File;
 }
-

@@ -13,16 +13,19 @@
 }
     /*background-image: url(src\assets\imagenes\footer.png);*/
 
-.text{
+.mb-5{
     color: rgb(255, 255, 255);
     font-weight: bold;
+    font-size: small;
+    text-align: center;
 }
 
 
-.text-white{
+.text-center p-3{
     color: white;
- display: flex;
  font-size: small;
+ text-align: center;
+
 }
 
 .row{

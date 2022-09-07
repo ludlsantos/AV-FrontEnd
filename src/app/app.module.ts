@@ -25,6 +25,7 @@ import { EliminarEventoComponent } from './modules/evento/eliminar-evento/elimin
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,13 +33,11 @@ import { EliminarEventoComponent } from './modules/evento/eliminar-evento/elimin
     NavbarComponent,
     MenuLateralComponent,
     PiePaginaComponent,
-
     EliminarCuentaComponent,
-
     SeccionesHomeComponent,
-
         InicioSesionComponent,
           EliminarEventoComponent,
+
 
 
   ],
@@ -50,7 +49,6 @@ import { EliminarEventoComponent } from './modules/evento/eliminar-evento/elimin
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
 
   ],
 
