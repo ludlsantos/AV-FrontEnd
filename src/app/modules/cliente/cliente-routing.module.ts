@@ -12,6 +12,7 @@ const routes: Routes = [
 {
   path: 'eliminarCuenta',
   component: EliminarCuentaComponent
+  //canActivate: [EsAdminGuard]
 }
 
 ];
