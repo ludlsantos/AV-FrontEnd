@@ -9,6 +9,13 @@ export class Evento {
     tipo!: string;
     fecha!: Date;
     duracion!: number;
+    EventoId?: number;
+    Nombre!: string;
+    Descripcion!: string;
+    Tipo!: string;
+    Fecha!: Date;
+    Hora!: string;
+    Duracion!: number;
     callePuerta!: string;
     barrio!: string;
     ciudad!: string;
