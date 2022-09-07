@@ -45,6 +45,11 @@ export class CrearEventoComponent implements OnInit {
       alert('Datos invalidos, porfavor verifique')
     }else{
       const evento: Evento = {
+        nombre: this.fgValidator.get('nombre')?.value,
+        descripcion: this.fgValidator.get('descripcion')?.value,
+        tipo: this.fgValidator.get('tipo')?.value,
+        fecha: this.fgValidator.get('fecha')?.value,
+        duracion: this.fgValidator.get('duracion')?.value,
         Nombre: this.fgValidator.get('nombre')?.value,
         Descripcion: this.fgValidator.get('descripcion')?.value,
         Tipo: this.fgValidator.get('tipo')?.value,
@@ -54,14 +59,14 @@ export class CrearEventoComponent implements OnInit {
         callePuerta: this.fgValidator.get('callePuerta')?.value,
         barrio: this.fgValidator.get('barrio')?.value,
         ciudad: this.fgValidator.get('ciudad')?.value,
-        NroCupos: this.fgValidator.get('cantidadCupos')?.value,
-        CantidadMesas: this.fgValidator.get('cantidadMesas')?.value,
-        CantidadAsientosMesa: this.fgValidator.get('cantidadAsientosMesa')?.value,
-        PrecioAsiento: this.fgValidator.get('precio')?.value,
-        Idioma: this.fgValidator.get('idioma')?.value,
-        CriterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
-        ImagenPortada: this.fgValidator.get('archivosubido')?.value,
-        EmpresaCreadora: "Traer de admin logueado"
+        nroCupos: this.fgValidator.get('cantidadCupos')?.value,
+        cantidadMesas: this.fgValidator.get('cantidadMesas')?.value,
+        cantidadAsientosMesa: this.fgValidator.get('cantidadAsientosMesa')?.value,
+        precioAsiento: this.fgValidator.get('precio')?.value,
+        idioma: this.fgValidator.get('idioma')?.value,
+        criterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
+        imagenPortada: this.fgValidator.get('archivosubido')?.value,
+        empresaCreadora: "Traer de admin logueado"
       }
 
       this.eventoService.crearEvento(evento).subscribe(data => {
