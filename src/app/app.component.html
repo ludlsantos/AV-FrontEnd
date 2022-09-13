@@ -1,5 +1,5 @@
 
-
+<!--
 <app-navbar> </app-navbar>
 <app-menu-lateral></app-menu-lateral> 
 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -14,7 +14,21 @@
 
 
 <app-pie-pagina></app-pie-pagina>
+-->
 
 
+
+<app-navbar> </app-navbar>
+<app-menu-lateral></app-menu-lateral>
+<app-navbar *ngIf="IsAuthenticated"> </app-navbar>
+
+<router-outlet></router-outlet> 
+<app-predeterminado></app-predeterminado>
+
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+<app-secciones-home></app-secciones-home>
+
+<app-pie-pagina></app-pie-pagina>
 
 

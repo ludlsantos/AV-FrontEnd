@@ -1,0 +1,68 @@
+
+  <fieldset> 
+    <legend>Editar Cliente</legend>
+    <div class="row">
+    <form [formGroup]="fgValidator" class="col s12" id="reg-form">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input  formControlName="clienteId"/>
+          <i>ID</i>
+        </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="name" formControlName="nombre" type="text" required>
+          <i>Nombre</i>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="apellido" formControlName="apellido" type="text" required>
+          <i>Apellido</i>
+        </div>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">portrait</i>
+        <input id="tipoDocumento" formControlName="tipoDocumento" type="text" required>
+        <i>Tipo documento</i>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">portrait</i>
+        <input id="nroDocumento" formControlName="nroDocumento" type="number" required>
+        <i>Numero de documento</i>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">phone</i>
+        <input id="telefono" formControlName="telefono" type="number" required>
+        <i>Teléfono</i>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">business_center</i>
+        <input id="cargoProfesion" formControlName="cargoProfesion" type="text" required>
+        <i>Cargo/Profesión</i>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">domain</i>
+        <input id="empresa" formControlName="empresa" type="text" required>
+        <i>Empresa</i>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <input id="email" formControlName="email" type="email" required>
+          <i>Correo electrónico</i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+      <form action="" method="post" enctype="multipart/form-data" target="_blank">
+        <label for="file">Foto de perfil</label><br>
+          <input type="file" name="archivosubido" >
+        <br><br>
+          <div class="input-field col s">
+          <button (click)="getDataOfRecord()" class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">BUSCAR
+            <i class="material-icons right">done</i>
+          </button><hr>  
+        </div>
+    </form>
+    
