@@ -17,8 +17,8 @@ import { ListadoEventoModule } from './modules/listadoEvento/listadoEvento.modul
 
 const routes: Routes = [
 
-{path: '',redirectTo: '/login', pathMatch: 'full'},
-{path: 'login', component: InicioSesionComponent},
+{path: '',redirectTo: 'home', pathMatch: 'full'},
+{path: 'seguridad/iniciarSesion', component: InicioSesionComponent},
 
 //{path: 'login',redirectTo: '/login', pathMatch: 'full'},
 //{path: 'login', component: InicioSesionComponent},
@@ -26,7 +26,7 @@ const routes: Routes = [
 {
 path: 'home',
 component: PredeterminadoComponent,
-canActivate: [EstaLogueadoGuard]
+/* canActivate: [EsAdminGuard] */
 },
 {
   path: 'seguridad',

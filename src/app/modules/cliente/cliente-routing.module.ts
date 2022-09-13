@@ -7,12 +7,17 @@ import { RegistrarseComponent } from './registrarse/registrarse.component';
 const routes: Routes = [
 {
   path: 'registrarse',
+
+  component: RegistrarseComponent,
+  /* canActivate: [EsAdminGuard] */
+
   component: RegistrarseComponent
 },
 {
   path: 'eliminarCuenta',
   component: EliminarCuentaComponent
   //canActivate: [EsAdminGuard]
+
 }
 
 ];
