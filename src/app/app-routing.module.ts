@@ -15,13 +15,13 @@ import { EsAdminGuard } from './Guards/es-admin.guard';
 
 const routes: Routes = [
 
-{path: '',redirectTo: '/login', pathMatch: 'full'},
-{path: 'login', component: InicioSesionComponent},
+{path: '',redirectTo: 'home', pathMatch: 'full'},
+{path: 'seguridad/iniciarSesion', component: InicioSesionComponent},
 
 {
 path: 'home',
 component: PredeterminadoComponent,
-canActivate: [EstaLogueadoGuard]
+/* canActivate: [EsAdminGuard] */
 },
 {
   path: 'seguridad',

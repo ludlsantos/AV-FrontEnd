@@ -24,7 +24,7 @@ export class EstaLogueadoGuard implements CanActivate {
   }
 
   
-/*     decodificarToken(token: string): any {
+    decodificarToken(token: string): any {
       try {
         return jwt_decode(token);
       } catch(Error) {
@@ -35,9 +35,9 @@ export class EstaLogueadoGuard implements CanActivate {
 
     redirect(flag: boolean): any {
       if(!flag) {
-        this.router.navigate(['/','login'])
+        this.router.navigate(['/seguridad/iniciarSesion'])
       }
-    } */
+    }
   
   
   canActivate(
@@ -47,14 +47,15 @@ export class EstaLogueadoGuard implements CanActivate {
       console.log('CAN ACTIVE')
       const estaLogeado = this.jwtAuthService.estaLogeado();
       if (!estaLogeado) {
-        void this.router.navigateByUrl('/login');
+        void this.router.navigateByUrl('/seguridad/iniciarSesion');
+
        
+
+
       }
       return estaLogeado
-
-
-
-   /*    var cookie= this.cookieService.check('respuesta');
+/* 
+      var cookie= this.cookieService.check('respuesta');
       if (cookie)  {
         cookie = true
         var valorToken = this.cookieService.get('respuesta'); 
@@ -69,7 +70,10 @@ export class EstaLogueadoGuard implements CanActivate {
       
 
       this.redirect(cookie)
-      return cookie; */
+      return cookie;
+ */
+
+
 
     }
 

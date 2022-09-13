@@ -4,20 +4,23 @@
    <div class="navbar-header"></div>
     <ul class="nav navbar-nav">
       
-      <li  class="home"><a href="#">HOME</a></li>
-      <li><a href="#event">EVENTOS</a></li>
-      <li class="dropdown"><a href="#about">SOBRE NOSOTROS</a>
+      <li><a href="/paginaPrincipal/menu-lateral"></a></li>
+      <li  class="/home"><a href="#">HOME</a></li>
+      <li><a href="/evento">EVENTOS</a></li>
+      <li class="dropdown"><a href="/about">SOBRE NOSOTROS</a>
         <ul class="dropdown-menu">
           <li><a href="#">Page 1-1</a></li>
       
         </ul>
       </li>
-      <li><a href="#contact">CONTACTO</a></li>
+      <li><a href="/contacto">CONTACTO</a></li>
     
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/cliente/registrarse"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
-      <li><a href="/seguridad/iniciarSesion"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
+      <li><a href="/cliente/registrarse"><span class="glyphicon glyphicon-user"></span> Registrarse </a></li>
+      <li><a href="/seguridad/iniciarSesion"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión </a></li>
+      <li><a (click)="onLogout()"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión </a></li> 
+
     </ul>
   </div>
 </nav>

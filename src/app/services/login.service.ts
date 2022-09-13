@@ -15,7 +15,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
 
-  guardarLogin(login: Login): Observable<Login>{
+guardarLogin(login: Login): Observable<Login>{
     return this.http.post<Login>(constantes.miApiUrl + constantes.apiUrlLogin, login);
 
     
@@ -36,6 +36,8 @@ cambiarClave(id: string, login: Login): Observable<Login>{
 getLogin(id: string): Observable<Login> {
   return this.http.get<Login>(constantes.miApiUrl + constantes.apiUrlLogin + id);
 }
+
+
 }
 
 

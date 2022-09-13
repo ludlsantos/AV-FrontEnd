@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
-import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { ConfirmarMailComponent } from './confirmar-mail/confirmar-mail.component';
 import { IngresarCodigoComponent } from './ingresar-codigo/ingresar-codigo.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
@@ -11,10 +10,7 @@ const routes: Routes = [
 {
   path: 'iniciarSesion',
   component: InicioSesionComponent
-},
-{
-  path: 'cerrarSesion',
-  component: CerrarSesionComponent
+
 },
 {
   path: 'reestablecerClave',

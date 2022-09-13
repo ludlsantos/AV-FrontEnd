@@ -7,7 +7,7 @@ const routes: Routes = [
 {
   path: 'registrarse',
   component: RegistrarseComponent,
-  canActivate: [EsAdminGuard]
+  /* canActivate: [EsAdminGuard] */
 }
 
 ];

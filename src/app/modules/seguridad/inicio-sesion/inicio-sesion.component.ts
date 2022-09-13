@@ -36,7 +36,7 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
     private http:HttpClient,
     private router: Router,
     private loginService: LoginService,
-    private cookieService: CookieService,
+    /* private cookieService: CookieService, */
     private jwtAuthService: JwtAuthService
     
   ) { 
@@ -68,7 +68,7 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
     };
  */
     
-    validarLogin (){
+/*     validarLogin (){
     this.correo = this.formLogin.value.email;
 
     this.loginService.getLogin(this.correo).subscribe(data => {
@@ -82,27 +82,53 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
           this.jwtAuthService.login(token);
           this.router.navigate(['/home']);
           this.cookieService.set('respuesta', res.respuesta, 1, '/')
+
           
-          
-    
-          
-        }) 
+        })
+
 
         
       }
       else  {
         alert('Error en el login')
         
+
   
         
       } 
-      
-
-      
 
 
-    });
+    }), (error) => {
+      var ER = error;
+      alert ('Error en el login')
+    }; */ 
 
+
+
+    validarLogin (){
+      this.correo = this.formLogin.value.email;
+
+      var login = new Login ();
+      login.correoElectronico = this.formLogin.value.email;
+      login.contraseña= this.formLogin.value.password;
+      //login.rol = "test";
+  
+
+         
+          this.loginService.obtenerToken(login).subscribe(res => {
+            const token = res.respuesta|| '';
+            console.log('token', token);
+            sessionStorage.setItem('token', token);
+            this.jwtAuthService.login(token);
+            this.router.navigate(['/home']);
+            /* this.cookieService.set('respuesta', res.respuesta, 1, '/') */
+  
+            
+  
+      }, (error) => {
+        var ER = error;
+        alert ('Usuario y/o contraseña incorrecta')
+      });
     
   }
   ngOnDestroy() {
