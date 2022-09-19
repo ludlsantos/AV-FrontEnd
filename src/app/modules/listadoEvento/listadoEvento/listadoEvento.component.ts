@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
-
+import { Evento } from 'src/app/modelos/evento';
 
 @Component({
   selector: 'app-listadoEvento',
@@ -16,7 +16,13 @@ export class ListadoEventoComponent implements OnInit {
   title= 'evento';
 public eventos: Array<Evento>=[]
   constructor(
+
     public eventoService: EventoService
+
+    private eventoService: EventoService,
+    private router: Router,
+    private route:ActivatedRoute
+
   ) {
 
     this.eventoService.getEventos().subscribe((resp: any)=> {
@@ -29,4 +35,4 @@ public eventos: Array<Evento>=[]
   ngOnInit(): void {
   }
 
-}
+} 

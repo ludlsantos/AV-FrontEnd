@@ -1,8 +1,7 @@
-
-<div >
+<div>
  <ul id="slide-out" class="sidenav">
   
-    <li><div class="user-view">
+    <li *ngIf="jwtAuthService.estaLogeado()"><div class="user-view">
       <div class="background">
         <img src="https://materializecss.com/images/office.jpg">
       </div>
@@ -12,27 +11,23 @@
     </div>
 
   </li>
+  
 
-    <li><a href="home">Home </a></li>
-    <li><div class="divider"></div></li>
+    <!-- <li><a href="home">Home </a></li> -->
     <li><a class="subheader">AV - Sistema de asignación y ventas</a></li><br>
-    <li><a class="tab" routerLink="#">Ver eventos disponibles</a></li>   
-    <li><a class="tab" routerLink="/cliente/reservarAsientos">Reservar Asientos</a></li>
-    <li><a class="tab" routerLink="/cliente/verMisReservas">Ver mis Reservas</a></li>
-
-    <!--<li><a class="tab" routerLink="/cliente/editarPerfil">Editar Perfil</a></li>-->
-    <li><a class="tab" href="/editar-cliente/editar-cliente">Editar Perfil Cliente</a>
-    <li><a class="tab" routerLink="/admin/registrarse">Registrar Admin</a></li>
-    <li><a class="tab" routerLink="/evento/crearEvento">Crear Eventos</a></li>
-    <li><a class="tab" routerLink="/admin/modificarEvento">Modificar Eventos</a></li>
-    <li><a class="tab" href="/listadoEvento/listadoEvento">Listado Evento</a></li>
-
-    <li><a class="tab" routerLink="/admin/gestiónDePagos">Gestión de Pagos</a></li>
-    <li><a class="tab" routerLink="/admin/verAsientosReservados">Ver Asientos Reservados</a></li>
-    <li><a class="tab" routerLink="/admin/AsignaciónManualDeAsientos">Asignación Manual de Asientos</a></li>
-    <li><a class="tab" routerLink="/admin/VerAsignaciónDeMesas">Ver Asignación de Mesas</a></li>
-    <li><a class="waves-effect" href="/seguridad/cambiarClave">Cambiar clave</a></li>
-    <li><a class="waves-effect" href="/cliente/eliminarCuenta">Eliminar cuenta</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="tab" routerLink="/evento">Ver eventos disponibles</a></li>   
+    <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/reservarAsientos">Reservar Asientos</a></li>
+    <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/verMisReservas">Ver mis Reservas</a></li>
+    <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/editarPerfil">Editar Perfil</a></li>
+    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/registrarse">Registrar Admin</a></li>
+    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/listadoEvento/listadoEvento">Ver todos los Eventos</a></li>
+    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/evento/crearEvento">Crear Eventos</a></li>
+    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/gestiónDePagos">Gestión de Pagos</a></li>
+    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/listadoReserva/listadoReserva">Ver todos las Reservas</a></li>
+    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/AsignaciónManualDeAsientos">Asignación Manual de Asientos</a></li>
+    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/VerAsignaciónDeMesas">Ver Asignación de Mesas</a></li>
+    <li *ngIf="jwtAuthService.esCliente()"><a class="waves-effect" href="/seguridad/cambiarClave">Cambiar clave</a></li>
     <li><a href = "home" class="modal-close waves-effect waves-green btn-flat">Close</a></li>
     
   </ul>

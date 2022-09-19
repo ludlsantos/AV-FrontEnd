@@ -14,11 +14,16 @@ import { EsAdminGuard } from './Guards/es-admin.guard';
 import { SeccionesHomeComponent } from './secciones-home/secciones-home.component';
 import { ClienteModModule } from './modules/editar-cliente/clienteMod.module';
 import { ListadoEventoModule } from './modules/listadoEvento/listadoEvento.module';
+import { ListadoReservaModule } from './modules/listadoReserva/listadoReserva.module';
 
 const routes: Routes = [
 
-{path: '',redirectTo: '/login', pathMatch: 'full'},
+
 {path: 'login', component: InicioSesionComponent},
+
+{path: '',redirectTo: 'home', pathMatch: 'full'},
+{path: 'seguridad/iniciarSesion', component: InicioSesionComponent},
+
 
 //{path: 'login',redirectTo: '/login', pathMatch: 'full'},
 //{path: 'login', component: InicioSesionComponent},
@@ -26,7 +31,7 @@ const routes: Routes = [
 {
 path: 'home',
 component: PredeterminadoComponent,
-canActivate: [EstaLogueadoGuard]
+/* canActivate: [EsAdminGuard] */
 },
 {
   path: 'seguridad',
@@ -51,16 +56,28 @@ path: 'admin',
 
 
 {
+  path: 'listadoEvento',
+  loadChildren: () => import('./modules/listadoEvento/listadoEvento.module').then(m => ListadoEventoModule)
+},
+{
   path: 'editar-cliente',
   loadChildren: () => import('./modules/editar-cliente/clienteMod.module').then(m => ClienteModModule)
 },
+
+
 
 
 {
   path: 'listadoEvento',
   loadChildren: () => import('./modules/listadoEvento/listadoEvento.module').then(m => ListadoEventoModule)
 },
+{
+  path: 'listadoReserva',
+  loadChildren: () => import('./modules/listadoReserva/listadoReserva.module').then(m => ListadoReservaModule)
+},
 
+
+{path: '',redirectTo: '/login', pathMatch: 'full'},
 
 {
   path: '**',

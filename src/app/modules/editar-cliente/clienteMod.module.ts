@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ClienteModRoutingModule } from './clienteMod-routing.module';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ClienteModRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class ClienteModModule { }

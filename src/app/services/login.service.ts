@@ -14,7 +14,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
 
-  guardarLogin(login: Login): Observable<Login>{
+guardarLogin(login: Login): Observable<Login>{
     return this.http.post<Login>(constantes.miApiUrl + constantes.apiUrlLogin, login);
 }
 
@@ -34,6 +34,9 @@ getLogin(id: string): Observable<Login> {
   return this.http.get<Login>(constantes.miApiUrl + constantes.apiUrlLogin + id);
 }
 
+
+
+
 getLoginYPass(id: string, passAnterior: string): Observable<Login> {
   return this.http.get<Login>(constantes.miApiUrl + constantes.apiUrlLogin + id + "/" + passAnterior);
 }
@@ -42,6 +45,7 @@ getLoginYPass(id: string, passAnterior: string): Observable<Login> {
 eliminarLogin(id: string): Observable<Login>{
   return this.http.delete<Login>(constantes.miApiUrl + constantes.apiUrlLogin + id);
 }
+
 }
 
 

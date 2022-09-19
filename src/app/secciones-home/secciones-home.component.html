@@ -1,5 +1,6 @@
 
 
+
 <app-predeterminado></app-predeterminado>
 
     <div class="card">
@@ -84,7 +85,6 @@
           </div>
   </div>
 </div>
-
 <div class="box">
   <section id="event" class="uno">
  <tr *ngFor="let evento of eventos">
@@ -95,11 +95,16 @@
          <p class="card-text">{{evento.descripcion}}</p>
          <p class="card-text">{{evento.fecha}}</p>
          <p class="card-text">{{evento.ciudad}}</p>
-         <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
-       </div>
+         <p type="button" name="buttonReservar" class="btn btn-primary" [routerLink]="['/evento/reservar', evento.eventoId]" [skipLocationChange]="true">Reservar</p>
+        
+        </div>
      </div>
-      
+    </tr>
+     
  </section>
+
+  </section>
+
  
  <section id="about" class="dos">
    <div class="box">
@@ -171,6 +176,7 @@
                </form>
            </div>
    </div>
- 
   <app-pie-pagina></app-pie-pagina>
- 
+
+ </div>
+

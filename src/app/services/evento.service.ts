@@ -42,12 +42,17 @@ export class EventoService {
     return this.http.get<Evento>(urll);
   }
 
+  getEvento(id: number): Observable<Evento>{
+    return this.http.get<Evento>(constantes.miApiUrl + constantes.apiUrlEventos + id);
+  }
+
   /*
   putRecordById(form: Evento): Observable<ResponseInit> {
     let url = `${constantes.miApiUrl}${constantes.apiUrlEventos}`;
     return this.http.put<ResponseInit>(url,form);
   }
 */
+
 
 update(id:number, evento:Evento): Observable<Evento>{
   const ul = `${constantes.miApiUrl}${constantes.apiUrlEventos}`+evento.eventoId;
@@ -58,6 +63,12 @@ update(id:number, evento:Evento): Observable<Evento>{
 
 }
 
+
+
+  
+eliminarEvento(id: number): Observable<Evento>{
+  return this.http.delete<Evento>(constantes.miApiUrl + constantes.apiUrlEventos + id);
+}
 
 }
 
