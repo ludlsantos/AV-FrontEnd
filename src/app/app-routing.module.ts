@@ -14,6 +14,7 @@ import { EsAdminGuard } from './Guards/es-admin.guard';
 import { SeccionesHomeComponent } from './secciones-home/secciones-home.component';
 import { ClienteModModule } from './modules/editar-cliente/clienteMod.module';
 import { ListadoEventoModule } from './modules/listadoEvento/listadoEvento.module';
+import { ListadoReservaModule } from './modules/listadoReserva/listadoReserva.module';
 
 const routes: Routes = [
 
@@ -59,6 +60,10 @@ path: 'admin',
 {
   path: 'listadoEvento',
   loadChildren: () => import('./modules/listadoEvento/listadoEvento.module').then(m => ListadoEventoModule)
+},
+{
+  path: 'listadoReserva',
+  loadChildren: () => import('./modules/listadoReserva/listadoReserva.module').then(m => ListadoReservaModule)
 },
 
 

@@ -6,6 +6,9 @@ import { Subscription } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtAuthService } from 'src/app/services/jwt-auth.service';
+import { Login } from 'src/app/modelos/login';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 
 @Component({

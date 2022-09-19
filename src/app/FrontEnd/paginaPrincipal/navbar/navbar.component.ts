@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 
 @Component({
@@ -6,18 +7,18 @@ import { JwtAuthService } from 'src/app/services/jwt-auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
+
 export class NavbarComponent implements OnInit {
 
-  constructor(
-
-    private jwtAuthServices: JwtAuthService
-  ) { }
+  constructor(public jwtAuthService: JwtAuthService) { }
 
   ngOnInit(): void {
+
   }
 
   onLogout(): void{
-    this.jwtAuthServices.cerrarSesion();
+    this.jwtAuthService.cerrarSesion();
 
 }
 }

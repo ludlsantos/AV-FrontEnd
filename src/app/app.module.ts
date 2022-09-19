@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { FormsModule} from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,10 +15,12 @@ import { EliminarCuentaComponent } from './modules/cliente/eliminar-cuenta/elimi
 
 import { SeccionesHomeComponent } from './secciones-home/secciones-home.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
 import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
 import { CookieService } from 'ngx-cookie-service';
 import { EliminarEventoComponent } from './modules/evento/eliminar-evento/eliminar-evento.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -35,8 +36,8 @@ import { EliminarEventoComponent } from './modules/evento/eliminar-evento/elimin
     PiePaginaComponent,
     EliminarCuentaComponent,
     SeccionesHomeComponent,
-        InicioSesionComponent,
-          EliminarEventoComponent,
+    InicioSesionComponent,
+    EliminarEventoComponent,
 
 
 

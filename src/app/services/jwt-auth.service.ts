@@ -21,6 +21,7 @@ export class JwtAuthService {
 
 
 
+
 	login(token: string): void {
 		const decode = jwtDecode<IJwt>(token);
 		localStorage.setItem(localStorageJwt.LS_ACCESS_TOKEN, token);
@@ -31,7 +32,7 @@ export class JwtAuthService {
   
 
 	estaLogeado(): boolean {
-    console.log('Esta logueado');
+    /* console.log('Esta logueado'); */
 		const siToken = localStorage.getItem(localStorageJwt.LS_ACCESS_TOKEN);
 		if (!siToken) {
 			return false;
@@ -46,8 +47,24 @@ export class JwtAuthService {
     
 	}
 
+	NoEstaLogeado(): boolean {
+		/* console.log('Esta logueado'); */
+			const siToken = localStorage.getItem(localStorageJwt.LS_ACCESS_TOKEN);
+			if (siToken) {
+				return false;
+			}
+	/* 		const rolArray = JSON.parse(siRol) as Array<string>;
+			if (rolArray.length == 0) {
+				return false;
+			} */
+	
+			return true;
+	
+		
+		}
+
 	esAdmin(): boolean {
-    console.log('Es administrador');
+    /* console.log('Es administrador'); */
 		const siRol = localStorage.getItem(localStorageJwt.LS_ROLES)!;
 		const rolArray = JSON.parse(siRol);
 		const rol = "Administrador"
@@ -55,16 +72,36 @@ export class JwtAuthService {
 
 		if (rolArray == rol)
 		{
-			alert (rolArray)
+			/* alert (rolArray) */
 
 		return true;
 	}
 
 		else 
-		alert ('No tiene permisos para acceder')
+		/* alert ('No tiene permisos para acceder') */
 		return false;
 	
 	}
+
+	esCliente(): boolean {
+		/* console.log('Es administrador'); */
+			const siRol = localStorage.getItem(localStorageJwt.LS_ROLES)!;
+			const rolArray = JSON.parse(siRol);
+			const rol = "Cliente"
+			//const rolAdmin = rolArray.find((x) => x === 'Administrador');
+	
+			if (rolArray == rol)
+			{
+				// alert (rolArray)
+	
+			return true;
+		}
+	
+			else 
+			/* alert ('No tiene permisos para acceder') */
+			return false;
+		
+		}
 
 	public cerrarSesion(): void {
  
