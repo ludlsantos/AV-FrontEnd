@@ -10,6 +10,9 @@ import * as constantes from '../modelos/constantes';
 })
 export class EventoService {
 
+  filtroEvento!:"";
+  
+
   constructor(private http: HttpClient) { }
 
   crearEvento(evento: Evento): Observable<Evento>{
@@ -39,12 +42,33 @@ export class EventoService {
     return this.http.get<Evento>(urll);
   }
 
+  getEvento(id: number): Observable<Evento>{
+    return this.http.get<Evento>(constantes.miApiUrl + constantes.apiUrlEventos + id);
+  }
+
   /*
   putRecordById(form: Evento): Observable<ResponseInit> {
     let url = `${constantes.miApiUrl}${constantes.apiUrlEventos}`;
     return this.http.put<ResponseInit>(url,form);
   }
 */
+
+
+update(id:number, evento:Evento): Observable<Evento>{
+  const ul = `${constantes.miApiUrl}${constantes.apiUrlEventos}`+evento.eventoId;
+  alert("esty aca..." + ul)
+  return this.http.put<Evento>(ul, evento);
+
+ // return this.http.put
+
+}
+
+
+
   
+eliminarEvento(id: number): Observable<Evento>{
+  return this.http.delete<Evento>(constantes.miApiUrl + constantes.apiUrlEventos + id);
+}
+
 }
 

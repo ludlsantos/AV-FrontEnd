@@ -1,41 +1,7 @@
-<!--<div class="box">
- <section id="event" class="uno">
-  <div>
-</div>
-      <div class="card">
-        <img class="card-img-top" src="assets/imagenes/a.jpg" alt="Card image cap" style="max-width: 150px;">
-        <div class="card-body">
-        <h5 class="card-title">Conferencia TI</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
-      </div>
-    </div>
-     
-    <div class="card">
-      <img class="card-img-top" src="assets/imagenes/test.png" alt="Card image cap" style="max-width: 150px;">
-      <div class="card-body">
-        <h5 class="card-title">Conferencia TESTING</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
-      </div>
-    </div>
-    
-    <div class="card">
-      <img class="card-img-top" src="assets/imagenes/a.jpg" alt="Card image cap" style="max-width: 150px;">
-      <div class="card-body">
-        <h5 class="card-title">Conferencia IA</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="assets/imagenes/test.png" alt="Card image cap" style="max-width: 150px;">
-      <div class="card-body">
-        <h5 class="card-title">Testing de software</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
-      </div>
-    </div>
+
+
+
+<app-predeterminado></app-predeterminado>
 
     <div class="card">
       <img class="card-img-top" src="assets/imagenes/test.png" alt="Card image cap" style="max-width: 150px;">
@@ -119,8 +85,6 @@
           </div>
   </div>
 </div>
--->
-
 <div class="box">
   <section id="event" class="uno">
  <tr *ngFor="let evento of eventos">
@@ -131,46 +95,16 @@
          <p class="card-text">{{evento.descripcion}}</p>
          <p class="card-text">{{evento.fecha}}</p>
          <p class="card-text">{{evento.ciudad}}</p>
-         <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
-       </div>
+         <p type="button" name="buttonReservar" class="btn btn-primary" [routerLink]="['/evento/reservar', evento.eventoId]" [skipLocationChange]="true">Reservar</p>
+        
+        </div>
      </div>
-      
-  <!--  <div class="card">
-       <img class="card-img-top" src="assets/imagenes/test.png" alt="Card image cap" style="max-width: 150px;">
-       <div class="card-body">
-         <h5 class="card-title">Conferencia TESTING</h5>
-         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-         <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
-       </div>
-     </div>
+    </tr>
      
-     <div class="card">
-       <img class="card-img-top" src="assets/imagenes/a.jpg" alt="Card image cap" style="max-width: 150px;">
-       <div class="card-body">
-         <h5 class="card-title">Conferencia IA</h5>     
-         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-         <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
-       </div>
-     </div>
-     <div class="card">
-       <img class="card-img-top" src="assets/imagenes/test.png" alt="Card image cap" style="max-width: 150px;">
-       <div class="card-body">
-         <h5 class="card-title">Testing de software</h5>
-         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-         <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
-       </div>
-     </div>
- 
-     <div class="card">
-       <img class="card-img-top" src="assets/imagenes/test.png" alt="Card image cap" style="max-width: 150px;">
-       <div class="card-body">
-         <h5 class="card-title">Conferencia TESTING</h5>
-         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-         <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
-       </div>
-     </div>
-     --> 
  </section>
+
+  </section>
+
  
  <section id="about" class="dos">
    <div class="box">
@@ -185,7 +119,7 @@
       <h3><span>NUESTRA MISIÓN</span></h3>
       <span class="et_pb_image_wrap "><img loading="lazy" src="assets/imagenes/a.jpg" alt="" title="nuestra-vision" style="max-width: 150px;"></span>
       <h6>“Como mision nuestra propuesta es brindar una gestion organizada y controlada para
-        eventos o conferencias marcadas por cualquier empresa que asi lo requiera”.</h6>
+        eventos o conferencias marcada por cualquier empresa que asi lo requiera”.</h6>
      </div>
        
        <div class="description">
@@ -242,5 +176,7 @@
                </form>
            </div>
    </div>
- <!--</div>-->
- 
+  <app-pie-pagina></app-pie-pagina>
+
+ </div>
+

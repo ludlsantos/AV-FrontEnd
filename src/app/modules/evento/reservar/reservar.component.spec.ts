@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SeccionesHomeComponent } from './secciones-home.component';
+import { ReservarComponent } from './reservar.component';
 
-
-describe('SeccionesHomeComponent', () => {
-  let component: SeccionesHomeComponent;
-  let fixture: ComponentFixture<SeccionesHomeComponent>;
+describe('ReservarComponent', () => {
+  let component: ReservarComponent;
+  let fixture: ComponentFixture<ReservarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SeccionesHomeComponent ]
+      declarations: [ ReservarComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SeccionesHomeComponent);
+    fixture = TestBed.createComponent(ReservarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

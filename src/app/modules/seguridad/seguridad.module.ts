@@ -8,6 +8,7 @@ import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
 import { ConfirmarMailComponent } from './confirmar-mail/confirmar-mail.component';
 import { IngresarCodigoComponent } from './ingresar-codigo/ingresar-codigo.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     SeguridadRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class SeguridadModule { }

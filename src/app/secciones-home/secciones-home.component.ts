@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 
 @Component({
@@ -11,9 +12,12 @@ import { EventoService } from 'src/app/services/evento.service';
 export class SeccionesHomeComponent implements OnInit {
 
   title= 'evento';
-  public eventos: Array<any>=[]
+  public eventos: Array<Evento>=[]
     constructor(
-      private eventoService: EventoService
+      private eventoService: EventoService,
+      private router: Router,
+      private route: ActivatedRoute,
+      private rouermod: RouterModule
     ) {
   
       this.eventoService.getEventos().subscribe((resp: any)=> {
@@ -25,5 +29,7 @@ export class SeccionesHomeComponent implements OnInit {
   
   ngOnInit(): void {
   }
+
+  
 
 }
