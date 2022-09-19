@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule} from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule} from '@angular/forms';
-
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +20,6 @@ import { MenuLateralComponent } from './FrontEnd/paginaPrincipal/menu-lateral/me
 import { PiePaginaComponent } from './FrontEnd/paginaPrincipal/pie-pagina/pie-pagina.component';
 import { EliminarCuentaComponent } from './modules/cliente/eliminar-cuenta/eliminar-cuenta.component';
 import { SeccionesHomeComponent } from './secciones-home/secciones-home.component';
-
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -32,9 +34,6 @@ import { ReservarComponent } from './modules/evento/reservar/reservar.component'
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
-
 
 
 
