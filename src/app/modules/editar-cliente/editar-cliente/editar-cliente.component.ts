@@ -84,7 +84,7 @@ export class EditarClienteComponent implements OnInit {
         nombreEmpresa: this.fgValidator.get('empresa')?.value,
         fotoPerfil: this.fgValidator.get('archivosubido')?.value,
         login: this.fgValidator.get('login')?.value,
-    
+     
        }
 
        

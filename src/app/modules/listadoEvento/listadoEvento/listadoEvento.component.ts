@@ -10,12 +10,13 @@ import { EventoService } from 'src/app/services/evento.service';
   templateUrl: './listadoEvento.component.html',
   styleUrls: ['./listadoEvento.component.css']
 })
-export class ListadoEventoComponent implements OnInit {
 
+export class ListadoEventoComponent implements OnInit {
+  
   title= 'evento';
 public eventos: Array<Evento>=[]
   constructor(
-    private eventoService: EventoService
+    public eventoService: EventoService
   ) {
 
     this.eventoService.getEventos().subscribe((resp: any)=> {

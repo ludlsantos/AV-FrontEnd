@@ -10,6 +10,9 @@ import * as constantes from '../modelos/constantes';
 })
 export class EventoService {
 
+  filtroEvento!:"";
+  
+
   constructor(private http: HttpClient) { }
 
   crearEvento(evento: Evento): Observable<Evento>{
@@ -45,6 +48,16 @@ export class EventoService {
     return this.http.put<ResponseInit>(url,form);
   }
 */
-  
+
+update(id:number, evento:Evento): Observable<Evento>{
+  const ul = `${constantes.miApiUrl}${constantes.apiUrlEventos}`+evento.eventoId;
+  alert("esty aca..." + ul)
+  return this.http.put<Evento>(ul, evento);
+
+ // return this.http.put
+
+}
+
+
 }
 

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
+import { FiltroEventoPipe } from './pipes/filtro-evento.pipe';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +10,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   IsAuthenticated = false;
   title = 'AV-FrontEnd';
+
 }
+export{ FiltroEventoPipe }

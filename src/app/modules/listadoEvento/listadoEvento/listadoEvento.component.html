@@ -1,4 +1,22 @@
-<div>
+
+<form>
+<div class="container">
+	<div class="row">
+           <div id="custom-search-input">
+   <div class="input-group col-md-12">
+        <input type="text" name = "filtrar" class="  search-query form-control" placeholder="Buscar por nombre..." [(ngModel)]="eventoService.filtroEvento" />
+               <span class="input-group-btn">
+                     <button class="btn btn-danger" type="button">
+                       <span class=" glyphicon glyphicon-search"></span>
+                     </button>
+               </span>
+           </div>
+       </div>
+	 </div>
+</div>
+  </form>
+    <h6><i>LISTADO DE EVENTOS</i></h6>
+    <br><br>
   <table class="table table-hover">
     <thead>
           <tr>
@@ -23,7 +41,7 @@
           </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let evento of eventos">
+        <tr *ngFor="let evento of eventos|filtroEvento: 'nombre' : eventoService.filtroEvento">
               <td>{{evento.eventoId}}</td>
               <td>{{evento.nombre}}</td>
               <td>{{evento.descripcion}}</td>
@@ -49,5 +67,5 @@
             </tr>
       </tbody>
   </table>
-  </div>
+
          
