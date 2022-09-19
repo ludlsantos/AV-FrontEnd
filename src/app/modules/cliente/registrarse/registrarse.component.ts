@@ -67,7 +67,7 @@ export class RegistrarseComponent implements OnInit {
           }
             this.clienteService.guardarCliente(cliente).subscribe(data => {
               alert('Registrado con éxito');
-              this.route.navigate(['/login'])
+              this.route.navigate(['/login']);
               this.fgValidator.reset();  
             });
   

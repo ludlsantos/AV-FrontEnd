@@ -39,6 +39,10 @@ export class EventoService {
     return this.http.get<Evento>(urll);
   }
 
+  getEvento(id: number): Observable<Evento>{
+    return this.http.get<Evento>(constantes.miApiUrl + constantes.apiUrlEventos + id);
+  }
+
   /*
   putRecordById(form: Evento): Observable<ResponseInit> {
     let url = `${constantes.miApiUrl}${constantes.apiUrlEventos}`;
@@ -46,5 +50,9 @@ export class EventoService {
   }
 */
   
+eliminarEvento(id: number): Observable<Evento>{
+  return this.http.delete<Evento>(constantes.miApiUrl + constantes.apiUrlEventos + id);
+}
+
 }
 

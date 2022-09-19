@@ -18,8 +18,12 @@ import { ListadoReservaModule } from './modules/listadoReserva/listadoReserva.mo
 
 const routes: Routes = [
 
+
+{path: 'login', component: InicioSesionComponent},
+
 {path: '',redirectTo: 'home', pathMatch: 'full'},
 {path: 'seguridad/iniciarSesion', component: InicioSesionComponent},
+
 
 //{path: 'login',redirectTo: '/login', pathMatch: 'full'},
 //{path: 'login', component: InicioSesionComponent},
@@ -52,9 +56,15 @@ path: 'admin',
 
 
 {
+  path: 'listadoEvento',
+  loadChildren: () => import('./modules/listadoEvento/listadoEvento.module').then(m => ListadoEventoModule)
+},
+{
   path: 'editar-cliente',
   loadChildren: () => import('./modules/editar-cliente/clienteMod.module').then(m => ClienteModModule)
 },
+
+
 
 
 {
@@ -66,6 +76,8 @@ path: 'admin',
   loadChildren: () => import('./modules/listadoReserva/listadoReserva.module').then(m => ListadoReservaModule)
 },
 
+
+{path: '',redirectTo: '/login', pathMatch: 'full'},
 
 {
   path: '**',

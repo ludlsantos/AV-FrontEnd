@@ -23,7 +23,7 @@ export class ConfirmarMailComponent implements OnInit {
   codigo: any;
   correo: any;
 
-  constructor(htttp: HttpClient, private fb: FormBuilder, private LoginService: LoginService, private router:Router) { }
+  constructor(http: HttpClient, private fb: FormBuilder, private LoginService: LoginService, private router:Router) { }
 
 
   ngOnInit(): void {

@@ -1,0 +1,55 @@
+<fieldset> 
+    <legend>Reserva de asientos</legend>
+    <div>Datos de la reserva</div>
+    <div class="row">
+    <form [formGroup]="fgValidator" class="col s12" id="reg-form">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="nombre" formControlName="nombre" type="text" required>
+          <label for="nombre">Nombre de la reserva</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="apellido" formControlName="apellido" type="text" required>
+          <label for="apellido">Apellido</label>
+        </div>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">portrait</i>
+        <input id="tipoDocumento" formControlName="tipoDocumento" type="text" required>
+        <label for="tipoDocumento">Tipo documento</label>
+      </div>
+
+      <div class="input-field col s6">
+        <i class="material-icons prefix">portrait</i>
+        <input id="nroDocumento" formControlName="nroDocumento" type="number" required>
+        <label for="nroDocumento">Numero de documento</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">phone</i>
+        <input id="telefono" formControlName="telefono" type="number" required>
+        <label for="telefono">Teléfono</label>
+      </div>
+   
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <input id="email" formControlName="email" type="email" required>
+          <label for="email">Correo electrónico</label>
+        </div>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">number</i>
+        <input id="cantidadReservas" formControlName="cantidadReservas" type="number" required>
+        <label for="cantidadReservas">Cantidad de reservas</label>
+      </div>
+          <div class="input-field col s">
+          <button (click)="Reservar()" class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Reservar
+            <i class="material-icons right" >done</i>
+          </button>
+              
+        </div>
+             
+    </form>
+    

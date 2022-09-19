@@ -44,10 +44,9 @@
              <!--<td> <a href="/evento/editar-evento" title="Editar">
                 <span class="glyphicon glyphicon-pencil"></span>
               </a></td>-->
-              <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/evento/editar-evento', evento.eventoId]" >Editar</button></td>
-              <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['']" >Eliminar</button></td>
+              <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/evento/editar-evento', evento.eventoId]" [skipLocationChange]="true">Editar</button></td>
+              <td><button type="button" name="buttonEliminar" class="btn btn-primary" [routerLink]="['/evento/eliminar-evento', evento.eventoId]" [skipLocationChange]="true">Eliminar</button></td>
             </tr>
       </tbody>
   </table>
   </div>
-         

@@ -1,13 +1,27 @@
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Reserva } from '../modelos/reserva';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Reserva } from '../modelos/reserva';
 import { Observable } from 'rxjs';
+
 import * as constantes from '../modelos/constantes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservaService {
+
+
+  constructor(private http: HttpClient) { }
+
+  guardarReserva(reserva: Reserva): Observable<Reserva>{
+    return this.http.post<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas, reserva);
+  }
 
 constructor(private http: HttpClient) { }
 
@@ -28,5 +42,6 @@ get(id: number):Observable<Reserva>{
   const url2 = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+id;
   return this.http.get<Reserva>(url2);
 }
+
 
 }

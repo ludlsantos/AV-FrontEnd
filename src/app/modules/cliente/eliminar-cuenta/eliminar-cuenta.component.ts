@@ -38,7 +38,7 @@ export class EliminarCuentaComponent implements OnInit {
     this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
     const parse = JSON.parse(this.correo)
     if(this.pass == this.rePass){ 
-        this.clienteService.getClienteCorreo(parse, this.pass).subscribe(dataA => {
+        this.clienteService.getClienteCorreoyPass(parse, this.pass).subscribe(dataA => {
           this.id = dataA.clienteId;
           var mensaje = confirm("¿Seguro que desea eliminar su cuenta de forma definitiva?");
           if (mensaje) {

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-//import { Observable } from 'rxjs';
 import { catchError, Observable, tap } from 'rxjs';
 import { Cliente } from '../modelos/cliente';
 import * as constantes from '../modelos/constantes';
@@ -18,8 +17,12 @@ guardarCliente(cliente: Cliente): Observable<Cliente>{
  return this.http.post<Cliente>(constantes.miApiUrl + constantes.apiUrlClientes, cliente);
 }
 
-getClienteCorreo(correoElectronico: string, pass: string): Observable<Cliente>{
+getClienteCorreoyPass(correoElectronico: string, pass: string): Observable<Cliente>{
   return this.http.get<Cliente>(constantes.miApiUrl + constantes.apiUrlGetClienteCorreo + correoElectronico + "/" + pass);
+}
+
+getClienteCorreo(correoElectronico: string): Observable<Cliente>{
+  return this.http.get<Cliente>(constantes.miApiUrl + constantes.apiUrlGetClienteCorreo + correoElectronico);
 }
 
 eliminarCliente(id: number): Observable<Cliente>{

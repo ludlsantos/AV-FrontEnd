@@ -1,8 +1,10 @@
+import { Login } from "./login";
+
 export class Administrador {
 
-    idAdmin!: number;
+    idAdmin?: number;
     nombreEmpresa!: string;
-
+    login!: Login;
 
 
 
