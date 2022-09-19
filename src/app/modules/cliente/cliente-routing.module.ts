@@ -11,7 +11,7 @@ const routes: Routes = [
   component: RegistrarseComponent,
   /* canActivate: [EsAdminGuard] */
 
-  component: RegistrarseComponent
+
 },
 {
   path: 'eliminarCuenta',

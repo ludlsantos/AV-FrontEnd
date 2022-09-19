@@ -5,6 +5,7 @@ import { ConfirmarMailComponent } from './confirmar-mail/confirmar-mail.componen
 import { IngresarCodigoComponent } from './ingresar-codigo/ingresar-codigo.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { ReestablecerClaveComponent } from './reestablecer-clave/reestablecer-clave.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 const routes: Routes = [
 {
