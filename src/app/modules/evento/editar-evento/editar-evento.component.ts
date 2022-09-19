@@ -71,7 +71,7 @@ cargar():void{
         alert('texto'+id);
         this.eventoService.get(id).subscribe(
           ev=>{this.evento=ev ;
-          alert(ev.CantidadMesas);
+          alert(ev.cantidadMesas);
           } );
       }
        }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
 import { HttpClient } from '@angular/common/http';
+import { Mesa } from 'src/app/modelos/mesa';
 
 @Component({
   selector: 'app-crear-evento',
@@ -12,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class CrearEventoComponent implements OnInit {
 
   fgValidator!: FormGroup;
+  mesas!: null;
 
   constructor(private http: HttpClient ,private fb: FormBuilder, private eventoService: EventoService) { }
 
@@ -44,25 +46,28 @@ export class CrearEventoComponent implements OnInit {
     if(this.fgValidator.invalid){
       alert('Datos invalidos, porfavor verifique')
     }else{
+
+
       const evento: Evento = {
-        Nombre: this.fgValidator.get('nombre')?.value,
-        Descripcion: this.fgValidator.get('descripcion')?.value,
-        Tipo: this.fgValidator.get('tipo')?.value,
-        Fecha: this.fgValidator.get('fecha')?.value,
-        Hora: this.fgValidator.get('hora')?.value.toString(),
-        Duracion: this.fgValidator.get('duracion')?.value,
+        nombre: this.fgValidator.get('nombre')?.value,
+        descripcion: this.fgValidator.get('descripcion')?.value,
+        tipo: this.fgValidator.get('tipo')?.value,
+        fecha: this.fgValidator.get('fecha')?.value,
+        hora: "12:12:12",
+        duracion: this.fgValidator.get('duracion')?.value,
         callePuerta: this.fgValidator.get('callePuerta')?.value,
         barrio: this.fgValidator.get('barrio')?.value,
         ciudad: this.fgValidator.get('ciudad')?.value,
-        NroCupos: this.fgValidator.get('cantidadCupos')?.value,
-        CantidadMesas: this.fgValidator.get('cantidadMesas')?.value,
-        CantidadAsientosMesa: this.fgValidator.get('cantidadAsientosMesa')?.value,
-        PrecioAsiento: this.fgValidator.get('precio')?.value,
-        Idioma: this.fgValidator.get('idioma')?.value,
-        CriterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
-        ImagenPortada: this.fgValidator.get('archivosubido')?.value,
-        EmpresaCreadora: "Traer de admin logueado"
+        nroCupos: this.fgValidator.get('cantidadCupos')?.value,
+        cantidadMesas: this.fgValidator.get('cantidadMesas')?.value,
+        cantidadAsientosMesa: this.fgValidator.get('cantidadAsientosMesa')?.value,
+        precioAsiento: this.fgValidator.get('precio')?.value,
+        idioma: this.fgValidator.get('idioma')?.value,
+        criterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
+        imagenPortada: this.fgValidator.get('archivosubido')?.value,
+        empresaCreadora: "Traer de admin logueado",
       }
+      // evento.mesas!.length = evento.cantidadMesas;
 
       this.eventoService.crearEvento(evento).subscribe(data => {
         alert('Evento creado con éxito');

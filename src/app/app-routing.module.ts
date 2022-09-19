@@ -17,7 +17,6 @@ import { ListadoEventoModule } from './modules/listadoEvento/listadoEvento.modul
 
 const routes: Routes = [
 
-{path: '',redirectTo: '/login', pathMatch: 'full'},
 {path: 'login', component: InicioSesionComponent},
 
 //{path: 'login',redirectTo: '/login', pathMatch: 'full'},
@@ -51,16 +50,17 @@ path: 'admin',
 
 
 {
+  path: 'listadoEvento',
+  loadChildren: () => import('./modules/listadoEvento/listadoEvento.module').then(m => ListadoEventoModule)
+},
+{
   path: 'editar-cliente',
   loadChildren: () => import('./modules/editar-cliente/clienteMod.module').then(m => ClienteModModule)
 },
 
 
-{
-  path: 'listadoEvento',
-  loadChildren: () => import('./modules/listadoEvento/listadoEvento.module').then(m => ListadoEventoModule)
-},
 
+{path: '',redirectTo: '/login', pathMatch: 'full'},
 
 {
   path: '**',
