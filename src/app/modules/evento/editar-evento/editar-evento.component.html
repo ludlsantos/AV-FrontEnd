@@ -1,95 +1,83 @@
 <fieldset>
     <legend>Editar un evento</legend>
     <div class="row">
-    <form   [formGroup]="fgValidator" class="col s12" id="evento-form">
+    <form [formGroup]="fgValidator" class="col s12" id="evento-form">
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">confirmation_number</i>
-          <input id="nombre" formControlName="nombre" type="text" required>
-          <label for="nombre">Nombre del evento</label>
+          <input id="nombre" value="{{evento.nombre}}"
+           formControlName="nombre" type="text" required>Nombre del evento
+        
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">account_circle</i>
-          <input id="descripcion" formControlName="descripcion" type="text" required>
-          <label for="descripcion">Descripción</label>
+          <input id="descripcion"  value="{{evento.descripcion}}"
+           formControlName="descripcion" type="text" required>Descripción
         </div>
-
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">hdr_strong</i>
-        <input id="tipo" formControlName="tipo" type="text" required>
-        <label for="tipo">Tipo</label>
+        <input id="tipo"  value="{{evento.tipo}}"formControlName="tipo" type="text" required>Tipo
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">insert_invitation</i>
-        <input id="fecha" formControlName="fecha" type="date" required>
-        <label for="fecha">Fecha</label>
+        <input id="fecha"  value="{{evento.fecha}}" 
+        formControlName="fecha" type="date" required>Fecha
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">query_builder</i>
-        <input id="hora" formControlName="hora" type="time">
-        <label for="hora">Hora</label>
+        <input id="hora"  value="{{evento.fecha}}"
+        formControlName="hora" type="time">Hora
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">timer</i>
-        <input id="duracion" formControlName="duracion" type="number" required>
-        <label for="duracion">Duración(horas)</label> 
+        <input id="duracion"  value="{{evento.duracion}}" formControlName="duracion" type="number" required>Duración(horas)
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">location_on</i>
-        <input id="callePuerta" formControlName="callePuerta" type="text" required>
-        <label for="callePuerta">Calle y numero de puerta</label>
+        <input id="callePuerta"  value="{{evento.callePuerta}}" formControlName="callePuerta" type="text" required>Calle y numero de puerta
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">map</i>
-        <input id="barrio" formControlName="barrio" type="text" required>
-        <label for="barrio">Barrio</label>
+        <input id="barrio"  value="{{evento.barrio}}"formControlName="barrio" type="text" required>Barrio
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">location_searching</i>
-        <input id="ciudad" formControlName="ciudad" type="text" required>
-        <label for="ciudad">Ciudad</label>
+        <input id="ciudad"  value="{{evento.ciudad}}"formControlName="ciudad" type="text" required>Ciudad
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">supervisor_account</i>
-        <input id="cantidadCupos" formControlName="cantidadCupos" type="number" required>
-        <label for="cantidadCupos">Cantidad de cupos</label>
+        <input id="cantidadCupos"  value="{{evento.nroCupos}}" formControlName="cantidadCupos" type="number" required>Cantidad de cupos
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">view_column</i>
-        <input id="cantidadMesas" formControlName="cantidadMesas" type="number" required>
-        <label for="cantidadMesas">Cantidad de mesas</label>
+        <input id="cantidadMesas" value="{{evento.cantidadMesas}" formControlName="cantidadMesas" type="number" required>Cantidad de mesas
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">view_module</i>
-          <input id="cantidadAsientosMesa" formControlName="cantidadAsientosMesa" type="number" minlength="1" required>
-          <label for="cantidadAsientosMesa">Cantidad de asientos por mesa</label>
+          <input id="cantidadAsientosMesa" value="{{evento.cantidadAsientosMesa}}" formControlName="cantidadAsientosMesa" type="number" minlength="1" required>Cantidad de asientos por mesa
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">shopping_cart</i>
-          <input id="precio" formControlName="precio" type="number" required>
-          <label for="precio">Precio del asiento</label>
+          <input id="precio" value="{{evento.precioAsiento}}" formControlName="precio" type="number" required>Precio del asiento
         </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">translate</i>
-          <input id="idioma" formControlName="idioma" type="text" minlength="3" required>
-          <label for="idioma">Idioma</label>
+          <input id="idioma" value="{{evento.idioma}}"  formControlName="idioma" type="text" minlength="3" required>Idioma
         </div>
       </div>
       <div class="input-field col s12">
         <i class="material-icons prefix">widgets</i>
-        <input id="criterioAsignacion" formControlName="criterioAsignacion" type="text" minlength="3" required>
-        <label for="criterioAsignacion">Criterio de asignacion de asientos</label>
+        <input id="criterioAsignacion" value="{{evento.criterioAsignacion}}" formControlName="criterioAsignacion" type="text" minlength="3" required>Criterio de asignacion de asientos
   
     </div>
       <div class="row">
         <div class="input-field col s12">
-      <form action="" method="post" enctype="multipart/form-data" target="_blank">
-        <label for="file">Foto de portada</label><br>
-          <input type="file" name="archivosubido" >
+      <form action="" method="post" enctype="multipart/form-data" target="_blank">Foto de portada
+          <input type="file" value="{{evento.imagenPortada}}"  name="archivosubido" >
         <br><br>
           <div class="input-field col s">
           <button (click)="cargar()" class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Actualizar
@@ -97,3 +85,4 @@
           </button>
         </div>
     </form>
+

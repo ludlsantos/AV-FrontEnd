@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 
 @Component({
   selector: 'app-menu-lateral',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuLateralComponent implements OnInit {
 
-  constructor() { }
+  constructor(public jwtAuthService: JwtAuthService) { }
 
   ngOnInit(): void {
   }
+
 
 }

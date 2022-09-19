@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { SeguridadRoutingModule } from './seguridad-routing.module';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
-import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { ReestablecerClaveComponent } from './reestablecer-clave/reestablecer-clave.component';
 import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
 import { ConfirmarMailComponent } from './confirmar-mail/confirmar-mail.component';
@@ -13,7 +12,6 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    CerrarSesionComponent,
     ReestablecerClaveComponent,
     CambiarClaveComponent,
     ConfirmarMailComponent,
