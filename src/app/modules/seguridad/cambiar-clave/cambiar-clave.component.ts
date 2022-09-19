@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/modelos/login';
+import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 import { LoginService } from 'src/app/services/login.service';
+import { localStorageJwt } from 'src/app/static/local-storage';
 
 @Component({
   selector: 'app-cambiar-clave',
@@ -13,9 +15,12 @@ export class CambiarClaveComponent implements OnInit {
 
   validator!: FormGroup;
   correo:any;
+  passAnterior: any;
+  passNueva: any;
+  correoParseado: any;
   login?: Login;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private route: Router) { }
+  constructor(private fb: FormBuilder, private loginService: LoginService, private route: Router, private jwtAuthService: JwtAuthService) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -29,7 +34,25 @@ export class CambiarClaveComponent implements OnInit {
   }
 
   cambiarPass(){
-    return true;
+    this.passAnterior= this.validator.get('passAnterior')?.value;
+    this.passNueva= this.validator.get('passNueva')?.value;
+    this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
+    const parse = JSON.parse(this.correo)
+    this.loginService.getLoginYPass(parse, this.passAnterior).subscribe(data => { 
+        const loginNuevo: Login = {
+          rol: data.rol,
+          contraseña: this.passNueva,
+          correoElectronico: data.correoElectronico
+        }
+        this.loginService.cambiarClave(data.correoElectronico, loginNuevo).subscribe(dataA =>{
+          alert('La contraseña fué cambiada con éxito');
+          this.route.navigate(['/home'])
+            this.validator.reset();
+        });
+    });
+
+
   }
 
 }
+

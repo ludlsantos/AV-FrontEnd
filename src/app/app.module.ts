@@ -14,6 +14,7 @@ import { SeccionesHomeComponent } from './secciones-home/secciones-home.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
 import { CookieService } from 'ngx-cookie-service';
+import { EliminarEventoComponent } from './modules/evento/eliminar-evento/eliminar-evento.component';
 
 
 
@@ -27,9 +28,9 @@ import { CookieService } from 'ngx-cookie-service';
     EliminarCuentaComponent,
     SeccionesHomeComponent,
         InicioSesionComponent,
-       
- 
-        
+          EliminarEventoComponent,
+
+
 
   ],
   imports: [
