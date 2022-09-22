@@ -19,12 +19,4 @@ export class Reserva {
     cantidadReservas!: number;
    
 
-	
-	reservaId?: string;
-    cliente!: Cliente;
-    evento!: Evento;
-    estadoReserva!: string;
-    comprobantePago!: File;
-    asiento!: number;
-
 }
