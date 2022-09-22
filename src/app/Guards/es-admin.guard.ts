@@ -13,7 +13,6 @@ import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 export class EsAdminGuard implements CanActivate {
 
   constructor(
-    private cookieService: CookieService, 
     private router: Router,
     private jwtAuthService: JwtAuthService
     ) {
@@ -43,20 +42,12 @@ export class EsAdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      
+      const esAdmin = this.jwtAuthService.esAdmin()
 
-      console.log('CAN ACTIVE')
-      const esAdmin = this.jwtAuthService.esAdmin();
-     /*  if (!esAdmin) {
-        void this.router.navigateByUrl('/login');
-       
-      }
-      return esAdmin
 
-    } */
 
     if (esAdmin == false) {
-			void this.router.navigateByUrl('/login');
+			void this.router.navigateByUrl('/seguridad/iniciarSesion');
 			
 			return false;
 		}

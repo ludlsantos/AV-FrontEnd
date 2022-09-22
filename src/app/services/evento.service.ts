@@ -36,7 +36,7 @@ export class EventoService {
 
  get(id: number):Observable<Evento>{
     const urll = `${constantes.miApiUrl}${constantes.apiUrlEventos}`+id;
-    return this.http.get<Evento>('https://localhost:44319/API_1_0/Eventos/2');
+    return this.http.get<Evento>(urll);
   }
 
   getEvento(id: number): Observable<Evento>{

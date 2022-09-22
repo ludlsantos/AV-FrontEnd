@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
   IsAuthenticated = false;
   title = 'AV-FrontEnd';
+
+  constructor(public jwtAuthService: JwtAuthService) { }
+  
+  ngOnInit(): void {
+
+  }
+
+   
 }
