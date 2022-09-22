@@ -10,14 +10,19 @@ import { Evento } from 'src/app/modelos/evento';
   templateUrl: './listadoEvento.component.html',
   styleUrls: ['./listadoEvento.component.css']
 })
-export class ListadoEventoComponent implements OnInit {
 
+export class ListadoEventoComponent implements OnInit {
+  
   title= 'evento';
 public eventos: Array<Evento>=[]
   constructor(
+
+    public eventoService: EventoService
+
     private eventoService: EventoService,
     private router: Router,
     private route:ActivatedRoute
+
   ) {
 
     this.eventoService.getEventos().subscribe((resp: any)=> {

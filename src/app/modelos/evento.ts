@@ -8,6 +8,9 @@ export class Evento {
     descripcion!: string;
     tipo!: string;
 
+    fecha!: string;
+    duracion!: string;
+
     imagenPortada!: File;
     fecha!: Date;
     hora!: string;
@@ -22,6 +25,7 @@ export class Evento {
     Fecha!: Date;
     Hora!: string;
     Duracion!: number;
+
 
     callePuerta!: string;
     barrio!: string;

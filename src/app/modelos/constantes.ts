@@ -13,7 +13,11 @@ export const apiUrlGetClienteCorreo = apiBase + 'GetClienteCorreo/';
 export const apiUrlGetAdminCorreo = apiBase + 'GetAdmincorreo/';
 export const apiUrlEventos = apiBase + 'Eventos/';
 export const apiUrlIdenidad = apiBase + 'Identidades/login/';
+
 export const apiUrlEventosId = apiUrlEventos + 'id';
 export const apiUrlReservas = apiBase + 'Reservas/';
 export const apiUrlCorreoReservas = apiBase + 'EventoCancelado/';
 export const apiUrlReservasId = apiUrlReservas + 'id';
+
+
+
