@@ -1,13 +1,9 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Reserva } from '../modelos/reserva';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Reserva } from '../modelos/reserva';
-import { Observable } from 'rxjs';
 
 import * as constantes from '../modelos/constantes';
 
@@ -23,7 +19,13 @@ export class ReservaService {
     return this.http.post<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas, reserva);
   }
 
-constructor(private http: HttpClient) { }
+  getReservasEvento(idEvento: number): Observable<Reserva>{
+    return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlCorreoReservas + idEvento);
+  }
+
+  envioCorreo(reservas: Array<Reserva>): Observable<Reserva>{
+    return this.http.get<Reserva>(constantes.miApiUrl+ constantes.apiUrlCorreoReservas + reservas);
+  }
 
   crearReserva(reserva: Reserva): Observable<Reserva>{
     return this.http.post<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas, reserva);

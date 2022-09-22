@@ -6,6 +6,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
 import { EventoService } from 'src/app/services/evento.service';
 import { Evento } from 'src/app/modelos/evento';
+import { ReservaService } from 'src/app/services/reserva.service';
+import { Reserva } from 'src/app/modelos/reserva';
 
 @Component({
   selector: 'app-eliminar-evento',
@@ -19,8 +21,9 @@ export class EliminarEventoComponent implements OnInit {
   rePass!: any;
   correo!: any;
   evento!: any;
+  reservas!: Array<Reserva>;
 
-  constructor(private fb: FormBuilder, private LoginService: LoginService, private adminService: AdministradorService, private router:ActivatedRoute, private route: Router, private eventoService: EventoService) { }
+  constructor(private fb: FormBuilder, private reservaService: ReservaService, private adminService: AdministradorService, private router:ActivatedRoute, private route: Router, private eventoService: EventoService) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -31,12 +34,18 @@ export class EliminarEventoComponent implements OnInit {
         let id=e['id'];
         if(id){
           this.evento= id;
+          this.reservaService.getReservasEvento(id).subscribe(dataK=>{
+
+          });
         }
           else{
               alert("No se cargo el evento")
             }
           });
+
         }
+
+    
          
 
 
@@ -50,6 +59,7 @@ export class EliminarEventoComponent implements OnInit {
   
 
   eliminarEvento(){
+    
     this.pass = this.validator.get('pass')?.value;
     this.rePass = this.validator.get('rePass')?.value;
     this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
@@ -59,17 +69,21 @@ export class EliminarEventoComponent implements OnInit {
         if(data){
           var mensaje = confirm("¿Seguro que desea eliminar este evento de forma definitiva? \n Recuerde que si este evento ya posee reservas con pagos realizados, por politica de la empresa el dinero debe ser reembolsado");
           if(mensaje){
+               
+            
             this.eventoService.eliminarEvento(this.evento).subscribe(
-              data=>{
-                alert("El evento fué eliminado de forma definitiva")
-                this.route.navigate(['/home'])
-                }
-            )
+              dataB=>{
+                this.reservaService.envioCorreo(this.reservas).subscribe(
+                  dataG=>{
+                    alert("El evento fué eliminado de forma definitiva")
+                    this.route.navigate(['/home'])
+                  });
+            });
           }
         }else{
           alert("Ocurrió un error o no tiene permisos para realizar dicha acción")
         }
-      })
+      });
      }
 
   }

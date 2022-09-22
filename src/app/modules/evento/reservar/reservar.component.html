@@ -3,46 +3,30 @@
     <div>Datos de la reserva</div>
     <div class="row">
     <form [formGroup]="fgValidator" class="col s12" id="reg-form">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="nombre" formControlName="nombre" type="text" required>
-          <label for="nombre">Nombre de la reserva</label>
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="apellido" formControlName="apellido" type="text" required>
-          <label for="apellido">Apellido</label>
-        </div>
-      </div>
+       
       <div class="input-field col s6">
-        <i class="material-icons prefix">portrait</i>
-        <input id="tipoDocumento" formControlName="tipoDocumento" type="text" required>
-        <label for="tipoDocumento">Tipo documento</label>
+        <i class="material-icons prefix">account_circle</i>
+        <input id="nombreEmpresa" formControlName="nombreEmpresa" type="text" placeholder="Recuerde que será el identificador de la reserva" required>
+        <i>Nombre y apellido o Empresa</i>
       </div>
-
-      <div class="input-field col s6">
-        <i class="material-icons prefix">portrait</i>
-        <input id="nroDocumento" formControlName="nroDocumento" type="number" required>
-        <label for="nroDocumento">Numero de documento</label>
-      </div>
+     
       <div class="input-field col s6">
         <i class="material-icons prefix">phone</i>
         <input id="telefono" formControlName="telefono" type="number" required>
-        <label for="telefono">Teléfono</label>
+      <i>Teléfono</i>
       </div>
    
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">email</i>
-          <input id="email" formControlName="email" type="email" required>
-          <label for="email">Correo electrónico</label>
+          <input id="email" formControlName="email" type="email" placeholder="Ingrese el correo electronico en el que desee recibir los datos de la/s reserva/s" required>
+        <i>Correo electrónico</i>
         </div>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">number</i>
         <input id="cantidadReservas" formControlName="cantidadReservas" type="number" required>
-        <label for="cantidadReservas">Cantidad de reservas</label>
+      <i>Cantidad de reservas</i>
       </div>
           <div class="input-field col s">
           <button (click)="Reservar()" class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Reservar
