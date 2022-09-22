@@ -14,4 +14,13 @@ export class ReservaService {
   guardarReserva(reserva: Reserva): Observable<Reserva>{
     return this.http.post<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas, reserva);
   }
+
+  getReservasEvento(idEvento: number): Observable<Reserva>{
+    return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlCorreoReservas + idEvento);
+  }
+
+  envioCorreo(reservas: Array<Reserva>): Observable<Reserva>{
+    return this.http.get<Reserva>(constantes.miApiUrl+ constantes.apiUrlCorreoReservas + reservas);
+  }
+
 }

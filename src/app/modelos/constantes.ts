@@ -15,3 +15,4 @@ export const apiUrlEventos = apiBase + 'Eventos/';
 export const apiUrlIdenidad = apiBase + 'Identidades/login/';
 export const apiUrlEventosId = apiUrlEventos + 'id';
 export const apiUrlReservas = apiBase + 'Reservas/';
+export const apiUrlCorreoReservas = apiBase + 'EventoCancelado/';

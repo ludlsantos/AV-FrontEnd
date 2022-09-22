@@ -9,14 +9,10 @@ export class Reserva {
     evento!: Evento;
     estadoReserva!: string;
     comprobantePago?: string;
-    asiento?: Asiento;
-    nombres!: string;
-    apellidos!: string;
+    asientos?: Asiento[];
+    nombreEmpresa!: string;
     telefono!: number;
     correoElectronico!: string;
     cantidadReservas!: number;
-    tipoDocumento!: number;
-    documento!: number;
-   
    
 }
