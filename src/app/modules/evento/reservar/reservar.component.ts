@@ -20,8 +20,8 @@ export class ReservarComponent implements OnInit {
 
   fgValidator!: FormGroup;
   correo!: any;
-  cliente:Cliente = new Cliente;
-  evento:Evento = new Evento;
+  cliente!: Cliente;
+  evento!: Evento;
   idEvento!: any;
   asiento!: Asiento;
 
@@ -33,27 +33,9 @@ export class ReservarComponent implements OnInit {
   }
 
 
-
-  obtenerid(){
-    this.router.params.subscribe(e=>{
-      let id=e['id'];
-      if(id){
-        this.eventoService.getEvento(id).subscribe(dataA =>{
-          this.evento = dataA;
-        });
-      }
-        else{
-            alert("No se cargo el evento")
-          }
-        });
-    }
-
   FormBuilding(){
     this.fgValidator = this.fb.group({
-      tipoDocumento: ['', [Validators.required]],
-      nroDocumento: ['', [Validators.required, Validators.minLength(7)]],
-      nombre: ['', [Validators.required, Validators.minLength(2)]],
-      apellido: ['', [Validators.required, Validators.minLength(2)]],
+      nombreEmpresa: ['', [Validators.required, Validators.minLength(8)]],
       telefono: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
       cantidadReservas: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2)]]
@@ -77,27 +59,32 @@ export class ReservarComponent implements OnInit {
               this.eventoService.getEvento(id).subscribe(dataA =>{
               this.evento = dataA;
          
-             
-
           const reserva: Reserva = {
             cliente: this.cliente,
             evento: this.evento,
             estadoReserva: "Pendiente de pago",
             comprobantePago: "null",
-            asiento:this.asiento,
-            nombres: this.fgValidator.get('nombre')?.value,
-            apellidos: this.fgValidator.get('apellido')?.value,
+            nombreEmpresa: this.fgValidator.get('nombreEmpresa')?.value,
             telefono: this.fgValidator.get('telefono')?.value,
             correoElectronico: this.fgValidator.get('email')?.value, 
-            cantidadReservas: this.fgValidator.get('cantidadReservas')?.value,
-            tipoDocumento: this.fgValidator.get('tipoDocumento')?.value,
-            documento: this.fgValidator.get('nroDocumento')?.value
+            cantidadReservas: this.fgValidator.get('cantidadReservas')?.value
             }
-          this.reservaService.guardarReserva(reserva).subscribe(data => {
-            alert('Reserva exitosa! Revise su casilla de correo electrónico, en la misma, encontrará los pasos a seguir para hacer efectiva su reserva');
+            if(reserva.evento.nroCupos >= reserva.cantidadReservas){
+            var mensaje = confirm("¿Confirma la reserva de " + reserva.cantidadReservas + " asientos para el evento " + reserva.evento.nombre + "?");
+            if(mensaje){
+              this.reservaService.guardarReserva(reserva).subscribe(dataC => {
+                 alert('Reserva exitosa! Revise su casilla de correo electrónico, en la misma, encontrará los pasos a seguir para hacer efectiva su reserva');
+                 this.route.navigate(['/home']);
+                 this.fgValidator.reset();
+            });
+            }
+          else{
+            alert('Reserva cancelada');
             this.route.navigate(['/home']);
-            this.fgValidator.reset();
-          });
+          }
+        }else{
+          alert('El evento ya no posee esa cantidad de cupos disponibles.')
+        }
         });
       }
       else{
