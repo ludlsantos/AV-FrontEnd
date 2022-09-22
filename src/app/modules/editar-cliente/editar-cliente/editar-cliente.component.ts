@@ -15,14 +15,13 @@ export class EditarClienteComponent implements OnInit {
 
   fgValidator!: FormGroup;
 
-  clienteId: String;
+  id: number;
+  correoElectronico!: string;
   constructor(
-    private fb: FormBuilder, 
-    private clienteService: ClienteService,
-    private loginService: LoginService,
+    private fb: FormBuilder, private clienteService: ClienteService, private loginService: LoginService,
     private router: Router,
     private route: ActivatedRoute) {
-      this.clienteId = this.route.snapshot.params["clienteId"];
+      this.id = this.route.snapshot.params["clienteId"];
     }
 
 
@@ -30,6 +29,7 @@ export class EditarClienteComponent implements OnInit {
     
     this.FormBuilding();
       this.getDataOfRecord();
+      this.EditarCliente();
   }
 
   FormBuilding(){
@@ -46,9 +46,11 @@ export class EditarClienteComponent implements OnInit {
      });  
   }
 
-
+//traigo los datos
   getDataOfRecord(){
-   if (this.fgValidator.get('clienteId')?.value){
+    this.id=this.fgValidator.get('clienteId')?.value;
+   if (this.id){
+
   this.clienteService.getRecordById(this.fgValidator.get('clienteId')?.value).subscribe(
     data =>{
    this.fgv['clienteId'].setValue(data.clienteId);
@@ -59,6 +61,7 @@ export class EditarClienteComponent implements OnInit {
    this.fgv['telefono'].setValue(data.telefono);
    this.fgv['cargoProfesion'].setValue(data.profesionCargo);
    this.fgv['empresa'].setValue(data.nombreEmpresa);
+   this.fgv['email'].setValue(data.login);
 
    return data;
    
@@ -69,12 +72,14 @@ export class EditarClienteComponent implements OnInit {
  
    //toma datos del formulario y los modificar
      EditarCliente(){
-    if (this.fgValidator.get('clienteId')?.value){
-
-    if (this.fgValidator.invalid){
-      alert("Datos invalidos, porfavor verifique");
-    }else{
-      const cliente: Cliente = {
+      var loginHijo: Login = {
+        rol: "Cliente",
+        contraseña: this.fgValidator.get('password')?.value,
+        correoElectronico: this.fgValidator.get('email')?.value
+    }
+      const allCliente: Cliente = {
+        
+        clienteId: this.id,
         tipoDocumento: this.fgValidator.get('tipoDocumento')?.value,
         nroDocumento: this.fgValidator.get('nroDocumento')?.value,
         nombre: this.fgValidator.get('nombre')?.value,
@@ -83,37 +88,23 @@ export class EditarClienteComponent implements OnInit {
         profesionCargo: this.fgValidator.get('cargoProfesion')?.value,
         nombreEmpresa: this.fgValidator.get('empresa')?.value,
         fotoPerfil: this.fgValidator.get('archivosubido')?.value,
-        login: this.fgValidator.get('login')?.value,
-     
+        login: loginHijo,
        }
 
-       
-  
-
-       const login: Login = {
-        rol: "Cliente",
-        contraseña: this.fgValidator.get('password')?.value,
-        correoElectronico: this.fgValidator.get('email')?.value
-
+      alert('allCliente')
+     // this.clienteService.getClienteCorreo(loginHijo.correoElectronico).subscribe(data=> {
+        this.clienteService.putClienteCorreo(loginHijo.correoElectronico).subscribe(data=> {
+          alert(data)
+      })
+    
+       this.clienteService.updateCliente( this.id , allCliente).subscribe(data => {
+        alert(data)
+        alert('Cliente actualizado con éxito');
+        this.fgValidator.reset();
+      });
+      
     }
 
-      this.clienteService.guardarCliente(cliente).subscribe(data => {
-        alert('Guardado exitosamente');
-        this.fgValidator.reset();
-      
-      
- 
-        alert('Aca');
-      this.loginService.guardarLogin(login).subscribe(data =>{
-        alert('Login creado exitosamente');
-        this.fgValidator.reset();
-      })
-      })
-    }
-  }else{
-    alert('Las contraseñas no coinciden');
-  }
-  }
 
   get fgv(){
     return this.fgValidator.controls;

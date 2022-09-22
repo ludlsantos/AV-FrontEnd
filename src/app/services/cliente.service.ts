@@ -25,17 +25,32 @@ getClienteCorreo(correoElectronico: string): Observable<Cliente>{
   return this.http.get<Cliente>(constantes.miApiUrl + constantes.apiUrlGetClienteCorreo + correoElectronico);
 }
 
+putClienteCorreo(correoElectronico: string): Observable<Login>{
+  const ul = `${constantes.miApiUrl}${constantes.apiUrlGetClienteCorreo}${correoElectronico}`;
+  alert("esty aca..." + ul)
+  return this.http.put<Login>(ul, Login);
+
+}
+
 eliminarCliente(id: number): Observable<Cliente>{
   return this.http.delete<Cliente>(constantes.miApiUrl + constantes.apiUrlClientes + id);
 }
  
 
 
-getRecordById(id: String): Observable<Cliente> {
+getRecordById(id: number): Observable<Cliente> {
   const url = `${constantes.miApiUrl}${constantes.apiUrlClientes}${id}`;
   return this.http.get<Cliente>(url);
 }
 
+updateCliente(id:number, cliente:Cliente): Observable<Cliente>{
+  const ul = `${constantes.miApiUrl}${constantes.apiUrlClientes}`+cliente.clienteId;
+  alert("esty aca..." + ul)
+  return this.http.put<Cliente>(ul, cliente);
+
+ // return this.http.put
+
+}
 
 
 }

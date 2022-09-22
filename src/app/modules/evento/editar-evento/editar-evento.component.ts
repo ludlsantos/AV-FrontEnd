@@ -115,6 +115,8 @@ export class EditarEventoComponent implements OnInit {
  
 
 }
+}
+
 
 /*
 cargar():void{   
@@ -143,5 +145,7 @@ cargar():void{
        
     }
   
-    
+  }
+  
+  */
 

@@ -21,14 +21,4 @@ export class Reserva {
     tipoDocumento!: number;
     documento!: number;
    
-   
-
-	
-	reservaId?: string;
-    cliente!: Cliente;
-    evento!: Evento;
-    estadoReserva!: string;
-    comprobantePago!: File;
-    asiento!: number;
-
 }
