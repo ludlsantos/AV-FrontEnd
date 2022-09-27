@@ -11,10 +11,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let reserva of reservas">
-                <td>{{reserva.reservaId}}</td>
-                <td>{{reserva.cliente}}</td>
+                <td>{{reserva.idReserva}}</td>
+                <td>{{reserva.cliente.clienteId}}</td>
                 <td>{{reserva.estadoReserva}}</td>
-                <td>{{reserva.asiento}}</td>
                 <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/reserva/eliminar-reserva']" >Eliminar</button></td>
               </tr>
         </tbody>

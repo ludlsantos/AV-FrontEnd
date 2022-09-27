@@ -54,5 +54,9 @@ eliminarEvento(id: number): Observable<Evento>{
   return this.http.delete<Evento>(constantes.miApiUrl + constantes.apiUrlEventos + id);
 }
 
+eventoModificado(id: number): Observable<Evento>{
+  return this.http.get<Evento>(constantes.miApiUrl + constantes.apiUrlCorreoReservas + id);
+}
+
 }
 

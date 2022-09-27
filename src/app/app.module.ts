@@ -3,9 +3,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule} from '@angular/forms';
-
-
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +15,6 @@ import { PiePaginaComponent } from './FrontEnd/paginaPrincipal/pie-pagina/pie-pa
 import { EliminarCuentaComponent } from './modules/cliente/eliminar-cuenta/eliminar-cuenta.component';
 import { SeccionesHomeComponent } from './secciones-home/secciones-home.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -54,8 +50,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ListadoEventoComponent,
         EditarEventoComponent,
         EliminarEventoComponent,
-        ReservarComponent
-
+        ReservarComponent,
     InicioSesionComponent,
     EliminarEventoComponent,
 
