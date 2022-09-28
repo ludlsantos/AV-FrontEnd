@@ -7,8 +7,8 @@ export class Evento {
     nombre!: string;
     descripcion!: string;
     tipo!: string;
+    fecha!: string;
     imagenPortada!: File;
-    fecha!: Date;
     hora!: string;
     duracion!: number;
     callePuerta!: string;
@@ -21,7 +21,6 @@ export class Evento {
     idioma!: string;
     criterioAsignacion!: string;
     empresaCreadora!: string;
-
     mesas?: Mesa[];
 
 }
