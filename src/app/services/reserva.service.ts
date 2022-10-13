@@ -40,10 +40,24 @@ getReservas(){
  } 
    );
 }
+getReservasTodas(): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas);
+}
+
+
 get(id: number):Observable<Reserva>{
   const url2 = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+id;
   return this.http.get<Reserva>(url2);
 }
+getReserva(id: number): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas + id);
+}
+getGenerarQR(id: number): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlGenerarQR + id);
 
+}
 
+getReservasActivas(): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlAsignacionManual);
+}
 }

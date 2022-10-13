@@ -1,0 +1,33 @@
+<form>
+
+<div class="wrapper">
+    <div class="position-relative">
+        <h3>Subir comprobante de pago</h3>
+        
+       <!-- <input class="input-file" (change)="capturarFile($event)" type="file" > -->
+        <input type="file" #file placeholder="Suba su Comprobante de Pago" (change)="uploadFile(file.files)">
+
+        <br/>
+        <br/>
+        <br/>
+        <div class="preview-img" *ngIf="previsualizacion">
+            <button class="clear-image" type="button" (click)="clearImage()">Clear</button>
+            <br/>
+            <br/>
+            <img  [src]="previsualizacion" alt="">
+        </div>
+      
+        <div class="p-1">
+            <small>Se aceptan archivos imágenes de tipo: .png / .jpg / </small>
+        </div>
+        <div class="wrapper-button">
+            <button type="button" class="button"[disabled]="loading" (click)="subirArchivo()">
+                {{(loading == false) ? 'Cargando.....' : 'Subir Comprobante de Pago'}}
+            </button>
+        </div>
+  
+    </div>
+   
+</div>
+</form>
+

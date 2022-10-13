@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reserva } from 'src/app/modelos/reserva';
 import { ReservaService } from 'src/app/services/reserva.service';
+import { Evento } from 'src/app/modelos/evento';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { ReservaService } from 'src/app/services/reserva.service';
 export class ListadoReservaComponent implements OnInit {
 
   title = 'reserva';
-  public reservas: Array<Reserva> = [];
+  public reservas: Array<Reserva> = []
   constructor(
     private reservaService: ReservaService
 
@@ -20,8 +21,15 @@ export class ListadoReservaComponent implements OnInit {
 
 
     this.reservaService.getReservas().subscribe((resp: any) => {
+
+      for (let reservaA of resp){
+        if(reservaA.evento.eventoId == "2"){
+           this.reservas.push(reservaA)
+        }
+      }
+
       console.log(resp);
-      this.reservas = resp;
+      
 
     });
   }

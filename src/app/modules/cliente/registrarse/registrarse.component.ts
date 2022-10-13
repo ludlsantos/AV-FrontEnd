@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Cliente } from 'src/app/modelos/cliente';
 import { Login } from 'src/app/modelos/login';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { LoginService } from 'src/app/services/login.service';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registrarse',

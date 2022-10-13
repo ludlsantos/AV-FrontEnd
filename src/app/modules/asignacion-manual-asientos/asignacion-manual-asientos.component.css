@@ -1,0 +1,84 @@
+
+h1 {
+	font-size: 2.6em;
+	text-align: center;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+h2 {
+	font-size: 2em;
+	font-weight: 700;
+	margin-bottom: 1em;
+
+}
+
+
+
+.asientos table td {
+	height: 40px;
+	width: 50px;
+	text-align: center;
+	margin-bottom: 5px;
+    color: #fff;
+    background-image: url(src\assets\imagenes/silla3.png);
+    background-size: 210px;
+
+    
+}
+
+.asientos table td label {
+    padding: 10px 0;
+    cursor: pointer;
+    width: 50px;
+    height: 40px;
+    margin-bottom: 0;
+}
+
+.asientos table td label{
+	background: #ccc;
+	border-radius: 10px;
+    color:#fff
+} 
+
+.asientos table td.espacio {
+	background: transparent;
+}
+.asientos table {
+	border-collapse: separate;
+	border-spacing: 5px 10px;
+}
+
+.asientos table td input[type="checkbox"]:checked+label {
+    background: #26a69a;
+}
+.asientos table td input[type="checkbox"]:disabled+label {
+    background: #543627;
+    color: #7f6f3f;
+}
+
+.asientos table input[type=checkbox] {
+    display: none;
+}
+
+
+
+
+
+.button{
+    margin-top: 1rem;
+    width: 20%;
+    padding:.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    border:solid 1px #eaeaea;
+    border-radius:.15rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #26a69a;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+    font-size: 1em;
+
+}

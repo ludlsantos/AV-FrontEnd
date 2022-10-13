@@ -12,19 +12,11 @@ export class Evento {
     duracion!: string;
 
     imagenPortada!: File;
-    fecha!: Date;
     hora!: string;
-    duracion!: number;
 
-    fecha!: Date;
-    duracion!: number;
-    EventoId?: number;
-    Nombre!: string;
-    Descripcion!: string;
-    Tipo!: string;
-    Fecha!: Date;
-    Hora!: string;
-    Duracion!: number;
+
+
+
 
 
     callePuerta!: string;
@@ -40,6 +32,6 @@ export class Evento {
 
     mesas?: Mesa[];
 
-    imagenPortada!: File;
+
 
 }
