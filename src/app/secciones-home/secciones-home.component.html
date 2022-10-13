@@ -1,5 +1,6 @@
 
 
+<!--<app-predeterminado></app-predeterminado>-->
 
 <!-- <app-predeterminado></app-predeterminado>
 
@@ -92,14 +93,12 @@
          <div class="card-body">
          <h6 class="card-title">{{evento.nombre}}</h6>
          <p class="card-text">{{evento.descripcion}}</p>
-         <p class="card-text">{{evento.fecha}}</p>
+         <p class="card-text">+{{evento.fechaHora | date: 'dd/MM/yyyy h:mm a': 'timezone' }}</p>
          <p class="card-text">{{evento.ciudad}}</p>
-         <p type="button" name="buttonReservar" class="btn btn-primary" [routerLink]="['/evento/reservar', evento.eventoId]" [skipLocationChange]="true">Reservar</p>
-        
-        </div>
+         <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
+       </div>
      </div>
-    </tr>
-     
+      
  </section>
 
  
@@ -173,7 +172,9 @@
                </form>
            </div>
    </div>
+
 <!--   <app-pie-pagina></app-pie-pagina> -->
 
  </div>
+
 

@@ -21,9 +21,8 @@ export class EliminarEventoComponent implements OnInit {
   rePass!: any;
   correo!: any;
   evento!: any;
-  reservas!: Array<Reserva>;
 
-  constructor(private fb: FormBuilder, private reservaService: ReservaService, private adminService: AdministradorService, private router:ActivatedRoute, private route: Router, private eventoService: EventoService) { }
+  constructor(private fb: FormBuilder, private adminService: AdministradorService, private router:ActivatedRoute, private route: Router, private eventoService: EventoService) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -34,15 +33,11 @@ export class EliminarEventoComponent implements OnInit {
         let id=e['id'];
         if(id){
           this.evento= id;
-          this.reservaService.getReservasEvento(id).subscribe(dataK=>{
-
-          });
         }
           else{
               alert("No se cargo el evento")
             }
           });
-
         }
 
     
@@ -70,20 +65,18 @@ export class EliminarEventoComponent implements OnInit {
           var mensaje = confirm("¿Seguro que desea eliminar este evento de forma definitiva? \n Recuerde que si este evento ya posee reservas con pagos realizados, por politica de la empresa el dinero debe ser reembolsado");
           if(mensaje){
                
-            
             this.eventoService.eliminarEvento(this.evento).subscribe(
               dataB=>{
-                this.reservaService.envioCorreo(this.reservas).subscribe(
-                  dataG=>{
                     alert("El evento fué eliminado de forma definitiva")
                     this.route.navigate(['/home'])
                   });
-            });
           }
         }else{
           alert("Ocurrió un error o no tiene permisos para realizar dicha acción")
         }
       });
+     }else{
+      alert("Las contraseñas no coinciden");
      }
 
   }

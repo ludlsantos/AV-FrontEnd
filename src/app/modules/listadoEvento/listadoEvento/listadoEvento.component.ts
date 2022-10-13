@@ -14,12 +14,12 @@ import { EventoService } from 'src/app/services/evento.service';
 export class ListadoEventoComponent implements OnInit {
   
   title= 'evento';
-public eventos: Array<Evento>=[]
+  public eventos: Array<Evento>=[]
   constructor(
 
     public eventoService: EventoService,
     private router: Router,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
 
   ) {
 

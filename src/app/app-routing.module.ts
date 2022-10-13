@@ -15,9 +15,12 @@ import { SeccionesHomeComponent } from './secciones-home/secciones-home.componen
 import { ClienteModModule } from './modules/editar-cliente/clienteMod.module';
 import { ListadoEventoModule } from './modules/listadoEvento/listadoEvento.module';
 import { ListadoReservaModule } from './modules/listadoReserva/listadoReserva.module';
+
 import { ComprobanteDePagoComponent } from './modules/comprobanteDePago/comprobanteDePago.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AsignacionManualAsientosComponent } from './modules/asignacion-manual-asientos/asignacion-manual-asientos.component';
+
+import { ManualComponent } from './asignarAsientos/manual/manual.component';
 
 
 const routes: Routes = [
@@ -79,6 +82,10 @@ path: 'admin',
 {
   path: 'listadoReserva',
   loadChildren: () => import('./modules/listadoReserva/listadoReserva.module').then(m => ListadoReservaModule)
+},
+{
+  path: 'manual',
+  component: ManualComponent,
 },
 
 

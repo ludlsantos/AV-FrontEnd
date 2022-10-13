@@ -41,12 +41,14 @@
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let evento of eventos|filtroEvento: 'nombre' : eventoService.filtroEvento">
+          <!-- <tr *ngFor="let evento of eventos|filtroEvento 'nombre' : eventoService.filtroEvento"> -->
+            <tr *ngFor="let evento of eventos">
+        <tr *ngFor="let evento of eventos|filtroEvento: 'nombre' : eventoService.filtroEvento" >
               <td>{{evento.eventoId}}</td>
               <td>{{evento.nombre}}</td>
               <td>{{evento.descripcion}}</td>
               <td>{{evento.tipo}}</td>
-              <td>{{evento.fecha}}</td>
+              <td>{{evento.fechaHora | date: 'dd/MM/yyyy h:mm a': 'timezone' }}</td> 
               <td>{{evento.duracion}}</td>
               <td>{{evento.callePuerta}}</td>
               <td>{{evento.barrio}}</td>
@@ -61,10 +63,11 @@
               <td>{{evento.imagenPortada}}</td>
              <!--<td> <a href="/evento/editar-evento" title="Editar">
                 <span class="glyphicon glyphicon-pencil"></span>
-              </a></td>-->
+              </a></td>-->        
               <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/evento/editar-evento', evento.eventoId]" [skipLocationChange]="true">Editar</button></td>
               <td><button type="button" name="buttonEliminar" class="btn btn-primary" [routerLink]="['/evento/eliminar-evento', evento.eventoId]" [skipLocationChange]="true">Eliminar</button></td>
-            </tr>
-      </tbody>
+                <td><button type="button" name="buttonReservas" class="btn btn-primary" [routerLink]="['/listadoReserva/listadoReserva', evento.eventoId]" [skipLocationChange]="true">Ver Reservas</button></td>
+            </tbody>
+            
   </table>
 

@@ -1,0 +1,26 @@
+<fieldset>
+    <legend>Cancelar reserva</legend>
+    <div class="row">
+
+    <form [formGroup]="validator">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">https</i>
+          <input id="pass" formControlName="pass" type="password" required>
+          <label for="pass">Ingrese su contraseña</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">https</i>
+          <input id="rePass" formControlName="rePass" type="password" required>
+          <label for="rePass">Repita su contraseña</label>
+        </div>
+
+     
+          <div class="input-field col s">
+          <button (click)="cancelarReserva()" class="btn btn-large btn-cambiarPass waves-effect waves-light" type="button" name="action">Aceptar
+            <i class="material-icons right">done</i>
+          </button>
+        </div>
+   </div>
+   </form>
+    

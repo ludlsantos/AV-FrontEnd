@@ -20,7 +20,11 @@
       <li *ngIf="jwtAuthService.NoEstaLogeado()"><a href="/cliente/registrarse"><span class="glyphicon glyphicon-user"></span> Registrarse </a></li>
       <li *ngIf="jwtAuthService.NoEstaLogeado()"><a href="/seguridad/iniciarSesion"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión </a></li>
       <li *ngIf="jwtAuthService.estaLogeado()"><a (click)="onLogout()"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión </a></li> 
+
       <button type="button" class="button" (click)="generarQR()"> generarQR</button>
+
+      
+
 
     </ul>
     
