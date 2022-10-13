@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListadoReservaComponent } from '../listadoReserva/listadoReserva.component';
 import { CrearEventoComponent } from './crear-evento/crear-evento.component';
 import { EditarEventoComponent } from './editar-evento/editar-evento.component';
 import { EliminarEventoComponent } from './eliminar-evento/eliminar-evento.component';
 import { EventosActivosComponent } from './eventos-activos/eventos-activos.component';
+import { GestionarReservaComponent } from './gestionar-reserva/gestionar-reserva.component';
 import { ReservarComponent } from './reservar/reservar.component';
 
 const routes: Routes = [
@@ -35,7 +37,27 @@ component: EditarEventoComponent
 {
   path: 'reservar',
   component: ReservarComponent
-}
+},
+{
+  path: 'gestionar-reserva',
+  component: GestionarReservaComponent
+},
+{
+  path: 'gestionar-reserva/:id', 
+ component: GestionarReservaComponent
+
+},
+
+{
+  path: 'listadoReserva', 
+  component: ListadoReservaComponent
+},
+
+{
+  path: 'listadoReserva/:id', 
+  component: ListadoReservaComponent
+},
+
 ];
 
 @NgModule({

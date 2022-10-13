@@ -3,14 +3,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Reserva } from '../modelos/reserva';
-
-
 import * as constantes from '../modelos/constantes';
+import { EstadoReserva } from '../modelos/estadoReserva';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ReservaService {
+
+  filtroReserva!:"";
 
 
   constructor(private http: HttpClient) { }
@@ -20,7 +22,7 @@ export class ReservaService {
   }
 
   getReservasEvento(idEvento: number): Observable<Reserva>{
-    return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlCorreoReservas + idEvento);
+    return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservasPorEvento + idEvento);
   }
 
   envioCorreo(reservas: Array<Reserva>): Observable<Reserva>{
@@ -49,5 +51,12 @@ cancelarReserva(id: number):Observable<Reserva>{
   return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlCancelarReserva + id);
 }
 
+
+updateEstadoReserva(nuevoEstadoReserva: EstadoReserva): Observable<Reserva> {
+  //const ul = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+reserva.idReserva;
+  const url = `${constantes.apiUrlEstadoReservas}${nuevoEstadoReserva.idReserva}`;
+  alert("esty aca..." + url)
+  return this.http.put<Reserva>(url, nuevoEstadoReserva);
+}
 
 }

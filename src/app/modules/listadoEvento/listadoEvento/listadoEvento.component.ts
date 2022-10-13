@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
 
+
 @Component({
   selector: 'app-listadoEvento',
   templateUrl: './listadoEvento.component.html',
@@ -13,7 +14,7 @@ import { EventoService } from 'src/app/services/evento.service';
 export class ListadoEventoComponent implements OnInit {
   
   title= 'evento';
-public eventos: Array<Evento>=[]
+  public eventos: Array<Evento>=[]
   constructor(
 
     public eventoService: EventoService,

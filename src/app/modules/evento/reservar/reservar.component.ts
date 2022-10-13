@@ -51,6 +51,7 @@ export class ReservarComponent implements OnInit {
     {
       this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
       const parse = JSON.parse(this.correo);
+      alert(parse);
       this.clienteService.getClienteCorreo(parse).subscribe(data => {
         this.cliente = data;
           this.router.params.subscribe(e=>{
@@ -67,7 +68,8 @@ export class ReservarComponent implements OnInit {
             telefono: this.fgValidator.get('telefono')?.value,
             correoElectronico: this.fgValidator.get('email')?.value, 
             cantidadReservas: this.fgValidator.get('cantidadReservas')?.value,
-            fechaReserva: new Date()
+            fechaReserva: new Date(),
+            descripcionEstado: this.fgValidator.get('descEstado')?.value
             }
             if(reserva.evento.nroCupos >= reserva.cantidadReservas){
             var mensaje = confirm("¿Confirma la reserva de " + reserva.cantidadReservas + " asientos para el evento " + reserva.evento.nombre + "?");
