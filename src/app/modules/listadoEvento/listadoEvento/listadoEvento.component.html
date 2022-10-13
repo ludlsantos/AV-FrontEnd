@@ -41,12 +41,13 @@
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let evento of eventos|filtroEvento: 'nombre' : eventoService.filtroEvento">
+          <!-- <tr *ngFor="let evento of eventos|filtroEvento 'nombre' : eventoService.filtroEvento"> -->
+            <tr *ngFor="let evento of eventos">
               <td>{{evento.eventoId}}</td>
               <td>{{evento.nombre}}</td>
               <td>{{evento.descripcion}}</td>
               <td>{{evento.tipo}}</td>
-              <td>{{evento.fecha}}</td>
+              <td>{{evento.fechaHora | date: 'dd/MM/yyyy h:mm a': 'timezone' }}</td> 
               <td>{{evento.duracion}}</td>
               <td>{{evento.callePuerta}}</td>
               <td>{{evento.barrio}}</td>
@@ -67,5 +68,4 @@
             </tr>
       </tbody>
   </table>
-  </div>
 

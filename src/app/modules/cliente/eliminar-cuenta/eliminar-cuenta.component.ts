@@ -43,13 +43,15 @@ export class EliminarCuentaComponent implements OnInit {
           var mensaje = confirm("¿Seguro que desea eliminar su cuenta de forma definitiva?");
           if (mensaje) {
             this.clienteService.eliminarCliente(this.id).subscribe(dataB => {
-              this.LoginService.getLogin(dataA.login.correoElectronico).subscribe(data =>{
-                this.LoginService.eliminarLogin(data.correoElectronico).subscribe(dataC =>{
+             // this.LoginService.getLogin(dataA.login.correoElectronico).subscribe(data =>{
+                this.LoginService.eliminarLogin(dataA.login.correoElectronico).subscribe(dataC =>{
+                  localStorage.removeItem(localStorageJwt.LS_ACCESS_TOKEN);
+                  localStorage.removeItem(localStorageJwt.LS_ROLES);
+                  localStorage.removeItem(localStorageJwt.LS_CORREO);
                   alert("Se eliminó su cuenta correctamente");
               });
                 this.route.navigate(['/home'])
               });
-            });
       
           }
       else {

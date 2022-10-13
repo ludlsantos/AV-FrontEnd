@@ -9,10 +9,7 @@ import * as constantes from '../modelos/constantes';
   providedIn: 'root'
 })
 export class EventoService {
-
-  filtroEvento!:"";
-  
-
+  filtroEvento!: "";
   constructor(private http: HttpClient) { }
 
   crearEvento(evento: Evento): Observable<Evento>{

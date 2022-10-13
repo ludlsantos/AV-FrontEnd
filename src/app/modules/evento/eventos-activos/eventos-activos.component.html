@@ -1,0 +1,69 @@
+
+<form>
+    <div class="container">
+        <div class="row">
+               <div id="custom-search-input">
+       <div class="input-group col-md-12">
+            <input type="text" name = "filtrar" class="  search-query form-control" placeholder="Buscar por nombre..." [(ngModel)]="eventoService.filtroEvento" />
+                   <span class="input-group-btn">
+                         <button class="btn btn-danger" type="button">
+                           <span class=" glyphicon glyphicon-search"></span>
+                         </button>
+                   </span>
+               </div>
+           </div>
+         </div>
+    </div>
+      </form>
+        <h6><i>LISTADO DE EVENTOS</i></h6>
+        <br><br>
+      <table class="table table-hover">
+        <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Tipo</th>
+                <th>Fecha y hora</th>
+                <th>Duracion</th>
+                <th>Calle Puerta</th>
+                <th>Barrio</th>
+                <th>Ciudad</th>
+                <th>Nro Cupos</th>
+                <th>Cant Mesas</th>
+                <th>Cant Asientos</th>
+                <th>Precio</th>
+                <th>Idioma</th>
+                <th>Asignacion</th>
+                <th>Empresa</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+              </tr>
+          </thead>
+          <tbody>
+              <!-- <tr *ngFor="let evento of eventos|filtroEvento 'nombre' : eventoService.filtroEvento"> -->
+                <tr *ngFor="let evento of eventos">
+                  <td>{{evento.eventoId}}</td>
+                  <td>{{evento.nombre}}</td>
+                  <td>{{evento.descripcion}}</td>
+                  <td>{{evento.tipo}}</td>
+                  <td>{{evento.fechaHora | date: 'dd/MM/yyyy h:mm a': 'timezone' }}</td> 
+                  <td>{{evento.duracion}}</td>
+                  <td>{{evento.callePuerta}}</td>
+                  <td>{{evento.barrio}}</td>
+                  <td>{{evento.ciudad}}</td>
+                  <td>{{evento.nroCupos}}</td>
+                  <td>{{evento.cantidadMesas}}</td>
+                  <td>{{evento.cantidadAsientosMesa}}</td>
+                  <td>{{evento.precioAsiento}}</td>
+                  <td>{{evento.idioma}}</td>
+                  <td>{{evento.criterioAsignacion}}</td>
+                  <td>{{evento.empresaCreadora}}</td>
+                  <td>{{evento.imagenPortada}}</td>
+                 <!--<td> <a href="/evento/editar-evento" title="Editar">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </a></td>-->
+                  <td><button type="button" name="buttonReserva" class="btn btn-primary" [routerLink]="['/evento/reservar', evento.eventoId]" [skipLocationChange]="true">Eliminar</button></td>
+                </tr>
+          </tbody>
+      </table>

@@ -16,9 +16,9 @@
     <!-- <li><a href="home">Home </a></li> -->
     <li><a class="subheader">AV - Sistema de asignación y ventas</a></li><br>
     <li><div class="divider"></div></li>
-    <li><a class="tab" routerLink="/evento">Ver eventos disponibles</a></li>   
+    <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/evento/eventos-activos">Ver eventos disponibles</a></li>   
     <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/reservarAsientos">Reservar Asientos</a></li>
-    <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/verMisReservas">Ver mis Reservas</a></li>
+    <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/reservas-cliente">Ver mis Reservas</a></li>
     <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/editarPerfil">Editar Perfil</a></li>
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/registrarse">Registrar Admin</a></li>
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/listadoEvento/listadoEvento">Ver todos los Eventos</a></li>

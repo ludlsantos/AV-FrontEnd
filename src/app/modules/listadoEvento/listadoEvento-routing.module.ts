@@ -4,7 +4,6 @@ import { ListadoEventoComponent } from './listadoEvento/listadoEvento.component'
 
 
 
-
 const routes: Routes = [
 {
   path: 'listadoEvento',

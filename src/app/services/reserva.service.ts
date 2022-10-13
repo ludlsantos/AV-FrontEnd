@@ -45,5 +45,9 @@ get(id: number):Observable<Reserva>{
   return this.http.get<Reserva>(url2);
 }
 
+cancelarReserva(id: number):Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlCancelarReserva + id);
+}
+
 
 }

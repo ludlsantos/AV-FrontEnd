@@ -11,7 +11,6 @@
         <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
       </div>
     </div>
-</section>
 
 <section id="about" class="dos">
   <div class="box">
@@ -93,7 +92,7 @@
          <div class="card-body">
          <h6 class="card-title">{{evento.nombre}}</h6>
          <p class="card-text">{{evento.descripcion}}</p>
-         <p class="card-text">{{evento.fecha}}</p>
+         <p class="card-text">+{{evento.fechaHora | date: 'dd/MM/yyyy h:mm a': 'timezone' }}</p>
          <p class="card-text">{{evento.ciudad}}</p>
          <p type="button" name="buttonReservar" class="btn btn-primary" [routerLink]="['/evento/reservar', evento.eventoId]" [skipLocationChange]="true">Reservar</p>
         
@@ -103,7 +102,6 @@
      
  </section>
 
-  </section>
 
  
  <section id="about" class="dos">

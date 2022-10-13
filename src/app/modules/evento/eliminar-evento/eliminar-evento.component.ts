@@ -21,9 +21,8 @@ export class EliminarEventoComponent implements OnInit {
   rePass!: any;
   correo!: any;
   evento!: any;
-  reservas!: Array<Reserva>;
 
-  constructor(private fb: FormBuilder, private reservaService: ReservaService, private adminService: AdministradorService, private router:ActivatedRoute, private route: Router, private eventoService: EventoService) { }
+  constructor(private fb: FormBuilder, private adminService: AdministradorService, private router:ActivatedRoute, private route: Router, private eventoService: EventoService) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -76,6 +75,8 @@ export class EliminarEventoComponent implements OnInit {
           alert("Ocurrió un error o no tiene permisos para realizar dicha acción")
         }
       });
+     }else{
+      alert("Las contraseñas no coinciden");
      }
 
   }

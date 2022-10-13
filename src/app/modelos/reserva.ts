@@ -1,4 +1,5 @@
 
+import { DeclarationListEmitMode } from "@angular/compiler";
 import { Asiento } from "./asiento";
 
 import { Cliente } from "./cliente";
@@ -17,6 +18,7 @@ export class Reserva {
     telefono!: number;
     correoElectronico!: string;
     cantidadReservas!: number;
+    fechaReserva!: Date;
    
 
 }

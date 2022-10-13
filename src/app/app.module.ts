@@ -18,7 +18,11 @@ import { EliminarEventoComponent } from './modules/evento/eliminar-evento/elimin
 import { EditarEventoComponent } from './modules/evento/editar-evento/editar-evento.component';
 import { ReservarComponent } from './modules/evento/reservar/reservar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { FiltroEventoPipe } from './app.component';
+import { EventosActivosComponent } from './modules/evento/eventos-activos/eventos-activos.component';
+import { ReservasClienteComponent } from './modules/cliente/reservas-cliente/reservas-cliente.component';
+import { CancelarReservaComponent } from './modules/cliente/cancelar-reserva/cancelar-reserva.component';
+import { ManualComponent } from './asignarAsientos/manual/manual.component';
 
 
 
@@ -40,8 +44,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ReservarComponent,
     InicioSesionComponent,
     EliminarEventoComponent,
-
-
+    EventosActivosComponent,
+    ReservasClienteComponent,
+    CancelarReservaComponent,
+    ManualComponent,
 
 
   ],
@@ -54,6 +60,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    
   ],
 
   providers: [CookieService],
