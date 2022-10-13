@@ -1,0 +1,86 @@
+   
+    <div class="container">
+      <form [formGroup]="fgValidator" class="col s12" id="reserva-form">
+        <!-- Modal -->
+          <div class="modal-dialog modal-lg">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+        
+                <h4 class="modal-title">Gestionar Reserva</h4>
+              </div>
+              <table class="table table-hover">
+                  <tbody>
+                      <tr>
+                          <td>                   
+                      <label>Id Reserva</label>
+                      <input id="idReserva" value="{{reserva.idReserva}}" formControlName="idReserva" type="text" readonly>
+                    </td>
+                    </tr>
+                    <tr>
+                       <td>
+                        <label>Nombre</label>
+                      <input id="nombreCliente" value="{{reserva.cliente.nombre}}" formControlName="nombreCliente" type="text" readonly>
+                      </td>
+                    </tr>
+                    <tr>
+                       <td>
+                        <label>Apellido</label><input id="apellido" value="{{reserva.cliente.apellidos}}" formControlName="apellido" type="text" readonly>
+                      </td>
+                      </tr>
+                      <tr>
+                      <td>
+              
+                      <label>Nombre Evento</label>
+                       <input id="nombreEvento" value="{{reserva.evento.nombre}}" formControlName="nombreEvento" type="text" readonly>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                       <label>Estado</label>
+                      <input id="estado" value="{{reserva.estadoReserva}}" formControlName="estado" type="text" readonly >
+                    </td>    
+                    <td>
+                      <label>Notas por cambio de estado</label>
+                     <input id="descEstado" value="{{reserva.descripcionEstado}}" formControlName="descEstado" type="text" readonly >
+                   </td>      
+                        </tr>
+                        
+                  </tbody>
+              </table>
+              <br>
+              <div class="container">         
+              <div class="modal-info center">
+                <a target="_blank" href="img_forest.jpg">
+                  <img src="https://image.shutterstock.com/image-photo/banner-abstract-blurred-photo-conference-260nw-1336362089.jpg" alt="Forest" width="400" height="100">
+                </a>          
+              </div>
+              </div>
+             <div class="modal-body">
+              <label for="fname">Estado de la reserva:</label><br>
+                 <div class="container mt-5">           
+                <select  name="estaReserva" id="estaReserva"  formControlName="estaReserva" class="form-control">                                  
+                      <option value="RECHAZADO">RECHAZADO</option>
+                      <option value="AUTORIZADO">AUTORIZADO</option>
+                      <option value="PENDIENTE">PENDIENTE</option>
+            
+                    </select>
+              </div>
+                </div>  <br>
+             <label for="fname">Descripcion al Autorizar o rechazar reserva:</label><br><br>                     
+                   <div class="modal-footer">
+                    <div class="form-group">
+                      <span class="col-md-1 col-md-offset-1 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+                      <div class="col-md-7">
+                          <textarea class="form-control" id="descripcion" name="descripcion" formControlName="descripcion" placeholder="Agregue una nota para guardar el cambio..." rows="5"></textarea>
+                      </div>
+                  </div>
+                  <button type="submit"  (click)="updEstadoReserva()" class="btn btn-default" data-dismiss="modal"value="Submit">Guardar</button>&nbsp;
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>&nbsp;
+                </div>               
+          </div>
+      </div>
+      </form>
+    </div>
+      
