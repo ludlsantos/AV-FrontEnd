@@ -22,18 +22,14 @@
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">insert_invitation</i>
-        <input id="fecha" formControlName="fecha" type="date" required>
-        <label for="fecha">Fecha</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">query_builder</i>
-        <input id="hora" formControlName="hora" type="time">
-        <label for="hora">Hora</label>
+        <input id="fecha" formControlName="fecha" type="datetime-local" required>
+        <label for="fecha"></label>
+        Fecha y hora
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">timer</i>
-        <input id="duracion" formControlName="duracion" type="number" required>
-        <label for="duracion">Duración(horas)</label> 
+        <input id="duracion" formControlName="duracion" type="text" required>
+        <label for="duracion">Duración(horas)</label>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">location_on</i>

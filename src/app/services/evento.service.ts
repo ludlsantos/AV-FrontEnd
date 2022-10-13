@@ -9,10 +9,7 @@ import * as constantes from '../modelos/constantes';
   providedIn: 'root'
 })
 export class EventoService {
-
-  filtroEvento!:"";
-  
-
+  filtroEvento!: "";
   constructor(private http: HttpClient) { }
 
   crearEvento(evento: Evento): Observable<Evento>{
@@ -68,6 +65,10 @@ update(id:number, evento:Evento): Observable<Evento>{
   
 eliminarEvento(id: number): Observable<Evento>{
   return this.http.delete<Evento>(constantes.miApiUrl + constantes.apiUrlEventos + id);
+}
+
+eventoModificado(id: number): Observable<Evento>{
+  return this.http.get<Evento>(constantes.miApiUrl + constantes.apiUrlCorreoReservas + id);
 }
 
 }

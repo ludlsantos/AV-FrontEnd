@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,8 +21,13 @@ import { ListadoEventoComponent } from './modules/listadoEvento/listadoEvento/li
 import { EliminarEventoComponent } from './modules/evento/eliminar-evento/eliminar-evento.component';
 import { EditarEventoComponent } from './modules/evento/editar-evento/editar-evento.component';
 import { ReservarComponent } from './modules/evento/reservar/reservar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FiltroEventoPipe } from './app.component';
+import { EventosActivosComponent } from './modules/evento/eventos-activos/eventos-activos.component';
+import { ReservasClienteComponent } from './modules/cliente/reservas-cliente/reservas-cliente.component';
+import { CancelarReservaComponent } from './modules/cliente/cancelar-reserva/cancelar-reserva.component';
+import { ManualComponent } from './asignarAsientos/manual/manual.component';
 import { GestionarReservaComponent } from './modules/evento/gestionar-reserva/gestionar-reserva.component';
-
 
 
 
@@ -40,6 +47,12 @@ import { GestionarReservaComponent } from './modules/evento/gestionar-reserva/ge
         EditarEventoComponent,
         EliminarEventoComponent,
         ReservarComponent,
+    InicioSesionComponent,
+    EliminarEventoComponent,
+    EventosActivosComponent,
+    ReservasClienteComponent,
+    CancelarReservaComponent,
+    ManualComponent,
    GestionarReservaComponent,
      
 
@@ -55,6 +68,7 @@ import { GestionarReservaComponent } from './modules/evento/gestionar-reserva/ge
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    
   ],
 
   providers: [CookieService],

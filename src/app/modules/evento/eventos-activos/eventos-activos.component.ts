@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
 
-
 @Component({
-  selector: 'app-listadoEvento',
-  templateUrl: './listadoEvento.component.html',
-  styleUrls: ['./listadoEvento.component.css']
+  selector: 'app-eventos-activos',
+  templateUrl: './eventos-activos.component.html',
+  styleUrls: ['./eventos-activos.component.css']
 })
 
-export class ListadoEventoComponent implements OnInit {
+export class EventosActivosComponent implements OnInit {
+
   
   title= 'evento';
-  public eventos: Array<Evento>=[]
+public eventos: Array<Evento>=[]
   constructor(
 
     public eventoService: EventoService,
@@ -25,9 +24,13 @@ export class ListadoEventoComponent implements OnInit {
 
     this.eventoService.getEventos().subscribe((resp: any)=> {
       console.log(resp)
-      this.eventos = resp
-      
-    })
+      for (let eventoA of resp){
+        if(eventoA.estadoEvento == "Activo"){
+           this.eventos.push(eventoA)
+        }
+      }
+        
+      });
    }
 
   ngOnInit(): void {

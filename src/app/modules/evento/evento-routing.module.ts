@@ -4,6 +4,7 @@ import { ListadoReservaComponent } from '../listadoReserva/listadoReserva.compon
 import { CrearEventoComponent } from './crear-evento/crear-evento.component';
 import { EditarEventoComponent } from './editar-evento/editar-evento.component';
 import { EliminarEventoComponent } from './eliminar-evento/eliminar-evento.component';
+import { EventosActivosComponent } from './eventos-activos/eventos-activos.component';
 import { GestionarReservaComponent } from './gestionar-reserva/gestionar-reserva.component';
 import { ReservarComponent } from './reservar/reservar.component';
 
@@ -20,6 +21,10 @@ const routes: Routes = [
 {
   path: 'eliminar-evento/:id', 
 component: EliminarEventoComponent
+},
+{
+  path: 'eventos-activos', 
+component: EventosActivosComponent
 },
 {
   path: 'editar-evento', 

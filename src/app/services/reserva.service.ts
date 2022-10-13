@@ -47,6 +47,10 @@ get(id: number):Observable<Reserva>{
   return this.http.get<Reserva>(url2);
 }
 
+cancelarReserva(id: number):Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlCancelarReserva + id);
+}
+
 
 updateEstadoReserva(nuevoEstadoReserva: EstadoReserva): Observable<Reserva> {
   //const ul = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+reserva.idReserva;

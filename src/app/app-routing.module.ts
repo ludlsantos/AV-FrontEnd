@@ -15,6 +15,7 @@ import { SeccionesHomeComponent } from './secciones-home/secciones-home.componen
 import { ClienteModModule } from './modules/editar-cliente/clienteMod.module';
 import { ListadoEventoModule } from './modules/listadoEvento/listadoEvento.module';
 import { ListadoReservaModule } from './modules/listadoReserva/listadoReserva.module';
+import { ManualComponent } from './asignarAsientos/manual/manual.component';
 
 const routes: Routes = [
 
@@ -74,6 +75,10 @@ path: 'admin',
 {
   path: 'listadoReserva',
   loadChildren: () => import('./modules/listadoReserva/listadoReserva.module').then(m => ListadoReservaModule)
+},
+{
+  path: 'manual',
+  component: ManualComponent,
 },
 
 

@@ -64,11 +64,11 @@ export class ReservarComponent implements OnInit {
             cliente: this.cliente,
             evento: this.evento,
             estadoReserva: "Pendiente de pago",
-            comprobantePago: "null",
             nombreEmpresa: this.fgValidator.get('nombreEmpresa')?.value,
             telefono: this.fgValidator.get('telefono')?.value,
             correoElectronico: this.fgValidator.get('email')?.value, 
             cantidadReservas: this.fgValidator.get('cantidadReservas')?.value,
+            fechaReserva: new Date(),
             descripcionEstado: this.fgValidator.get('descEstado')?.value
             }
             if(reserva.evento.nroCupos >= reserva.cantidadReservas){
