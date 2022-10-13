@@ -23,9 +23,9 @@
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/registrarse">Registrar Admin</a></li>
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/listadoEvento/listadoEvento">Ver todos los Eventos</a></li>
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/evento/crearEvento">Crear Eventos</a></li>
-    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/gestiónDePagos">Gestión de Pagos</a></li>
+    <li><a class="tab" routerLink="/comprobanteDePago">Ingresar Pago</a></li>
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/listadoReserva/listadoReserva">Ver todos las Reservas</a></li>
-    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/AsignaciónManualDeAsientos">Asignación Manual de Asientos</a></li>
+    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/asignacionManualAsientos/:id">Asignación Manual de Asientos</a></li>
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/VerAsignaciónDeMesas">Ver Asignación de Mesas</a></li>
     <li *ngIf="jwtAuthService.esCliente()"><a class="waves-effect" href="/seguridad/cambiarClave">Cambiar clave</a></li>
     <li><a href = "home" class="modal-close waves-effect waves-green btn-flat">Close</a></li>

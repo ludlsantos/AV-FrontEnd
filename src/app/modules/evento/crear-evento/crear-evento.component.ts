@@ -66,7 +66,14 @@ export class CrearEventoComponent implements OnInit {
         fechaHora: this.fgValidator.get('fecha')?.value,
         duracion: this.fgValidator.get('duracion')?.value + " horas",
         fecha: this.fgValidator.get('fecha')?.value,
+
+
+        hora: "12:12:12",
         duracion: this.fgValidator.get('duracion')?.value,
+
+
+        duracion: this.fgValidator.get('duracion')?.value,
+
         callePuerta: this.fgValidator.get('callePuerta')?.value,
         barrio: this.fgValidator.get('barrio')?.value,
         ciudad: this.fgValidator.get('ciudad')?.value,
@@ -80,6 +87,7 @@ export class CrearEventoComponent implements OnInit {
         empresaCreadora: this.admin.nombreEmpresa,
         estadoEvento: "Activo"
         empresaCreadora: "Traer de admin logueado",
+
 
       }
       // evento.mesas!.length = evento.cantidadMesas;

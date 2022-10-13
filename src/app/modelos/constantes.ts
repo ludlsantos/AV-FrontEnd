@@ -16,6 +16,12 @@ export const apiUrlIdenidad = apiBase + 'Identidades/login/';
 export const apiUrlReservas = apiBase + 'Reservas/';
 export const apiUrlCorreoReservas = apiBase + 'EventoModificado/';
 export const apiUrlReservasId = apiUrlReservas + 'id';
+
+export const apiUrlComprobanteDePagp = apiBase + 'ComprobanteDePago/Subir';
+export const apiUrlGenerarQR = apiBase + 'GenerarQR/';
+export const apiUrlAsignacionManual = apiBase + 'AsignacionManual';
+
+
 export const apiUrlCancelarReserva = apiBase + 'CancelarReserva/';
 export const apiUrlCorreoReservas = apiBase + 'EventoCancelado/';
 

@@ -89,6 +89,27 @@ export class EditarEventoComponent implements OnInit {
     
     update(){
      const allEvento: Evento = {
+
+       eventoId: this.eventoident,
+       nombre: this.fgValidator.get('nombre')?.value,
+       descripcion: this.fgValidator.get('descripcion')?.value,
+       tipo: this.fgValidator.get('tipo')?.value,
+       fecha: this.fgValidator.get('fecha')?.value,
+       duracion: this.fgValidator.get('duracion')?.value,
+       callePuerta: this.fgValidator.get('callePuerta')?.value,
+       barrio: this.fgValidator.get('barrio')?.value,
+       ciudad: this.fgValidator.get('ciudad')?.value,
+       nroCupos: this.fgValidator.get('nroCupos')?.value,
+       cantidadMesas: this.fgValidator.get('cantidadMesas')?.value,
+       cantidadAsientosMesa: this.fgValidator.get('cantidadAsientosMesa')?.value,
+       precioAsiento: this.fgValidator.get('precioAsiento')?.value,
+       idioma: this.fgValidator.get('idioma')?.value,
+       criterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
+       imagenPortada: this.fgValidator.get('archivosubido')?.value,
+       empresaCreadora: "Traer de admin logueado",
+       hora: ''
+     }   
+
         eventoId: this.eventoident,
         nombre: this.fgValidator.get('nombre')?.value,
         descripcion: this.fgValidator.get('descripcion')?.value,
@@ -108,6 +129,7 @@ export class EditarEventoComponent implements OnInit {
         empresaCreadora: "Traer de admin logueado",
         estadoEvento: "Activo"
       }   
+
       this.eventoService.update( this.eventoident, allEvento).subscribe(data => {
           this.eventoService.eventoModificado(this.evento.eventoId!).subscribe(data =>{
             alert('Evento actualizado con éxito');
@@ -126,7 +148,10 @@ export class EditarEventoComponent implements OnInit {
 }
 
 
-/*
+
+
+
+/* 
 cargar():void{   
   this.activatedRoute.params.subscribe(
     //almacenar en una variable lo que me trae desde el enlace que viene con el id
@@ -152,9 +177,16 @@ cargar():void{
   
        
     }
+
+    
+ */
+
+  }
+
   
   }
   
   */
 
 }
+

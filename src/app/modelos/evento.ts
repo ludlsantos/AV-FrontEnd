@@ -11,6 +11,17 @@ export class Evento {
     imagenPortada!: File;
     fecha!: string;
     duracion!: string;
+
+
+    imagenPortada!: File;
+    hora!: string;
+
+
+
+
+
+
+
     callePuerta!: string;
     barrio!: string;
     ciudad!: string;
@@ -24,5 +35,10 @@ export class Evento {
     mesas?: Mesa[];
     estadoEvento!: string;
 
+
+
+
+
     imagenPortada!: File;
+
 }
