@@ -110,6 +110,7 @@ export class EditarEventoComponent implements OnInit {
       this.eventoService.update( this.eventoident, allEvento).subscribe(data => {
         alert(data)
         alert('Evento actualizado con éxito');
+        this.router.navigate(['/listadoEvento/listadoEvento']);
         this.fgValidator.reset();
       });
  

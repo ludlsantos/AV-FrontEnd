@@ -1,22 +1,51 @@
-<div>
+
+<form>
+  <div class="container">
+    <div class="row">
+             <div id="custom-search-input">
+     <div class="input-group col-md-12">
+          <input type="text" name = "filtrar" class="  search-query form-control" placeholder="Buscar por estado ..."  [(ngModel)]="reservaService.filtroReserva" />
+                 <span class="input-group-btn">
+                       <button class="btn btn-danger" type="button">
+                         <span class=" glyphicon glyphicon-search"></span>
+                       </button>
+                 </span>
+             </div>
+         </div>
+     </div>
+  </div>
+    </form>
     <table class="table table-hover">
       <thead>
             <tr>
-              <th>ID</th>
-              <th>Nombre cliente</th>
+              <th>ID RESERVA</th>
+              <th>ID EVENTO</th>
+              <th>Nombre Cliente</th>
+              <th>Apellido Cliente</th>
               <th>Nombre evento </th>
-              <th>Estado de reseerva</th>
-              <th>Asiento</th>
+              <th>Estado de reserva</th>
+              <th>Descripcion del Estado</th>
+              <th>Autorizar Reserva</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let reserva of reservas">
+            <tr *ngFor="let reserva of reservasPorEvento|filtroReserva: 'estadoReserva': reservaService.filtroReserva ">
                 <td>{{reserva.idReserva}}</td>
-                <td>{{reserva.cliente}}</td>
+                <td>{{reserva.evento.eventoId}}</td>
+                <td>{{reserva.cliente.nombre}}</td>
+                <td>{{reserva.cliente.apellidos}}</td>
+                <td>{{reserva.evento.nombre}}</td>
                 <td>{{reserva.estadoReserva}}</td>
-                <td>{{reserva.asiento}}</td>
-                <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/reserva/eliminar-reserva']" >Eliminar</button></td>
+                <td>{{reserva.descripcionEstado}}</td>
+               
+
+                <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/evento/gestionar-reserva', reserva.idReserva]" [skipLocationChange]="true" >Gestionar Reserva</button></td>
+                
+                <!--<td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/reserva/eliminar-reserva']" [skipLocationChange]="true" >Cancelar</button></td>-->
               </tr>
+              
         </tbody>
     </table>
-    </div>
+
+
+    

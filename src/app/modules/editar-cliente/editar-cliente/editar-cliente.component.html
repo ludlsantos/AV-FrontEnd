@@ -3,54 +3,54 @@
     <legend>Editar Cliente</legend>
     <div class="row">
     <form [formGroup]="fgValidator" class="col s12" id="reg-form">
+    
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">account_circle</i>
-          <input  formControlName="clienteId"/>
-          <i>ID</i>
-        </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
+          <label for="fname">NOMBRE:</label><br>
           <input id="name" formControlName="nombre" type="text" required>
-          <i>Nombre</i>
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">account_circle</i>
+          <label for="fname">APELLIDO:</label><br>
           <input id="apellido" formControlName="apellido" type="text" required>
-          <i>Apellido</i>
         </div>
       </div>
+      
+      <div class="input-field col s6"><br>
+        <i class="material-icons prefix">portrait</i> <br>     
+                     <select  name="tipoDocumento" id="tipoDocumento"  formControlName="tipoDocumento" class="form-control" >                                  
+                           <option value="CEDULA">CEDULA</option>
+                           <option value="PASAPORTE">PASAPORTE</option>         
+                         </select>
+                         <label for="fname">Tipo de documento:</label>
+                   </div>
+
       <div class="input-field col s6">
         <i class="material-icons prefix">portrait</i>
-        <input id="tipoDocumento" formControlName="tipoDocumento" type="text" required>
-        <i>Tipo documento</i>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">portrait</i>
+        <label for="fname">NRO DE DOCUMENTO:</label><br>
         <input id="nroDocumento" formControlName="nroDocumento" type="number" required>
-        <i>Numero de documento</i>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">phone</i>
+        <label for="fname">TELEFONO:</label><br>
         <input id="telefono" formControlName="telefono" type="number" required>
-        <i>Teléfono</i>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">business_center</i>
+        <label for="fname">CARGO/PROFESION:</label><br>
         <input id="cargoProfesion" formControlName="cargoProfesion" type="text" required>
-        <i>Cargo/Profesión</i>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">domain</i>
+        <label for="fname">EMPRESA:</label><br>
         <input id="empresa" formControlName="empresa" type="text" required>
-        <i>Empresa</i>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">email</i>
-          <input id="email" formControlName="email" type="email" required>
-          <i>Correo electrónico</i>
+          <label for="fname">CORREO ELECTRONICO:</label><br>
+          <input id="email" formControlName="email" type="email" required readonly>
         </div>
       </div>
       <div class="row">
@@ -59,12 +59,6 @@
         <label for="file">Foto de perfil</label><br>
           <input type="file" name="archivosubido" >
         <br><br>
-          
-          <div class="input-field col s">
-          <button (click)="getDataOfRecord()" class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">BUSCAR
-            <i class="material-icons right">done</i>
-          </button><hr>  
-        </div>
         <div class="input-field col s">
           <button (click)="EditarCliente()" class="btn btn-large  btn-register waves-effect waves-light" type="button" name="action">Actualizar
             <i class="material-icons right" >done</i>

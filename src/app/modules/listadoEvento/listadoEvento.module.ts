@@ -4,9 +4,9 @@ import { ListadoEventoRoutingModule } from './listadoEvento-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { FiltroEventoPipe } from 'src/app/app.component';
-
 import { RouterModule } from '@angular/router';
 import { ListadoEventoComponent } from './listadoEvento/listadoEvento.component';
+
 
 
 @NgModule({
@@ -14,6 +14,7 @@ import { ListadoEventoComponent } from './listadoEvento/listadoEvento.component'
 
     ListadoEventoComponent,
     FiltroEventoPipe,
+
     
   ],
   imports: [

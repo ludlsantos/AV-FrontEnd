@@ -5,6 +5,10 @@ import { ListadoReservaComponent } from './listadoReserva.component';
 
 const routes: Routes = [
 {
+    path: 'listadoReserva/:id', 
+    component: ListadoReservaComponent
+  },
+  {
   path: 'listadoReserva',
   component: ListadoReservaComponent
 }

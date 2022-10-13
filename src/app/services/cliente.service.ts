@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, tap } from 'rxjs';
 import { Cliente } from '../modelos/cliente';
 import * as constantes from '../modelos/constantes';
+import { EditarCliente } from '../modelos/editarCliente';
 import { Login } from '../modelos/login';
 
 
@@ -27,7 +28,7 @@ getClienteCorreo(correoElectronico: string): Observable<Cliente>{
 
 putClienteCorreo(correoElectronico: string): Observable<Login>{
   const ul = `${constantes.miApiUrl}${constantes.apiUrlGetClienteCorreo}${correoElectronico}`;
-  alert("esty aca..." + ul)
+  alert("esty aca.put cliente correo" + ul)
   return this.http.put<Login>(ul, Login);
 
 }
@@ -38,19 +39,31 @@ eliminarCliente(id: number): Observable<Cliente>{
  
 
 
-getRecordById(id: number): Observable<Cliente> {
-  const url = `${constantes.miApiUrl}${constantes.apiUrlClientes}${id}`;
-  return this.http.get<Cliente>(url);
-}
+//getRecordById(id: number): Observable<Cliente> {
+  //const url = `${constantes.miApiUrl}${constantes.apiUrlClientes}${id}`;
+  //return this.http.get<Cliente>(url);
+//}
 
-updateCliente(id:number, cliente:Cliente): Observable<Cliente>{
-  const ul = `${constantes.miApiUrl}${constantes.apiUrlClientes}`+cliente.clienteId;
+updateCliente(editarCliente: EditarCliente): Observable<Cliente>{
+  const ul = `${constantes.miApiUrl}${constantes.apiUrlClientes}`+editarCliente.clienteId;
   alert("esty aca..." + ul)
-  return this.http.put<Cliente>(ul, cliente);
-
- // return this.http.put
-
-}
+  return this.http.put<Cliente>(ul, editarCliente);
 
 
 }
+
+
+
+
+/*updateCliente(id: number, editarCliente: EditarCliente): Observable<Cliente> {
+  //const ul = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+reserva.idReserva;
+  const urlC = `${constantes.apiUrlEditarCliente}${editarCliente.clienteId}`;
+  alert("esty aca..." + urlC)
+  return this.http.put<Cliente>(urlC, editarCliente);
+}
+*/
+
+
+
+}
+

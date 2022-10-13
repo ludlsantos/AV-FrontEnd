@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from 'src/app/modelos/cliente';
+import { EditarCliente } from 'src/app/modelos/editarCliente';
 import { Login } from 'src/app/modelos/login';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { LoginService } from 'src/app/services/login.service';
+import { localStorageJwt } from 'src/app/static/local-storage';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -13,15 +15,19 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class EditarClienteComponent implements OnInit {
 
+//  tipoDocumento = [
+  //  {name:'CI', description: ''},
+    //{name: 'PASAPORTE', description: ''},
+  
+  //];
+  //selected: string = 'CI';
   fgValidator!: FormGroup;
-
-  id: number;
+  correo!:string;
+  id!: any;
   correoElectronico!: string;
   constructor(
-    private fb: FormBuilder, private clienteService: ClienteService, private loginService: LoginService,
-    private router: Router,
-    private route: ActivatedRoute) {
-      this.id = this.route.snapshot.params["clienteId"];
+    private fb: FormBuilder, private clienteService: ClienteService,  private activatedRoute:ActivatedRoute, private loginService: LoginService,) {
+   
     }
 
 
@@ -29,7 +35,7 @@ export class EditarClienteComponent implements OnInit {
     
     this.FormBuilding();
       this.getDataOfRecord();
-      this.EditarCliente();
+     // this.EditarCliente();
   }
 
   FormBuilding(){
@@ -48,38 +54,35 @@ export class EditarClienteComponent implements OnInit {
 
 //traigo los datos
   getDataOfRecord(){
-    this.id=this.fgValidator.get('clienteId')?.value;
-   if (this.id){
 
-  this.clienteService.getRecordById(this.fgValidator.get('clienteId')?.value).subscribe(
-    data =>{
-   this.fgv['clienteId'].setValue(data.clienteId);
-   this.fgv['tipoDocumento'].setValue(data.tipoDocumento);
-   this.fgv['nroDocumento'].setValue(data.nroDocumento);
-   this.fgv['nombre'].setValue(data.nombre);
-   this.fgv['apellido'].setValue(data.apellidos);
-   this.fgv['telefono'].setValue(data.telefono);
-   this.fgv['cargoProfesion'].setValue(data.profesionCargo);
-   this.fgv['empresa'].setValue(data.nombreEmpresa);
-   this.fgv['email'].setValue(data.login);
+    this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
+        const parse = JSON.parse(this.correo)
+        this.clienteService.getClienteCorreo(parse).subscribe(dataA => {
+            this.id = dataA.clienteId;
 
-   return data;
+   this.fgv['clienteId'].setValue(dataA.clienteId);
+   this.fgv['tipoDocumento'].setValue(dataA.tipoDocumento);
+   this.fgv['nroDocumento'].setValue(dataA.nroDocumento);
+   this.fgv['nombre'].setValue(dataA.nombre);
+   this.fgv['apellido'].setValue(dataA.apellidos);
+   this.fgv['telefono'].setValue(dataA.telefono);
+   this.fgv['cargoProfesion'].setValue(dataA.profesionCargo);
+   this.fgv['empresa'].setValue(dataA.nombreEmpresa);
+   this.fgv['email'].setValue(dataA.login.correoElectronico);
+
+   return dataA;
    
     }
   )
-}
   }
- 
+
    //toma datos del formulario y los modificar
-     EditarCliente(){
-      var loginHijo: Login = {
-        rol: "Cliente",
-        contraseña: this.fgValidator.get('password')?.value,
-        correoElectronico: this.fgValidator.get('email')?.value
-    }
-      const allCliente: Cliente = {
-        
-        clienteId: this.id,
+     EditarCliente(){ 
+
+    
+      const allCliente: EditarCliente = {
+      
+       clienteId: this.id,
         tipoDocumento: this.fgValidator.get('tipoDocumento')?.value,
         nroDocumento: this.fgValidator.get('nroDocumento')?.value,
         nombre: this.fgValidator.get('nombre')?.value,
@@ -88,22 +91,16 @@ export class EditarClienteComponent implements OnInit {
         profesionCargo: this.fgValidator.get('cargoProfesion')?.value,
         nombreEmpresa: this.fgValidator.get('empresa')?.value,
         fotoPerfil: this.fgValidator.get('archivosubido')?.value,
-        login: loginHijo,
-       }
-
-      alert('allCliente')
-     // this.clienteService.getClienteCorreo(loginHijo.correoElectronico).subscribe(data=> {
-        this.clienteService.putClienteCorreo(loginHijo.correoElectronico).subscribe(data=> {
-          alert(data)
-      })
     
-       this.clienteService.updateCliente( this.id , allCliente).subscribe(data => {
-        alert(data)
+       }
+       console.log(this.id)
+       this.clienteService.updateCliente(allCliente).subscribe(data => {
         alert('Cliente actualizado con éxito');
         this.fgValidator.reset();
       });
       
     }
+    
 
 
   get fgv(){

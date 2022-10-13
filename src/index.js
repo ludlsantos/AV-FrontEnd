@@ -17,3 +17,11 @@ window.onscroll = () => {
     }
   });
 };
+
+
+function myFunction() {
+  document.getElementById("myCheck").click();
+  console.log("LLegamos");
+}
+
+$filter('orderBy')(collection, expression, reverse, comparator);

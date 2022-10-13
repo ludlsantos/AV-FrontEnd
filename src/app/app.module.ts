@@ -19,6 +19,8 @@ import { ListadoEventoComponent } from './modules/listadoEvento/listadoEvento/li
 import { EliminarEventoComponent } from './modules/evento/eliminar-evento/eliminar-evento.component';
 import { EditarEventoComponent } from './modules/evento/editar-evento/editar-evento.component';
 import { ReservarComponent } from './modules/evento/reservar/reservar.component';
+import { GestionarReservaComponent } from './modules/evento/gestionar-reserva/gestionar-reserva.component';
+
 
 
 
@@ -38,6 +40,7 @@ import { ReservarComponent } from './modules/evento/reservar/reservar.component'
         EditarEventoComponent,
         EliminarEventoComponent,
         ReservarComponent,
+   GestionarReservaComponent,
      
 
 

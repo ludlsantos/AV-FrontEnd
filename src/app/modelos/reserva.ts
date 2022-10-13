@@ -1,6 +1,5 @@
 
 import { Asiento } from "./asiento";
-
 import { Cliente } from "./cliente";
 import { Evento } from "./evento";
 
@@ -12,13 +11,14 @@ export class Reserva {
     evento!: Evento;
     estadoReserva!: string;
     comprobantePago?: string;
-    asiento?: Asiento;
-    nombres!: string;
-    apellidos!: string;
+    asientos?: Asiento[];
+    nombreEmpresa!: string;
     telefono!: number;
     correoElectronico!: string;
     cantidadReservas!: number;
-    tipoDocumento!: number;
-    documento!: number;
+    descripcionEstado!: string;
+
+
    
+
 }
