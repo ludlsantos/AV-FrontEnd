@@ -5,19 +5,19 @@
     <form [formGroup]="fgValidator" class="col s12" id="reg-form">
     
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s8">
           <i class="material-icons prefix">account_circle</i>
           <label for="fname">NOMBRE:</label><br>
           <input id="name" formControlName="nombre" type="text" required>
         </div>
-        <div class="input-field col s6">
+        <div class="input-field col s8">
           <i class="material-icons prefix">account_circle</i>
           <label for="fname">APELLIDO:</label><br>
           <input id="apellido" formControlName="apellido" type="text" required>
         </div>
       </div>
       
-      <div class="input-field col s6"><br>
+      <div class="input-field col s8"><br>
         <i class="material-icons prefix">portrait</i> <br>     
                      <select  name="tipoDocumento" id="tipoDocumento"  formControlName="tipoDocumento" class="form-control" >                                  
                            <option value="CEDULA">CEDULA</option>
@@ -26,40 +26,49 @@
                          <label for="fname">Tipo de documento:</label>
                    </div>
 
-      <div class="input-field col s6">
+      <div class="input-field col s8">
         <i class="material-icons prefix">portrait</i>
         <label for="fname">NRO DE DOCUMENTO:</label><br>
         <input id="nroDocumento" formControlName="nroDocumento" type="number" required>
       </div>
-      <div class="input-field col s6">
+      <div class="input-field col s8">
         <i class="material-icons prefix">phone</i>
         <label for="fname">TELEFONO:</label><br>
         <input id="telefono" formControlName="telefono" type="number" required>
       </div>
-      <div class="input-field col s6">
+      <div class="input-field col s8"><br><br>
         <i class="material-icons prefix">business_center</i>
-        <label for="fname">CARGO/PROFESION:</label><br>
-        <input id="cargoProfesion" formControlName="cargoProfesion" type="text" required>
-      </div>
-      <div class="input-field col s6">
+                     <select  name="cargoProfesion" id="cargoProfesion"  formControlName="cargoProfesion" class="form-control" >                                  
+                           <option value="AGRONOMIA Y VETERINARIA">AGRONOMIA Y VETERINARIA</option>
+                           <option value="ARTES Y HUMANIDADES">ARTES Y HUMANIDADES</option> 
+                           <option value="CIENCIAS NATURALES, EXACTAS Y DE LA COMPUTACION">CIENCIAS NATURALES, EXACTAS Y DE LA COMPUTACION</option> 
+                           <option value="CIENCIAS SOCIALES">CIENCIAS SOCIALES</option> 
+                           <option value="EDUCACION">EDUCACION</option> 
+                           <option value="INGENIERIA">INGENIERIA</option> 
+                           <option value="SERVICIOS">SERVICIOS</option> 
+                           <option value="OTROS">OTROS</option>         
+                         </select>
+                         <label for="fname">Cargo/Profesión:</label>
+                   </div> 
+      <div class="input-field col s8">
         <i class="material-icons prefix">domain</i>
         <label for="fname">EMPRESA:</label><br>
         <input id="empresa" formControlName="empresa" type="text" required>
       </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s8">
           <i class="material-icons prefix">email</i>
           <label for="fname">CORREO ELECTRONICO:</label><br>
           <input id="email" formControlName="email" type="email" required readonly>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s8">
       <form action="" method="post" enctype="multipart/form-data" target="_blank">
         <label for="file">Foto de perfil</label><br>
           <input type="file" name="archivosubido" >
         <br><br>
-        <div class="input-field col s">
+        <div class="input-field col s8">
           <button (click)="EditarCliente()" class="btn btn-large  btn-register waves-effect waves-light" type="button" name="action">Actualizar
             <i class="material-icons right" >done</i>
           </button>

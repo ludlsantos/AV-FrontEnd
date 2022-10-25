@@ -32,13 +32,23 @@ export class ReservaService {
   crearReserva(reserva: Reserva): Observable<Reserva>{
     return this.http.post<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas, reserva);
 }
-url = `${constantes.miApiUrl}${constantes.apiUrlReservas}`
+ url = `${constantes.miApiUrl}${constantes.apiUrlReservas}`
 
-getReservas(){
+ getReservas(){
   let header = new HttpHeaders()
   .set('Type-content', 'aplication/json')
   return this.http.get(this.url, {
     headers: header
+
+  } 
+    );
+ }
+
+ get(id: number):Observable<Reserva>{
+  const url2 = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+id;
+  return this.http.get<Reserva>(url2);
+ }
+
  } 
    );
 }
@@ -62,11 +72,14 @@ cancelarReserva(id: number):Observable<Reserva>{
 }
 
 
-updateEstadoReserva(nuevoEstadoReserva: EstadoReserva): Observable<Reserva> {
-  //const ul = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+reserva.idReserva;
+ updateEstadoReserva(nuevoEstadoReserva: EstadoReserva): Observable<Reserva> {
   const url = `${constantes.apiUrlEstadoReservas}${nuevoEstadoReserva.idReserva}`;
-  alert("esty aca..." + url)
   return this.http.put<Reserva>(url, nuevoEstadoReserva);
+
+ }
+
+ }
+
 
 }
 
@@ -74,3 +87,4 @@ getReservasActivas(): Observable<Reserva>{
   return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlAsignacionManual);
 }
 }
+

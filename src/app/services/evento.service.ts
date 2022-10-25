@@ -17,6 +17,7 @@ export class EventoService {
     return this.http.post<Evento>(constantes.miApiUrl + constantes.apiUrlEventos, evento);
   }
 
+
   url = `${constantes.miApiUrl}${constantes.apiUrlEventos}`
 
    getEventos(){
@@ -27,13 +28,6 @@ export class EventoService {
     } 
       );
    }
-   
-  /* getEventoId(id: String): Observable<Evento> {
-    const url = `${constantes.apiUrlEventosId}${id}`;
-    return this.http.get<Evento>(this.url);
-  }
-  */
-
 
  get(id: number):Observable<Evento>{
     const urll = `${constantes.miApiUrl}${constantes.apiUrlEventos}`+id;
@@ -44,25 +38,11 @@ export class EventoService {
     return this.http.get<Evento>(constantes.miApiUrl + constantes.apiUrlEventos + id);
   }
 
-  /*
-  putRecordById(form: Evento): Observable<ResponseInit> {
-    let url = `${constantes.miApiUrl}${constantes.apiUrlEventos}`;
-    return this.http.put<ResponseInit>(url,form);
-  }
-*/
-
-
 update(id:number, evento:Evento): Observable<Evento>{
   const ul = `${constantes.miApiUrl}${constantes.apiUrlEventos}`+evento.eventoId;
   alert("esty aca..." + ul)
   return this.http.put<Evento>(ul, evento);
-
- // return this.http.put
-
 }
-
-
-
   
 eliminarEvento(id: number): Observable<Evento>{
   return this.http.delete<Evento>(constantes.miApiUrl + constantes.apiUrlEventos + id);

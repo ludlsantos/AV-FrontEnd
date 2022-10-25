@@ -149,8 +149,6 @@ export class EditarEventoComponent implements OnInit {
 
 
 
-
-
 /* 
 cargar():void{   
   this.activatedRoute.params.subscribe(
@@ -189,4 +187,5 @@ cargar():void{
   */
 
 }
+
 
