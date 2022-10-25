@@ -1,100 +1,130 @@
-<fieldset>
-    <legend>Crear un nuevo evento</legend>
-    <div class="row">
-    <form [formGroup]="fgValidator" class="col s12" id="evento-form">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">confirmation_number</i>
-          <input id="nombre" formControlName="nombre" type="text" required>
-          <label for="nombre">Nombre del evento</label>
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="descripcion" formControlName="descripcion" type="text" required>
-          <label for="descripcion">Descripción</label>
-        </div>
 
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">hdr_strong</i>
-        <input id="tipo" formControlName="tipo" type="text" required>
-        <label for="tipo">Tipo</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">insert_invitation</i>
-        <input id="fecha" formControlName="fecha" type="date" required>
-        <label for="fecha">Fecha</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">query_builder</i>
-        <input id="hora" formControlName="hora" type="time">
-        <label for="hora">Hora</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">timer</i>
-        <input id="duracion" formControlName="duracion" type="number" required>
-        <label for="duracion">Duración(horas)</label> 
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">location_on</i>
-        <input id="callePuerta" formControlName="callePuerta" type="text" required>
-        <label for="callePuerta">Calle y numero de puerta</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">map</i>
-        <input id="barrio" formControlName="barrio" type="text" required>
-        <label for="barrio">Barrio</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">location_searching</i>
-        <input id="ciudad" formControlName="ciudad" type="text" required>
-        <label for="ciudad">Ciudad</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">supervisor_account</i>
-        <input id="cantidadCupos" formControlName="cantidadCupos" type="number" required>
-        <label for="cantidadCupos">Cantidad de cupos</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">view_column</i>
-        <input id="cantidadMesas" formControlName="cantidadMesas" type="number" required>
-        <label for="cantidadMesas">Cantidad de mesas</label>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">view_module</i>
-          <input id="cantidadAsientosMesa" formControlName="cantidadAsientosMesa" type="number" minlength="1" required>
-          <label for="cantidadAsientosMesa">Cantidad de asientos por mesa</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">shopping_cart</i>
-          <input id="precio" formControlName="precio" type="number" required>
-          <label for="precio">Precio del asiento</label>
-        </div>
-        <div class="input-field col s12">
-          <i class="material-icons prefix">translate</i>
-          <input id="idioma" formControlName="idioma" type="text" minlength="3" required>
-          <label for="idioma">Idioma</label>
-        </div>
-      </div>
-      <div class="input-field col s12">
-        <i class="material-icons prefix">widgets</i>
-        <input id="criterioAsignacion" formControlName="criterioAsignacion" type="text" minlength="3" required>
-        <label for="criterioAsignacion">Criterio de asignacion de asientos</label>
-  
-    </div>
-      <div class="row">
-        <div class="input-field col s12">
-      <form action="" method="post" enctype="multipart/form-data" target="_blank">
-        <label for="file">Foto de portada</label><br>
-          <input type="file" name="archivosubido" >
-        <br><br>
-          <div class="input-field col s">
-          <button (click)="CrearEvento()" class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Crear
-            <i class="material-icons right" >done</i>
-          </button>
-        </div>
-    </form>
-    
+        <fieldset>
+          <legend>Crear un nuevo evento</legend>
+          <div class="row">
+          <form [formGroup]="fgValidator" class="col s12" id="evento-form">
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">confirmation_number</i>
+                <input id="nombre" formControlName="nombre" type="text" required>
+                <label for="nombre">Nombre del evento</label>
+              </div>
+             
+              <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="descripcion" formControlName="descripcion" type="text" required>
+                <label for="descripcion">Descripción</label>
+              </div> 
+           
+            <div class="input-field col s6">
+              <i class="material-icons prefix">hdr_strong</i>
+              <input id="tipo" formControlName="tipo" type="text" required>
+              <label for="tipo">Tipo</label>
+            </div>
+           
+            <div class="input-field col s6">
+              <i class="material-icons prefix">insert_invitation</i>
+              <input id="fecha" formControlName="fecha" type="date" required>
+              <label for="fecha">Fecha</label>
+            </div>
+            
+            <div class="input-field col s6">
+              <i class="material-icons prefix">timer</i>
+              <input id="duracion" formControlName="duracion" type="number" required>
+              <label for="duracion">Duración(horas)</label> 
+            </div>
+           
+            <div class="input-field col s6">
+              <i class="material-icons prefix">location_on</i>
+              <input id="callePuerta" formControlName="callePuerta" type="text" required>
+              <label for="callePuerta">Calle y numero de puerta</label>
+            </div>
+            
+            <div class="input-field col s6">
+              <i class="material-icons prefix">map</i>
+              <input id="barrio" formControlName="barrio" type="text" required>
+              <label for="barrio">Barrio</label>
+            </div>
+            
+            <div class="input-field col s6">
+              <i class="material-icons prefix">location_searching</i>
+              <input id="ciudad" formControlName="ciudad" type="text" required>
+              <label for="ciudad">Ciudad</label>
+            </div>
+           
+            <div class="input-field col s6">
+              <i class="material-icons prefix">supervisor_account</i>
+              <input id="cantidadCupos" formControlName="cantidadCupos" type="number" required>
+              <label for="cantidadCupos">Cantidad de cupos</label>
+            </div>
+           
+            <div class="input-field col s6">
+              <i class="material-icons prefix">view_column</i>
+              <input id="cantidadMesas" formControlName="cantidadMesas" type="number" required>
+              <label for="cantidadMesas">Cantidad de mesas</label>
+            </div>
+          
+              <div class="input-field col s6">
+                <i class="material-icons prefix">view_module</i>
+                <input id="cantidadAsientosMesa" formControlName="cantidadAsientosMesa" type="number" minlength="1" required>
+                <label for="cantidadAsientosMesa">Cantidad de asientos por mesa</label>
+             
+            </div>
+         
+              <div class="input-field col s6">
+                <i class="material-icons prefix">shopping_cart</i>
+                <input id="precio" formControlName="precio" type="number" required>
+                <label for="precio">Precio del asiento</label>
+              </div>
+              
+            <div class="input-field col s6"><br>
+              <i class="material-icons prefix">translate</i>
+              <label for="idioma">Idioma:</label><br>
+                 <div class="container mt-5">           
+                <select  name="idioma" id="idioma"  formControlName="idioma" class="form-control">                                  
+                      <option value="INGLES">INGLES</option>
+                      <option value="ESPANOL">ESPANOL</option>
+                      <option value="ALEMAN">ALEMAN</option>
+                      <option value="PORTUGUES">PORTUGUES</option>
+                      <option value="PORTUGUES">FRANCES</option>
+                      <option value="CHINO MANDARIN">CHINO MANDARIN</option>
+                    </select>
+              </div></div>
+           
+           <div class="input-field col s6"><br>
+            <i class="material-icons prefix">widgets</i>
+            <label for="criterioAsignacion">Tipo de asignacion de asientos:</label><br>
+               <div class="container mt-5">           
+              <select  name="estaReserva" id="criterioAsignacion"  formControlName="criterioAsignacion" class="form-control">                                  
+                    <option value="AUTOMATICO">AUTOMATICO</option>
+                    <option value="MANUAL">MANUAL</option>
+                  </select>
+            </div></div><br>
+            <div class="input-field col s6"><br>
+              <i class="material-icons prefix">widgets</i>
+              <label for="criterio">Criterio de asignacion:</label><br>
+                 <div class="container mt-5">           
+                <select  name="criterio" id="criterio"  formControlName="criterio" class="form-control">                                  
+                      <option value="IDIOMA">IDIOMA</option>
+                      <option value="IDIOMA">RUBRO</option>
+                    </select>
+              </div></div><br>
+            <div class="row">
+              <div class="input-field col s6">
+            <form action="" method="post" enctype="multipart/form-data" target="_blank">
+              <label for="file">Foto de portada</label><br>
+                <input type="file" name="archivosubido" >
+              
+          </form>
+        </div></div>
+                <div class="input-field col s">
+                <button (click)="CrearEvento()" class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Crear
+                  <i class="material-icons right" >done</i>
+                </button>    
+            </div></div>
+          </form>
+          </div>
+        </fieldset>
+        
+      
+          

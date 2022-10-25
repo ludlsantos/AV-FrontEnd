@@ -119,34 +119,3 @@ export class EditarEventoComponent implements OnInit {
 }
 
 
-/*
-cargar():void{   
-  this.activatedRoute.params.subscribe(
-    //almacenar en una variable lo que me trae desde el enlace que viene con el id
-    e=>{
-      let id=e['id'];
-      if(id){
-        alert('texto'+id);
-
-        this.eventoService.get(id).subscribe(
-          ev=>{this.evento=ev ;
-          alert(ev.cantidadMesas);
-
-        this.http.get('https://localhost:44319/API_1_0/Eventos/2').toPromise().then(
-          ev=>{this.evento=ev as Evento ;
-          alert(this.evento.eventoId);
-
-          } );
-      }
-       }
-  );
-
-  }
-  
-       
-    }
-  
-  }
-  
-  */
-
