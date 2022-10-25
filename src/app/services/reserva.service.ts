@@ -11,6 +11,9 @@ import { EstadoReserva } from '../modelos/estadoReserva';
 })
 
 export class ReservaService {
+  ReservasPorEventos() {
+    throw new Error('Method not implemented.');
+  }
 
   filtroReserva!:"";
 
@@ -21,8 +24,8 @@ export class ReservaService {
     return this.http.post<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas, reserva);
   }
 
-  getReservasEvento(idEvento: number): Observable<Reserva>{
-    return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservasPorEvento + idEvento);
+  getReservasEvento(idEvento: number): Observable<Reserva[]>{
+    return this.http.get<Reserva[]>(constantes.miApiUrl + constantes.apiUrlReservasPorEvento + idEvento);
   }
 
   envioCorreo(reservas: Array<Reserva>): Observable<Reserva>{
@@ -67,9 +70,11 @@ getReserva(id: number): Observable<Reserva>{
 getGenerarQR(id: number): Observable<Reserva>{
   return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlGenerarQR + id);
 
+}
+
 cancelarReserva(id: number):Observable<Reserva>{
   return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlCancelarReserva + id);
-}
+};
 
 
  updateEstadoReserva(nuevoEstadoReserva: EstadoReserva): Observable<Reserva> {
@@ -83,8 +88,8 @@ cancelarReserva(id: number):Observable<Reserva>{
 
 }
 
-getReservasActivas(): Observable<Reserva>{
-  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlAsignacionManual);
+getReservasActivas(id:number): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlAsignacionManual+id);
 }
 }
 

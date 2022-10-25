@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EsAdminGuard } from 'src/app/Guards/es-admin.guard';
+
 import { CancelarReservaComponent } from './cancelar-reserva/cancelar-reserva.component';
 import { EliminarCuentaComponent } from './eliminar-cuenta/eliminar-cuenta.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
@@ -29,7 +30,9 @@ const routes: Routes = [
 {
   path: 'cancelarReserva/:id',
   component: CancelarReservaComponent
-}
+},
+
+
 
 ];
 

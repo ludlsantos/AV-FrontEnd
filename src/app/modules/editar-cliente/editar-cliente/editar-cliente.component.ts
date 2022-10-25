@@ -7,6 +7,7 @@ import { Login } from 'src/app/modelos/login';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { LoginService } from 'src/app/services/login.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -26,7 +27,12 @@ export class EditarClienteComponent implements OnInit {
   id!: any;
   correoElectronico!: string;
   constructor(
-    private fb: FormBuilder, private clienteService: ClienteService,  private activatedRoute:ActivatedRoute, private loginService: LoginService,) {
+    private fb: FormBuilder, 
+    private clienteService: ClienteService,  
+    private activatedRoute:ActivatedRoute, 
+    private loginService: LoginService,
+    private location: Location
+    ) {
    
     }
 
@@ -107,4 +113,7 @@ export class EditarClienteComponent implements OnInit {
     return this.fgValidator.controls;
   }
 
+  goBack(): void {
+    this.location.back();
+   }
 }

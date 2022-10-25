@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AsignacionManualAsientosComponent } from '../asignacion-manual-asientos/asignacion-manual-asientos.component';
 import { ListadoReservaComponent } from '../listadoReserva/listadoReserva.component';
 import { CrearEventoComponent } from './crear-evento/crear-evento.component';
 import { EditarEventoComponent } from './editar-evento/editar-evento.component';
 import { EliminarEventoComponent } from './eliminar-evento/eliminar-evento.component';
 import { EventosActivosComponent } from './eventos-activos/eventos-activos.component';
 import { GestionarReservaComponent } from './gestionar-reserva/gestionar-reserva.component';
+import { ListadoReservasActivasComponent } from './listado-reservas-activas/listado-reservas-activas.component';
 import { ReservarComponent } from './reservar/reservar.component';
 
 const routes: Routes = [
@@ -56,6 +58,15 @@ component: EditarEventoComponent
 {
   path: 'listadoReserva/:id', 
   component: ListadoReservaComponent
+},
+
+{
+  path: 'listado-reservas-activas/:id', 
+  component: ListadoReservasActivasComponent
+},
+{
+  path: 'asignacion-manual-asientos/:id', 
+  component: AsignacionManualAsientosComponent
 },
 
 ];

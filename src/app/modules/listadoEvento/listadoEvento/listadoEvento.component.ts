@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
+import { Location } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -18,8 +19,8 @@ export class ListadoEventoComponent implements OnInit {
   constructor(
 
     public eventoService: EventoService,
-    private router: Router,
     private route:ActivatedRoute,
+    private location: Location
 
   ) {
 
@@ -32,5 +33,8 @@ export class ListadoEventoComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  goBack(): void {
+    this.location.back();
+   }
 
 } 

@@ -25,7 +25,15 @@ export class ReservarComponent implements OnInit {
   idEvento!: any;
   asiento!: Asiento;
 
-  constructor(private http: HttpClient,private reservaService: ReservaService , private eventoService: EventoService, private clienteService: ClienteService ,private fb: FormBuilder, private route: Router, private router: ActivatedRoute) { }
+  constructor(
+    private http: HttpClient,
+    private reservaService: ReservaService, 
+    private eventoService: EventoService, 
+    private clienteService: ClienteService,
+    private fb: FormBuilder, 
+    private route: Router, 
+    private router: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -73,11 +81,12 @@ export class ReservarComponent implements OnInit {
             cantidadReservas: this.fgValidator.get('cantidadReservas')?.value,
 
             descripcionEstado: this.fgValidator.get('descEstado')?.value,
-            ruta: "null"
+            ruta: "null",
 
 
             fechaReserva: new Date(),
-            descripcionEstado: this.fgValidator.get('descEstado')?.value
+
+           
 
             }
             reserva.ruta= "http://montevideoit-001-site5.htempurl.com/img/" + (reserva.idReserva!) + "_" +(reserva.comprobanteDePago!.nombre!);

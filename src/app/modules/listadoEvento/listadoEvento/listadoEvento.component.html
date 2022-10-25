@@ -1,11 +1,15 @@
-
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary"(click)="goBack()">Volver</button>
+</div>
 <form>
+  <h1><i>LISTADO DE EVENTOS</i></h1>
+  <br><br>
 <div class="container">
 	<div class="row">
            <div id="custom-search-input">
    <div class="input-group col-md-12">
         <input type="text" name = "filtrar" class="  search-query form-control" placeholder="Buscar por nombre..." [(ngModel)]="eventoService.filtroEvento" />
-               <span class="input-group-btn">
+             <span class="input-group-btn">
                      <button class="btn btn-danger" type="button">
                        <span class=" glyphicon glyphicon-search"></span>
                      </button>
@@ -14,9 +18,9 @@
        </div>
 	 </div>
 </div>
+<br>
+<br>
   </form>
-    <h6><i>LISTADO DE EVENTOS</i></h6>
-    <br><br>
   <table class="table table-hover">
     <thead>
           <tr>
@@ -67,7 +71,9 @@
               <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/evento/editar-evento', evento.eventoId]" [skipLocationChange]="true">Editar</button></td>
               <td><button type="button" name="buttonEliminar" class="btn btn-primary" [routerLink]="['/evento/eliminar-evento', evento.eventoId]" [skipLocationChange]="true">Eliminar</button></td>
                 <td><button type="button" name="buttonReservas" class="btn btn-primary" [routerLink]="['/listadoReserva/listadoReserva', evento.eventoId]" [skipLocationChange]="true">Ver Reservas</button></td>
-            </tbody>
+                <td><button type="button" name="buttonReservasActivas" class="btn btn-primary" [routerLink]="['/evento/listado-reservas-activas', evento.eventoId]" [skipLocationChange]="true">Realizar Asignación</button></td>
+             
+              </tbody>
             
   </table>
 

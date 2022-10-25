@@ -6,6 +6,7 @@ import { AdministradorService } from 'src/app/services/administrador.service';
 import { LoginService } from 'src/app/services/login.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-registrarse',
@@ -18,7 +19,13 @@ export class RegistrarseComponent implements OnInit {
   fgValidator!: FormGroup;
   correoElectronico!: string;
 
-  constructor(private http: HttpClient ,private fb: FormBuilder, private route: Router,private AdminService: AdministradorService, private loginService: LoginService) { }
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder, 
+    private route: Router,
+    private AdminService: AdministradorService, 
+    private loginService: LoginService,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -63,5 +70,7 @@ export class RegistrarseComponent implements OnInit {
   get fgv(){
     return this.fgValidator.controls;
   }
-
+  goBack(): void {
+    this.location.back();
+   }
 }
