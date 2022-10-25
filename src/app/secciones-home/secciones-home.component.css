@@ -37,7 +37,7 @@ section{
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    background-color:#f3f3fa;
+  
     width: 100%;
     }
     
@@ -48,13 +48,14 @@ section{
       align-items: center;
       justify-content: center;
      margin-bottom: 45px;   
+
     }
     
 .description{
   width: 70%;
   line-height: 160px;
   text-align: center;
-  margin-left: 16rem;
+  margin-left: 2rem;
   font-size: small;
 }
     .box{
@@ -69,7 +70,7 @@ section{
     .uno{
       height: 680px;
      width: 100%;
-    display: flex;
+    display: inline;
     align-items: center;
     justify-content: center;
     margin-bottom: 42px;
@@ -93,7 +94,7 @@ section{
     height: 450px;
     text-align: center;
     font-size: small;
-    background-color:#ffffff;
+    background-color:#f3f3fa;
   
 }
 

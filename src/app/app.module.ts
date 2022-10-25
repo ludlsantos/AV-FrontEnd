@@ -1,7 +1,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -14,17 +14,24 @@ import { EliminarCuentaComponent } from './modules/cliente/eliminar-cuenta/elimi
 import { SeccionesHomeComponent } from './secciones-home/secciones-home.component';
 import { InicioSesionComponent } from './modules/seguridad/inicio-sesion/inicio-sesion.component';
 import { CookieService } from 'ngx-cookie-service';
-import { ListadoEventoComponent } from './modules/listadoEvento/listadoEvento/listadoEvento.component';
 import { EliminarEventoComponent } from './modules/evento/eliminar-evento/eliminar-evento.component';
 import { EditarEventoComponent } from './modules/evento/editar-evento/editar-evento.component';
 import { ReservarComponent } from './modules/evento/reservar/reservar.component';
+
+import { ComprobanteDePagoComponent } from './modules/comprobanteDePago/comprobanteDePago.component';
+import { AsignacionManualAsientosComponent } from './modules/asignacion-manual-asientos/asignacion-manual-asientos.component';
+
+
+
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltroEventoPipe } from './app.component';
 import { EventosActivosComponent } from './modules/evento/eventos-activos/eventos-activos.component';
 import { ReservasClienteComponent } from './modules/cliente/reservas-cliente/reservas-cliente.component';
 import { CancelarReservaComponent } from './modules/cliente/cancelar-reserva/cancelar-reserva.component';
-import { ManualComponent } from './asignarAsientos/manual/manual.component';
 import { GestionarReservaComponent } from './modules/evento/gestionar-reserva/gestionar-reserva.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { ListadoReservasActivasComponent } from './modules/evento/listado-reservas-activas/listado-reservas-activas.component';
 
 
 
@@ -41,6 +48,20 @@ import { GestionarReservaComponent } from './modules/evento/gestionar-reserva/ge
     EliminarCuentaComponent,
     SeccionesHomeComponent,
         InicioSesionComponent,
+
+        
+        EditarEventoComponent,
+        EliminarEventoComponent,
+        ReservarComponent,
+
+    InicioSesionComponent,
+    EliminarEventoComponent,
+    ComprobanteDePagoComponent,
+    AsignacionManualAsientosComponent,
+   
+
+
+
         EditarEventoComponent,
         EliminarEventoComponent,
         ReservarComponent,
@@ -49,9 +70,10 @@ import { GestionarReservaComponent } from './modules/evento/gestionar-reserva/ge
     EventosActivosComponent,
     ReservasClienteComponent,
     CancelarReservaComponent,
-    ManualComponent,
    GestionarReservaComponent,
+   ListadoReservasActivasComponent,
      
+
 
 
 
@@ -65,6 +87,8 @@ import { GestionarReservaComponent } from './modules/evento/gestionar-reserva/ge
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatCheckboxModule,
+
     
   ],
 

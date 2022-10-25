@@ -7,6 +7,7 @@ import { Mesa } from 'src/app/modelos/mesa';
 import { localStorageJwt } from 'src/app/static/local-storage';
 import { Administrador } from 'src/app/modelos/administrador';
 import { AdministradorService } from 'src/app/services/administrador.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-crear-evento',
@@ -20,7 +21,13 @@ export class CrearEventoComponent implements OnInit {
   correo!: any;
   admin!: Administrador;
 
-  constructor(private http: HttpClient ,private adminService: AdministradorService,private fb: FormBuilder, private eventoService: EventoService) { }
+  constructor(
+    private http: HttpClient,
+    private adminService: AdministradorService,
+    private fb: FormBuilder, 
+    private eventoService: EventoService,
+    private location: Location
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -90,5 +97,9 @@ export class CrearEventoComponent implements OnInit {
   get fgv(){
     return this.fgValidator.controls;
   }
+  
+  goBack(): void {
+    this.location.back();
+   }
 
 }

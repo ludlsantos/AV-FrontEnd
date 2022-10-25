@@ -24,3 +24,4 @@ export class Evento {
     mesas?: Array<Mesa>;
     estadoEvento!: string;
 }
+

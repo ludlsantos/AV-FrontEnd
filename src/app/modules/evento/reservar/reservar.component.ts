@@ -25,7 +25,15 @@ export class ReservarComponent implements OnInit {
   idEvento!: any;
   asiento!: Asiento;
 
-  constructor(private http: HttpClient,private reservaService: ReservaService , private eventoService: EventoService, private clienteService: ClienteService ,private fb: FormBuilder, private route: Router, private router: ActivatedRoute) { }
+  constructor(
+    private http: HttpClient,
+    private reservaService: ReservaService, 
+    private eventoService: EventoService, 
+    private clienteService: ClienteService,
+    private fb: FormBuilder, 
+    private route: Router, 
+    private router: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -64,13 +72,25 @@ export class ReservarComponent implements OnInit {
             cliente: this.cliente,
             evento: this.evento,
             estadoReserva: "Pendiente de pago",
+
+           // comprobanteDePago: "null",
+
             nombreEmpresa: this.fgValidator.get('nombreEmpresa')?.value,
             telefono: this.fgValidator.get('telefono')?.value,
             correoElectronico: this.fgValidator.get('email')?.value, 
             cantidadReservas: this.fgValidator.get('cantidadReservas')?.value,
+
+            descripcionEstado: this.fgValidator.get('descEstado')?.value,
+            ruta: "null",
+
+
             fechaReserva: new Date(),
-            descripcionEstado: this.fgValidator.get('descEstado')?.value
+
+           
+
             }
+            reserva.ruta= "http://montevideoit-001-site5.htempurl.com/img/" + (reserva.idReserva!) + "_" +(reserva.comprobanteDePago!.nombre!);
+
             if(reserva.evento.nroCupos >= reserva.cantidadReservas){
             var mensaje = confirm("¿Confirma la reserva de " + reserva.cantidadReservas + " asientos para el evento " + reserva.evento.nombre + "?");
             if(mensaje){

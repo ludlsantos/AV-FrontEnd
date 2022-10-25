@@ -8,10 +8,10 @@ const routes: Routes = [
     path: 'listadoReserva/:id', 
     component: ListadoReservaComponent
   },
-  {
+/*   {
   path: 'listadoReserva',
   component: ListadoReservaComponent
-}
+} */
 
 ];
 
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ListadoReservaRoutingModule { }
+export class ListadoReservaRoutingModule{ }

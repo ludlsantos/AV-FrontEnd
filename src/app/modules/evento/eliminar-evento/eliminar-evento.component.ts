@@ -9,6 +9,7 @@ import { Evento } from 'src/app/modelos/evento';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { Reserva } from 'src/app/modelos/reserva';
 
+
 @Component({
   selector: 'app-eliminar-evento',
   templateUrl: './eliminar-evento.component.html',
@@ -22,7 +23,13 @@ export class EliminarEventoComponent implements OnInit {
   correo!: any;
   evento!: any;
 
-  constructor(private fb: FormBuilder, private adminService: AdministradorService, private router:ActivatedRoute, private route: Router, private eventoService: EventoService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private adminService: AdministradorService, 
+    private router:ActivatedRoute, 
+    private route: Router, 
+    private eventoService: EventoService,
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();

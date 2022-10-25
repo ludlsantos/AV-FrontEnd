@@ -1,3 +1,6 @@
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary"(click)="goBack()">Volver</button>
+</div>
 <form [formGroup]= "formLogin" (ngSubmit)="validarLogin()"> 
 
 <fieldset>
@@ -24,7 +27,7 @@
                     <div [formGroup]="formLogin" class="row">
                       <div class="input-field col s12">
                         <i class="material-icons prefix">mail_outline</i>
-                        <input class="validate" formControlName="email" id="email" type="email">
+                        <input class="validate" formControlName="email"  id="email" type="email" required>
                         <label for="email" data-error="wrong" data-success="right">Correo electrónico</label>
                       
                     </div>
@@ -35,8 +38,8 @@
                       <div class="input-field col s12">
                         <i class="material-icons prefix">lock_outline</i>
             
-                        <input class="validate" id="password"  formControlName="password" type="password">
-                        <label for="password">Contraseña</label>
+                        <input class="validate" formControlName="password" id="password" type="password" required> 
+                        <label for="password" data-error="wrong" data-success="right">Contraseña</label>
                       </div>
                     </div>
                   </form>

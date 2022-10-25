@@ -1,5 +1,5 @@
+
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { PredeterminadoComponent } from './FrontEnd/inicio/predeterminado/predeterminado.component';
 import { ClienteModule } from './modules/cliente/cliente.module';
 import { EventoModule } from './modules/evento/evento.module';
@@ -15,12 +15,20 @@ import { SeccionesHomeComponent } from './secciones-home/secciones-home.componen
 import { ClienteModModule } from './modules/editar-cliente/clienteMod.module';
 import { ListadoEventoModule } from './modules/listadoEvento/listadoEvento.module';
 import { ListadoReservaModule } from './modules/listadoReserva/listadoReserva.module';
-import { ManualComponent } from './asignarAsientos/manual/manual.component';
+
+import { ComprobanteDePagoComponent } from './modules/comprobanteDePago/comprobanteDePago.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AsignacionManualAsientosComponent } from './modules/asignacion-manual-asientos/asignacion-manual-asientos.component';
+
 
 const routes: Routes = [
 
 
 {path: 'login', component: InicioSesionComponent},
+
+{path: 'comprobanteDePago/:id', component: ComprobanteDePagoComponent},
+
+{path: 'asignacionManualAsientos/:id', component: AsignacionManualAsientosComponent},
 
 {path: '',redirectTo: 'home', pathMatch: 'full'},
 {path: 'seguridad/iniciarSesion', component: InicioSesionComponent},
@@ -65,9 +73,6 @@ path: 'admin',
   loadChildren: () => import('./modules/editar-cliente/clienteMod.module').then(m => ClienteModModule)
 },
 
-
-
-
 {
   path: 'listadoEvento',
   loadChildren: () => import('./modules/listadoEvento/listadoEvento.module').then(m => ListadoEventoModule)
@@ -76,10 +81,7 @@ path: 'admin',
   path: 'listadoReserva',
   loadChildren: () => import('./modules/listadoReserva/listadoReserva.module').then(m => ListadoReservaModule)
 },
-{
-  path: 'manual',
-  component: ManualComponent,
-},
+
 
 
 {path: '',redirectTo: '/login', pathMatch: 'full'},
@@ -87,7 +89,12 @@ path: 'admin',
 {
   path: '**',
   redirectTo: '/home'
-}
+},
+
+
+
+
+
 ];
 
 @NgModule({

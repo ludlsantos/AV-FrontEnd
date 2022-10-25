@@ -51,21 +51,33 @@
         <input id="cantidadCupos" formControlName="cantidadCupos" type="number" required>
         <label for="cantidadCupos">Cantidad de cupos</label>
       </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">view_column</i>
+        <input id="cantidadMesas" formControlName="cantidadMesas" type="number" required>
+        <label for="cantidadMesas">Cantidad de mesas</label>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">view_module</i>
+          <input id="cantidadAsientosMesa" formControlName="cantidadAsientosMesa" type="number" minlength="1" required>
+          <label for="cantidadAsientosMesa">Cantidad de asientos por mesa</label>
+        </div>
+      </div>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">shopping_cart</i>
-          <input id="precio" formControlName="precio" type="number" required>
+          <input class="validate" id="precio" formControlName="precio" type="number" required>
           <label for="precio">Precio del asiento</label>
         </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">translate</i>
-          <input id="idioma" formControlName="idioma" type="text" minlength="3" required>
+          <input class="validate" id="idioma" formControlName="idioma" type="text" minlength="3" required>
           <label for="idioma">Idioma</label>
         </div>
       </div>
       <div class="input-field col s12">
         <i class="material-icons prefix">widgets</i>
-        <input id="criterioAsignacion" formControlName="criterioAsignacion" type="text" minlength="3" required>
+        <input class="validate" id="criterioAsignacion" formControlName="criterioAsignacion" type="text" minlength="3" required>
         <label for="criterioAsignacion">Criterio de asignacion de asientos</label>
   
     </div>
@@ -82,3 +94,4 @@
         </div>
     </form>
     
+

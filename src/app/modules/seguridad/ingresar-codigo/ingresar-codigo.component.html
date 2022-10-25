@@ -1,3 +1,6 @@
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary"(click)="goBack()">Volver</button>
+</div>
 <fieldset>
     <legend>Código de segurdad</legend>
     <div class="row">
@@ -7,8 +10,8 @@
         <a>Revise su casilla de correo electrónico</a>  
         <br>
         <div class="input-field col s6">
-          <input id="codigo" formControlName="codigo" type="number" class="validate" required>
-          <label for="codigo">Ingrese el código</label>
+          <input class="validate" id="codigo" formControlName="codigo" type="number" class="validate" required>
+          <label for="codigo" data-error="wrong" data-success="right">Ingrese el código</label>
         </div>
      
           <div class="input-field col s">

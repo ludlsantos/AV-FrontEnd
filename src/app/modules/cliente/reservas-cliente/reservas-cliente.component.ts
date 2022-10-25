@@ -3,6 +3,7 @@ import { Reserva } from 'src/app/modelos/reserva';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class ReservasClienteComponent implements OnInit {
   id: any;
   constructor(
     private reservaService: ReservaService,
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private location: Location
   ) {
 
 
@@ -41,5 +43,9 @@ export class ReservasClienteComponent implements OnInit {
   
   ngOnInit(): void {
   }
+
+  goBack(): void {
+    this.location.back();
+   }
 
   }

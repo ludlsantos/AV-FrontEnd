@@ -5,6 +5,7 @@ import { Login } from 'src/app/modelos/login';
 import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 import { LoginService } from 'src/app/services/login.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cambiar-clave',
@@ -20,7 +21,13 @@ export class CambiarClaveComponent implements OnInit {
   correoParseado: any;
   login?: Login;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private route: Router, private jwtAuthService: JwtAuthService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private loginService: LoginService, 
+    private route: Router, 
+    private jwtAuthService: JwtAuthService,
+    private location: Location
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -53,6 +60,9 @@ export class CambiarClaveComponent implements OnInit {
 
 
   }
+  goBack(): void {
+    this.location.back();
+   }
 
 }
 

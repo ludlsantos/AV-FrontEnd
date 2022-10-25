@@ -26,3 +26,4 @@ import { ListadoEventoComponent } from './listadoEvento/listadoEvento.component'
   ]
 })
 export class ListadoEventoModule { }
+

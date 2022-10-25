@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from 'src/app/modelos/evento';
+import { Location } from '@angular/common';
 import { EventoService } from 'src/app/services/evento.service';
 
 @Component({
@@ -19,6 +20,7 @@ public eventos: Array<Evento>=[]
     public eventoService: EventoService,
     private router: Router,
     private route:ActivatedRoute,
+    private location: Location
 
   ) {
 
@@ -35,5 +37,8 @@ public eventos: Array<Evento>=[]
 
   ngOnInit(): void {
   }
+  goBack(): void {
+    this.location.back();
+   }
 
 } 

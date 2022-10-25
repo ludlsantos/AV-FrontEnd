@@ -11,6 +11,9 @@ import { EstadoReserva } from '../modelos/estadoReserva';
 })
 
 export class ReservaService {
+  ReservasPorEventos() {
+    throw new Error('Method not implemented.');
+  }
 
   filtroReserva!:"";
 
@@ -21,8 +24,8 @@ export class ReservaService {
     return this.http.post<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas, reserva);
   }
 
-  getReservasEvento(idEvento: number): Observable<Reserva>{
-    return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservasPorEvento + idEvento);
+  getReservasEvento(idEvento: number): Observable<Reserva[]>{
+    return this.http.get<Reserva[]>(constantes.miApiUrl + constantes.apiUrlReservasPorEvento + idEvento);
   }
 
   envioCorreo(reservas: Array<Reserva>): Observable<Reserva>{
@@ -32,35 +35,65 @@ export class ReservaService {
   crearReserva(reserva: Reserva): Observable<Reserva>{
     return this.http.post<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas, reserva);
 }
-url = `${constantes.miApiUrl}${constantes.apiUrlReservas}`
+ url = `${constantes.miApiUrl}${constantes.apiUrlReservas}`
 
-getReservas(){
+ getReservas(){
   let header = new HttpHeaders()
   .set('Type-content', 'aplication/json')
   return this.http.get(this.url, {
     headers: header
+
+  } 
+    );
+ }
+
+ get(id: number):Observable<Reserva>{
+  const url2 = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+id;
+  return this.http.get<Reserva>(url2);
+ }
+
  } 
    );
 }
+getReservasTodas(): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas);
+}
+
+
 get(id: number):Observable<Reserva>{
   const url2 = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+id;
   return this.http.get<Reserva>(url2);
 }
+getReserva(id: number): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas + id);
+}
+getGenerarQR(id: number): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlGenerarQR + id);
+
+}
 
 cancelarReserva(id: number):Observable<Reserva>{
   return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlCancelarReserva + id);
-}
+};
 
 
-updateEstadoReserva(nuevoEstadoReserva: EstadoReserva): Observable<Reserva> {
-  //const ul = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+reserva.idReserva;
+ updateEstadoReserva(nuevoEstadoReserva: EstadoReserva): Observable<Reserva> {
   const url = `${constantes.apiUrlEstadoReservas}${nuevoEstadoReserva.idReserva}`;
-  alert("esty aca..." + url)
   return this.http.put<Reserva>(url, nuevoEstadoReserva);
-}
+
+ }
+
+ }
+
 
 comentarioReserva(id: number):Observable<Reserva>{
   return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlComentarioReserva + id);
 }
 
 }
+
+getReservasActivas(id:number): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlAsignacionManual+id);
+}
+}
+

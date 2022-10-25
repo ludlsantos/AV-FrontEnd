@@ -1,4 +1,7 @@
    
+    <div style="text-align: right;">
+      <button type="button" name="buttonVolver" class="btn btn-primary" [routerLink]="['/listadoEvento/listadoEvento']">Volver</button>
+    </div>
     <div class="container">
       <form [formGroup]="fgValidator" class="col s12" id="reserva-form">
         <!-- Modal -->
@@ -50,11 +53,10 @@
                   </tbody>
               </table>
               <br>
+              <label>Comprobante de pago</label>
               <div class="container">         
               <div class="modal-info center">
-                <a target="_blank" href="img_forest.jpg">
-                  <img src="https://image.shutterstock.com/image-photo/banner-abstract-blurred-photo-conference-260nw-1336362089.jpg" alt="Forest" width="400" height="100">
-                </a>          
+                <div><img id="comprobante" class="images" src={{reserva.ruta}} width="400" height="100"/></div>                     
               </div>
               </div>
              <div class="modal-body">

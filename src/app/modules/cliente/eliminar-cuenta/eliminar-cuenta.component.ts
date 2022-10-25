@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { LoginService } from 'src/app/services/login.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -19,7 +20,14 @@ export class EliminarCuentaComponent implements OnInit {
   correo!: any;
   id!: any;
 
-  constructor(private fb: FormBuilder, private LoginService: LoginService, private clienteService: ClienteService, private router:ActivatedRoute, private route: Router) { }
+  constructor(
+    private fb: FormBuilder, 
+    private LoginService: LoginService, 
+    private clienteService: ClienteService, 
+    private router:ActivatedRoute, 
+    private route: Router,
+    private location: Location
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -64,4 +72,8 @@ export class EliminarCuentaComponent implements OnInit {
     }
     
   }
+  
+goBack(): void {
+  this.location.back();
+ }
 }

@@ -1,10 +1,10 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Evento } from 'src/app/modelos/evento';
 import { Reserva } from 'src/app/modelos/reserva';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { EventoService } from 'src/app/services/evento.service';
+
 
 @Component({
   selector: 'app-listadoReserva',
@@ -23,7 +23,8 @@ export class ListadoReservaComponent implements OnInit {
 
   constructor(
     public reservaService: ReservaService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+
   ) {
 
 
@@ -57,5 +58,7 @@ export class ListadoReservaComponent implements OnInit {
   
   ngOnInit(): void {
   }
+
+
 
 }
