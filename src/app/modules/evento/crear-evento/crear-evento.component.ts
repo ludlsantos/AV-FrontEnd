@@ -15,7 +15,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./crear-evento.component.css']
 })
 export class CrearEventoComponent implements OnInit {
-
+// test
   fgValidator!: FormGroup;
   mesas!: null;
   correo!: any;
