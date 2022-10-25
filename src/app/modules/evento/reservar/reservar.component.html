@@ -1,3 +1,6 @@
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary"[routerLink]="['/evento/eventos-activos']">Volver</button>
+</div>
 <fieldset> 
     <legend>Reserva de asientos</legend>
     <div>Datos de la reserva</div>
@@ -6,27 +9,30 @@
        
       <div class="input-field col s6">
         <i class="material-icons prefix">account_circle</i>
-        <input id="nombreEmpresa" formControlName="nombreEmpresa" type="text" placeholder="Recuerde que será el identificador de la reserva" required>
-        <i>Nombre y apellido o Empresa</i>
+        <input class="validate" id="nombreEmpresa" formControlName="nombreEmpresa" type="text" placeholder="Recuerde que será el identificador de la reserva" required>
+        <label for="nombreEmpresa" data-error="wrong" data-success="right"></label>
+       
       </div>
      
       <div class="input-field col s6">
         <i class="material-icons prefix">phone</i>
-        <input id="telefono" formControlName="telefono" type="number" required>
-      <i>Teléfono</i>
+        <input class="validate" id="telefono" formControlName="telefono" type="number" required>
+        <label for="telefono" data-error="wrong" data-success="right">Teléfono</label>
+  
       </div>
    
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">email</i>
-          <input id="email" formControlName="email" type="email" placeholder="Ingrese el correo electronico en el que desee recibir los datos de la/s reserva/s" required>
-        <i>Correo electrónico</i>
+          <input class="validate" id="email" formControlName="email" type="email" placeholder="Ingrese el correo electronico en el que desee recibir los datos de la/s reserva/s" required>
+          <label for="correo" data-error="wrong" data-success="right"></label>
+       
         </div>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">number</i>
-        <input id="cantidadReservas" formControlName="cantidadReservas" type="number" required>
-      <i>Cantidad de reservas</i>
+        <input class="validate" id="cantidadReservas" formControlName="cantidadReservas" type="number" required>
+        <label for="cantidadReservas" data-error="wrong" data-success="right">Cantidad de reservas</label>
       </div>
           <div class="input-field col s">
           <button (click)="Reservar()" class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Reservar

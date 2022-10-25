@@ -1,3 +1,6 @@
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary" [routerLink]="['/listadoEvento/listadoEvento']">Volver</button>
+</div>
 <fieldset>
     <legend>Editar un evento</legend>
     <div class="row">
@@ -5,84 +8,71 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">confirmation_number</i>
-          <input id="nombre" value="{{evento.nombre}}"
-           formControlName="nombre" type="text">Nombre del evento
+          <input class="validate"  id="nombre" value="{{evento.nombre}}"
+           formControlName="nombre" type="text" required>Nombre del evento
+           <label for="nombre" data-error="wrong" data-success="right"></label>
         
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">account_circle</i>
-          <input id="descripcion"  value="{{evento.descripcion}}"
-           formControlName="descripcion" type="text">Descripción
+          <input class="validate" id="descripcion"  value="{{evento.descripcion}}"
+           formControlName="descripcion" type="text" required>Descripción
         </div>
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">hdr_strong</i>
-        <input id="tipo"  value="{{evento.tipo}}" formControlName="tipo" type="text">Tipo
+        <input class="validate" id="tipo"  value="{{evento.tipo}}" formControlName="tipo" type="text" required>Tipo
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">insert_invitation</i>
-        <input id="fechaHora"  value="{{evento.fechaHora | date: 'dd/MM/yyyy h:mm a': 'timezone' }}" 
-        formControlName="fechaHora" type="datetime" >Fecha
+        <input class="validate" id="fechaHora"  value="{{evento.fechaHora | date: 'dd/MM/yyyy h:mm a': 'timezone' }}" 
+        formControlName="fechaHora" type="datetime" required>Fecha
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">timer</i>
-        <input id="duracion"  value="{{evento.duracion}}" formControlName="duracion" type="number">Duración(horas)
+        <input class="validate"  id="duracion"  value="{{evento.duracion}}" formControlName="duracion" type="number" required>Duración(horas)
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">location_on</i>
-        <input id="callePuerta"  value="{{evento.callePuerta}}" formControlName="callePuerta" type="text" >Calle y numero de puerta
+        <input class="validate"  id="callePuerta"  value="{{evento.callePuerta}}" formControlName="callePuerta" type="text" required>Calle y numero de puerta
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">map</i>
-        <input id="barrio"  value="{{evento.barrio}}" formControlName="barrio" type="text" >Barrio
+        <input id="barrio"  value="{{evento.barrio}}"formControlName="barrio" type="text" >Barrio
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">location_searching</i>
-        <input id="ciudad"  value="{{evento.ciudad}} "formControlName="ciudad" type="text" >Ciudad
+        <input id="ciudad"  value="{{evento.ciudad}}"formControlName="ciudad" type="text" >Ciudad
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">supervisor_account</i>
-        <input id="cantidadCupos"  value="{{evento.nroCupos}}" formControlName="nroCupos" type="number">Cantidad de cupos
+        <input class="validate"  id="cantidadCupos"  value="{{evento.nroCupos}}" formControlName="nroCupos" type="number" required>Cantidad de cupos
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">view_column</i>
-        <input id="cantidadMesas" value="{{evento.cantidadMesas}}" formControlName="cantidadMesas" type="number" >Cantidad de mesas
+        <input class="validate" id="cantidadMesas" value="{{evento.cantidadMesas}}" formControlName="cantidadMesas" type="number" required>Cantidad de mesas
       </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">view_module</i>
-          <input id="cantidadAsientosMesa" value="{{evento.cantidadAsientosMesa}}" formControlName="cantidadAsientosMesa" type="number" minlength="1" >Cantidad de asientos por mesa
+          <input class="validate" id="cantidadAsientosMesa" value="{{evento.cantidadAsientosMesa}}" formControlName="cantidadAsientosMesa" type="number" minlength="1" required>Cantidad de asientos por mesa
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">shopping_cart</i>
           <input id="precio" value="{{evento.precioAsiento}}" formControlName="precioAsiento" type="number" >Precio del asiento
-        </div> 
-        <div class="input-field col s6"><br>
+        </div>
+        <div class="input-field col s12">
           <i class="material-icons prefix">translate</i>
-          <label for="idioma">Idioma:</label><br>
-             <div class="container mt-5">           
-            <select  name="idioma" id="idioma" formControlName="idioma" class="form-control">                                  
-                  <option value="INGLES">INGLES</option>
-                  <option value="ESPANOL">ESPANOL</option>
-                  <option value="ALEMAN">ALEMAN</option>
-                  <option value="PORTUGUES">PORTUGUES</option>
-                  <option value="PORTUGUES">FRANCES</option>
-                  <option value="CHINO MANDARIN">CHINO MANDARIN</option>
-                </select>
-          </div></div>
-       
-       <div class="input-field col s6"><br>
+          <input id="idioma" value="{{evento.idioma}}"  formControlName="idioma" type="text" minlength="3" >Idioma
+        </div>
+      </div>
+      <div class="input-field col s12">
         <i class="material-icons prefix">widgets</i>
-        <label for="criterioAsignacion">Criterio de asignacion de asientos:</label><br>
-           <div class="container mt-5">           
-          <select  name="estaReserva" id="criterioAsignacion"  formControlName="criterioAsignacion" class="form-control">                                  
-                <option value="AUTOMATICO">AUTOMATICO</option>
-                <option value="MANUAL">MANUAL</option>
-              </select>
-        </div></div><br>
-
-    <div class="input-field col s6">
+        <input id="criterioAsignacion" value="{{evento.criterioAsignacion}}" formControlName="criterioAsignacion" type="text" minlength="3" >Criterio de asignacion de asientos
+  
+    </div>
+    <div class="input-field col s12">
       <i class="material-icons prefix">widgets</i>
-      <input id="criterioAsignacion" value="{{evento.empresaCreadora}}" formControlName="empresaCreadora" type="text" minlength="3" >empresa Creadora
+      <input class="validate"  id="criterioAsignacion" value="{{evento.empresaCreadora}}" formControlName="empresaCreadora" type="text" minlength="3" required>empresa Creadora
 
   </div>
       <div class="row">

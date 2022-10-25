@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cliente } from 'src/app/modelos/cliente';
 import { Login } from 'src/app/modelos/login';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { LoginService } from 'src/app/services/login.service';
 import { HttpClient } from '@angular/common/http';
-
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-registrarse',
@@ -19,7 +19,14 @@ export class RegistrarseComponent implements OnInit {
   correoElectronico!: string;
   fgValidator!: FormGroup;
 
-  constructor(private http: HttpClient ,private fb: FormBuilder, private route: Router,private clienteService: ClienteService, private loginService: LoginService) { }
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder, 
+    private route: Router,
+    private clienteService: ClienteService, 
+    private loginService: LoginService,
+    private location: Location
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -33,6 +40,7 @@ export class RegistrarseComponent implements OnInit {
       apellido: ['', [Validators.required, Validators.minLength(2)]],
       telefono: ['', [Validators.required, Validators.minLength(8)]],
       cargoProfesion: ['', [Validators.required]],
+      idiomaPreferencia: ['', [Validators.required]],
       empresa: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -63,6 +71,7 @@ export class RegistrarseComponent implements OnInit {
             telefono: this.fgValidator.get('telefono')?.value,
             profesionCargo: this.fgValidator.get('cargoProfesion')?.value,
             nombreEmpresa: this.fgValidator.get('empresa')?.value,
+            idiomaPreferencia: this.fgValidator.get('idiomaPreferencia')?.value,
             fotoPerfil: this.fgValidator.get('archivosubido')?.value,
             login: loginHijo
           }
@@ -81,6 +90,7 @@ export class RegistrarseComponent implements OnInit {
   get fgv(){
     return this.fgValidator.controls;
   }
-
+  goBack(): void {
+    this.location.back();
+   }
 }
-

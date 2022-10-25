@@ -1,4 +1,6 @@
-
+<div style="text-align: right;">
+  <button type="button" name="buttonVoler" class="btn btn-primary"(click)="goBack()">Volver</button>
+</div>
 <form>
     <div class="container">
         <div class="row">
@@ -63,7 +65,7 @@
                  <!--<td> <a href="/evento/editar-evento" title="Editar">
                     <span class="glyphicon glyphicon-pencil"></span>
                   </a></td>-->
-                  <td><button type="button" name="buttonReserva" class="btn btn-primary" [routerLink]="['/evento/reservar', evento.eventoId]" [skipLocationChange]="true">Eliminar</button></td>
+                  <td><button type="button" name="buttonReserva" class="btn btn-primary" [routerLink]="['/evento/reservar', evento.eventoId]" [skipLocationChange]="true">Reservar</button></td>
                 </tr>
           </tbody>
       </table>

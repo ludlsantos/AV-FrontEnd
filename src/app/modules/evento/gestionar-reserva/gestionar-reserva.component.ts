@@ -19,7 +19,12 @@ export class GestionarReservaComponent implements OnInit {
   reserva:Reserva = new Reserva();
   reservaident!:any;
  
-  constructor(private http: HttpClient, private fb: FormBuilder, private reservaService: ReservaService, private activatedRoute:ActivatedRoute, private router:Router) { }
+  constructor(
+    private http: HttpClient, 
+    private fb: FormBuilder, 
+    private reservaService: ReservaService, 
+    private activatedRoute:ActivatedRoute, 
+    private router:Router) { }
   
 
   ngOnInit(): void {

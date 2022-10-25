@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Login } from 'src/app/modelos/login';import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -14,7 +15,13 @@ export class ReestablecerClaveComponent implements OnInit {
   correo: any;
   login?: Login;
 
-  constructor(private fb: FormBuilder, private LoginService: LoginService, private router:ActivatedRoute, private route: Router) { }
+  constructor(
+    private fb: FormBuilder, 
+    private LoginService: LoginService, 
+    private router:ActivatedRoute, 
+    private route: Router,
+    private location: Location
+    ) { }
 
 
 
@@ -53,4 +60,7 @@ export class ReestablecerClaveComponent implements OnInit {
   }
 
 }
+goBack(): void {
+  this.location.back();
+ }
 }

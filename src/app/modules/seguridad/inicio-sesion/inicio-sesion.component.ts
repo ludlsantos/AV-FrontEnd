@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 import { Login } from 'src/app/modelos/login';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Location } from '@angular/common';
 
 
 
@@ -29,15 +30,14 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
     private router: Router,
     private loginService: LoginService,
     /* private cookieService: CookieService, */
-    private jwtAuthService: JwtAuthService
-    
+    private jwtAuthService: JwtAuthService,
+    private location: Location
   ) { 
+
     this.formLogin = formBuilder.group( {
-      //rol: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required],
-/*       emailAdmin: ['', Validators.required],
-      passwordAdmin: ['', Validators.required]  */
+      password: ['', Validators.required]
+
 
     });
 
@@ -138,6 +138,9 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
 
     
 
+goBack(): void {
+  this.location.back();
+ }
 
 
     

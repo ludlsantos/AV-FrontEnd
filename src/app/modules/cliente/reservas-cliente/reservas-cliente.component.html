@@ -1,3 +1,9 @@
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary"(click)="goBack()">Volver</button>
+</div>
+<fieldset> 
+  <h1>Mis Reservas</h1>
+  <br>
 <form>
     <div class="container">
       <div class="row">
@@ -13,11 +19,14 @@
            </div>
        </div>
     </div>
+    <br>
       </form>
+      <br>
+      <br>
       <table class="table table-hover">
         <thead>
               <tr>
-                <th>Nro identificador de la reserva</th>
+                <th>ID reserva</th>
                 <th>Nombre reserva</th>
                 <th>Nombre evento </th>
                 <th>Cantidad de reservas</th>
@@ -31,7 +40,8 @@
                   <td>{{reserva.evento.nombre}}</td>
                   <td>{{reserva.cantidadReservas}}</td>
                   <td>{{reserva.estadoReserva}}</td>
-                  
+                  <td></td>
+                  <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/comprobanteDePago', reserva.idReserva]" [skipLocationChange]="true" >Subir comprobante de pago</button></td>
                   <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/cliente/cancelarReserva', reserva.idReserva]" [skipLocationChange]="true" >Cancelar reserva</button></td>
                 </tr>
                 

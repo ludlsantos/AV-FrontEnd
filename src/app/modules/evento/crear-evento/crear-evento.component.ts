@@ -7,6 +7,7 @@ import { Mesa } from 'src/app/modelos/mesa';
 import { localStorageJwt } from 'src/app/static/local-storage';
 import { Administrador } from 'src/app/modelos/administrador';
 import { AdministradorService } from 'src/app/services/administrador.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-crear-evento',
@@ -14,13 +15,19 @@ import { AdministradorService } from 'src/app/services/administrador.service';
   styleUrls: ['./crear-evento.component.css']
 })
 export class CrearEventoComponent implements OnInit {
-
+// test
   fgValidator!: FormGroup;
   mesas!: null;
   correo!: any;
   admin!: Administrador;
 
-  constructor(private http: HttpClient ,private adminService: AdministradorService,private fb: FormBuilder, private eventoService: EventoService) { }
+  constructor(
+    private http: HttpClient,
+    private adminService: AdministradorService,
+    private fb: FormBuilder, 
+    private eventoService: EventoService,
+    private location: Location
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -34,14 +41,10 @@ export class CrearEventoComponent implements OnInit {
       fecha: ['', [Validators.required]],
       hora: ['', [Validators.nullValidator]],
       duracion: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
-      //hora: ['', [Validators.nullValidator]],
-      duracion: ['', [Validators.required, Validators.minLength(1)]],
       callePuerta: ['', [Validators.required, Validators.minLength(5)]],
       barrio: ['', [Validators.required, Validators.minLength(3)]],
       ciudad: ['', [Validators.required, Validators.minLength(3)]],
       cantidadCupos: ['', [Validators.required, Validators.minLength(1)]],
-      cantidadMesas: ['', [Validators.required, Validators.minLength(1)]],
-      cantidadAsientosMesa: ['', [Validators.required, Validators.minLength(1)]],
       precio: ['', [Validators.required]],
       idioma: ['', [Validators.required, Validators.minLength(2)]],
       criterioAsignacion: ['', [Validators.required, Validators.minLength(2)]],
@@ -53,11 +56,13 @@ export class CrearEventoComponent implements OnInit {
     if(this.fgValidator.invalid){
       alert('Datos invalidos, porfavor verifique')
     }else{
+    
+
       this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
       const parse = JSON.parse(this.correo);
       this.adminService.getAdmin(parse).subscribe(data =>{
           this.admin = data;
-      });
+    
 
       const evento: Evento = {
         nombre: this.fgValidator.get('nombre')?.value,
@@ -65,42 +70,36 @@ export class CrearEventoComponent implements OnInit {
         tipo: this.fgValidator.get('tipo')?.value,
         fechaHora: this.fgValidator.get('fecha')?.value,
         duracion: this.fgValidator.get('duracion')?.value + " horas",
-        fecha: this.fgValidator.get('fecha')?.value,
-
-
-        hora: "12:12:12",
-        duracion: this.fgValidator.get('duracion')?.value,
-
-
-        duracion: this.fgValidator.get('duracion')?.value,
-
         callePuerta: this.fgValidator.get('callePuerta')?.value,
         barrio: this.fgValidator.get('barrio')?.value,
         ciudad: this.fgValidator.get('ciudad')?.value,
         nroCupos: this.fgValidator.get('cantidadCupos')?.value,
-        cantidadMesas: this.fgValidator.get('cantidadMesas')?.value,
-        cantidadAsientosMesa: this.fgValidator.get('cantidadAsientosMesa')?.value,
         precioAsiento: this.fgValidator.get('precio')?.value,
         idioma: this.fgValidator.get('idioma')?.value,
         criterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
         imagenPortada: this.fgValidator.get('archivosubido')?.value,
         empresaCreadora: this.admin.nombreEmpresa,
-        estadoEvento: "Activo"
-        empresaCreadora: "Traer de admin logueado",
+        estadoEvento: "Activo",
 
 
       }
+      
       // evento.mesas!.length = evento.cantidadMesas;
 
       this.eventoService.crearEvento(evento).subscribe(data => {
         alert('Evento creado con éxito');
         this.fgValidator.reset();
-      })
+      });
+    });
     }
   }
 
   get fgv(){
     return this.fgValidator.controls;
   }
+  
+  goBack(): void {
+    this.location.back();
+   }
 
 }

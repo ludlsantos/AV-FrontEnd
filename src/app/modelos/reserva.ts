@@ -12,7 +12,11 @@ export class Reserva {
     cliente!: Cliente;
     evento!: Evento;
     estadoReserva!: string;
+
+   
+
     comprobanteDePago?: ComprobanteDePago;
+
     asientos?: Asiento[];
     nombreEmpresa!: string;
     telefono!: number;

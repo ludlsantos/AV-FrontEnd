@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cancelar-reserva',
@@ -18,7 +19,14 @@ rePass!: any;
 correo!: any;
 idReserva!: any;
 
-  constructor(private fb: FormBuilder, private reservaService: ReservaService, private clienteService: ClienteService, private router: ActivatedRoute, private route: Router) { }
+  constructor(
+    private fb: FormBuilder, 
+    private reservaService: ReservaService, 
+    private clienteService: ClienteService, 
+    private router: ActivatedRoute, 
+    private route: Router,
+    private location: Location
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -62,5 +70,7 @@ cancelarReserva(){
     alert("Las contraseñas no coinciden");
   }
 }
-
+goBack(): void {
+  this.location.back();
+ }
 }

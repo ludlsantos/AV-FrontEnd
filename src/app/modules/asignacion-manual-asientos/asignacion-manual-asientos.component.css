@@ -14,7 +14,7 @@ h2 {
 
 
 
-.asientos table td {
+/* .asientos table td {
 	height: 40px;
 	width: 50px;
 	text-align: center;
@@ -24,7 +24,9 @@ h2 {
     background-size: 210px;
 
     
-}
+} */
+
+
 
 .asientos table td label {
     padding: 10px 0;
@@ -40,7 +42,7 @@ h2 {
     color:#fff
 } 
 
-.asientos table td.espacio {
+.asientos  table td.espacio {
 	background: transparent;
 }
 .asientos table {
