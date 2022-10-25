@@ -1,7 +1,7 @@
 
 
 export const miApiUrl = 'https://localhost:44319/';
-const apiBase = 'API_1_0/';
+const apiBase = 'api_1_0/';
 
 export const apiUrlClientes = apiBase +  'Clientes/';
 export const apiUrlAdministradores = apiBase + 'Administradores/';
@@ -17,9 +17,10 @@ export const apiUrlReservas = apiBase + 'Reservas/';
 export const apiUrlCorreoReservas = apiBase + 'EventoModificado/';
 export const apiUrlReservasId = apiUrlReservas + 'id';
 export const apiUrlCancelarReserva = apiBase + 'CancelarReserva/';
-export const apiUrlCorreoReservas = apiBase + 'EventoCancelado/';
 
 //export const apiUrlReservasId = apiUrlReservas + 'id';
 export const apiUrlEstadoReservas = miApiUrl + apiBase + 'EstadoReserva/';
 export const apiUrlEditarCliente = miApiUrl + apiBase + 'EditarCliente/';
 export const apiUrlReservasPorEvento = apiBase + 'ReservasPorEvento/';
+export const apiUrlArregloMesas = apiBase + 'ArregloMesas';
+export const apiUrlComentarioReserva = apiBase + 'ComentarioReserva/';

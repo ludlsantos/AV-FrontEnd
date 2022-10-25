@@ -9,6 +9,7 @@ export class Cliente {
     apellidos!: string;
     telefono!: number;
     profesionCargo!: string;
+    idiomaPreferencia!: string;
     nombreEmpresa!: string;
     fotoPerfil!: File;
     login!: Login;

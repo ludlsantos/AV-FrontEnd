@@ -32,6 +32,7 @@ export class RegistrarseComponent implements OnInit {
       apellido: ['', [Validators.required, Validators.minLength(2)]],
       telefono: ['', [Validators.required, Validators.minLength(8)]],
       cargoProfesion: ['', [Validators.required]],
+      idiomaPreferencia: ['', [Validators.required]],
       empresa: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -62,6 +63,7 @@ export class RegistrarseComponent implements OnInit {
             telefono: this.fgValidator.get('telefono')?.value,
             profesionCargo: this.fgValidator.get('cargoProfesion')?.value,
             nombreEmpresa: this.fgValidator.get('empresa')?.value,
+            idiomaPreferencia: this.fgValidator.get('idiomaPreferencia')?.value,
             fotoPerfil: this.fgValidator.get('archivosubido')?.value,
             login: loginHijo
           }

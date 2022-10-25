@@ -95,7 +95,7 @@
          <p class="card-text">{{evento.descripcion}}</p>
          <p class="card-text">+{{evento.fechaHora | date: 'dd/MM/yyyy h:mm a': 'timezone' }}</p>
          <p class="card-text">{{evento.ciudad}}</p>
-         <a href="/seguridad/iniciarSesion" class="btn btn-primary">Reservar</a>
+         <a  [routerLink]="['/evento/reservar', evento.eventoId]" [skipLocationChange]="true">Reservar</a>
        </div>
      </div>
       

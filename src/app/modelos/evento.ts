@@ -1,4 +1,5 @@
 import { Time } from "@angular/common";
+import { Mesa } from "./mesa";
 
 
 export class Evento {
@@ -9,20 +10,17 @@ export class Evento {
     tipo!: string;
     fechaHora!: string;
     imagenPortada!: File;
-    fecha!: string;
     duracion!: string;
     callePuerta!: string;
     barrio!: string;
     ciudad!: string;
     nroCupos!: number;
-    cantidadMesas!: number;
-    cantidadAsientosMesa!: number;
+    cantidadMesas?: number;
+    cantidadAsientosMesa?: number;
     precioAsiento!: number;
     idioma!: string;
     criterioAsignacion!: string;
     empresaCreadora!: string;
-    mesas?: Mesa[];
+    mesas?: Array<Mesa>;
     estadoEvento!: string;
-
-    imagenPortada!: File;
 }

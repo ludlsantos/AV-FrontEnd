@@ -59,4 +59,8 @@ updateEstadoReserva(nuevoEstadoReserva: EstadoReserva): Observable<Reserva> {
   return this.http.put<Reserva>(url, nuevoEstadoReserva);
 }
 
+comentarioReserva(id: number):Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlComentarioReserva + id);
+}
+
 }

@@ -87,11 +87,15 @@ updEstadoReserva(){
         
       }  
       this.reservaService.updateEstadoReserva(allReservas).subscribe(data => {
-        alert(data)
+        alert(data);
+        this.reservaService.comentarioReserva(allReservas.idReserva!).subscribe(comentario =>{
+
         alert('El estado de la reserva fue actualizado con éxito');
         this.router.navigate(['/listadoReserva/listadoReserva']);
         this.fgValidator.reset();
       });
+      
+    });
  
 
 }
