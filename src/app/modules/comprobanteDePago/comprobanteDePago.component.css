@@ -1,0 +1,104 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.input-file{
+    background-color: transparent;
+    position: relative;
+    height: 250px;
+    width: 400px;
+    border:solid 0px rgb(226 226 226);
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+
+.input-file:after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #ffffff;
+    background-image: url(src\assets\imagenes/subir.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200px;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+
+}
+
+.wrapper-button{
+    padding-top: 1rem;
+    width: 100%;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.button{
+    margin-top: 1rem;
+    width: 100%;
+    padding:.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    border:solid 1px #eaeaea;
+    border-radius:.15rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #26a69a;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+.preview-img{
+    margin-top: 1rem;
+    position: absolute;
+    top: 65px;
+    background-color: #f9f9f9;
+}
+.preview-img img{
+    margin-top: 1rem;
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    position: center;
+    
+}
+
+.position-relative{
+    position: relative;
+    
+
+}
+.p-1{
+    padding-top: .5rem;
+}
+.clear-image{   
+    margin-top: 1rem;
+    position: absolute;
+    right: 0;
+    margin: .5rem;
+    border:0;
+    padding: .25rem;
+    width: 100%;
+    text-transform: uppercase;
+    border:solid 1px #eaeaea;
+    text-decoration: none;
+    color: #fff;
+    background-color: #26a69a;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+    
+    
+    
+
+}

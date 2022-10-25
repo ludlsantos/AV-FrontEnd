@@ -21,8 +21,8 @@
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">insert_invitation</i>
-        <input id="fecha"  value="{{evento.fecha}}" 
-        formControlName="fecha" type="date" >Fecha
+        <input id="fechaHora"  value="{{evento.fechaHora | date: 'dd/MM/yyyy h:mm a': 'timezone' }}" 
+        formControlName="fechaHora" type="datetime" >Fecha
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">timer</i>

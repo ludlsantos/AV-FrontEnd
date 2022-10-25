@@ -39,6 +39,7 @@ export class ReservaService {
   .set('Type-content', 'aplication/json')
   return this.http.get(this.url, {
     headers: header
+
   } 
     );
  }
@@ -48,9 +49,42 @@ export class ReservaService {
   return this.http.get<Reserva>(url2);
  }
 
+ } 
+   );
+}
+getReservasTodas(): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas);
+}
+
+
+get(id: number):Observable<Reserva>{
+  const url2 = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+id;
+  return this.http.get<Reserva>(url2);
+}
+getReserva(id: number): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas + id);
+}
+getGenerarQR(id: number): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlGenerarQR + id);
+
+cancelarReserva(id: number):Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlCancelarReserva + id);
+}
+
+
  updateEstadoReserva(nuevoEstadoReserva: EstadoReserva): Observable<Reserva> {
   const url = `${constantes.apiUrlEstadoReservas}${nuevoEstadoReserva.idReserva}`;
   return this.http.put<Reserva>(url, nuevoEstadoReserva);
+
  }
 
  }
+
+
+}
+
+getReservasActivas(): Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlAsignacionManual);
+}
+}
+

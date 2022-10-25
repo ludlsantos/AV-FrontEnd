@@ -34,7 +34,7 @@ export class EditarEventoComponent implements OnInit {
     nombre: new FormControl(''),
     descripcion: new FormControl(''),
     tipo:new FormControl(''),
-    fecha:new FormControl(''),
+    fechaHora:new FormControl(''),
     duracion:new FormControl(''),
     callePuerta: new FormControl(''),
     barrio:new FormControl(''),
@@ -65,7 +65,7 @@ export class EditarEventoComponent implements OnInit {
         this.fgValidator.get('nombre')?.setValue(this.evento.nombre);
         this.fgValidator.get('descripcion')?.setValue(this.evento.descripcion);
         this.fgValidator.get('tipo')?.setValue(this.evento.tipo);
-        this.fgValidator.get('fecha')?.setValue(this.evento.fecha);
+        this.fgValidator.get('fecha')?.setValue(this.evento.fechaHora);
         this.fgValidator.get('duracion')?.setValue(this.evento.duracion);
         this.fgValidator.get('callePuerta')?.setValue(this.evento.callePuerta);
         this.fgValidator.get('barrio')?.setValue(this.evento.barrio);
@@ -89,11 +89,32 @@ export class EditarEventoComponent implements OnInit {
     
     update(){
      const allEvento: Evento = {
+
+       eventoId: this.eventoident,
+       nombre: this.fgValidator.get('nombre')?.value,
+       descripcion: this.fgValidator.get('descripcion')?.value,
+       tipo: this.fgValidator.get('tipo')?.value,
+       fecha: this.fgValidator.get('fecha')?.value,
+       duracion: this.fgValidator.get('duracion')?.value,
+       callePuerta: this.fgValidator.get('callePuerta')?.value,
+       barrio: this.fgValidator.get('barrio')?.value,
+       ciudad: this.fgValidator.get('ciudad')?.value,
+       nroCupos: this.fgValidator.get('nroCupos')?.value,
+       cantidadMesas: this.fgValidator.get('cantidadMesas')?.value,
+       cantidadAsientosMesa: this.fgValidator.get('cantidadAsientosMesa')?.value,
+       precioAsiento: this.fgValidator.get('precioAsiento')?.value,
+       idioma: this.fgValidator.get('idioma')?.value,
+       criterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
+       imagenPortada: this.fgValidator.get('archivosubido')?.value,
+       empresaCreadora: "Traer de admin logueado",
+       hora: ''
+     }   
+
         eventoId: this.eventoident,
         nombre: this.fgValidator.get('nombre')?.value,
         descripcion: this.fgValidator.get('descripcion')?.value,
         tipo: this.fgValidator.get('tipo')?.value,
-        fecha: this.fgValidator.get('fecha')?.value,
+        fechaHora: this.fgValidator.get('fechaHora')?.value,
         duracion: this.fgValidator.get('duracion')?.value,
         callePuerta: this.fgValidator.get('callePuerta')?.value,
         barrio: this.fgValidator.get('barrio')?.value,
@@ -105,9 +126,17 @@ export class EditarEventoComponent implements OnInit {
         idioma: this.fgValidator.get('idioma')?.value,
         criterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
         imagenPortada: this.fgValidator.get('archivosubido')?.value,
-        empresaCreadora: "Traer de admin logueado"
+        empresaCreadora: "Traer de admin logueado",
+        estadoEvento: "Activo"
       }   
+
       this.eventoService.update( this.eventoident, allEvento).subscribe(data => {
+          this.eventoService.eventoModificado(this.evento.eventoId!).subscribe(data =>{
+            alert('Evento actualizado con éxito');
+            this.fgValidator.reset();
+            this.router.navigate(['/home'])
+          });
+
         alert(data)
         alert('Evento actualizado con éxito');
         this.router.navigate(['/listadoEvento/listadoEvento']);
@@ -116,6 +145,47 @@ export class EditarEventoComponent implements OnInit {
  
 
 }
+}
+
+
+
+/* 
+cargar():void{   
+  this.activatedRoute.params.subscribe(
+    //almacenar en una variable lo que me trae desde el enlace que viene con el id
+    e=>{
+      let id=e['id'];
+      if(id){
+        alert('texto'+id);
+
+        this.eventoService.get(id).subscribe(
+          ev=>{this.evento=ev ;
+          alert(ev.cantidadMesas);
+
+        this.http.get('https://localhost:44319/API_1_0/Eventos/2').toPromise().then(
+          ev=>{this.evento=ev as Evento ;
+          alert(this.evento.eventoId);
+
+          } );
+      }
+       }
+  );
+
+  }
+  
+       
+    }
+
+    
+ */
+
+  }
+
+  
+  }
+  
+  */
+
 }
 
 

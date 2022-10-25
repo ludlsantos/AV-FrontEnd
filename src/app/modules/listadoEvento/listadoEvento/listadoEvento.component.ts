@@ -18,7 +18,8 @@ export class ListadoEventoComponent implements OnInit {
   constructor(
 
     public eventoService: EventoService,
-    private route:ActivatedRoute
+    private router: Router,
+    private route:ActivatedRoute,
 
   ) {
 

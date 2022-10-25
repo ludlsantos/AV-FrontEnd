@@ -1,0 +1,39 @@
+<form>
+    <div class="container">
+      <div class="row">
+               <div id="custom-search-input">
+       <div class="input-group col-md-12">
+            <input type="text" name = "filtrar" class="  search-query form-control" placeholder="Buscar por nombre..." />
+                   <span class="input-group-btn">
+                         <button class="btn btn-danger" type="button">
+                           <span class=" glyphicon glyphicon-search"></span>
+                         </button>
+                   </span>
+               </div>
+           </div>
+       </div>
+    </div>
+      </form>
+      <table class="table table-hover">
+        <thead>
+              <tr>
+                <th>Nro identificador de la reserva</th>
+                <th>Nombre reserva</th>
+                <th>Nombre evento </th>
+                <th>Cantidad de reservas</th>
+                <th>Estado de reserva</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let reserva of reservas">
+                  <td>{{reserva.idReserva}}</td>
+                  <td>{{reserva.nombreEmpresa}}</td>
+                  <td>{{reserva.evento.nombre}}</td>
+                  <td>{{reserva.cantidadReservas}}</td>
+                  <td>{{reserva.estadoReserva}}</td>
+                  
+                  <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/cliente/cancelarReserva', reserva.idReserva]" [skipLocationChange]="true" >Cancelar reserva</button></td>
+                </tr>
+                
+          </tbody>
+      </table>

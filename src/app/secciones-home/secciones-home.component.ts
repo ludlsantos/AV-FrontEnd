@@ -22,9 +22,14 @@ export class SeccionesHomeComponent implements OnInit {
   
       this.eventoService.getEventos().subscribe((resp: any)=> {
         console.log(resp)
-        this.eventos = resp
+        for (let eventoA of resp){
+          if(eventoA.estadoEvento == "Activo"){
+             this.eventos.push(eventoA)
+          }
+        }
+          
+        });
         
-      })
      }
   
   ngOnInit(): void {
