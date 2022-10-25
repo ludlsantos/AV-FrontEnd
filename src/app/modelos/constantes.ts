@@ -1,7 +1,7 @@
 
 
 export const miApiUrl = 'https://localhost:44319/';
-const apiBase = 'api_1_0/';
+const apiBase = 'API_1_0/';
 
 export const apiUrlClientes = apiBase +  'Clientes/';
 export const apiUrlAdministradores = apiBase + 'Administradores/';
@@ -21,15 +21,20 @@ export const apiUrlAsignacionManual = apiBase + 'AsignacionManual/';
 
 
 export const apiUrlCancelarReserva = apiBase + 'CancelarReserva/';
-export const apiUrlComentarioReserva = apiBase + 'ComentarioReserva/';
+
+//export const apiUrlCorreoReservas = apiBase + 'EventoCancelado/';
+
+//export const apiUrlReservasId = apiUrlReservas + 'id';
+export const apiUrlEstadoReservas = miApiUrl + apiBase + 'EstadoReserva/';
+export const apiUrlEditarCliente = miApiUrl + apiBase + 'EditarCliente/';
+export const apiUrlReservasPorEvento = apiBase + 'ReservasPorEvento/';
 
 export const apiUrlArregloMesas = apiBase + 'ArregloMesas/';
 export const apiUrlMesasPorEvento = apiBase + 'MesasPorEvento/';
 
-// export const apiUrlCorreoReservas = apiBase + 'EventoCancelado/';
+export const apiUrlCorreoReservas = apiBase + 'EventoCancelado/';
 export const apiUrlEstadoReservas = miApiUrl + apiBase + 'EstadoReserva/';
 export const apiUrlEditarCliente = miApiUrl + apiBase + 'EditarCliente/';
 export const apiUrlReservasPorEvento = apiBase + 'ReservasPorEvento/';
 export const urlComprobantePago = 'http://montevideoit-001-site5.htempurl.com/img/';
 
->>>>>>> master
