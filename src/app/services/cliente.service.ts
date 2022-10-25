@@ -37,13 +37,6 @@ eliminarCliente(id: number): Observable<Cliente>{
   return this.http.delete<Cliente>(constantes.miApiUrl + constantes.apiUrlClientes + id);
 }
  
-
-
-//getRecordById(id: number): Observable<Cliente> {
-  //const url = `${constantes.miApiUrl}${constantes.apiUrlClientes}${id}`;
-  //return this.http.get<Cliente>(url);
-//}
-
 updateCliente(editarCliente: EditarCliente): Observable<Cliente>{
   const ul = `${constantes.miApiUrl}${constantes.apiUrlClientes}`+editarCliente.clienteId;
   alert("esty aca..." + ul)
@@ -51,18 +44,6 @@ updateCliente(editarCliente: EditarCliente): Observable<Cliente>{
 
 
 }
-
-
-
-
-/*updateCliente(id: number, editarCliente: EditarCliente): Observable<Cliente> {
-  //const ul = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+reserva.idReserva;
-  const urlC = `${constantes.apiUrlEditarCliente}${editarCliente.clienteId}`;
-  alert("esty aca..." + urlC)
-  return this.http.put<Cliente>(urlC, editarCliente);
-}
-*/
-
 
 
 }

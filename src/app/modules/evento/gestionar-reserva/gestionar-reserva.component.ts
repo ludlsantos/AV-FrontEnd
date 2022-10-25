@@ -32,6 +32,7 @@ export class GestionarReservaComponent implements OnInit {
     this.getReservaId();
   this.FormBuilding();
   
+  
   };
 
   
@@ -45,6 +46,7 @@ export class GestionarReservaComponent implements OnInit {
     estado:new FormControl(''),
     estaReserva:new FormControl(''),
     descripcion:new FormControl(''),
+    comprobante:new FormControl(''),
 
     
    });  
@@ -57,11 +59,10 @@ export class GestionarReservaComponent implements OnInit {
         let id=e['id'];
         
     if(id){
-      this.reservaident = id;
+      this.reservaident! = id;
       this.reservaService.get(id).subscribe(
       
-        re=> { this.reserva=re;
-          
+        re=> { this.reserva=re; 
           this.fgValidator.get('idReserva')?.setValue(this.reserva.idReserva);
           this.fgValidator.get('nombreCliente')?.setValue(this.reserva.cliente.nombre);
           this.fgValidator.get('apellido')?.setValue(this.reserva.cliente.apellidos);
@@ -70,6 +71,9 @@ export class GestionarReservaComponent implements OnInit {
          this.fgValidator.get('estaReserva')?.setValue(this.reserva.estadoReserva);
          this.fgValidator.get('descEstado')?.setValue(this.reserva.descripcionEstado);
          this.fgValidator.get('descripcion')?.setValue(this.reserva.descripcionEstado);
+         this.fgValidator.get('comprobante')?.setValue(this.reserva.comprobanteDePago);
+         this.reserva.ruta =  "http://montevideoit-001-site5.htempurl.com/img/" + (this.reserva.idReserva!) + "_" +(this.reserva.comprobanteDePago!.nombre!);
+
          
           
         }
@@ -92,9 +96,8 @@ updEstadoReserva(){
         
       }  
       this.reservaService.updateEstadoReserva(allReservas).subscribe(data => {
-        alert(data)
         alert('El estado de la reserva fue actualizado con éxito');
-        this.router.navigate(['/listadoReserva/listadoReserva']);
+        this.router.navigate(['/listadoEvento/listadoEvento']);
         this.fgValidator.reset();
       });
  

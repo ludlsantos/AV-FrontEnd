@@ -38,11 +38,11 @@
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">map</i>
-        <input class="validate"  id="barrio"  value="{{evento.barrio}}"formControlName="barrio" type="text" required>Barrio
+        <input id="barrio"  value="{{evento.barrio}}"formControlName="barrio" type="text" >Barrio
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">location_searching</i>
-        <input class="validate"  id="ciudad"  value="{{evento.ciudad}}"formControlName="ciudad" type="text" required>Ciudad
+        <input id="ciudad"  value="{{evento.ciudad}}"formControlName="ciudad" type="text" >Ciudad
       </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">supervisor_account</i>
@@ -52,25 +52,22 @@
         <i class="material-icons prefix">view_column</i>
         <input class="validate" id="cantidadMesas" value="{{evento.cantidadMesas}}" formControlName="cantidadMesas" type="number" required>Cantidad de mesas
       </div>
-      <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <i class="material-icons prefix">view_module</i>
           <input class="validate" id="cantidadAsientosMesa" value="{{evento.cantidadAsientosMesa}}" formControlName="cantidadAsientosMesa" type="number" minlength="1" required>Cantidad de asientos por mesa
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <i class="material-icons prefix">shopping_cart</i>
-          <input class="validate" id="precio" value="{{evento.precioAsiento}}" formControlName="precioAsiento" type="number" required>Precio del asiento
+          <input id="precio" value="{{evento.precioAsiento}}" formControlName="precioAsiento" type="number" >Precio del asiento
         </div>
         <div class="input-field col s12">
           <i class="material-icons prefix">translate</i>
-          <input class="validate"  id="idioma" value="{{evento.idioma}}"  formControlName="idioma" type="text" minlength="3" required>Idioma
+          <input id="idioma" value="{{evento.idioma}}"  formControlName="idioma" type="text" minlength="3" >Idioma
         </div>
       </div>
       <div class="input-field col s12">
         <i class="material-icons prefix">widgets</i>
-        <input class="validate"  id="criterioAsignacion" value="{{evento.criterioAsignacion}}" formControlName="criterioAsignacion" type="text" minlength="3" required>Criterio de asignacion de asientos
+        <input id="criterioAsignacion" value="{{evento.criterioAsignacion}}" formControlName="criterioAsignacion" type="text" minlength="3" >Criterio de asignacion de asientos
   
     </div>
     <div class="input-field col s12">
@@ -79,7 +76,7 @@
 
   </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
       <form action="" method="post" enctype="multipart/form-data" target="_blank">Foto de portada
           <input type="file" value="{{evento.imagenPortada}}"  name="archivosubido" >
         <br><br>
