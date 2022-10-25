@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/modelos/login';
 import { LoginService } from 'src/app/services/login.service';
+import { Location } from '@angular/common';
+
 
 
 @Component({
@@ -23,7 +25,13 @@ export class ConfirmarMailComponent implements OnInit {
   codigo: any;
   correo: any;
 
-  constructor(http: HttpClient, private fb: FormBuilder, private LoginService: LoginService, private router:Router) { }
+  constructor(
+    http: HttpClient, 
+    private fb: FormBuilder, 
+    private LoginService: LoginService, 
+    private router:Router,
+    private location: Location
+    ) { }
 
 
   ngOnInit(): void {
@@ -59,5 +67,8 @@ export class ConfirmarMailComponent implements OnInit {
       return this.validator.controls;
     }
     
+    goBack(): void {
+      this.location.back();
+     }
 
 }

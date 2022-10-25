@@ -19,13 +19,16 @@ export const apiUrlReservasId = apiUrlReservas + 'id';
 
 export const apiUrlComprobanteDePagp = apiBase + 'ComprobanteDePago/Subir';
 export const apiUrlGenerarQR = apiBase + 'GenerarQR/';
-export const apiUrlAsignacionManual = apiBase + 'AsignacionManual';
+export const apiUrlAsignacionManual = apiBase + 'AsignacionManual/';
 
 
 export const apiUrlCancelarReserva = apiBase + 'CancelarReserva/';
-export const apiUrlCorreoReservas = apiBase + 'EventoCancelado/';
+//export const apiUrlCorreoReservas = apiBase + 'EventoCancelado/';
 
 //export const apiUrlReservasId = apiUrlReservas + 'id';
 export const apiUrlEstadoReservas = miApiUrl + apiBase + 'EstadoReserva/';
 export const apiUrlEditarCliente = miApiUrl + apiBase + 'EditarCliente/';
 export const apiUrlReservasPorEvento = apiBase + 'ReservasPorEvento/';
+
+export const apiUrlArregloMesas = apiBase + 'ArregloMesas/';
+export const apiUrlMesasPorEvento = apiBase + 'MesasPorEvento/';

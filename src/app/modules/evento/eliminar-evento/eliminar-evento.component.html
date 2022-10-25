@@ -1,3 +1,6 @@
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary" [routerLink]="['/listadoEvento/listadoEvento']">Volver</button>
+</div>
 <fieldset>
     <legend>Eliminar evento definitivamente</legend>
     <div class="row">
@@ -6,12 +9,12 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">https</i>
-          <input id="pass" formControlName="pass" type="password" required>
+          <input class="validate" id="pass" formControlName="pass" type="password" required>
           <label for="pass">Ingrese su contraseña</label>
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">https</i>
-          <input id="rePass" formControlName="rePass" type="password" required>
+          <input class="validate" id="rePass" formControlName="rePass" type="password" required>
           <label for="rePass">Repita su contraseña</label>
         </div>
 

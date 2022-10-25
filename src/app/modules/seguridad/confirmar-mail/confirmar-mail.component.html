@@ -1,15 +1,18 @@
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary"(click)="goBack()">Volver</button>
+</div>
 <fieldset>
   <legend>Cambio de contraseña</legend>
+  <br>
   <div class="row">
   <form [formGroup]="validator" class="col s12" id="mail-form">
     <div class="row">
       <div class="input-field col s6">
-        <i class="material-icons prefix">mail</i>
-          <input id="correo" formControlName="correo" type="mail" required>
-          <label for="correo">Ingrese su correo electrónico</label> 
+        <i class="material-icons prefix">mail</i> 
+        <input id="correo" placeholder="Ingrese su correo electrónico"  formControlName="correo" type="mail" required>
         </div>
      
-          <div class="input-field col s">
+          <div class="input-field col s6">
           <button (click)="confirmarMail()" class="btn btn-large btn-cambiarPass waves-effect waves-light" type="button" name="action">Aceptar
             <i class="material-icons right">done</i>
           </button>

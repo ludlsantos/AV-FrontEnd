@@ -25,7 +25,15 @@ export class ReservarComponent implements OnInit {
   idEvento!: any;
   asiento!: Asiento;
 
-  constructor(private http: HttpClient,private reservaService: ReservaService , private eventoService: EventoService, private clienteService: ClienteService ,private fb: FormBuilder, private route: Router, private router: ActivatedRoute) { }
+  constructor(
+    private http: HttpClient,
+    private reservaService: ReservaService, 
+    private eventoService: EventoService, 
+    private clienteService: ClienteService,
+    private fb: FormBuilder, 
+    private route: Router, 
+    private router: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -69,7 +77,7 @@ export class ReservarComponent implements OnInit {
             correoElectronico: this.fgValidator.get('email')?.value, 
             cantidadReservas: this.fgValidator.get('cantidadReservas')?.value,
             fechaReserva: new Date(),
-            descripcionEstado: this.fgValidator.get('descEstado')?.value
+            descripcionEstado: "",
             }
             if(reserva.evento.nroCupos >= reserva.cantidadReservas){
             var mensaje = confirm("¿Confirma la reserva de " + reserva.cantidadReservas + " asientos para el evento " + reserva.evento.nombre + "?");

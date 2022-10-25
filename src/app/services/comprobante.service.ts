@@ -5,6 +5,7 @@ import * as constantes from '../modelos/constantes';
 import { Observable } from 'rxjs';
 import { ComprobanteDePago} from '../modelos/comprobanteDePago';
 import { ComprobanteDePagoComponent } from '../modules/comprobanteDePago/comprobanteDePago.component';
+import { Reserva } from '../modelos/reserva';
 
 
 @Injectable({
@@ -18,13 +19,13 @@ export class ComprobanteService {
     return this.http.post(url,body); 
   }
  */
- public postComprobante(comprobanteDePago: ComprobanteDePago): Observable<ComprobanteDePago>{
+ postComprobante(comprobanteDePago: ComprobanteDePago): Observable<ComprobanteDePago>{
     return this.http.post<ComprobanteDePago>(constantes.miApiUrl + constantes.apiUrlComprobanteDePagp, comprobanteDePago); 
   
   }
 
-  getComprobante(idDocumento: number): Observable<ComprobanteDePago>{
-    return this.http.get<ComprobanteDePago>(constantes.miApiUrl + constantes.apiUrlReservas + idDocumento);
+  getComprobante(id: number): Observable<Reserva>{
+    return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlComprobanteDePagp + id);
   }
 
 /*   public getComprobante(url:string){

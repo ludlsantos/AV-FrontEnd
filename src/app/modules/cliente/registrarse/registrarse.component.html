@@ -1,78 +1,92 @@
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary"(click)="goBack()">Volver</button>
+</div>
 <fieldset> 
-    <legend>Registrarse</legend>
+  <legend>Registrarse</legend>
+  <div class="row">
+  <form [formGroup]="fgValidator" class="col s12" id="reg-form">
     <div class="row">
-    <form [formGroup]="fgValidator" class="col s12" id="reg-form">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="name" formControlName="nombre" type="text" required>
-          <label for="name">Nombre</label>
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="apellido" formControlName="apellido" type="text" required>
-          <label for="apellido">Apellido</label>
-        </div>
-      </div>   
-   <div class="input-field col s6"><br>
-   <i class="material-icons prefix">portrait</i> <br>     
-                <select  name="tipoDocumento" id="tipoDocumento"  formControlName="tipoDocumento" class="form-control" >                                  
-                      <option value="CEDULA">CEDULA</option>
-                      <option value="PASAPORTE">PASAPORTE</option>         
-                    </select>
-                    <label for="fname">Tipo de documento:</label>
-              </div> 
       <div class="input-field col s6">
-        <i class="material-icons prefix">portrait</i>
-        <input id="nroDocumento" formControlName="nroDocumento" type="number" required>
-        <label for="nroDocumento">Numero de documento</label>
+        <i class="material-icons prefix">account_circle</i>
+        <input class="validate" id="name" formControlName="nombre" type="text" required>
+        <label for="name" data-error="wrong" data-success="right">Nombre</label>
       </div>
       <div class="input-field col s6">
-        <i class="material-icons prefix">phone</i>
-        <input id="telefono" formControlName="telefono" type="number" required>
-        <label for="telefono">Teléfono</label>
+        <i class="material-icons prefix">account_circle</i>
+        <input class="validate" id="apellido" formControlName="apellido" type="text" required>
+        <label for="apellido" data-error="wrong" data-success="right">Apellido</label>
       </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">business_center</i>
-        <input id="cargoProfesion" formControlName="cargoProfesion" type="text" required>
-        <label for="cargoProfesion">Cargo/Profesión</label>
+    </div>   
+ <div class="input-field col s6"><br>
+ <i class="material-icons prefix">portrait</i> <br>     
+              <select class="validate" name="tipoDocumento" id="tipoDocumento"  formControlName="tipoDocumento" class="form-control" >                                  
+                    <option value="CEDULA">CEDULA</option>
+                    <option value="PASAPORTE">PASAPORTE</option>         
+                  </select>
+                  <label for="fname" data-error="wrong" data-success="right">Tipo de documento:</label>
+            </div> 
+    <div class="input-field col s6">
+      <i class="material-icons prefix">portrait</i>
+      <input class="validate" id="nroDocumento" formControlName="nroDocumento" type="number" required>
+      <label for="nroDocumento" data-error="wrong" data-success="right">Numero de documento</label>
+    </div>
+    <div class="input-field col s6">
+      <i class="material-icons prefix">phone</i>
+      <input class="validate" id="telefono" formControlName="telefono" type="number" required>
+      <label for="telefono" data-error="wrong" data-success="right">Teléfono</label>
+    </div>
+    <div class="input-field col s6">
+      <i class="material-icons prefix">business_center</i> Recuerde que el cargo/profesión que seleccione será utilizado para la asignación de asientos de sus futuras reservas.
+      <input class="validate" id="cargoProfesion" formControlName="cargoProfesion" type="text" required>
+      <label for="cargoProfesion" data-error="wrong" data-success="right">Cargo/Profesión</label>
+    </div>
+    <div class="input-field col s6">
+      <i class="material-icons prefix">domain</i>
+      <input class="validate" id="empresa" formControlName="empresa" type="text" required>
+      <label for="empresa" data-error="wrong" data-success="right">Empresa</label>
+    </div>
+    <div class="input-field col s6"><br>
+      <i class="material-icons prefix">portrait</i> <br> Recuerde que el idioma que seleccione será utilizado para la asignación de asientos de sus futuras reservas.
+                   <select class="validate" name="idiomaPreferencia" id="idiomaPreferencia"  formControlName="idiomaPreferencia" class="form-control" >                                  
+                         <option value="Ingles">Inglés</option>
+                         <option value="Español">Español</option>    
+                         <option value="Frances">Francés</option> 
+                         <option value="Italiano">Italiano</option>  
+                         <option value="Otro">Otro</option>    
+                       </select>
+                       <label for="fname" data-error="wrong" data-success="right">Idioma de preferencia</label>
+                 </div> 
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        <input class="validate" id="email" formControlName="email" type="email" required>
+        <label for="email" data-error="wrong" data-success="right">Correo electrónico</label>
       </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">domain</i>
-        <input id="empresa" formControlName="empresa" type="text" required>
-        <label for="empresa">Empresa</label>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">https</i>
+        <input class="validate" id="password" formControlName="password" type="password" minlength="6" required>
+        <label for="password" data-error="wrong" data-success="right">Contraseña</label>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">email</i>
-          <input id="email" formControlName="email" type="email" required>
-          <label for="email">Correo electrónico</label>
-        </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">https</i>
+        <input class="validate" id="rePassword" formControlName="rePassword" type="password" minlength="6" required>
+        <label for="rePassword" data-error="wrong" data-success="right">Re-ingrese la contraseña</label>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">https</i>
-          <input id="password" formControlName="password" type="password" minlength="6" required>
-          <label for="password">Contraseña</label>
-        </div>
-        <div class="input-field col s12">
-          <i class="material-icons prefix">https</i>
-          <input id="rePassword" formControlName="rePassword" type="password" minlength="6" required>
-          <label for="rePassword">Re-ingrese la contraseña</label>
-        </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+    <form action="" method="post" enctype="multipart/form-data" target="_blank">
+      <label for="file">Foto de perfil</label><br>
+        <input type="file" name="archivosubido" >
+      <br><br>
+        <div class="input-field col s">
+        <button (click)="ClienteRegistro()" class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Registrarme
+          <i class="material-icons right" >done</i>
+        </button>
+            
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-      <form action="" method="post" enctype="multipart/form-data" target="_blank">
-        <label for="file">Foto de perfil</label><br>
-          <input type="file" name="archivosubido" >
-        <br><br>
-          <div class="input-field col s">
-          <button (click)="ClienteRegistro()" class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Registrarme
-            <i class="material-icons right" >done</i>
-          </button>
-              
-        </div>
-             
-    </form>
+           
+  </form>
     

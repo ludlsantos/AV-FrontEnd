@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { ConfirmarMailComponent } from '../confirmar-mail/confirmar-mail.component';
 
 @Component({
@@ -14,7 +15,12 @@ export class IngresarCodigoComponent implements OnInit {
   codigo: any;
   correo: any;
 
-  constructor(private fb: FormBuilder, private router:Router,  private route:ActivatedRoute) { }
+  constructor(
+    private fb: FormBuilder, 
+    private router:Router,  
+    private route:ActivatedRoute,
+    private location: Location
+    ) { }
 
   ngOnInit(): void {
     this.FormBuilding();
@@ -38,4 +44,7 @@ export class IngresarCodigoComponent implements OnInit {
       alert("Código incorrecto, reintente")
     }
   }
+  goBack(): void {
+    this.location.back();
+   }
 }

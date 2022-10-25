@@ -1,3 +1,6 @@
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary"[routerLink]="['/cliente/reservas-cliente']">Volver</button>
+</div>
 <form>
 
 <div class="wrapper">
@@ -18,11 +21,11 @@
         </div>
       
         <div class="p-1">
-            <small>Se aceptan archivos imágenes de tipo: .png / .jpg / </small>
+            <small>Se aceptan archivos imágenes de tipo: .png / .jpg / .jfif</small>
         </div>
         <div class="wrapper-button">
             <button type="button" class="button"[disabled]="loading" (click)="subirArchivo()">
-                {{(loading == false) ? 'Cargando.....' : 'Subir Comprobante de Pago'}}
+                {{(loading) ? 'Cargando.....' : 'Subir Comprobante de Pago'}}
             </button>
         </div>
   

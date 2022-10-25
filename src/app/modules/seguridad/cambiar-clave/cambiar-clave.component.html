@@ -1,18 +1,24 @@
+<div style="text-align: right;">
+  <button type="button" name="buttonVolver" class="btn btn-primary"(click)="goBack()">Volver</button>
+</div>
+<br>
 <fieldset>
+  <br>
     <legend>Cambio de contraseña</legend>
+    <br>
     <div class="row">
 
       <form [formGroup]="validator" class="col s12">
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">https</i>
-          <input id="passAnterior" formControlName="passAnterior" type="password" required>
-          <label for="passAnterior"> Ingrese su antigua contraseña </label>
+          <input class="validate" id="passAnterior" formControlName="passAnterior" type="password" required>
+          <label for="passAnterior" data-error="wrong" data-success="right"> Ingrese su antigua contraseña </label>
         </div>
         <div class="input-field col s6">
           <i class="material-icons prefix">https</i>
-          <input id="passNueva" formControlName="passNueva" type="password" class="validate" required>
-          <label for="passNueva">Ingrese su nueva contraseña</label>
+          <input class="validate" id="passNueva" formControlName="passNueva" type="password" class="validate" required>
+          <label for="passNueva" data-error="wrong" data-success="right">Ingrese su nueva contraseña</label>
         </div>
 
           <div class="input-field col s">

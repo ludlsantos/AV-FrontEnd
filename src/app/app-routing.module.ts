@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 
+import { NgModule } from '@angular/core';
 import { PredeterminadoComponent } from './FrontEnd/inicio/predeterminado/predeterminado.component';
 import { ClienteModule } from './modules/cliente/cliente.module';
 import { EventoModule } from './modules/evento/evento.module';
@@ -20,15 +20,13 @@ import { ComprobanteDePagoComponent } from './modules/comprobanteDePago/comproba
 import { RouterModule, Routes } from '@angular/router';
 import { AsignacionManualAsientosComponent } from './modules/asignacion-manual-asientos/asignacion-manual-asientos.component';
 
-import { ManualComponent } from './asignarAsientos/manual/manual.component';
-
 
 const routes: Routes = [
 
 
 {path: 'login', component: InicioSesionComponent},
 
-{path: 'comprobanteDePago', component: ComprobanteDePagoComponent},
+{path: 'comprobanteDePago/:id', component: ComprobanteDePagoComponent},
 
 {path: 'asignacionManualAsientos/:id', component: AsignacionManualAsientosComponent},
 
@@ -83,10 +81,7 @@ path: 'admin',
   path: 'listadoReserva',
   loadChildren: () => import('./modules/listadoReserva/listadoReserva.module').then(m => ListadoReservaModule)
 },
-{
-  path: 'manual',
-  component: ManualComponent,
-},
+
 
 
 {path: '',redirectTo: '/login', pathMatch: 'full'},
