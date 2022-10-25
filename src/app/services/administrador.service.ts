@@ -26,9 +26,7 @@ export class AdministradorService {
     return this.http.get<Administrador>(constantes.miApiUrl + constantes.apiUrlGetAdminCorreo + correoElectronico);
   }
 
-  getAdmin(correoElectronico: SVGStringList): Observable<Administrador>{
-    return this.http.get<Administrador>(constantes.miApiUrl + constantes.apiUrlGetAdminCorreo + correoElectronico);
-  } 
+
 
 
 }

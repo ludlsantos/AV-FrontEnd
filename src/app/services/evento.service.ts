@@ -3,8 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Evento } from '../modelos/evento' ;
 import * as constantes from '../modelos/constantes';
-import { Mesa } from '../modelos/mesa';
-
 
 
 @Injectable({
@@ -51,10 +49,6 @@ eliminarEvento(id: number): Observable<Evento>{
 
 eventoModificado(id: number): Observable<Evento>{
   return this.http.get<Evento>(constantes.miApiUrl + constantes.apiUrlCorreoReservas + id);
-}
-
-arregloMesas(id: number): Observable<Mesa[]>{
-  return this.http.get<Mesa[]>(constantes.miApiUrl + constantes.apiUrlArregloMesas + id);
 }
 
 }

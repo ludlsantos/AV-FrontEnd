@@ -5,7 +5,5 @@ export class Mesa{
     cantidadAsientos!: number;
     lugaresDisponibles!: number;
     eventoId?: number;
-    asientos?: Array<Asiento>;
-
-
+    asientos?: Array<Asiento>
 }

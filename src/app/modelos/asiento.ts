@@ -5,5 +5,4 @@ export class Asiento{
     mesa?: Mesa;
     codigoQR?: any;
     nroMesa?: number;
-
 }
