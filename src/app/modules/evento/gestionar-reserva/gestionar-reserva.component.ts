@@ -96,15 +96,10 @@ updEstadoReserva(){
         
       }  
       this.reservaService.updateEstadoReserva(allReservas).subscribe(data => {
-        alert(data);
-        this.reservaService.comentarioReserva(allReservas.idReserva!).subscribe(comentario =>{
-
         alert('El estado de la reserva fue actualizado con éxito');
         this.router.navigate(['/listadoEvento/listadoEvento']);
         this.fgValidator.reset();
       });
-      
-    });
  
 
 }

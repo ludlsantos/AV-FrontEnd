@@ -30,17 +30,6 @@
               <th>Apellido Cliente</th>
               <th>Nombre evento </th>
               <th>Estado de reserva</th>
-              <th>Asiento</th>
-            </tr>
-        </thead>
-        <tbody>
-          <thead>
-            <tr *ngFor="let reserva of reservas">
-                <td>{{reserva.idReserva}}</td>
-                <td>{{reserva.cliente.clienteId}}</td>
-                <td>{{reserva.estadoReserva}}</td>
-                <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/reserva/eliminar-reserva']" >Eliminar</button></td>
-
               <th>Descripcion del Estado</th>
               <th>Autorizar Reserva</th>
             </tr>
