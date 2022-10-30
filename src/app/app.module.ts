@@ -16,13 +16,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { EliminarEventoComponent } from './modules/evento/eliminar-evento/eliminar-evento.component';
 import { EditarEventoComponent } from './modules/evento/editar-evento/editar-evento.component';
 import { ReservarComponent } from './modules/evento/reservar/reservar.component';
-
 import { ComprobanteDePagoComponent } from './modules/comprobanteDePago/comprobanteDePago.component';
 import { AsignacionManualAsientosComponent } from './modules/asignacion-manual-asientos/asignacion-manual-asientos.component';
-
-
-
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltroEventoPipe } from './app.component';
 import { EventosActivosComponent } from './modules/evento/eventos-activos/eventos-activos.component';
@@ -31,7 +26,7 @@ import { CancelarReservaComponent } from './modules/cliente/cancelar-reserva/can
 import { GestionarReservaComponent } from './modules/evento/gestionar-reserva/gestionar-reserva.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ListadoReservasActivasComponent } from './modules/evento/listado-reservas-activas/listado-reservas-activas.component';
-
+import { AsientosAsignadosComponent } from './modules/evento/asientos-asignados/asientos-asignados.component';
 
 
 
@@ -47,20 +42,13 @@ import { ListadoReservasActivasComponent } from './modules/evento/listado-reserv
     EliminarCuentaComponent,
     SeccionesHomeComponent,
         InicioSesionComponent,
-
-        
         EditarEventoComponent,
         EliminarEventoComponent,
         ReservarComponent,
-
     InicioSesionComponent,
     EliminarEventoComponent,
     ComprobanteDePagoComponent,
     AsignacionManualAsientosComponent,
-   
-
-
-
         EditarEventoComponent,
         EliminarEventoComponent,
         ReservarComponent,
@@ -71,7 +59,8 @@ import { ListadoReservasActivasComponent } from './modules/evento/listado-reserv
     CancelarReservaComponent,
    GestionarReservaComponent,
    ListadoReservasActivasComponent,
-     
+    FiltroEventoPipe,
+    AsientosAsignadosComponent
 
 
 
@@ -87,8 +76,6 @@ import { ListadoReservasActivasComponent } from './modules/evento/listado-reserv
     ReactiveFormsModule,
     HttpClientModule,
     MatCheckboxModule,
-
-    
   ],
 
   providers: [CookieService],

@@ -22,7 +22,6 @@
       <table class="table table-hover">
         <thead>
               <tr>
-                <th>ID</th>
                 <th>Nombre</th>
                 <th>Descripcion</th>
                 <th>Tipo</th>
@@ -43,9 +42,7 @@
               </tr>
           </thead>
           <tbody>
-              <!-- <tr *ngFor="let evento of eventos|filtroEvento 'nombre' : eventoService.filtroEvento"> -->
                 <tr *ngFor="let evento of eventos">
-                  <td>{{evento.eventoId}}</td>
                   <td>{{evento.nombre}}</td>
                   <td>{{evento.descripcion}}</td>
                   <td>{{evento.tipo}}</td>
@@ -61,10 +58,7 @@
                   <td>{{evento.idioma}}</td>
                   <td>{{evento.criterioAsignacion}}</td>
                   <td>{{evento.empresaCreadora}}</td>
-                  <td>{{evento.imagenPortada}}</td>
-                 <!--<td> <a href="/evento/editar-evento" title="Editar">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                  </a></td>-->
+                  <td>src={{evento.imagenPortada}}</td>
                   <td><button type="button" name="buttonReserva" class="btn btn-primary" [routerLink]="['/evento/reservar', evento.eventoId]" [skipLocationChange]="true">Reservar</button></td>
                 </tr>
           </tbody>

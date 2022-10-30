@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { JwtAuthService } from '../services/jwt-auth.service';
 
 
 @Component({
@@ -15,9 +16,7 @@ export class SeccionesHomeComponent implements OnInit {
   public eventos: Array<Evento>=[]
     constructor(
       private eventoService: EventoService,
-      private router: Router,
-      private route: ActivatedRoute,
-      private rouermod: RouterModule
+      public jwtAuthService: JwtAuthService
     ) {
   
       this.eventoService.getEventos().subscribe((resp: any)=> {

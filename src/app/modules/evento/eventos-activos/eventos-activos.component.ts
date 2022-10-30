@@ -4,6 +4,7 @@ import { Evento } from 'src/app/modelos/evento';
 import { Location } from '@angular/common';
 import { EventoService } from 'src/app/services/evento.service';
 
+
 @Component({
   selector: 'app-eventos-activos',
   templateUrl: './eventos-activos.component.html',
@@ -18,20 +19,22 @@ public eventos: Array<Evento>=[]
   constructor(
 
     public eventoService: EventoService,
-    private router: Router,
-    private route:ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private route: Router
 
   ) {
 
     this.eventoService.getEventos().subscribe((resp: any)=> {
-      console.log(resp)
+      if(resp){
       for (let eventoA of resp){
         if(eventoA.estadoEvento == "Activo"){
            this.eventos.push(eventoA)
         }
       }
-        
+    }else{
+      alert("Ocurrió un error, intente nuevamente");
+      this.route.navigate(['/home'])
+    }
       });
    }
 

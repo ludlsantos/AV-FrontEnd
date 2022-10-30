@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Reserva } from 'src/app/modelos/reserva';
 import { ReservaService } from 'src/app/services/reserva.service';
 
@@ -16,7 +16,7 @@ export class ListadoReservasActivasComponent implements OnInit {
   constructor(
     private reservaService: ReservaService,
     private route:ActivatedRoute,
-
+    private router: Router
   ) {
     
 
@@ -24,7 +24,12 @@ export class ListadoReservasActivasComponent implements OnInit {
  
 this.CargarId();
 this.reservaService.getReservasActivas(this.eventoId).subscribe((resp: any) => {
+  if(resp){
   this.reservasActivas= resp;
+  }else{
+    alert("Ocurrió un error, intente nuevamente");
+    this.router.navigate(['/home'])
+  }
 });
 }
    CargarId(): void{

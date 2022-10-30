@@ -12,8 +12,7 @@ import { ReservaService } from 'src/app/services/reserva.service';
 
 export class NavbarComponent implements OnInit {
 
-  constructor(public jwtAuthService: JwtAuthService,
-    private reservaService: ReservaService) { }
+  constructor(public jwtAuthService: JwtAuthService,) { }
 
   ngOnInit(): void {
 
@@ -23,10 +22,6 @@ export class NavbarComponent implements OnInit {
     this.jwtAuthService.cerrarSesion();
 
 }
-generarQR(){
-  this.reservaService.getGenerarQR(2).subscribe(data => {
-    alert("QR Generado")
-  });
-}
+
 
 }

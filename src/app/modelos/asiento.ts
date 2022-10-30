@@ -1,9 +1,8 @@
-import { Mesa } from "./mesa";
 
 export class Asiento{
+    idAsiento?: number;
     nroAsiento?: number;
-    mesa?: Mesa;
-    codigoQR?: any;
-    nroMesa?: number;
+    mesaIdAdiento?: number;
+    idReserva?: number;
 
 }

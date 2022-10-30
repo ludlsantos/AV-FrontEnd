@@ -11,7 +11,6 @@ import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 export class EstaLogueadoGuard implements CanActivate {
 
   constructor(
-    private cookieService: CookieService, 
     private router: Router, 
     private jwtAuthService: JwtAuthService
     ){
@@ -50,24 +49,7 @@ export class EstaLogueadoGuard implements CanActivate {
 
 
       }
-      return estaLogeado
-/* 
-      var cookie= this.cookieService.check('respuesta');
-      if (cookie)  {
-        cookie = true
-        var valorToken = this.cookieService.get('respuesta'); 
-        const tokenInfo = this.decodificarToken(valorToken);
-        const expireDate = tokenInfo.exp; 
-        console.log(tokenInfo);
-
-        return tokenInfo.correoElectronico;
-      }
-      else
-
-      this.redirect(cookie)
-      return cookie;
- */
-
+      return estaLogeado;
 
 
     }

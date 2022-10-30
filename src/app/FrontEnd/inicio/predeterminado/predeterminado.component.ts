@@ -1,22 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { Evento } from 'src/app/modelos/evento';
+import { EventoService } from 'src/app/services/evento.service';
 
 @Component({
   selector: 'app-predeterminado',
   templateUrl: './predeterminado.component.html',
-  styleUrls: ['./predeterminado.component.css']
+  styleUrls: ['./predeterminado.component.css'],
+  
 })
 export class PredeterminadoComponent implements OnInit {
 
-  evento:Evento = new Evento();
+
+  eventos: Evento[] = [];
   
-  constructor() { }
+  constructor(private eventoService : EventoService) {
+
+
+    this.eventoService.getEventos().subscribe((resp: any)=> {
+      if(resp == null){
+        alert("Ocurrió un error, intente nuevamente");
+      }else{
+      for (let eventoA of resp){
+        if(eventoA.estadoEvento == "Activo"){
+           this.eventos.push(eventoA)
+        }
+      }
+    }
+      });
+  }
 
   ngOnInit(): void {
 
-   var ruta =  "http://montevideoit-001-site5.htempurl.com/img/" 
   }
 
-  
-
 }
+
+

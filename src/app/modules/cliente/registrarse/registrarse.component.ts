@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cliente } from 'src/app/modelos/cliente';
 import { Login } from 'src/app/modelos/login';
 import { ClienteService } from 'src/app/services/cliente.service';
-import { LoginService } from 'src/app/services/login.service';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -20,11 +18,9 @@ export class RegistrarseComponent implements OnInit {
   fgValidator!: FormGroup;
 
   constructor(
-    private http: HttpClient,
     private fb: FormBuilder, 
     private route: Router,
     private clienteService: ClienteService, 
-    private loginService: LoginService,
     private location: Location
     ) { }
 
@@ -72,13 +68,18 @@ export class RegistrarseComponent implements OnInit {
             profesionCargo: this.fgValidator.get('cargoProfesion')?.value,
             nombreEmpresa: this.fgValidator.get('empresa')?.value,
             idiomaPreferencia: this.fgValidator.get('idiomaPreferencia')?.value,
-            fotoPerfil: this.fgValidator.get('archivosubido')?.value,
             login: loginHijo
           }
             this.clienteService.guardarCliente(cliente).subscribe(data => {
+              if(data){
               alert('Registrado con éxito');
               this.route.navigate(['/login']);
               this.fgValidator.reset();  
+              }else{
+                alert("Ocurrió un error, intente nuevamente");
+                this.route.navigate(['/home'])
+                this.fgValidator.reset();
+              }
             });
   
   }

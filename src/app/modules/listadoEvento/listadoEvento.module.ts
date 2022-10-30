@@ -12,7 +12,7 @@ import { ListadoEventoComponent } from './listadoEvento/listadoEvento.component'
   declarations: [
 
     FiltroEventoPipe,
-    ListadoEventoComponent
+    ListadoEventoComponent,
     
   ],
   imports: [

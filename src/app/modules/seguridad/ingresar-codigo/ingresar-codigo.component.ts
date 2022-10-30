@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { ConfirmarMailComponent } from '../confirmar-mail/confirmar-mail.component';
 
 @Component({
   selector: 'app-ingresar-codigo',

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AsignacionManualAsientosComponent } from '../asignacion-manual-asientos/asignacion-manual-asientos.component';
 import { ListadoReservaComponent } from '../listadoReserva/listadoReserva.component';
+import { AsientosAsignadosComponent } from './asientos-asignados/asientos-asignados.component';
 import { CrearEventoComponent } from './crear-evento/crear-evento.component';
 import { EditarEventoComponent } from './editar-evento/editar-evento.component';
 import { EliminarEventoComponent } from './eliminar-evento/eliminar-evento.component';
@@ -68,6 +69,10 @@ component: EditarEventoComponent
   path: 'asignacion-manual-asientos/:id', 
   component: AsignacionManualAsientosComponent
 },
+{
+  path: 'asientos-asignados/:id',
+  component: AsientosAsignadosComponent
+}
 
 ];
 

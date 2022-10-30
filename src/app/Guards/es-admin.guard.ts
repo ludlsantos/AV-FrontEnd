@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import jwt_decode from 'jwt-decode';
-import { CookieService } from 'ngx-cookie-service';
 import { JwtAuthService } from 'src/app/services/jwt-auth.service';
 
 

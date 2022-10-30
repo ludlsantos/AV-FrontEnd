@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Login } from 'src/app/modelos/login';
 import { LoginService } from 'src/app/services/login.service';
 import { Location } from '@angular/common';
 
@@ -26,7 +25,6 @@ export class ConfirmarMailComponent implements OnInit {
   correo: any;
 
   constructor(
-    http: HttpClient, 
     private fb: FormBuilder, 
     private LoginService: LoginService, 
     private router:Router,

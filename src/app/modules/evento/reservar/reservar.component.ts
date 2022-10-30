@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cliente } from 'src/app/modelos/cliente';
 import { Reserva } from 'src/app/modelos/reserva';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Router, TitleStrategy } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { localStorageJwt } from 'src/app/static/local-storage';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { Evento } from 'src/app/modelos/evento';
@@ -26,7 +26,6 @@ export class ReservarComponent implements OnInit {
   asiento!: Asiento;
 
   constructor(
-    private http: HttpClient,
     private reservaService: ReservaService, 
     private eventoService: EventoService, 
     private clienteService: ClienteService,
@@ -43,10 +42,10 @@ export class ReservarComponent implements OnInit {
 
   FormBuilding(){
     this.fgValidator = this.fb.group({
-      nombreEmpresa: ['', [Validators.required, Validators.minLength(8)]],
+      nombreEmpresa: ['', [Validators.required, Validators.minLength(2)]],
       telefono: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
-      cantidadReservas: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2)]]
+      cantidadReservas: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(3)]]
 
      });
   }
@@ -59,8 +58,8 @@ export class ReservarComponent implements OnInit {
     {
       this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
       const parse = JSON.parse(this.correo);
-      alert(parse);
       this.clienteService.getClienteCorreo(parse).subscribe(data => {
+        if(data){
         this.cliente = data;
           this.router.params.subscribe(e=>{
             let id=e['id'];
@@ -71,33 +70,29 @@ export class ReservarComponent implements OnInit {
           const reserva: Reserva = {
             cliente: this.cliente,
             evento: this.evento,
-            estadoReserva: "Pendiente de pago",
-
-           // comprobanteDePago: "null",
-
             nombreEmpresa: this.fgValidator.get('nombreEmpresa')?.value,
             telefono: this.fgValidator.get('telefono')?.value,
             correoElectronico: this.fgValidator.get('email')?.value, 
             cantidadReservas: this.fgValidator.get('cantidadReservas')?.value,
-
             descripcionEstado: this.fgValidator.get('descEstado')?.value,
-            ruta: "null",
-
-
-            fechaReserva: new Date(),
+            ruta: "null"
 
            
-
             }
-            reserva.ruta= "http://montevideoit-001-site5.htempurl.com/img/" + (reserva.idReserva!) + "_" +(reserva.comprobanteDePago!.nombre!);
-
+       
             if(reserva.evento.nroCupos >= reserva.cantidadReservas){
-            var mensaje = confirm("¿Confirma la reserva de " + reserva.cantidadReservas + " asientos para el evento " + reserva.evento.nombre + "?");
+            var mensaje = confirm("¿Confirma la reserva de " + reserva.cantidadReservas + " asientos para el evento " + reserva.evento.nombre! + "?");
             if(mensaje){
               this.reservaService.guardarReserva(reserva).subscribe(dataC => {
+                if(dataC){
                  alert('Reserva exitosa! Revise su casilla de correo electrónico, en la misma, encontrará los pasos a seguir para hacer efectiva su reserva');
                  this.route.navigate(['/home']);
                  this.fgValidator.reset();
+                }else{
+                  alert("Ocurrió un error, intente nuevamente");
+                  this.route.navigate(['/home'])
+                  this.fgValidator.reset();
+                 }
             });
             }
           else{
@@ -113,7 +108,11 @@ export class ReservarComponent implements OnInit {
           alert("No se cargo el evento")
         }
         });
-        
+      }else{
+        alert("Ocurrió un error, intente nuevamente");
+        this.route.navigate(['/home'])
+        this.fgValidator.reset();
+      }
       });
       
 

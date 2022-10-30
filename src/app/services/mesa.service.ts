@@ -22,4 +22,12 @@ export class MesaService {
     return this.http.get<Mesa[]>(constantes.miApiUrl + constantes.apiUrlMesasPorEvento + idEvento);
   }
 
+  getMesa(idMesa: number): Observable<Mesa>{
+    return this.http.get<Mesa>(constantes.miApiUrl + constantes.apiUrlMesas+ idMesa);
+  }
+
+  putMesa(id: number, mesa: Mesa): Observable<Mesa>{
+    return this.http.put<Mesa>(constantes.miApiUrl + constantes.apiUrlMesas + id, mesa);
+ }
+
 }

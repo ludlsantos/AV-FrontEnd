@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { from } from 'rxjs';
-
+import { AdministradorService } from 'src/app/services/administrador.service';
 
 @Component({
   selector: 'app-editar-evento',
@@ -14,50 +13,55 @@ import { from } from 'rxjs';
 })
 export class EditarEventoComponent implements OnInit {
   fgValidator!: FormGroup;
- evento:Evento = new Evento();
- eventoident!:any;
+  evento:Evento = new Evento();
+  eventoident!:any;
+
+
+
   constructor(
-    private http: HttpClient,
-    private fb: FormBuilder, 
-    private eventoService: EventoService, 
-    private activatedRoute:ActivatedRoute, 
-    private router:Router) { }
+    private fb: FormBuilder,
+     private eventoService: EventoService,
+      private activatedRoute:ActivatedRoute,
+       private router:Router,
+       ) { }
    
 
   ngOnInit(): void {
 
     this.cargar();
-    //this.update();
     this.FormBuilding();
 
   };
-
+ 
 
   FormBuilding(){
     
-    this.fgValidator = new FormGroup({
-    nombre: new FormControl(''),
-    descripcion: new FormControl(''),
-    tipo:new FormControl(''),
-    fechaHora:new FormControl(''),
-    duracion:new FormControl(''),
-    callePuerta: new FormControl(''),
-    barrio:new FormControl(''),
-    ciudad:new FormControl(''),
-    nroCupos: new FormControl(''),
-    cantidadMesas: new FormControl(''),
-    cantidadAsientosMesa: new FormControl(''),
-    precioAsiento: new FormControl(''),
-    idioma: new FormControl(''),
-    criterioAsignacion: new FormControl(''),
-    imagenPortada: new FormControl(''),
-    empresaCreadora: new FormControl(''),
-    
+    this.fgValidator = this.fb.group({
+
+        nombre: ['', [Validators.required, Validators.minLength(2)]],
+        descripcion: ['', [Validators.required, Validators.minLength(10)]],
+        tipo: ['', [Validators.required, Validators.minLength(1)]],
+        duracion: ['', [Validators.required, Validators.minLength(1)]],
+        callePuerta: ['', [Validators.required, Validators.minLength(5)]],
+        barrio: ['', [Validators.required, Validators.minLength(3)]],
+        ciudad: ['', [Validators.required, Validators.minLength(3)]],
+        cantidadCupos: ['', [Validators.required, Validators.minLength(1)]],
+        cantidadMesas:  ['', [Validators.required]],
+        cantidadAsientosMesa:  ['', [Validators.required]],
+        precioAsiento: ['', [Validators.required]],
+        idioma: ['', [Validators.required, Validators.minLength(2)]],
+        criterioAsignacion:  ['', [Validators.required]],
+        tipoAsignacion:  ['', [Validators.required]],
+        moneda:  ['', [Validators.required]],
+        empresaCreadora:   ['', [Validators.required]],
+        imagenPortada:  ['', [Validators.required]],
+        archivosubido: ['', [Validators.nullValidator]],
+        estadoEvento: ['', [Validators.required]],
    });  
 }
   cargar():void{   
     this.activatedRoute.params.subscribe(
-      //almacenar en una variable lo que me trae desde el enlace que viene con el id
+   
       e=>{
         let id=e['id'];
     if(id){
@@ -66,23 +70,24 @@ export class EditarEventoComponent implements OnInit {
         ev=> { this.evento=ev;
         
         this.fgValidator.get('tipo')?.setValue(this.evento.tipo);
-        //eventoId: this.eventoident,
         this.fgValidator.get('nombre')?.setValue(this.evento.nombre);
         this.fgValidator.get('descripcion')?.setValue(this.evento.descripcion);
-        this.fgValidator.get('tipo')?.setValue(this.evento.tipo);
-        this.fgValidator.get('fecha')?.setValue(this.evento.fechaHora);
         this.fgValidator.get('duracion')?.setValue(this.evento.duracion);
         this.fgValidator.get('callePuerta')?.setValue(this.evento.callePuerta);
         this.fgValidator.get('barrio')?.setValue(this.evento.barrio);
         this.fgValidator.get('ciudad')?.setValue(this.evento.ciudad);
-        this.fgValidator.get('nroCupos')?.setValue(this.evento.nroCupos);
+        this.fgValidator.get('cantidadCupos')?.setValue(this.evento.nroCupos);
         this.fgValidator.get('cantidadMesas')?.setValue(this.evento.cantidadMesas);
         this.fgValidator.get('cantidadAsientosMesa')?.setValue(this.evento.cantidadAsientosMesa);
+        this.fgValidator.get('moneda')?.setValue(this.evento.moneda);
         this.fgValidator.get('precioAsiento')?.setValue(this.evento.precioAsiento);
         this.fgValidator.get('idioma')?.setValue(this.evento.idioma);
         this.fgValidator.get('criterioAsignacion')?.setValue(this.evento.criterioAsignacion);
-        this.fgValidator.get('archivosubido')?.setValue(this.evento.imagenPortada)
-        //empresaCreadora: "Traer de admin logueado"
+        this.fgValidator.get('tipoAsignacion')?.setValue(this.evento.tipoAsignacion);
+        this.fgValidator.get('empresaCreadora')?.setValue(this.evento.empresaCreadora);
+        this.fgValidator.get('imagenPortada')?.setValue(this.evento.imagenPortada);
+        this.fgValidator.get('estadoEvento')?.setValue(this.evento.estadoEvento);
+   
         }
         );
         
@@ -93,95 +98,44 @@ export class EditarEventoComponent implements OnInit {
 
     
     update(){
-     const allEvento: Evento = {
-       //    eventoId: this.eventoident,
-       //    nombre: this.fgValidator.get('nombre')?.value,
-       //    descripcion: this.fgValidator.get('descripcion')?.value,
-       //    tipo: this.fgValidator.get('tipo')?.value,
-       //    fecha: this.fgValidator.get('fecha')?.value,
-       //    duracion: this.fgValidator.get('duracion')?.value,
-       //    callePuerta: this.fgValidator.get('callePuerta')?.value,
-       //    barrio: this.fgValidator.get('barrio')?.value,
-       //    ciudad: this.fgValidator.get('ciudad')?.value,
-       //    nroCupos: this.fgValidator.get('nroCupos')?.value,
-       //    cantidadMesas: this.fgValidator.get('cantidadMesas')?.value,
-       //    cantidadAsientosMesa: this.fgValidator.get('cantidadAsientosMesa')?.value,
-       //    precioAsiento: this.fgValidator.get('precioAsiento')?.value,
-       //    idioma: this.fgValidator.get('idioma')?.value,
-       //    criterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
-       //    imagenPortada: this.fgValidator.get('archivosubido')?.value,
-       //    empresaCreadora: "Traer de admin logueado",
-       //    hora: ''
-       //  }   
-       eventoId: this.eventoident,
-       nombre: this.fgValidator.get('nombre')?.value,
-       descripcion: this.fgValidator.get('descripcion')?.value,
-       tipo: this.fgValidator.get('tipo')?.value,
-       fechaHora: this.fgValidator.get('fechaHora')?.value,
-       duracion: this.fgValidator.get('duracion')?.value,
-       callePuerta: this.fgValidator.get('callePuerta')?.value,
-       barrio: this.fgValidator.get('barrio')?.value,
-       ciudad: this.fgValidator.get('ciudad')?.value,
-       nroCupos: this.fgValidator.get('nroCupos')?.value,
-       cantidadMesas: this.fgValidator.get('cantidadMesas')?.value,
-       cantidadAsientosMesa: this.fgValidator.get('cantidadAsientosMesa')?.value,
-       precioAsiento: this.fgValidator.get('precioAsiento')?.value,
-       idioma: this.fgValidator.get('idioma')?.value,
-       criterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
-       imagenPortada: this.fgValidator.get('archivosubido')?.value,
-       empresaCreadora: "Traer de admin logueado",
-       estadoEvento: "Activo",
-       //fecha: '',
-     }   
+        
+        const allEvento: Evento = {
+
+        eventoId: this.eventoident,
+        nombre: this.fgValidator.get('nombre')?.value,
+        descripcion: this.fgValidator.get('descripcion')?.value,
+        tipo: this.fgValidator.get('tipo')?.value,
+        duracion: this.fgValidator.get('duracion')?.value + " horas",
+        callePuerta: this.fgValidator.get('callePuerta')?.value,
+        barrio: this.fgValidator.get('barrio')?.value,
+        ciudad: this.fgValidator.get('ciudad')?.value,
+        nroCupos: this.fgValidator.get('cantidadCupos')?.value,
+        cantidadMesas:this.fgValidator.get('cantidadMesas')?.value,
+        cantidadAsientosMesa:this.fgValidator.get('cantidadAsientosMesa')?.value,
+        moneda: this.fgValidator.get('moneda')?.value,
+        precioAsiento: this.fgValidator.get('precioAsiento')?.value,
+        idioma: this.fgValidator.get('idioma')?.value,
+        criterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
+        tipoAsignacion: this.fgValidator.get('tipoAsignacion')?.value,
+        imagenPortada: this.fgValidator.get('imagenPortada')?.value,
+        empresaCreadora:this.fgValidator.get('empresaCreadora')?.value,
+        estadoEvento: this.fgValidator.get('estadoEvento')?.value,
+      }  
+    
 
       this.eventoService.update( this.eventoident, allEvento).subscribe(data => {
-          this.eventoService.eventoModificado(this.evento.eventoId!).subscribe(data =>{
-            alert('Evento actualizado con éxito');
-            this.fgValidator.reset();
-            this.router.navigate(['/home'])
+        if(data){
+          this.eventoService.eventoModificado(this.eventoident).subscribe(dataA =>{
+            if(dataA){
+              alert('Evento actualizado con éxito');
+              this.router.navigate(['/listadoEvento/listadoEvento']);
+              this.fgValidator.reset();
+            } alert('Ocurrió un error, intente nuevamente')
           });
-
-        alert(data)
-        alert('Evento actualizado con éxito');
-        this.router.navigate(['/listadoEvento/listadoEvento']);
-        this.fgValidator.reset();
-      });
- 
-
-}
-}
-
-
-
-
-
-
-/* 
-cargar():void{   
-  this.activatedRoute.params.subscribe(
-    //almacenar en una variable lo que me trae desde el enlace que viene con el id
-    e=>{
-      let id=e['id'];
-      if(id){
-        alert('texto'+id);
-
-        this.eventoService.get(id).subscribe(
-          ev=>{this.evento=ev ;
-          alert(ev.cantidadMesas);
-
-        this.http.get('https://localhost:44319/API_1_0/Eventos/2').toPromise().then(
-          ev=>{this.evento=ev as Evento ;
-          alert(this.evento.eventoId);
-
-          } );
-      }
-       }
-  );
-
-  }
-  
        
+        }else{
+          alert('Ocurrió un error, intente nuevamente')
+        }
+      });
     }
-
-
-  
+    }

@@ -19,12 +19,7 @@ export class GestionarReservaComponent implements OnInit {
   reserva:Reserva = new Reserva();
   reservaident!:any;
  
-  constructor(
-    private http: HttpClient, 
-    private fb: FormBuilder, 
-    private reservaService: ReservaService, 
-    private activatedRoute:ActivatedRoute, 
-    private router:Router) { }
+  constructor( private reservaService: ReservaService, private activatedRoute:ActivatedRoute, private router:Router) { }
   
 
   ngOnInit(): void {
@@ -62,7 +57,10 @@ export class GestionarReservaComponent implements OnInit {
       this.reservaident! = id;
       this.reservaService.get(id).subscribe(
       
-        re=> { this.reserva=re; 
+        re=> {
+          if(re){
+          this.reserva=re; 
+    
           this.fgValidator.get('idReserva')?.setValue(this.reserva.idReserva);
           this.fgValidator.get('nombreCliente')?.setValue(this.reserva.cliente.nombre);
           this.fgValidator.get('apellido')?.setValue(this.reserva.cliente.apellidos);
@@ -74,9 +72,13 @@ export class GestionarReservaComponent implements OnInit {
          this.fgValidator.get('comprobante')?.setValue(this.reserva.comprobanteDePago);
          this.reserva.ruta =  "http://montevideoit-001-site5.htempurl.com/img/" + (this.reserva.idReserva!) + "_" +(this.reserva.comprobanteDePago!.nombre!);
 
-         
-          
+        }else{
+          alert("Ocurrió un error, intente nuevamente");
+          this.router.navigate(['/home'])
+          this.fgValidator.reset();
+        }         
         }
+      
         )
         
     }
@@ -84,31 +86,43 @@ export class GestionarReservaComponent implements OnInit {
     );
 }
 
-
-updEstadoReserva(){
+      updEstadoReserva(){
       const allReservas: EstadoReserva = {
 
                idReserva: this.reservaident,
-      
-             // estadoReserva : this.fgValidator.get('estado')?.value,
             estadoReserva: this.fgValidator.get('estaReserva')?.value,
-            descripcionEstado: this.fgValidator.get('descripcion')?.value
-        
+            descripcionEstado: this.fgValidator.get('descripcion')?.value      
       }  
       this.reservaService.updateEstadoReserva(allReservas).subscribe(data => {
-        alert('El estado de la reserva fue actualizado con éxito');
-        this.router.navigate(['/listadoEvento/listadoEvento']);
-        this.fgValidator.reset();
+        if(data){
+        this.reservaService.comentarioReserva(allReservas.idReserva!).subscribe(comentario =>{
+          if(comentario){
+          alert('El estado de la reserva fue actualizado con éxito');
+          this.router.navigate(['/listadoReserva/listadoReserva']);
+          this.fgValidator.reset();
+          }else{
+            alert("Ocurrió un error, intente nuevamente");
+            this.router.navigate(['/home'])
+            this.fgValidator.reset();
+          }
+        });
+      }else{
+          alert("Ocurrió un error, intente nuevamente");
+          this.router.navigate(['/home'])
+          this.fgValidator.reset();
+   
+      }
       });
- 
-
-}
-}
-
-
-
+   
   
-
-
-
-
+  }
+  }
+  
+  
+  
+    
+  
+  
+  
+  
+  

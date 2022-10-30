@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
 import { HttpClient } from '@angular/common/http';
-import { Mesa } from 'src/app/modelos/mesa';
 import { localStorageJwt } from 'src/app/static/local-storage';
 import { Administrador } from 'src/app/modelos/administrador';
 import { AdministradorService } from 'src/app/services/administrador.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-evento',
@@ -15,18 +15,23 @@ import { Location } from '@angular/common';
   styleUrls: ['./crear-evento.component.css']
 })
 export class CrearEventoComponent implements OnInit {
-// test
   fgValidator!: FormGroup;
   mesas!: null;
   correo!: any;
   admin!: Administrador;
+  public archivo = "";
+  public nombreArchivo= "" ;
+  archivos:any[] = [];
+  loading!: boolean;
+  evento!: Evento;
+
 
   constructor(
-    private http: HttpClient,
     private adminService: AdministradorService,
     private fb: FormBuilder, 
     private eventoService: EventoService,
-    private location: Location
+    private location: Location,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -36,18 +41,19 @@ export class CrearEventoComponent implements OnInit {
   FormBuilding(){
     this.fgValidator = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(2)]],
-      descripcion: ['', [Validators.required, Validators.minLength(15)]],
+      descripcion: ['', [Validators.required, Validators.minLength(5)]],
       tipo: ['', [Validators.required, Validators.minLength(1)]],
+      duracion: ['', [Validators.required, Validators.minLength(1)]],
       fecha: ['', [Validators.required]],
-      hora: ['', [Validators.nullValidator]],
-      duracion: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
       callePuerta: ['', [Validators.required, Validators.minLength(5)]],
       barrio: ['', [Validators.required, Validators.minLength(3)]],
       ciudad: ['', [Validators.required, Validators.minLength(3)]],
       cantidadCupos: ['', [Validators.required, Validators.minLength(1)]],
       precio: ['', [Validators.required]],
       idioma: ['', [Validators.required, Validators.minLength(2)]],
-      criterioAsignacion: ['', [Validators.required, Validators.minLength(2)]],
+      criterioAsignacion: [''],
+      tipoAsignacion: [''],
+      moneda: [''],
       archivosubido: ['', [Validators.nullValidator]]
      });
   }
@@ -61,10 +67,17 @@ export class CrearEventoComponent implements OnInit {
       this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
       const parse = JSON.parse(this.correo);
       this.adminService.getAdmin(parse).subscribe(data =>{
+        if(data == null){
+          alert("Ocurrió un error, intente nuevamente")
+        }else{
           this.admin = data;
-    
-
-      const evento: Evento = {
+        
+          if(this.archivos.length === 0){
+            this.loading = false;
+            }else{
+              this.loading = true;
+             
+      const nuevoEvento: Evento = {
         nombre: this.fgValidator.get('nombre')?.value,
         descripcion: this.fgValidator.get('descripcion')?.value,
         tipo: this.fgValidator.get('tipo')?.value,
@@ -74,23 +87,34 @@ export class CrearEventoComponent implements OnInit {
         barrio: this.fgValidator.get('barrio')?.value,
         ciudad: this.fgValidator.get('ciudad')?.value,
         nroCupos: this.fgValidator.get('cantidadCupos')?.value,
+        moneda: this.fgValidator.get('moneda')?.value,
         precioAsiento: this.fgValidator.get('precio')?.value,
         idioma: this.fgValidator.get('idioma')?.value,
         criterioAsignacion: this.fgValidator.get('criterioAsignacion')?.value,
-        imagenPortada: this.fgValidator.get('archivosubido')?.value,
+        tipoAsignacion: this.fgValidator.get('tipoAsignacion')?.value,
         empresaCreadora: this.admin.nombreEmpresa,
         estadoEvento: "Activo",
+        archivo: this.archivo,
+        imagenPortada: this.nombreArchivo
 
 
       }
       
-      // evento.mesas!.length = evento.cantidadMesas;
 
-      this.eventoService.crearEvento(evento).subscribe(data => {
+      this.eventoService.crearEvento(nuevoEvento).subscribe(data => {
+        if(data == null){
+          alert("Ocurrió un error, intente nuevamente")
+        }else{
+        this.loading = false;
         alert('Evento creado con éxito');
         this.fgValidator.reset();
+        this.router.navigate(['/','home'])
+        }
       });
+    }
+  }
     });
+  
     }
   }
 
@@ -102,4 +126,20 @@ export class CrearEventoComponent implements OnInit {
     this.location.back();
    }
 
+   uploadFile(files: any){
+    const fileToUpload = files[0] as File;
+    var formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(fileToUpload);
+    reader.onload = (event: any) => {
+      this.archivo = event.target.result
+      this.nombreArchivo = fileToUpload.name
+      this.archivos.push(this.archivo)
+    }
+   }
+
 }
+
+

@@ -28,7 +28,11 @@ export class ReservaService {
     return this.http.get<Reserva[]>(constantes.miApiUrl + constantes.apiUrlReservasPorEvento + idEvento);
   }
 
-  envioCorreo(reservas: Array<Reserva>): Observable<Reserva>{
+  envioCorreoEventoEliminado(id: number): Observable<Reserva[]>{
+    return this.http.get<Reserva[]>(constantes.miApiUrl+ constantes.apiUrlCorreoReservas + id);
+  }
+
+  envioCorreoListaReservas(reservas: Array<Reserva>): Observable<Reserva>{
     return this.http.get<Reserva>(constantes.miApiUrl+ constantes.apiUrlCorreoReservas + reservas);
   }
 
@@ -52,25 +56,15 @@ export class ReservaService {
   return this.http.get<Reserva>(url2);
  }
 
- } 
-   );
-}
 getReservasTodas(): Observable<Reserva>{
   return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas);
 }
 
 
-get(id: number):Observable<Reserva>{
-  const url2 = `${constantes.miApiUrl}${constantes.apiUrlReservas}`+id;
-  return this.http.get<Reserva>(url2);
-}
 getReserva(id: number): Observable<Reserva>{
   return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas + id);
 }
-getGenerarQR(id: number): Observable<Reserva>{
-  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlGenerarQR + id);
 
-}
 
 cancelarReserva(id: number):Observable<Reserva>{
   return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlCancelarReserva + id);
@@ -83,13 +77,21 @@ cancelarReserva(id: number):Observable<Reserva>{
 
  }
 
- }
-
-
+ putReserva(id: number, reserva: Reserva): Observable<Reserva>{
+  return this.http.put<Reserva>(constantes.miApiUrl + constantes.apiUrlReservas + id, reserva);
 }
 
 getReservasActivas(id:number): Observable<Reserva>{
   return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlAsignacionManual+id);
 }
+
+comentarioReserva(id: number):Observable<Reserva>{
+  return this.http.get<Reserva>(constantes.miApiUrl + constantes.apiUrlComentarioReserva + id);
+}
+
+postReservarAsiento(reserva: Reserva): Observable<Reserva>{
+  return this.http.post<Reserva>(constantes.miApiUrl + constantes.apiUrlReservarAsientos, reserva);
+}
+
 }
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EsAdminGuard } from 'src/app/Guards/es-admin.guard';
 
 import { CancelarReservaComponent } from './cancelar-reserva/cancelar-reserva.component';
 import { EliminarCuentaComponent } from './eliminar-cuenta/eliminar-cuenta.component';
@@ -13,14 +12,12 @@ const routes: Routes = [
   path: 'registrarse',
 
   component: RegistrarseComponent,
-  /* canActivate: [EsAdminGuard] */
 
 
 },
 {
   path: 'eliminarCuenta',
   component: EliminarCuentaComponent
-  //canActivate: [EsAdminGuard]
 
 },
 {

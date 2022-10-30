@@ -13,18 +13,9 @@
                 
                 <div class="col-md-4">
                     <h2>Seleccione la Mesa</h2>
-                    <!-- <div class="select-wrapper" id="">
-                    <select name="mesas" class="form-control" style="display: block;">
-                        <option value="01">Mesa 1</option><option value="02">Mesa 2</option>
-                        <option value="03">Mesa 3</option><option value="04">Mesa 4</option>
-                        <option value="05">Mesa 5</option><option value="06">Mesa 6</option>
-                        <option value="07">Mesa 7</option><option value="08">Mesa 8</option>
-                        <option value="09">Mesa 9</option><option value="10">Mesa 10</option></select></div>
-                 -->
-
                  <div class="input-field col s6"><br>  
-                        <select  name="mesa" id="mesas"  formControlName="mesa" class="form-control" >                                  
-                      <option *ngFor= "let mesa of mesas" value="{{mesa.nroMesa}}">Mesa "{{mesa.nroMesa}}"</option>
+                        <select (change)="mesaSeleccionada()"  name="mesa" id="mesas"  formControlName="mesa" class="form-control" >                                  
+                      <option *ngFor= "let mesa of mesas" value="{{mesa.idMesa}}">Mesa {{mesa.nroMesa}}</option>
                
                     </select>
                 
@@ -43,16 +34,7 @@
                       
                     <table id="table" style="display: table;"><tbody><tr><td>
 
-                        <tr *ngFor ="let asiento of asientos"> <td> <mat-checkbox #checkBox (change)="asignacion()" value="asiento.nroAsiento" class="asientos"> Asiento {{asiento.nroAsiento}}  </mat-checkbox> </td></tr>
-                       
-       
-
-
-                        <!-- <input formControlName="asiento1" type="checkbox" (change)="asignacion()" name="asiento1" value="" id="checkbox1"><label for="checkbox1">1</label><br><br></td><td><input formControlName="asiento2" (change)="asignacion()" type="checkbox" name="asiento2" id="checkbox2"><label for="checkbox2">2</label><br><br>
-                        </td></tr><tr><td><input formControlName="asiento3" (change)="asignacion()" type="checkbox" name="asiento3" id="checkbox3"><label for="checkbox3">3</label><br><br></td><td><input formControlName="asiento4" (change)="asignacion()" type="checkbox" name="asiento4" id="checkbox4"><label for="checkbox4">4</label><br><br>
-                        </td></tr><tr><td><input formControlName="asiento5" (change)="asignacion()" type="checkbox" name="asiento5" id="checkbox5"><label for="checkbox5">5</label><br><br></td><td><input formControlName="asiento6" (change)="asignacion()" type="checkbox" name="asiento6" id="checkbox6"><label for="checkbox6">6</label><br><br>
-                        </td></tr><tr><td><input formControlName="asiento7" (change)="asignacion()" type="checkbox" name="asiento7" id="checkbox7"><label for="checkbox7">7</label><br><br></td><td><input formControlName="asiento8" (change)="asignacion()"type="checkbox" name="asiento8" id="checkbox8"><label for="checkbox8">8</label><br><br>
-                        </td></tr><tr><td><input formControlName="asiento9" (change)="asignacion()" type="checkbox" name="asiento9" id="checkbox9"><label for="checkbox9">9</label><br><br></td><td><input formControlName="asiento10" (change)="asignacion()" type="checkbox" name="asiento10" id="checkbox10"><label for="checkbox10">10</label><br><br> -->
+                        <tr *ngFor ="let asiento of asientos"> <td> <mat-checkbox #checkBox (change)="asignacion()" value="asiento.nroAsiento" formControlName="asiento{{asiento.nroAsiento}}" name="asiento" class="asientos"> Asiento {{asiento.nroAsiento!}}  </mat-checkbox> </td></tr>
                       
                         </tr></tbody></table></div>
                        
@@ -74,7 +56,7 @@
                 <br>
                 <br>
      
-                <button data-dismiss="modal" type="button" class="button" onclick="window.location.href='inicio'">Guardar</button>
+                <button data-dismiss="modal" type="button" class="button" (click)="guardar()">{{valorBoton}}</button>
                 <br>
                 <button data-dismiss="modal" type="button" class="button" onclick="window.location.href='inicio'">Cancelar</button>
                 

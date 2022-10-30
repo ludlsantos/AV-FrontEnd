@@ -20,11 +20,9 @@ export class RegistrarseComponent implements OnInit {
   correoElectronico!: string;
 
   constructor(
-    private http: HttpClient,
     private fb: FormBuilder, 
     private route: Router,
     private AdminService: AdministradorService, 
-    private loginService: LoginService,
     private location: Location) { }
 
   ngOnInit(): void {
@@ -57,9 +55,14 @@ export class RegistrarseComponent implements OnInit {
             login: loginHijo
           }
           this.AdminService.guardarAdmin(administrador).subscribe(data => {
+            if(data){
             alert('Registrado correctamente');
-            this.route.navigate(['/login'])
+            this.route.navigate(['/home'])
             this.fgValidator.reset();
+            }else{
+              alert("Ya existe un usuario con el correo electrónico ingresado");
+            this.fgValidator.reset();
+            }
           });
   }
       }else{

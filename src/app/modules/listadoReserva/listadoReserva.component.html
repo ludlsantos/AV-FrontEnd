@@ -24,10 +24,7 @@
     <table class="table table-hover">
       <thead>
             <tr>
-              <th>ID RESERVA</th>
-              <th>ID EVENTO</th>
-              <th>Nombre Cliente</th>
-              <th>Apellido Cliente</th>
+              <th>Nombre reserva</th>
               <th>Nombre evento </th>
               <th>Estado de reserva</th>
               <th>Descripcion del Estado</th>
@@ -36,16 +33,12 @@
         </thead>
         <tbody>
             <tr *ngFor="let reserva of reservasPorEvento|filtroReserva: 'estadoReserva': reservaService.filtroReserva ">
-                <td>{{reserva.idReserva}}</td>
-                <td>{{reserva.evento.eventoId}}</td>
-                <td>{{reserva.cliente.nombre}}</td>
-                <td>{{reserva.cliente.apellidos}}</td>
+                <td>{{reserva.nombreEmpresa}}</td>
                 <td>{{reserva.evento.nombre}}</td>
                 <td>{{reserva.estadoReserva}}</td>
                 <td>{{reserva.descripcionEstado}}</td>
                
-
-                <td><button type="button" name="buttonGestionar" class="btn btn-primary" [routerLink]="['/evento/gestionar-reserva', reserva.idReserva]" [skipLocationChange]="true" >Gestionar Reserva</button></td>
+                <td><button type="button" [disabled]="deshabilitar(reserva)"  name="buttonGestionar" class="btn btn-primary" [routerLink]="['/evento/gestionar-reserva', reserva.idReserva]" [skipLocationChange]="true" >Gestionar Reserva</button></td>
                 
                 
               </tr>           

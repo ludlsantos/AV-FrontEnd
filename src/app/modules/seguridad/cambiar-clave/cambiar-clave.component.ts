@@ -25,7 +25,6 @@ export class CambiarClaveComponent implements OnInit {
     private fb: FormBuilder, 
     private loginService: LoginService, 
     private route: Router, 
-    private jwtAuthService: JwtAuthService,
     private location: Location
     ) { }
 
@@ -38,6 +37,7 @@ export class CambiarClaveComponent implements OnInit {
       passAnterior: ['', [Validators.required]],
       passNueva: ['', [Validators.required]]
     })
+    
   }
 
   cambiarPass(){
@@ -45,20 +45,38 @@ export class CambiarClaveComponent implements OnInit {
     this.passNueva= this.validator.get('passNueva')?.value;
     this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
     const parse = JSON.parse(this.correo)
+    if(this.passAnterior && this.passNueva != null){
+      if (this.validator.invalid){
+        alert('Datos invalidos, porfavor verifique')
+      }else{
     this.loginService.getLoginYPass(parse, this.passAnterior).subscribe(data => { 
+      if(data){
         const loginNuevo: Login = {
           rol: data.rol,
           contraseña: this.passNueva,
           correoElectronico: data.correoElectronico
         }
         this.loginService.cambiarClave(data.correoElectronico, loginNuevo).subscribe(dataA =>{
+          if(dataA){
           alert('La contraseña fué cambiada con éxito');
           this.route.navigate(['/home'])
             this.validator.reset();
+          }else{
+            alert("Ocurrió un error, intente nuevamente");
+            this.route.navigate(['/home'])
+            this.validator.reset();
+          }
         });
+      }else{
+          alert("Ocurrió un error, intente nuevamente");
+          this.route.navigate(['/home'])
+          this.validator.reset();
+        }
     });
-
-
+  }
+  }else{
+    alert("Los campos no pueden estar vacíos")
+  }
   }
   goBack(): void {
     this.location.back();

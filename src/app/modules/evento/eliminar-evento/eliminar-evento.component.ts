@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdministradorService } from 'src/app/services/administrador.service';
-import { LoginService } from 'src/app/services/login.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
 import { EventoService } from 'src/app/services/evento.service';
-import { Evento } from 'src/app/modelos/evento';
 import { ReservaService } from 'src/app/services/reserva.service';
-import { Reserva } from 'src/app/modelos/reserva';
 
 
 @Component({
@@ -29,6 +26,7 @@ export class EliminarEventoComponent implements OnInit {
     private router:ActivatedRoute, 
     private route: Router, 
     private eventoService: EventoService,
+    private reservaService: ReservaService
     ) { }
 
   ngOnInit(): void {
@@ -71,12 +69,34 @@ export class EliminarEventoComponent implements OnInit {
         if(data){
           var mensaje = confirm("¿Seguro que desea eliminar este evento de forma definitiva? \n Recuerde que si este evento ya posee reservas con pagos realizados, por politica de la empresa el dinero debe ser reembolsado");
           if(mensaje){
-               
-            this.eventoService.eliminarEvento(this.evento).subscribe(
-              dataB=>{
-                    alert("El evento fué eliminado de forma definitiva")
-                    this.route.navigate(['/home'])
-                  });
+               this.reservaService.envioCorreoEventoEliminado(this.evento).subscribe(dataC=>{
+                if(dataC){
+                this.reservaService.envioCorreoListaReservas(dataC).subscribe( dataD =>{
+                  if(dataD){
+                  this.eventoService.eliminarEvento(this.evento).subscribe(
+                    dataB=>{
+                          if(dataB){
+                          alert("El evento fué eliminado de forma definitiva")
+                          this.route.navigate(['/home'])
+                          }else{
+                            alert("Ocurrió un error, intente nuevamente");
+                            this.route.navigate(['/home'])
+                            this.validator.reset();
+                          }
+                        });
+                      }else{
+                        alert("Ocurrió un error, intente nuevamente");
+                        this.route.navigate(['/home'])
+                        this.validator.reset();
+                      }
+                })
+              }else{
+                  alert("Ocurrió un error, intente nuevamente");
+                  this.route.navigate(['/home'])
+                  this.validator.reset();
+                }
+               })
+           
           }
         }else{
           alert("Ocurrió un error o no tiene permisos para realizar dicha acción")

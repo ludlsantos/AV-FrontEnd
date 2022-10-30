@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Cliente } from 'src/app/modelos/cliente';
 import { EditarCliente } from 'src/app/modelos/editarCliente';
-import { Login } from 'src/app/modelos/login';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { LoginService } from 'src/app/services/login.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -16,23 +13,13 @@ import { Location } from '@angular/common';
 })
 export class EditarClienteComponent implements OnInit {
 
-//  tipoDocumento = [
-  //  {name:'CI', description: ''},
-    //{name: 'PASAPORTE', description: ''},
-  
-  //];
-  //selected: string = 'CI';
+
   fgValidator!: FormGroup;
   correo!:string;
   id!: any;
   correoElectronico!: string;
   constructor(
-    private fb: FormBuilder, 
-    private clienteService: ClienteService,  
-    private activatedRoute:ActivatedRoute, 
-    private loginService: LoginService,
-    private location: Location
-    ) {
+    private fb: FormBuilder, private clienteService: ClienteService, private route: Router) {
    
     }
 
@@ -40,8 +27,8 @@ export class EditarClienteComponent implements OnInit {
   ngOnInit(): void {
     
     this.FormBuilding();
-      this.getDataOfRecord();
-     // this.EditarCliente();
+    this.getDataOfRecord();
+     
   }
 
   FormBuilding(){
@@ -55,6 +42,7 @@ export class EditarClienteComponent implements OnInit {
       cargoProfesion: ['', [Validators.required]],
       empresa: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
+      idioma: [''],
      });  
   }
 
@@ -82,13 +70,12 @@ export class EditarClienteComponent implements OnInit {
   )
   }
 
-   //toma datos del formulario y los modificar
+   
      EditarCliente(){ 
 
-    
       const allCliente: EditarCliente = {
       
-       clienteId: this.id,
+        clienteId: this.id,
         tipoDocumento: this.fgValidator.get('tipoDocumento')?.value,
         nroDocumento: this.fgValidator.get('nroDocumento')?.value,
         nombre: this.fgValidator.get('nombre')?.value,
@@ -97,12 +84,19 @@ export class EditarClienteComponent implements OnInit {
         profesionCargo: this.fgValidator.get('cargoProfesion')?.value,
         nombreEmpresa: this.fgValidator.get('empresa')?.value,
         fotoPerfil: this.fgValidator.get('archivosubido')?.value,
-    
+
+        
        }
-       console.log(this.id)
+      
        this.clienteService.updateCliente(allCliente).subscribe(data => {
+        if(data){
         alert('Cliente actualizado con éxito');
         this.fgValidator.reset();
+        }else{
+        alert("Ocurrió un error, intente nuevamente");
+        this.route.navigate(['/home'])
+        this.fgValidator.reset();
+        }
       });
       
     }
@@ -113,7 +107,4 @@ export class EditarClienteComponent implements OnInit {
     return this.fgValidator.controls;
   }
 
-  goBack(): void {
-    this.location.back();
-   }
 }
