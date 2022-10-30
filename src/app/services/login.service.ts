@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Login } from '../modelos/login';
 import * as constantes from '../modelos/constantes';
 import { respuesta } from '../modelos/respuesta';
@@ -33,14 +33,6 @@ cambiarClave(id: string, login: Login): Observable<Login>{
 getLogin(id: string): Observable<Login> {
   return this.http.get<Login>(constantes.miApiUrl + constantes.apiUrlLogin + id);
 }
-/*
-putLogin(id: number, correo:string): Observable<Login>{
-  const ul4 = `${constantes.miApiUrl}${constantes.apiUrlLogin}`+id;
-  alert("esty aca wn put login..." + ul4)
-  return this.http.put<Login>(ul4,Login);
-}
-
-*/
 
 getLoginYPass(id: string, passAnterior: string): Observable<Login> {
   return this.http.get<Login>(constantes.miApiUrl + constantes.apiUrlLogin + id + "/" + passAnterior);

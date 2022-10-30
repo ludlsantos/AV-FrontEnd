@@ -1,0 +1,41 @@
+<div style="text-align: right;">
+    <button type="button" name="buttonVolver" class="btn btn-primary" [routerLink]="['/listadoEvento/listadoEvento']">Volver</button>
+  </div>
+<formGroup [formGroup]="fgValidator">
+    <h1>Asignación manual de asientos</h1>
+
+<br>
+<br>
+<br>
+
+    <div id="" class="info_group" style="display: block">
+        <div class="mesa" id="" style="display: block;">
+                
+                <div class="col-md-4">
+                    <h2>Seleccione la Mesa</h2>
+                 <div class="input-field col s6"><br>  
+                        <select (change)="mesaSeleccionada()"  name="mesa" id="mesas"  formControlName="mesa" class="form-control" >                                  
+                      <option *ngFor= "let mesa of mesas" value="{{mesa.idMesa}}">Mesa {{mesa.nroMesa}}</option>
+               
+                    </select>
+                
+              </div>
+
+              <h6><i>Asignacion de asientos</i></h6>
+              <br><br>
+            <table class="table table-hover">
+              <thead>
+                    <tr>
+                      <th>Numero de asiento</th>
+                      <th>Estado</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                      <tr *ngFor="let asiento of asientos">
+                        <td>Asiento {{asiento.nroAsiento}}</td>
+                        <td *ngIf="estado(asiento)">{{valorEstado}}</td>
+                    
+                      </tr>
+                </tbody>
+            </table>

@@ -28,7 +28,6 @@ getClienteCorreo(correoElectronico: string): Observable<Cliente>{
 
 putClienteCorreo(correoElectronico: string): Observable<Login>{
   const ul = `${constantes.miApiUrl}${constantes.apiUrlGetClienteCorreo}${correoElectronico}`;
-  alert("esty aca.put cliente correo" + ul)
   return this.http.put<Login>(ul, Login);
 
 }
@@ -39,7 +38,6 @@ eliminarCliente(id: number): Observable<Cliente>{
  
 updateCliente(editarCliente: EditarCliente): Observable<Cliente>{
   const ul = `${constantes.miApiUrl}${constantes.apiUrlClientes}`+editarCliente.clienteId;
-  alert("esty aca..." + ul)
   return this.http.put<Cliente>(ul, editarCliente);
 
 

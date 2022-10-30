@@ -24,7 +24,6 @@ export class EliminarCuentaComponent implements OnInit {
     private fb: FormBuilder, 
     private LoginService: LoginService, 
     private clienteService: ClienteService, 
-    private router:ActivatedRoute, 
     private route: Router,
     private location: Location
     ) { }
@@ -46,27 +45,46 @@ export class EliminarCuentaComponent implements OnInit {
     this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
     const parse = JSON.parse(this.correo)
     if(this.pass == this.rePass){ 
+      if (this.validator.invalid){
+        alert('Datos invalidos, porfavor verifique')
+      }else{
         this.clienteService.getClienteCorreoyPass(parse, this.pass).subscribe(dataA => {
+          if(dataA){
           this.id = dataA.clienteId;
           var mensaje = confirm("¿Seguro que desea eliminar su cuenta de forma definitiva?");
           if (mensaje) {
             this.clienteService.eliminarCliente(this.id).subscribe(dataB => {
-             // this.LoginService.getLogin(dataA.login.correoElectronico).subscribe(data =>{
+              if(dataB){
                 this.LoginService.eliminarLogin(dataA.login.correoElectronico).subscribe(dataC =>{
+                  if(dataC){
                   localStorage.removeItem(localStorageJwt.LS_ACCESS_TOKEN);
                   localStorage.removeItem(localStorageJwt.LS_ROLES);
                   localStorage.removeItem(localStorageJwt.LS_CORREO);
                   alert("Se eliminó su cuenta correctamente");
+                  }else{
+                    alert("Ocurrió un error, intente nuevamente");
+                    this.route.navigate(['/home'])
+                    this.validator.reset();
+                  }
               });
                 this.route.navigate(['/home'])
+            }else{
+              alert("Ocurrió un error, intente nuevamente");
+              this.route.navigate(['/home'])
+              this.validator.reset();
+            }
               });
       
           }
       else {
         this.route.navigate(['/home'])
       }
+    }
+    alert("Ocurrió un error, intente nuevamente");
+    this.route.navigate(['/home'])
+    this.validator.reset();
         })
-    
+      }
     }else {
       alert("Las contraseñas no coinciden")
     }

@@ -41,7 +41,6 @@ export class EventoService {
 
 update(id:number, evento:Evento): Observable<Evento>{
   const ul = `${constantes.miApiUrl}${constantes.apiUrlEventos}`+evento.eventoId;
-  alert("esty aca..." + ul)
   return this.http.put<Evento>(ul, evento);
 }
   
@@ -50,8 +49,9 @@ eliminarEvento(id: number): Observable<Evento>{
 }
 
 eventoModificado(id: number): Observable<Evento>{
-  return this.http.get<Evento>(constantes.miApiUrl + constantes.apiUrlCorreoReservas + id);
+  return this.http.get<Evento>(constantes.miApiUrl + constantes.apiUrlEventoModificado + id);
 }
+
 
 arregloMesas(id: number): Observable<Mesa[]>{
   return this.http.get<Mesa[]>(constantes.miApiUrl + constantes.apiUrlArregloMesas + id);

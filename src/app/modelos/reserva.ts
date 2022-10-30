@@ -1,5 +1,4 @@
 
-import { DeclarationListEmitMode } from "@angular/compiler";
 import { Asiento } from "./asiento";
 import { Cliente } from "./cliente";
 import { ComprobanteDePago } from "./comprobanteDePago";
@@ -11,21 +10,18 @@ export class Reserva {
     idReserva?: number;
     cliente!: Cliente;
     evento!: Evento;
-    estadoReserva!: string;
-
-   
-
+    estadoReserva?: string;
     comprobanteDePago?: ComprobanteDePago;
-
     asientos?: Asiento[];
     nombreEmpresa!: string;
     telefono!: number;
     correoElectronico!: string;
     cantidadReservas!: number;
-    fechaReserva!: Date;
+    fechaReserva?: Date;
     descripcionEstado!: string;
-    ruta!: string;
-
+    ruta?: string;
+    reservasSinAsignar?: number; 
+    
    
 
 }

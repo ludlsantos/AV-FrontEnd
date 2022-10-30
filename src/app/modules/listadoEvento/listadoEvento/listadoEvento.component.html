@@ -24,7 +24,6 @@
   <table class="table table-hover">
     <thead>
           <tr>
-            <th>ID</th>
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Tipo</th>
@@ -48,7 +47,6 @@
           <!-- <tr *ngFor="let evento of eventos|filtroEvento 'nombre' : eventoService.filtroEvento"> -->
             <tr *ngFor="let evento of eventos">
         <tr *ngFor="let evento of eventos|filtroEvento: 'nombre' : eventoService.filtroEvento" >
-              <td>{{evento.eventoId}}</td>
               <td>{{evento.nombre}}</td>
               <td>{{evento.descripcion}}</td>
               <td>{{evento.tipo}}</td>
@@ -64,15 +62,13 @@
               <td>{{evento.idioma}}</td>
               <td>{{evento.criterioAsignacion}}</td>
               <td>{{evento.empresaCreadora}}</td>
-              <td>{{evento.imagenPortada}}</td>
-             <!--<td> <a href="/evento/editar-evento" title="Editar">
-                <span class="glyphicon glyphicon-pencil"></span>
-              </a></td>-->        
+              <td><img src={{evento.imagenPortada}} width="50" height="50"/></td>
               <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/evento/editar-evento', evento.eventoId]" [skipLocationChange]="true">Editar</button></td>
               <td><button type="button" name="buttonEliminar" class="btn btn-primary" [routerLink]="['/evento/eliminar-evento', evento.eventoId]" [skipLocationChange]="true">Eliminar</button></td>
                 <td><button type="button" name="buttonReservas" class="btn btn-primary" [routerLink]="['/listadoReserva/listadoReserva', evento.eventoId]" [skipLocationChange]="true">Ver Reservas</button></td>
                 <td><button type="button" name="buttonReservasActivas" class="btn btn-primary" [routerLink]="['/evento/listado-reservas-activas', evento.eventoId]" [skipLocationChange]="true">Realizar Asignación</button></td>
-             
+                <td><button type="button" name="buttonAsientosAsignados" class="btn btn-primary" [routerLink]="['/evento/asientos-asignados', evento.eventoId]" [skipLocationChange]="true">Ver asignación de asientos</button></td>
+
               </tbody>
             
   </table>

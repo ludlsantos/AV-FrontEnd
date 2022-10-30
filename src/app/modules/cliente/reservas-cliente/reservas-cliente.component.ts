@@ -4,6 +4,7 @@ import { ReservaService } from 'src/app/services/reserva.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class ReservasClienteComponent implements OnInit {
   constructor(
     private reservaService: ReservaService,
     private clienteService: ClienteService,
-    private location: Location
+    private location: Location,
+    private route: Router,
   ) {
 
 
@@ -28,6 +30,7 @@ export class ReservasClienteComponent implements OnInit {
       this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
         const parse = JSON.parse(this.correo)
         this.clienteService.getClienteCorreo(parse).subscribe(dataA => {
+            if(dataA){
             this.id = dataA.clienteId;
             this.reservaService.getReservas().subscribe((resp: any)=> {
             for(let reservaA of resp){
@@ -37,6 +40,10 @@ export class ReservasClienteComponent implements OnInit {
             }
 
     });
+  }else{
+    alert("Ocurrió un error, intente nuevamente");
+    this.route.navigate(['/home'])
+  }
   });
 }
  

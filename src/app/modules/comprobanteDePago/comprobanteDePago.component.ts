@@ -4,7 +4,7 @@ import { ComprobanteDePago } from 'src/app/modelos/comprobanteDePago';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { ComprobanteService} from '../../services/comprobante.service';
-import { Location } from '@angular/common';
+import { Reserva } from 'src/app/modelos/reserva';
 
 @Component({
   selector: 'app-comprobanteDePago',
@@ -21,58 +21,28 @@ export class ComprobanteDePagoComponent implements OnInit {
   public nombreArchivo = ""
   public archivo = ""
   idReserva!: any;
+  reserva!: Reserva;
 
 
   constructor(
     private comprobante: ComprobanteService,
     private reservaService: ReservaService, 
-    private clienteService: ClienteService,
     private router: ActivatedRoute, 
-    private route: Router,
+    private route: Router
     ) { }
 
   ngOnInit(): void {
 
-    this.router.params.subscribe(
-      e=>{
-        let id=e['id'];
-        if(id){
-          this.idReserva = id;
-        }else{
-          alert("Ocurrió un error")
-        }
-      });
   }
+
+          
+  
 
   capturarFile(event: any): any {
     console.log(event.target.files);
   }
 
 
-
-
-  // extraerBase64 = async ($event: any) => new Promise((resolve, _reject) => {
-  //   try {
-  //     const unsafeImg = window.URL.createObjectURL($event);
-  //     const imagen = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL($event);
-  //     reader.onload = () => {
-  //       resolve({
-  //         base: reader.result
-  //       });
-  //     };
-  //     reader.onerror = _error => {
-  //       resolve({
-  //         base: null
-  //       });
-  //     };
-  //     return null;
-
-  //   } catch (e) {
-  //     return null;
-  //   }
-  // })
 
 
 
@@ -122,17 +92,54 @@ export class ComprobanteDePagoComponent implements OnInit {
 
       }
     
+        this.router.params.subscribe(
+          e=>{
+            let id=e['id'];
+        if(id){
+          this.idReserva = id;
+        }else{
+          alert("Ocurrió un error")
+        }
      
-      this.comprobante.postComprobante(comprobanteDePago)
-        .subscribe(res => {
+    this.reservaService.getReserva(this.idReserva).subscribe(reserva => {
+      this.reserva = reserva;
+    
+      this.comprobante.postComprobante(comprobanteDePago).subscribe(res => {
+        if(res){
           this.loading = false;
-          console.log('Respuesta del servidor', res);
-          alert('Su comprobante de pago ha sido guardado con éxito');
+          var reservaNueva: Reserva = {
+            idReserva: this.reserva.idReserva,
+            cliente: this.reserva.cliente!,
+            evento: this.reserva.evento!,
+            fechaReserva: this.reserva.fechaReserva,
+            estadoReserva: this.reserva.estadoReserva,
+            comprobanteDePago: comprobanteDePago,
+            nombreEmpresa: this.reserva.nombreEmpresa,
+            telefono: this.reserva.telefono,
+            correoElectronico: this.reserva.correoElectronico,
+            cantidadReservas: this.reserva.cantidadReservas,
+            descripcionEstado: this.reserva.descripcionEstado,
+            ruta: this.reserva.ruta
+          }
 
-      
-         
-        })
-      
+          this.reservaService.putReserva(this.idReserva, reservaNueva).subscribe(resp =>{
+            if(resp){
+            console.log('Respuesta del servidor', res);
+            alert('Su comprobante de pago ha sido guardado con éxito');
+            }else{
+              alert("Ocurrió un error, intente nuevamente");
+              this.route.navigate(['/home'])
+            }
+          });
+  
+        }else{
+          alert("Ocurrió un error, intente nuevamente");
+          this.route.navigate(['/home'])
+          this.nombreArchivo= "";
+        }
+        });
+      });
+    });
       
     } catch (e) {
       this.loading = false;
@@ -142,29 +149,5 @@ export class ComprobanteDePagoComponent implements OnInit {
   }
 }
 
-/* 
-  subirArchivo(): any {
-    try {
-      this.loading = true;
-      const formularioDeDatos = new FormData();
-      this.archivos.forEach((archivo: string | Blob) => {
-        formularioDeDatos.append('file', archivo)
-        console.log(archivo);
-
-      })
- 
-      this.comprobante.postComprobante(formularioDeDatos)
-        .subscribe(res => {
-          this.loading = false;
-          console.log('Respuesta del servidor', res);
-
-        }, () => {
-          this.loading = false;
-          alert('No se pudo adjuntar comprobante de pago');
-        })
-    } catch (e) {
-      this.loading = false;
-      console.log('ERROR', e);
-
-    } */
-  }
+    } 
+  

@@ -58,11 +58,18 @@ cancelarReserva(){
     var mensaje = confirm("¿Seguro que desea cancelar su reserva?");
     if(mensaje){
     this.clienteService.getClienteCorreoyPass(parse, this.pass).subscribe(data =>{
+      if(data){
       this.reservaService.cancelarReserva(this.idReserva).subscribe(dataA =>{
+        if(dataA){
         alert("La reserva fué cancelada correctamente");
         this.route.navigate(['/home'])
+        }
       });
+    }else{
+      alert('Ocurrió un error, intente nuevamente')
+    }
     });
+ 
   }else{
     this.route.navigate(['/home'])
   }

@@ -9,10 +9,7 @@
       <table class="table table-hover">
         <thead>
               <tr>
-                <th>ID RESERVA</th>
-                <th>ID EVENTO</th>
-                <th>Nombre Cliente</th>
-                <th>Apellido Cliente</th>
+                <th>Nombre reserva</th>
                 <th>Nombre evento </th>
                 <th>Estado de reserva</th>
                 <th>Cantidad de reservas</th>
@@ -21,10 +18,7 @@
           </thead>
           <tbody>
               <tr *ngFor="let reserva of reservasActivas">
-                  <td>{{reserva.idReserva}}</td>
-                  <td>{{reserva.evento.eventoId}}</td>
-                  <td>{{reserva.cliente.nombre}}</td>
-                  <td>{{reserva.cliente.apellidos}}</td>
+                  <td>{{reserva.nombreEmpresa}}</td>
                   <td>{{reserva.evento.nombre}}</td>
                   <td>{{reserva.estadoReserva}}</td>
                   <td>{{reserva.cantidadReservas}}</td>

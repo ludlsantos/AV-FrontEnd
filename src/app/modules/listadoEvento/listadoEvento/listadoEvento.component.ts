@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -19,15 +18,19 @@ export class ListadoEventoComponent implements OnInit {
   constructor(
 
     public eventoService: EventoService,
-    private route:ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private route: Router
 
   ) {
 
     this.eventoService.getEventos().subscribe((resp: any)=> {
+      if(resp){
       console.log(resp)
       this.eventos = resp
-      
+      }else{
+        alert("Ocurrió un error, intente nuevamente");
+        this.route.navigate(['/home'])
+      }
     })
    }
 

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { Pipe, PipeTransform } from '@angular/core';
 import { FiltroEventoPipe } from './pipes/filtro-evento.pipe';
 
 import { JwtAuthService } from 'src/app/services/jwt-auth.service';

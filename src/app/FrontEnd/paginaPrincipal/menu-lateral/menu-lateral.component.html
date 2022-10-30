@@ -1,13 +1,13 @@
-<div>
+<div >
  <ul id="slide-out" class="sidenav">
   
-    <li *ngIf="jwtAuthService.estaLogeado()"><div class="user-view">
+    <li ><div class="user-view">
       <div class="background">
         <img src="https://materializecss.com/images/office.jpg">
       </div>
-      <a href="#user"><img class="circle" src="https://materializecss.com/images/sample-1.jpg"></a>
-      <a href="#name"><span class="white-text name">Tu nombre</span></a>
-      <a href="#email"><span class="white-text email">tumail@gmail.com</span></a>
+      <a href="#user"><img class="circle" src="assets/imagenes/a.jpg"></a>
+      <li *ngIf="recargar()"><a class="white-text name">{{rol}}</a></li>
+      <li *ngIf="recargar()"><a class="white-text email">{{correo}}</a></li>
     </div>
 
   </li>
@@ -16,7 +16,7 @@
     <!-- <li><a href="home">Home </a></li> -->
     <li><a class="subheader">AV - Sistema de asignación y ventas</a></li><br>
     <li><div class="divider"></div></li>
-    <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/evento/eventos-activos">Ver Eventos Disponibles</a></li>   
+    <li *ngIf="jwtAuthService.esClienteOInvitado()"><a class="tab" routerLink="/evento/eventos-activos">Ver Eventos Disponibles</a></li>   
     <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/reservarAsientos">Reservar Asientos</a></li>
     <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/reservas-cliente">Ver mis Reservas</a></li>
     <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/editar-cliente/editar-cliente">Editar Perfil</a></li>
@@ -29,7 +29,7 @@
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/VerAsignaciónDeMesas">Ver Asignación de Mesas</a></li>
     <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/seguridad/cambiarClave">Cambiar Clave</a></li>
     <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/eliminarCuenta">Eliminar Cuenta</a></li>
-    <li><a href = "home" class="modal-close waves-effect waves-green btn-flat">Close</a></li>
+    <li><a href = "home" class="modal-close waves-effect waves-green btn-flat">Cerrar</a></li>
     
   </ul>
 
