@@ -13,6 +13,7 @@
                 <th>Nombre evento </th>
                 <th>Estado de reserva</th>
                 <th>Cantidad de reservas</th>
+                <th>Reservas sin asignar</th>
                 
               </tr>
           </thead>
@@ -22,7 +23,7 @@
                   <td>{{reserva.evento.nombre}}</td>
                   <td>{{reserva.estadoReserva}}</td>
                   <td>{{reserva.cantidadReservas}}</td>
-                 
+                  <td>{{reserva.reservasSinAsignar}}</td>
   
                   <td><button type="button" name="buttonAsignar" class="btn btn-primary" [routerLink]="['/evento/asignacion-manual-asientos', reserva.idReserva]" [skipLocationChange]="true" >Asignar Asientos</button></td>
                  

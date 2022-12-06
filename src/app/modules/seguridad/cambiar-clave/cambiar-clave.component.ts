@@ -47,17 +47,17 @@ export class CambiarClaveComponent implements OnInit {
     const parse = JSON.parse(this.correo)
     if(this.passAnterior && this.passNueva != null){
       if (this.validator.invalid){
-        alert('Datos invalidos, porfavor verifique')
+        alert('Datos invalidos, por favor verifique')
       }else{
     this.loginService.getLoginYPass(parse, this.passAnterior).subscribe(data => { 
-      if(data){
+      if(data!=null){
         const loginNuevo: Login = {
           rol: data.rol,
           contraseña: this.passNueva,
           correoElectronico: data.correoElectronico
         }
         this.loginService.cambiarClave(data.correoElectronico, loginNuevo).subscribe(dataA =>{
-          if(dataA){
+          if(dataA != null){
           alert('La contraseña fué cambiada con éxito');
           this.route.navigate(['/home'])
             this.validator.reset();
@@ -68,14 +68,14 @@ export class CambiarClaveComponent implements OnInit {
           }
         });
       }else{
-          alert("Ocurrió un error, intente nuevamente");
+          alert("Su contraseña no coincide");
           this.route.navigate(['/home'])
           this.validator.reset();
         }
     });
   }
   }else{
-    alert("Los campos no pueden estar vacíos")
+    alert("Por favor, complete los campos")
   }
   }
   goBack(): void {

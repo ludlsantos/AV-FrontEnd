@@ -1,8 +1,12 @@
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Evento } from 'src/app/modelos/evento';
 import { EventoService } from 'src/app/services/evento.service';
 import { HttpClient } from '@angular/common/http';
+import { Mesa } from 'src/app/modelos/mesa';
 import { localStorageJwt } from 'src/app/static/local-storage';
 import { Administrador } from 'src/app/modelos/administrador';
 import { AdministradorService } from 'src/app/services/administrador.service';
@@ -15,23 +19,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./crear-evento.component.css']
 })
 export class CrearEventoComponent implements OnInit {
+// test
   fgValidator!: FormGroup;
   mesas!: null;
   correo!: any;
   admin!: Administrador;
   public archivo = "";
-  public nombreArchivo= "" ;
-  archivos:any[] = [];
-  loading!: boolean;
-  evento!: Evento;
+    public nombreArchivo= "" ;
+    archivos:any[] = [];
+    loading!: boolean;
+    evento!: Evento;
 
 
   constructor(
+    private http: HttpClient,
     private adminService: AdministradorService,
     private fb: FormBuilder, 
     private eventoService: EventoService,
     private location: Location,
-    private router: Router,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -41,7 +47,7 @@ export class CrearEventoComponent implements OnInit {
   FormBuilding(){
     this.fgValidator = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(2)]],
-      descripcion: ['', [Validators.required, Validators.minLength(5)]],
+      descripcion: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
       tipo: ['', [Validators.required, Validators.minLength(1)]],
       duracion: ['', [Validators.required, Validators.minLength(1)]],
       fecha: ['', [Validators.required]],
@@ -54,30 +60,30 @@ export class CrearEventoComponent implements OnInit {
       criterioAsignacion: [''],
       tipoAsignacion: [''],
       moneda: [''],
-      archivosubido: ['', [Validators.nullValidator]]
+      archivosubido: ['', [Validators.required]]
      });
   }
 
   CrearEvento(){
     if(this.fgValidator.invalid){
-      alert('Datos invalidos, porfavor verifique')
+      alert('Datos invalidos, por favor verifique')
     }else{
     
 
       this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
       const parse = JSON.parse(this.correo);
       this.adminService.getAdmin(parse).subscribe(data =>{
-        if(data == null){
-          alert("Ocurrió un error, intente nuevamente")
-        }else{
+      
           this.admin = data;
-        
+
           if(this.archivos.length === 0){
-            this.loading = false;
-            }else{
-              this.loading = true;
-             
-      const nuevoEvento: Evento = {
+               this.loading = false;
+          }else{
+               this.loading = true;
+                         
+    
+
+      const evento: Evento = {
         nombre: this.fgValidator.get('nombre')?.value,
         descripcion: this.fgValidator.get('descripcion')?.value,
         tipo: this.fgValidator.get('tipo')?.value,
@@ -100,21 +106,19 @@ export class CrearEventoComponent implements OnInit {
 
       }
       
+      // evento.mesas!.length = evento.cantidadMesas;
 
-      this.eventoService.crearEvento(nuevoEvento).subscribe(data => {
-        if(data == null){
-          alert("Ocurrió un error, intente nuevamente")
-        }else{
+      this.eventoService.crearEvento(evento).subscribe(data => {
+     
         this.loading = false;
         alert('Evento creado con éxito');
         this.fgValidator.reset();
         this.router.navigate(['/','home'])
-        }
+        
       });
-    }
-  }
+      }
+    
     });
-  
     }
   }
 
@@ -130,16 +134,14 @@ export class CrearEventoComponent implements OnInit {
     const fileToUpload = files[0] as File;
     var formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-
+    
     const reader = new FileReader();
     reader.readAsDataURL(fileToUpload);
     reader.onload = (event: any) => {
-      this.archivo = event.target.result
-      this.nombreArchivo = fileToUpload.name
-      this.archivos.push(this.archivo)
-    }
-   }
+    this.archivo = event.target.result
+    this.nombreArchivo = fileToUpload.name
+    this.archivos.push(this.archivo)
+      }
 
 }
-
-
+}

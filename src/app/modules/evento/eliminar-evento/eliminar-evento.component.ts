@@ -59,7 +59,10 @@ export class EliminarEventoComponent implements OnInit {
   
 
   eliminarEvento(){
-    
+    if(this.validator.invalid){
+      alert('Datos invalidos, por favor verifique')
+      
+    }else{
     this.pass = this.validator.get('pass')?.value;
     this.rePass = this.validator.get('rePass')?.value;
     this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
@@ -69,44 +72,28 @@ export class EliminarEventoComponent implements OnInit {
         if(data){
           var mensaje = confirm("¿Seguro que desea eliminar este evento de forma definitiva? \n Recuerde que si este evento ya posee reservas con pagos realizados, por politica de la empresa el dinero debe ser reembolsado");
           if(mensaje){
-               this.reservaService.envioCorreoEventoEliminado(this.evento).subscribe(dataC=>{
-                if(dataC){
-                this.reservaService.envioCorreoListaReservas(dataC).subscribe( dataD =>{
-                  if(dataD){
-                  this.eventoService.eliminarEvento(this.evento).subscribe(
-                    dataB=>{
-                          if(dataB){
+              
+                this.eventoService.eliminarEvento(this.evento).subscribe(
+                  dataB=>{
+                    
                           alert("El evento fué eliminado de forma definitiva")
                           this.route.navigate(['/home'])
-                          }else{
-                            alert("Ocurrió un error, intente nuevamente");
-                            this.route.navigate(['/home'])
-                            this.validator.reset();
-                          }
-                        });
-                      }else{
-                        alert("Ocurrió un error, intente nuevamente");
-                        this.route.navigate(['/home'])
-                        this.validator.reset();
-                      }
-                })
-              }else{
-                  alert("Ocurrió un error, intente nuevamente");
-                  this.route.navigate(['/home'])
-                  this.validator.reset();
-                }
+                        
+                      });
+                         
+                      
+              
+              }
+            }
                })
            
-          }
-        }else{
-          alert("Ocurrió un error o no tiene permisos para realizar dicha acción")
-        }
-      });
+          
+     
      }else{
       alert("Las contraseñas no coinciden");
      }
 
   }
-
+  }
 
 }

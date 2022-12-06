@@ -20,7 +20,8 @@ public eventos: Array<Evento>=[]
 
     public eventoService: EventoService,
     private location: Location,
-    private route: Router
+    private route: Router,
+    private router: ActivatedRoute
 
   ) {
 

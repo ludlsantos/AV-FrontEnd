@@ -6,7 +6,6 @@
         <div class="row">
                <div id="custom-search-input">
        <div class="input-group col-md-12">
-            <input type="text" name = "filtrar" class="  search-query form-control" placeholder="Buscar por nombre..." [(ngModel)]="eventoService.filtroEvento" />
                    <span class="input-group-btn">
                          <button class="btn btn-danger" type="button">
                            <span class=" glyphicon glyphicon-search"></span>
@@ -30,12 +29,8 @@
                 <th>Calle Puerta</th>
                 <th>Barrio</th>
                 <th>Ciudad</th>
-                <th>Nro Cupos</th>
-                <th>Cant Mesas</th>
-                <th>Cant Asientos</th>
                 <th>Precio</th>
                 <th>Idioma</th>
-                <th>Asignacion</th>
                 <th>Empresa</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
@@ -51,14 +46,10 @@
                   <td>{{evento.callePuerta}}</td>
                   <td>{{evento.barrio}}</td>
                   <td>{{evento.ciudad}}</td>
-                  <td>{{evento.nroCupos}}</td>
-                  <td>{{evento.cantidadMesas}}</td>
-                  <td>{{evento.cantidadAsientosMesa}}</td>
-                  <td>{{evento.precioAsiento}}</td>
+                  <td>{{evento.moneda+evento.precioAsiento}}</td>
                   <td>{{evento.idioma}}</td>
-                  <td>{{evento.criterioAsignacion}}</td>
                   <td>{{evento.empresaCreadora}}</td>
-                  <td>src={{evento.imagenPortada}}</td>
+                  <td><img src={{evento.imagenPortada}} width="50" height="50"/></td>
                   <td><button type="button" name="buttonReserva" class="btn btn-primary" [routerLink]="['/evento/reservar', evento.eventoId]" [skipLocationChange]="true">Reservar</button></td>
                 </tr>
           </tbody>

@@ -19,7 +19,6 @@ import { ReservarComponent } from './modules/evento/reservar/reservar.component'
 import { ComprobanteDePagoComponent } from './modules/comprobanteDePago/comprobanteDePago.component';
 import { AsignacionManualAsientosComponent } from './modules/asignacion-manual-asientos/asignacion-manual-asientos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FiltroEventoPipe } from './app.component';
 import { EventosActivosComponent } from './modules/evento/eventos-activos/eventos-activos.component';
 import { ReservasClienteComponent } from './modules/cliente/reservas-cliente/reservas-cliente.component';
 import { CancelarReservaComponent } from './modules/cliente/cancelar-reserva/cancelar-reserva.component';
@@ -41,27 +40,17 @@ import { AsientosAsignadosComponent } from './modules/evento/asientos-asignados/
     PiePaginaComponent,
     EliminarCuentaComponent,
     SeccionesHomeComponent,
-        InicioSesionComponent,
         EditarEventoComponent,
         EliminarEventoComponent,
         ReservarComponent,
-    InicioSesionComponent,
-    EliminarEventoComponent,
     ComprobanteDePagoComponent,
     AsignacionManualAsientosComponent,
-        EditarEventoComponent,
-        EliminarEventoComponent,
-        ReservarComponent,
     InicioSesionComponent,
-    EliminarEventoComponent,
-    EventosActivosComponent,
     ReservasClienteComponent,
     CancelarReservaComponent,
    GestionarReservaComponent,
    ListadoReservasActivasComponent,
-    FiltroEventoPipe,
     AsientosAsignadosComponent
-
 
 
 
@@ -75,7 +64,7 @@ import { AsientosAsignadosComponent } from './modules/evento/asientos-asignados/
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatCheckboxModule,
+    MatCheckboxModule
   ],
 
   providers: [CookieService],

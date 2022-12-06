@@ -34,9 +34,7 @@ export class GestionarReservaComponent implements OnInit {
   FormBuilding(){
     
     this.fgValidator = new FormGroup({
-     idReserva: new FormControl(''),
-    nombreCliente: new FormControl(''),
-    apellido: new FormControl(''),
+    nombreEmpresa: new FormControl(''),
     nombreEvento:new FormControl(''),
     estado:new FormControl(''),
     estaReserva:new FormControl(''),
@@ -61,16 +59,14 @@ export class GestionarReservaComponent implements OnInit {
           if(re){
           this.reserva=re; 
     
-          this.fgValidator.get('idReserva')?.setValue(this.reserva.idReserva);
-          this.fgValidator.get('nombreCliente')?.setValue(this.reserva.cliente.nombre);
-          this.fgValidator.get('apellido')?.setValue(this.reserva.cliente.apellidos);
+          this.fgValidator.get('nombreEmpresa')?.setValue(this.reserva.cliente.nombre);
           this.fgValidator.get('nombreEvento')?.setValue(this.reserva.evento.nombre);
          this.fgValidator.get('estado')?.setValue(this.reserva.estadoReserva);
          this.fgValidator.get('estaReserva')?.setValue(this.reserva.estadoReserva);
          this.fgValidator.get('descEstado')?.setValue(this.reserva.descripcionEstado);
          this.fgValidator.get('descripcion')?.setValue(this.reserva.descripcionEstado);
          this.fgValidator.get('comprobante')?.setValue(this.reserva.comprobanteDePago);
-         this.reserva.ruta =  "http://montevideoit-001-site5.htempurl.com/img/" + (this.reserva.idReserva!) + "_" +(this.reserva.comprobanteDePago!.nombre!);
+         this.reserva.ruta =  "http://montevideoit-001-site5.htempurl.com/img/" + (this.reserva.comprobanteDePago?.idDocumento) + "_" +(this.reserva.comprobanteDePago!.nombre!);
 
         }else{
           alert("Ocurrió un error, intente nuevamente");

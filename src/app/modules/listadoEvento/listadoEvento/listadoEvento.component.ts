@@ -19,7 +19,8 @@ export class ListadoEventoComponent implements OnInit {
 
     public eventoService: EventoService,
     private location: Location,
-    private route: Router
+    private route: Router,
+    private router: ActivatedRoute
 
   ) {
 
@@ -38,6 +39,17 @@ export class ListadoEventoComponent implements OnInit {
   }
   goBack(): void {
     this.location.back();
+   }
+
+   deshabilitar(evento: Evento): boolean{
+    var estado = false;
+     if(evento.tipoAsignacion == "Automatico"){
+       estado = true;
+     }else{
+       estado = false;
+     }
+     
+       return estado!;
    }
 
 } 

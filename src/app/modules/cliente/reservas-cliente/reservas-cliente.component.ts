@@ -54,5 +54,16 @@ export class ReservasClienteComponent implements OnInit {
   goBack(): void {
     this.location.back();
    }
+   
+ deshabilitar(reserva: Reserva): boolean{
+  var estado = false;
+   if(reserva.estadoReserva == "Reserva cancelada"){
+     estado = true;
+   }else{
+     estado = false;
+   }
+   
+     return estado!;
+ }
 
   }

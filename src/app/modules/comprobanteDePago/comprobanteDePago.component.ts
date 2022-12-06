@@ -113,7 +113,7 @@ export class ComprobanteDePagoComponent implements OnInit {
             evento: this.reserva.evento!,
             fechaReserva: this.reserva.fechaReserva,
             estadoReserva: this.reserva.estadoReserva,
-            comprobanteDePago: comprobanteDePago,
+            comprobanteDePago: res,
             nombreEmpresa: this.reserva.nombreEmpresa,
             telefono: this.reserva.telefono,
             correoElectronico: this.reserva.correoElectronico,
@@ -126,16 +126,9 @@ export class ComprobanteDePagoComponent implements OnInit {
             if(resp){
             console.log('Respuesta del servidor', res);
             alert('Su comprobante de pago ha sido guardado con éxito');
-            }else{
-              alert("Ocurrió un error, intente nuevamente");
-              this.route.navigate(['/home'])
             }
           });
   
-        }else{
-          alert("Ocurrió un error, intente nuevamente");
-          this.route.navigate(['/home'])
-          this.nombreArchivo= "";
         }
         });
       });

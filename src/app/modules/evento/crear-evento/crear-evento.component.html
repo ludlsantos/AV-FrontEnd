@@ -1,4 +1,3 @@
-
 <div style="text-align: right;">
   <button type="button" name="buttonVolver" class="btn btn-primary"(click)="goBack()">Volver</button>
 </div>
@@ -114,9 +113,9 @@
               </div></div><br>
             <div class="row">
               <div class="input-field col s6">
-            <form action="" method="post" enctype="multipart/form-data" target="_blank">
-              <label for="file">Foto de portada</label><br>
-                <input type="file" #file (change)="uploadFile(file.files)" name="archivosubido" >
+            <form [formGroup]="fgValidator" action="" method="post" enctype="multipart/form-data"  target="_blank">
+              <label  for="file">Foto de portada</label><br>
+                <input formControlName="archivosubido" type="file" #file (change)="uploadFile(file.files)" name="archivosubido" >
               
           </form>
         </div></div>
@@ -129,5 +128,3 @@
           </div>
         </fieldset>
         
-    
-

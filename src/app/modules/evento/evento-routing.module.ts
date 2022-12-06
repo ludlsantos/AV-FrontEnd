@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EsAdminGuard } from 'src/app/Guards/es-admin.guard';
+import { EsClienteGuard } from 'src/app/Guards/es-cliente.guard';
 import { AsignacionManualAsientosComponent } from '../asignacion-manual-asientos/asignacion-manual-asientos.component';
 import { ListadoReservaComponent } from '../listadoReserva/listadoReserva.component';
 import { AsientosAsignadosComponent } from './asientos-asignados/asientos-asignados.component';
@@ -14,64 +16,63 @@ import { ReservarComponent } from './reservar/reservar.component';
 const routes: Routes = [
 {
   path: 'crearEvento', 
-  component: CrearEventoComponent
+  component: CrearEventoComponent,
+  canActivate: [EsAdminGuard]
 },
 
 {
   path: 'editar-evento/:id', 
-  component: EditarEventoComponent
+  component: EditarEventoComponent,
+  canActivate: [EsAdminGuard]
 },
 {
   path: 'eliminar-evento/:id', 
-component: EliminarEventoComponent
+component: EliminarEventoComponent,
+canActivate: [EsAdminGuard]
 },
 {
   path: 'eventos-activos', 
 component: EventosActivosComponent
 },
-{
-  path: 'editar-evento', 
-component: EditarEventoComponent
-},
+
 {
   path: 'reservar/:id', 
-  component: ReservarComponent
-},
-{
-  path: 'reservar',
-  component: ReservarComponent
-},
-{
-  path: 'gestionar-reserva',
-  component: GestionarReservaComponent
+  component: ReservarComponent,
+  canActivate: [EsClienteGuard]
 },
 {
   path: 'gestionar-reserva/:id', 
- component: GestionarReservaComponent
+ component: GestionarReservaComponent,
+ canActivate: [EsAdminGuard]
 
 },
 
 {
   path: 'listadoReserva', 
-  component: ListadoReservaComponent
+  component: ListadoReservaComponent,
+  canActivate: [EsAdminGuard]
 },
 
 {
   path: 'listadoReserva/:id', 
-  component: ListadoReservaComponent
+  component: ListadoReservaComponent,
+  canActivate: [EsAdminGuard]
 },
 
 {
   path: 'listado-reservas-activas/:id', 
-  component: ListadoReservasActivasComponent
+  component: ListadoReservasActivasComponent,
+  canActivate: [EsAdminGuard]
 },
 {
   path: 'asignacion-manual-asientos/:id', 
-  component: AsignacionManualAsientosComponent
+  component: AsignacionManualAsientosComponent,
+  canActivate: [EsAdminGuard]
 },
 {
   path: 'asientos-asignados/:id',
-  component: AsientosAsignadosComponent
+  component: AsientosAsignadosComponent,
+  canActivate: [EsAdminGuard]
 }
 
 ];

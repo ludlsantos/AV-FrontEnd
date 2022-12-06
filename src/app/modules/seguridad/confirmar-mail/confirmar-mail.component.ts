@@ -44,7 +44,7 @@ export class ConfirmarMailComponent implements OnInit {
 
   confirmarMail(){
     if(this.validator.invalid){
-      alert('Datos invalidos, porfavor verifique')
+      alert('Datos invalidos, por favor verifique')
     }else{
       this.correo = this.validator.get('correo')?.value;
    this.LoginService.enviarCorreo(this.correo).subscribe(data => {

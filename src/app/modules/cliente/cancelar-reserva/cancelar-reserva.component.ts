@@ -5,6 +5,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
 import { Location } from '@angular/common';
+import { Reserva } from 'src/app/modelos/reserva';
 
 @Component({
   selector: 'app-cancelar-reserva',
@@ -63,6 +64,8 @@ cancelarReserva(){
         if(dataA){
         alert("La reserva fué cancelada correctamente");
         this.route.navigate(['/home'])
+        }else{
+          alert('Ocurrió un error, intente nuevamente')
         }
       });
     }else{
@@ -80,4 +83,5 @@ cancelarReserva(){
 goBack(): void {
   this.location.back();
  }
+
 }

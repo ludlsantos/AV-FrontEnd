@@ -6,6 +6,7 @@ import { IngresarCodigoComponent } from './ingresar-codigo/ingresar-codigo.compo
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { ReestablecerClaveComponent } from './reestablecer-clave/reestablecer-clave.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EstaLogueadoGuard } from 'src/app/Guards/estaLogueado.guard';
 
 const routes: Routes = [
 {
@@ -27,7 +28,8 @@ const routes: Routes = [
 },
 {
   path: 'cambiarClave',
-  component: CambiarClaveComponent
+  component: CambiarClaveComponent,
+  canActivate: [EstaLogueadoGuard]
 }
 ];
 

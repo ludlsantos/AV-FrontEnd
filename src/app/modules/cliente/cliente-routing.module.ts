@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EsClienteGuard } from 'src/app/Guards/es-cliente.guard';
 
 import { CancelarReservaComponent } from './cancelar-reserva/cancelar-reserva.component';
 import { EliminarCuentaComponent } from './eliminar-cuenta/eliminar-cuenta.component';
@@ -17,16 +18,20 @@ const routes: Routes = [
 },
 {
   path: 'eliminarCuenta',
-  component: EliminarCuentaComponent
+  component: EliminarCuentaComponent,
+  canActivate: [EsClienteGuard]
 
 },
 {
   path: 'reservas-cliente',
-  component: ReservasClienteComponent
+  component: ReservasClienteComponent,
+  canActivate: [EsClienteGuard]
+
 },
 {
   path: 'cancelarReserva/:id',
-  component: CancelarReservaComponent
+  component: CancelarReservaComponent,
+  canActivate: [EsClienteGuard]
 },
 
 

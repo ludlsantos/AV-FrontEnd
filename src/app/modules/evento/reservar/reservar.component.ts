@@ -53,9 +53,12 @@ export class ReservarComponent implements OnInit {
 
   Reservar(){
     if (this.fgValidator.invalid){
-      alert('Datos invalidos, porfavor verifique')
+      alert('Datos invalidos, por favor verifique')
     }else
     {
+    if(this.fgValidator.get('cantidadReservas')!.value <= 0){
+      alert("La cantidad de reservas debe ser al menos una")
+    }else{
       this.correo = localStorage.getItem(localStorageJwt.LS_CORREO)!;
       const parse = JSON.parse(this.correo);
       this.clienteService.getClienteCorreo(parse).subscribe(data => {
@@ -75,7 +78,6 @@ export class ReservarComponent implements OnInit {
             correoElectronico: this.fgValidator.get('email')?.value, 
             cantidadReservas: this.fgValidator.get('cantidadReservas')?.value,
             descripcionEstado: this.fgValidator.get('descEstado')?.value,
-            ruta: "null"
 
            
             }
@@ -121,5 +123,5 @@ export class ReservarComponent implements OnInit {
       
     }
   }
-
+  }
 }

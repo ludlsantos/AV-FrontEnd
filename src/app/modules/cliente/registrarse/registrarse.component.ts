@@ -50,7 +50,7 @@ export class RegistrarseComponent implements OnInit {
     if (this.fgValidator.get('password')?.value == this.fgValidator.get('rePassword')?.value){
 
     if (this.fgValidator.invalid){
-      alert('Datos invalidos, porfavor verifique')
+      alert('Datos invalidos, por favor verifique')
     }else{
       
       var loginHijo: Login = {
@@ -71,14 +71,15 @@ export class RegistrarseComponent implements OnInit {
             login: loginHijo
           }
             this.clienteService.guardarCliente(cliente).subscribe(data => {
-              if(data){
-              alert('Registrado con éxito');
-              this.route.navigate(['/login']);
-              this.fgValidator.reset();  
-              }else{
+              if(data == null){
                 alert("Ocurrió un error, intente nuevamente");
                 this.route.navigate(['/home'])
                 this.fgValidator.reset();
+              }else{
+                alert('Registrado con éxito');
+              this.route.navigate(['/login']);
+              this.fgValidator.reset();  
+             
               }
             });
   

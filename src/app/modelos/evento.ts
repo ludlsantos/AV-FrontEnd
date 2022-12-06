@@ -25,6 +25,6 @@ export class Evento {
     tipoAsignacion!: string;
     empresaCreadora!: string;
     mesas?: Array<Mesa>;
-    estadoEvento!: string;
+    estadoEvento?: string;
 }
 

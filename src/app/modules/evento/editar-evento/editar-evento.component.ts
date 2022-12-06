@@ -98,14 +98,16 @@ export class EditarEventoComponent implements OnInit {
 
     
     update(){
-        
+      if(this.fgValidator.invalid){
+        alert('Datos invalidos, por favor verifique')
+      }else{
         const allEvento: Evento = {
 
         eventoId: this.eventoident,
         nombre: this.fgValidator.get('nombre')?.value,
         descripcion: this.fgValidator.get('descripcion')?.value,
         tipo: this.fgValidator.get('tipo')?.value,
-        duracion: this.fgValidator.get('duracion')?.value + " horas",
+        duracion: this.fgValidator.get('duracion')?.value,
         callePuerta: this.fgValidator.get('callePuerta')?.value,
         barrio: this.fgValidator.get('barrio')?.value,
         ciudad: this.fgValidator.get('ciudad')?.value,
@@ -120,22 +122,22 @@ export class EditarEventoComponent implements OnInit {
         imagenPortada: this.fgValidator.get('imagenPortada')?.value,
         empresaCreadora:this.fgValidator.get('empresaCreadora')?.value,
         estadoEvento: this.fgValidator.get('estadoEvento')?.value,
+        fechaHora: this.evento.fechaHora
       }  
     
 
       this.eventoService.update( this.eventoident, allEvento).subscribe(data => {
-        if(data){
+       
           this.eventoService.eventoModificado(this.eventoident).subscribe(dataA =>{
-            if(dataA){
+           
               alert('Evento actualizado con éxito');
               this.router.navigate(['/listadoEvento/listadoEvento']);
               this.fgValidator.reset();
-            } alert('Ocurrió un error, intente nuevamente')
+             
           });
        
-        }else{
-          alert('Ocurrió un error, intente nuevamente')
-        }
+        
       });
     }
+  }
     }

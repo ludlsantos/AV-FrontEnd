@@ -13,38 +13,27 @@
           <table class="table table-hover">
               <tbody>
                   <tr>
-                      <td>                   
-                  <label>Id Reserva</label>
-                  <input id="idReserva" value="{{reserva.idReserva}}" formControlName="idReserva" type="text" readonly>
-                </td>
                 </tr>
                 <tr>
                    <td>
-                    <label>Nombre</label>
-                  <input id="nombreCliente" value="{{reserva.cliente.nombre}}" formControlName="nombreCliente" type="text" readonly>
+                    <label>Nombre reserva</label>
+                  <input id="nombreEmpresa" value="{{reserva.nombreEmpresa}}" formControlName="nombreEmpresa" type="text" readonly>
                   </td>
                 </tr>
                 <tr>
-                   <td>
-                    <label>Apellido</label><input id="apellido" value="{{reserva.cliente.apellidos}}" formControlName="apellido" type="text" readonly>
-                  </td>
                   </tr>
                   <tr>
                   <td>
           
                   <label>Nombre Evento</label>
-                   <input id="nombreEvento" value="{{reserva.evento.nombre}}" formControlName="nombreEvento" type="text" readonly>
+                   <input id="nombreEvento" value="{{reserva.evento!.nombre!}}" formControlName="nombreEvento" type="text" readonly>
                   </td>
                 </tr>
                 <tr>
                   <td>
                    <label>Estado</label>
                   <input id="estado" value="{{reserva.estadoReserva}}" formControlName="estado" type="text" readonly >
-                </td>    
-                <td>
-                  <label>Notas por cambio de estado</label>
-                 <input id="descEstado" value="{{reserva.descripcionEstado}}" formControlName="descEstado" type="text" readonly >
-               </td>      
+                </td>     
                     </tr>
                     
               </tbody>
@@ -53,7 +42,7 @@
           <label>Comprobante de pago</label>
           <div class="container">         
           <div class="modal-info center">
-            <div><img id="comprobante" class="images" src={{reserva.ruta}} width="400" height="100"/></div>                     
+            <div><img id="comprobante" class="images" src={{reserva.ruta}} width="600" height="400"/></div>                     
           </div>
           </div>
          <div class="modal-body">

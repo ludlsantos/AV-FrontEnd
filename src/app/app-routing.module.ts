@@ -74,10 +74,6 @@ path: 'admin',
 },
 
 {
-  path: 'listadoEvento',
-  loadChildren: () => import('./modules/listadoEvento/listadoEvento.module').then(m => ListadoEventoModule)
-},
-{
   path: 'listadoReserva',
   loadChildren: () => import('./modules/listadoReserva/listadoReserva.module').then(m => ListadoReservaModule)
 },

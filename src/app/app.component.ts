@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-
-import { FiltroEventoPipe } from './pipes/filtro-evento.pipe';
-
 import { JwtAuthService } from 'src/app/services/jwt-auth.service';
+import { FiltroEventoPipe } from './pipes/filtro-evento.pipe';
 import { FiltroReservaPipe } from './pipes/filtro-reserva.pipe';
 
 
@@ -24,6 +22,5 @@ export class AppComponent {
 
 }
 export {FiltroReservaPipe}
-
-export{ FiltroEventoPipe }
+export {FiltroEventoPipe}
 

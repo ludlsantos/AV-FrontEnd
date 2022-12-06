@@ -21,7 +21,7 @@
     </div>
     <div class="input-field col s6">
       <i class="material-icons prefix">timer</i>
-      <input id="duracion"  value="{{evento.duracion}}" formControlName="duracion" type="number">Duración(horas)
+      <input id="duracion"  value="{{evento.duracion}}" formControlName="duracion" type="text">Duración(horas)
     </div>
     <div class="input-field col s6">
       <i class="material-icons prefix">location_on</i>
@@ -37,15 +37,15 @@
     </div>
     <div class="input-field col s6">
       <i class="material-icons prefix">supervisor_account</i>
-      <input id="cantidadCupos" formControlName="cantidadCupos" type="number" required>Cantidad de cupos
+      <input id="cantidadCupos" formControlName="cantidadCupos" type="number" readonly>Cantidad de cupos
     </div>
     <div class="input-field col s6">
       <i class="material-icons prefix">view_column</i>
-      <input id="cantidadMesas" value="{{evento.cantidadMesas}}" formControlName="cantidadMesas" type="number" >Cantidad de mesas
+      <input id="cantidadMesas" value="{{evento.cantidadMesas}}" formControlName="cantidadMesas" type="number" readonly>Cantidad de mesas
     </div>
       <div class="input-field col s6">
         <i class="material-icons prefix">view_module</i>
-        <input id="cantidadAsientosMesa" value="{{evento.cantidadAsientosMesa}}" formControlName="cantidadAsientosMesa" type="number" minlength="1" >Cantidad de asientos por mesa
+        <input id="cantidadAsientosMesa" value="{{evento.cantidadAsientosMesa}}" formControlName="cantidadAsientosMesa" type="number" minlength="1" readonly>Cantidad de asientos por mesa
       </div>
      
       <div class="input-field col s6"><br>
@@ -60,7 +60,7 @@
 
       <div class="input-field col s6">
         <i class="material-icons prefix">shopping_cart</i>
-        <input id="precio" value="{{evento.precioAsiento}}" formControlName="precioAsiento" type="number" >Precio del asiento
+        <input id="precio" value="{{evento.precioAsiento}}" formControlName="precioAsiento" type="number" readonly>Precio del asiento
       </div> 
     
       <div class="input-field col s6"><br>

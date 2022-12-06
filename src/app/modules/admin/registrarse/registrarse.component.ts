@@ -42,7 +42,7 @@ export class RegistrarseComponent implements OnInit {
       if (this.fgValidator.get('password')?.value == this.fgValidator.get('rePassword')?.value){
 
         if (this.fgValidator.invalid){
-          alert('Datos invalidos, porfavor verifique')
+          alert('Datos invalidos, por favor verifique')
         }else{
           var loginHijo: Login = {
             rol: "Administrador",
@@ -55,12 +55,13 @@ export class RegistrarseComponent implements OnInit {
             login: loginHijo
           }
           this.AdminService.guardarAdmin(administrador).subscribe(data => {
-            if(data){
-            alert('Registrado correctamente');
-            this.route.navigate(['/home'])
-            this.fgValidator.reset();
-            }else{
+            if(data == null){
+              
               alert("Ya existe un usuario con el correo electrónico ingresado");
+            }else{
+              alert('Registrado correctamente');
+              this.route.navigate(['/home'])
+              this.fgValidator.reset();
             this.fgValidator.reset();
             }
           });

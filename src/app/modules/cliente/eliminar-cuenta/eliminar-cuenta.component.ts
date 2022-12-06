@@ -55,16 +55,17 @@ export class EliminarCuentaComponent implements OnInit {
           if (mensaje) {
             this.clienteService.eliminarCliente(this.id).subscribe(dataB => {
               if(dataB){
-                this.LoginService.eliminarLogin(dataA.login.correoElectronico).subscribe(dataC =>{
-                  if(dataC){
-                  localStorage.removeItem(localStorageJwt.LS_ACCESS_TOKEN);
-                  localStorage.removeItem(localStorageJwt.LS_ROLES);
-                  localStorage.removeItem(localStorageJwt.LS_CORREO);
-                  alert("Se eliminó su cuenta correctamente");
-                  }else{
+                this.LoginService.eliminarLogin(dataA.login.correoElectronico, this.pass).subscribe(dataC =>{
+                  if(dataC == null){
                     alert("Ocurrió un error, intente nuevamente");
                     this.route.navigate(['/home'])
                     this.validator.reset();
+                  
+                  }else{
+                    localStorage.removeItem(localStorageJwt.LS_ACCESS_TOKEN);
+                  localStorage.removeItem(localStorageJwt.LS_ROLES);
+                  localStorage.removeItem(localStorageJwt.LS_CORREO);
+                  alert("Se eliminó su cuenta correctamente");
                   }
               });
                 this.route.navigate(['/home'])

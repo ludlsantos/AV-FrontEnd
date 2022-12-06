@@ -37,7 +37,7 @@ export class ListadoReservaComponent implements OnInit {
 
 deshabilitar(reserva: Reserva): boolean{
    var estado = false;
-    if(reserva.estadoReserva == "Pendiente de pago"){
+    if(reserva.estadoReserva == "Pendiente de pago" && reserva.comprobanteDePago != null){
       estado = false;
     }else{
       estado = true;

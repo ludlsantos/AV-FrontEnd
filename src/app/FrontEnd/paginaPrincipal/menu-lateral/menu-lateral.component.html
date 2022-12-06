@@ -16,21 +16,15 @@
     <!-- <li><a href="home">Home </a></li> -->
     <li><a class="subheader">AV - Sistema de asignación y ventas</a></li><br>
     <li><div class="divider"></div></li>
-    <li *ngIf="jwtAuthService.esClienteOInvitado()"><a class="tab" routerLink="/evento/eventos-activos">Ver Eventos Disponibles</a></li>   
-    <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/reservarAsientos">Reservar Asientos</a></li>
+    <li *ngIf="jwtAuthService.esClienteOInvitado()"><a class="tab" routerLink="/evento/eventos-activos">Ver Eventos Disponibles</a></li> 
     <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/reservas-cliente">Ver mis Reservas</a></li>
     <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/editar-cliente/editar-cliente">Editar Perfil</a></li>
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/registrarse">Registrar Administrador</a></li>
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/listadoEvento/listadoEvento">Ver todos los Eventos</a></li>
     <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/evento/crearEvento">Crear Eventos</a></li>
-    <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/comprobanteDePago">Ingresar Pago</a></li>
-    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/listadoReserva/listadoReserva">Ver todos las Reservas</a></li>
-    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/asignacionManualAsientos/:id">Asignación Manual de Asientos</a></li>
-    <li *ngIf="jwtAuthService.esAdmin()"><a class="tab" routerLink="/admin/VerAsignaciónDeMesas">Ver Asignación de Mesas</a></li>
-    <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/seguridad/cambiarClave">Cambiar Clave</a></li>
+    <li *ngIf="jwtAuthService.estaLogeado"><a class="tab" routerLink="/seguridad/cambiarClave">Cambiar Contraseña</a></li>
     <li *ngIf="jwtAuthService.esCliente()"><a class="tab" routerLink="/cliente/eliminarCuenta">Eliminar Cuenta</a></li>
-    <li><a href = "home" class="modal-close waves-effect waves-green btn-flat">Cerrar</a></li>
-    
+
   </ul>
 
 </div>

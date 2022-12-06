@@ -18,7 +18,6 @@
       <table class="table table-hover">
         <thead>
               <tr>
-                <th>ID reserva</th>
                 <th>Nombre reserva</th>
                 <th>Nombre evento </th>
                 <th>Cantidad de reservas</th>
@@ -27,14 +26,13 @@
           </thead>
           <tbody>
               <tr *ngFor="let reserva of reservas">
-                  <td>{{reserva.idReserva}}</td>
                   <td>{{reserva.nombreEmpresa}}</td>
                   <td>{{reserva.evento.nombre}}</td>
                   <td>{{reserva.cantidadReservas}}</td>
                   <td>{{reserva.estadoReserva}}</td>
                   <td></td>
                   <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/comprobanteDePago', reserva.idReserva]" [skipLocationChange]="true" >Subir comprobante de pago</button></td>
-                  <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/cliente/cancelarReserva', reserva.idReserva]" [skipLocationChange]="true" >Cancelar reserva</button></td>
+                  <td><button type="button" name="button" class="btn btn-primary"  [disabled]="deshabilitar(reserva)" [routerLink]="['/cliente/cancelarReserva', reserva.idReserva]" [skipLocationChange]="true" >Cancelar reserva</button></td>
                 </tr>
                 
           </tbody>

@@ -39,8 +39,8 @@ getLoginYPass(id: string, passAnterior: string): Observable<Login> {
 }
 
 
-eliminarLogin(id: string): Observable<Login>{
-  return this.http.delete<Login>(constantes.miApiUrl + constantes.apiUrlLogin + id);
+eliminarLogin(id: string, pass: string): Observable<Login>{
+  return this.http.delete<Login>(constantes.miApiUrl + constantes.apiUrlLogin + id + "/" + pass);
 }
 
 }

@@ -15,18 +15,6 @@ export class PredeterminadoComponent implements OnInit {
   
   constructor(private eventoService : EventoService) {
 
-
-    this.eventoService.getEventos().subscribe((resp: any)=> {
-      if(resp == null){
-        alert("Ocurrió un error, intente nuevamente");
-      }else{
-      for (let eventoA of resp){
-        if(eventoA.estadoEvento == "Activo"){
-           this.eventos.push(eventoA)
-        }
-      }
-    }
-      });
   }
 
   ngOnInit(): void {

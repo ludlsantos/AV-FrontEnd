@@ -58,13 +58,16 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
 
          
           this.loginService.obtenerToken(login).subscribe(res => {
+            if(res == null){
+              alert ('Usuario y/o contraseña incorrecta')
+            }else{
             const token = res.respuesta|| '';
             console.log('token', token);
             sessionStorage.setItem('token', token);
             this.jwtAuthService.login(token);
             this.router.navigate(['/home']);
   
-            
+            }
   
       }, (error) => {
         var ER = error;

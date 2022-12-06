@@ -44,7 +44,7 @@ export class ReestablecerClaveComponent implements OnInit {
   cambiarPass(){
     if(this.validator.get('pass')?.value == this.validator.get('rePass')?.value){
       if (this.validator.invalid){
-        alert('Datos invalidos, porfavor verifique')
+        alert('Datos invalidos, por favor verifique')
       }else{
         this.LoginService.getLogin(this.correo).subscribe(data => {
           if(data){

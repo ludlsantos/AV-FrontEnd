@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Cliente } from 'src/app/modelos/cliente';
 import { EditarCliente } from 'src/app/modelos/editarCliente';
+import { Login } from 'src/app/modelos/login';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { LoginService } from 'src/app/services/login.service';
 import { localStorageJwt } from 'src/app/static/local-storage';
@@ -19,7 +21,7 @@ export class EditarClienteComponent implements OnInit {
   id!: any;
   correoElectronico!: string;
   constructor(
-    private fb: FormBuilder, private clienteService: ClienteService, private route: Router) {
+    private fb: FormBuilder, private router:Router, private clienteService: ClienteService,  private activatedRoute:ActivatedRoute, private loginService: LoginService,) {
    
     }
 
@@ -72,7 +74,9 @@ export class EditarClienteComponent implements OnInit {
 
    
      EditarCliente(){ 
-
+      if(this.fgValidator.invalid){
+        alert('Datos invalidos, por favor verifique')
+      }else{
       const allCliente: EditarCliente = {
       
         clienteId: this.id,
@@ -89,19 +93,14 @@ export class EditarClienteComponent implements OnInit {
        }
       
        this.clienteService.updateCliente(allCliente).subscribe(data => {
-        if(data){
         alert('Cliente actualizado con éxito');
+        this.router.navigate(['/home']);
         this.fgValidator.reset();
-        }else{
-        alert("Ocurrió un error, intente nuevamente");
-        this.route.navigate(['/home'])
-        this.fgValidator.reset();
-        }
       });
       
     }
     
-
+  }
 
   get fgv(){
     return this.fgValidator.controls;
